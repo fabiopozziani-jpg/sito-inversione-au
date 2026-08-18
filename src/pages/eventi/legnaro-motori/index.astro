@@ -1,0 +1,9 @@
+---
+import '../../../styles/hub.css';
+import Base from '../../../layouts/Base.astro';
+import EventHub from '../../../components/EventHub.astro';
+import { hubs } from '../../../data/hub';
+---
+<Base title="Legnaro Motori 2026 — 15 marzo | Inversione A U" description="Legnaro Motori: una giornata di drift e raduno a Legnaro (Padova). Programma, mappa dell'area, foto della prima edizione, sponsor e contatti." active="eventi" bodyClass="ctx-legnaro">
+  <EventHub h={hubs.legnaro} />
+</Base>

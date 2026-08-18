@@ -1,0 +1,24 @@
+---
+/** Programma a tappe: ora in mono col colore evento, titolo, nota. */
+interface Item { time: string; title: string; text?: string }
+interface Props { items: Item[] }
+const { items } = Astro.props;
+---
+<ol class="tl stagger">
+  {items.map(it => (
+    <li class="tl__i reveal">
+      <span class="type-mono tl__t">{it.time}</span>
+      <div class="tl__b"><span class="tl__h">{it.title}</span>{it.text && <span class="tl__x">{it.text}</span>}</div>
+    </li>
+  ))}
+</ol>
+<style>
+  .tl{display:flex;flex-direction:column}
+  .tl__i{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--border-on-dark)}
+  .tl__i:last-child{border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:640px){.tl__i{grid-template-columns:200px 1fr;gap:24px}}
+  .tl__t{color:var(--ev,#fff)}
+  .tl__b{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .tl__h{font-weight:600;color:#fff}
+  .tl__x{color:var(--text-body-on-dark)}
+</style>

@@ -1,0 +1,9 @@
+---
+import '../../../styles/hub.css';
+import Base from '../../../layouts/Base.astro';
+import EventHub from '../../../components/EventHub.astro';
+import { hubs } from '../../../data/hub';
+---
+<Base title="Polo Motor Show 2026 — 13–14 giugno | Inversione A U" description="Polo Motor Show a Selve di Teolo: due giorni di drift, rally show ed esposizione sul circuito cittadino dei Colli Euganei. Programma, mappa, foto, sponsor e contatti." active="eventi" bodyClass="ctx-polo">
+  <EventHub h={hubs.polo} />
+</Base>

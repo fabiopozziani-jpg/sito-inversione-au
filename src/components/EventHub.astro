@@ -1,0 +1,246 @@
+---
+/**
+ * Hub evento (Polo, Legnaro): sub-nav ad ancore, hero, fascia di stato, intro + numeri, programma,
+ * foto, mappa, piloti ed espositori (fondo bianco), sponsor a due livelli, contatti.
+ * Il colore evento arriva da body.ctx-<key> (hub.css → --ev, --ev-scuro).
+ */
+import EventSubnav from './EventSubnav.astro';
+import StatBlock from './StatBlock.astro';
+import Timeline from './Timeline.astro';
+import PhotoGrid from './PhotoGrid.astro';
+import SponsorBlock from './SponsorBlock.astro';
+import { testiStato, type Hub } from '../data/hub';
+import { getGalleria } from '../data/gallerie';
+import { annuali, sponsorEvento } from '../data/sponsor';
+
+interface Props { h: Hub }
+const { h } = Astro.props;
+const gal = getGalleria(h.key);
+const galleryUrl = gal ? `/foto-e-video/${gal.slug}/` : '/foto-e-video/';
+const t = testiStato(h, galleryUrl);
+const spEvento = sponsorEvento(h.key);
+const email = 'info@inversioneau.com';
+const nav = [
+  { label: 'L’evento', href: `${h.href}#evento` },
+  { label: 'Programma', href: `${h.href}#programma` },
+  ...(t.showMappa ? [{ label: 'Mappa e parcheggi', href: `${h.href}#mappa` }] : []),
+  { label: 'Foto', href: galleryUrl },
+  ...(t.showPiloti ? [{ label: 'Piloti ed espositori', href: `${h.href}#piloti` }] : []),
+  { label: 'Sponsor', href: `${h.href}#sponsor` },
+  { label: 'Contatti', href: `${h.href}#contatti` },
+  { label: 'Edizioni precedenti', href: '/eventi/archivio/' },
+];
+const bg = h.key === 'polo' ? '#1E7A91' : '#3C5490';
+const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
+---
+<EventSubnav items={nav} current={`${h.href}#evento`} bg={bg} accent={accent} label={`Sezioni di ${h.nome}`} />
+
+<section class="hero" aria-labelledby="hero-h1">
+  <img class="hero__img" src={h.hero} alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
+  <div class="hero__scrim" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <img class="hero__logo" src={h.logo} alt="" width="220" height="120" decoding="async" />
+    <p class="type-mono hero__kicker">{t.periodo} · {h.luogo} · {t.statoLabel}</p>
+    <h1 id="hero-h1" class="type-display hero__h1">{h.nome}</h1>
+    <p class="hero__intro">{h.claim}</p>
+    <div class="hero__cta">
+      <span class="pill pill--pieno">{t.statoLabel}</span>
+      <a href={t.cta[0][1]} class="btn btn--ev">{t.cta[0][0]}</a>
+      <a href={t.cta[1][1]} class="btn btn--secondary">{t.cta[1][0]}</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="Stato dell'edizione">
+  <div class="wrap band__in">
+    <span class="type-mono tabellone k-ev">{t.band[0]}</span>
+    <p role="status" class="band__p">{t.band[1]}</p>
+    {t.band[2] && <a href={t.band[3]} class="btn btn--secondary">{t.band[2]}</a>}
+  </div>
+</section>
+
+<section id="evento" class="wrap section intro" aria-labelledby="intro-h">
+  <div class="intro__t">
+    <p class="type-mono k-ev">L’evento</p>
+    <h2 id="intro-h" class="type-h2 reveal-wipe"><span>{h.introTitolo}</span></h2>
+    <p class="intro__p">{h.introTesto1}</p>
+    <p class="intro__p">{h.introTesto2}</p>
+  </div>
+  <div class="intro__n"><StatBlock stats={h.stats} columns={2} /></div>
+</section>
+
+<section id="programma" class="wrap section prog" aria-labelledby="prog-h">
+  <div class="sec-head">
+    <h2 id="prog-h" class="type-h2">{t.programmaTitolo}</h2>
+    <p class="type-body-dark">{h.stato === 'conclusa' ? 'Le giornate dell’edizione appena conclusa, come si sono svolte.' : 'Le giornate, ora per ora. Gli orari possono cambiare per motivi di sicurezza.'}</p>
+  </div>
+  <Timeline items={h.programma} />
+</section>
+
+{t.showGallery && (
+  <section id="gallery" class="wrap section gal" aria-labelledby="gal-h">
+    <div class="sec-head sec-head--row">
+      <h2 id="gal-h" class="type-h2">Foto dell’edizione {h.anno}</h2>
+      {gal && gal.stato === 'pubblicata' && <a class="type-mono link-line gal__link" href={galleryUrl}>Guarda tutte le foto di {h.nome} <span class="arrow-x" aria-hidden="true">→</span></a>}
+    </div>
+    {gal && gal.stato === 'pubblicata'
+      ? <PhotoGrid foto={gal.foto.slice(0, 9)} credito={gal.credito} perPagina={9} strip id={`pg-${h.key}`} />
+      : <div class="card card--left"><span class="type-mono k-ev">Galleria in attesa</span><p>{gal?.notaVuota}</p></div>}
+  </section>
+)}
+
+{t.showMappa && (
+  <section id="mappa" class="wrap section mappa" aria-labelledby="mappa-h">
+    <div class="mappa__grid">
+      <div class="mappa__media">
+        {h.mappa
+          ? <button type="button" class="mappa__btn img-zoom" data-lb data-src={h.mappa} data-alt={`Mappa delle aree di ${h.nome}`}><img src={h.mappa} alt={`Mappa delle aree di ${h.nome}`} loading="lazy" decoding="async" /><span class="type-mono mappa__hint">Tocca per ingrandire</span></button>
+          : <div class="mappa__attesa"><img src={h.logo} alt="" width="160" height="90" loading="lazy" decoding="async" /><span class="type-mono">Mappa delle aree · in pubblicazione</span></div>}
+      </div>
+      <div class="mappa__t">
+        <p class="type-mono k-ev">Aree evento</p>
+        <h2 id="mappa-h" class="type-h2">{h.mappaTitolo}</h2>
+        <p class="type-body-dark">{h.mappaTesto}</p>
+        <p class="type-mono text-meta" id="legenda-aree">Le aree</p>
+        <ul class="mappa__aree" aria-labelledby="legenda-aree">
+          {h.mappaAree.map(a => <li><span class="mappa__dot" aria-hidden="true"></span><span><span class="type-mono mappa__nome">{a.nome}</span> — {a.testo}</span></li>)}
+        </ul>
+        <div class="mappa__link"><a class="link-box" href={h.comeArrivare} target="_blank" rel="noopener">Apri le indicazioni stradali ↗</a><span class="hint">Si apre Google Maps, in una nuova pagina</span></div>
+      </div>
+    </div>
+  </section>
+)}
+
+{t.showPiloti && (
+  <section id="piloti" class="on-light" aria-labelledby="pil-h">
+    <div class="wrap section pil">
+      <div class="pil__t">
+        <p class="type-mono pil__k">{t.pilotiKicker}</p>
+        <h2 id="pil-h" class="type-h2">{t.partecipaTitolo}</h2>
+        <p class="pil__p">{h.pilotiTesto}</p>
+        <ul class="pil__list">{h.pilotiVoci.map(v => <li>{v}</li>)}</ul>
+        <div class="pil__cta"><a href={`${h.href}#contatti`} class="btn btn--ev">{t.pilotiCta}</a><span class="type-mono pil__nota">{h.pilotiNota}</span></div>
+      </div>
+      <figure class="pil__fig reveal">
+        <div class="pil__img img-zoom"><img src={h.pilotiImage} alt="" loading="lazy" decoding="async" width="800" height="533" /></div>
+        <figcaption class="type-mono">{h.pilotiCaption}</figcaption>
+      </figure>
+    </div>
+  </section>
+)}
+
+<section id="sponsor" class="wrap section spons" aria-labelledby="sp-h">
+  <h2 id="sp-h" class="type-h2">Sponsor dell’evento</h2>
+  <p class="type-body-dark spons__p">{h.sponsorIntro}</p>
+  {spEvento.length > 0 && <SponsorBlock title="Sponsor di questa edizione" sponsors={spEvento} columns={Math.min(4, Math.max(2, spEvento.length))} mono={false} headingLevel={3} />}
+  <SponsorBlock title="Partner di stagione" sponsors={annuali} columns={5} mono={false} headingLevel={3} />
+  <a class="type-mono link-line spons__cta" href="/sponsor/diventa-sponsor/#form-sponsor">Diventa sponsor dell’edizione {h.annoProx} <span class="arrow-x" aria-hidden="true">→</span></a>
+</section>
+
+<section id="contatti" class="hair" aria-labelledby="ct-h">
+  <div class="wrap section ct">
+    <div class="ct__t">
+      <p class="type-mono k-ev">Contatti</p>
+      <h2 id="ct-h" class="type-h2">Scrivi all’organizzazione</h2>
+      <p class="type-body-dark">Espositori, sponsor, volontari e informazioni sull’evento. Rispondiamo entro 3 giorni lavorativi.</p>
+      <ul class="ct__list">
+        <li><a class="type-mono link-line" href={`mailto:${email}`}>{email}</a></li>
+        <li><a class="type-mono link-line" href="tel:+393485701233">Segreteria · +39 348 570 1233</a></li>
+        <li><a class="type-mono link-line" href="tel:+393489049212">Organizzazione · +39 348 904 9212</a></li>
+      </ul>
+    </div>
+    <form class="ct__form" data-mailform data-to={email} data-subject={`Richiesta · ${h.nome}`} novalidate>
+      <label class="field"><span>Nome e cognome</span><input type="text" name="nome" autocomplete="name" required /></label>
+      <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
+      <label class="field"><span>Motivo</span><select name="motivo">{h.motivi.map(m => <option value={m}>{m}</option>)}</select></label>
+      <p class="hint">Sei un giornalista? Per gli accrediti usa il <a href="/stampa/accrediti/">modulo dedicato →</a></p>
+      <label class="field"><span>Messaggio</span><textarea name="messaggio" rows="4" required></textarea></label>
+      <div><button type="submit" class="btn btn--ev">Invia richiesta</button></div>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const msg = f.querySelector<HTMLElement>('.form-msg');
+      if (!f.checkValidity()) { msg && (msg.textContent = 'Controlla i campi evidenziati: nome, email e messaggio sono obbligatori.'); f.reportValidity(); return; }
+      const d = new FormData(f);
+      const body = [...d.entries()].filter(([k]) => k !== 'messaggio').map(([k, v]) => `${k}: ${v}`).join('\n') + '\n\n' + (d.get('messaggio') ?? '');
+      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
+      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
+    });
+  });
+</script>
+
+<style>
+  .hero{position:relative;height:78vh;min-height:560px;background:var(--nero);overflow:hidden;display:flex}
+  .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.75) 100%)}
+  .hero__in{position:relative;align-self:flex-end;width:100%;padding-bottom:var(--sp-8);display:flex;flex-direction:column;gap:14px;color:#fff}
+  .hero__logo{width:clamp(120px,16vw,200px);height:auto;margin-bottom:6px}
+  .hero__kicker{color:var(--grigio-200);letter-spacing:.08em}
+  .hero__h1{color:#fff;font-size:clamp(36px,6.5vw,88px);text-wrap:balance}
+  .hero__intro{max-width:52ch;color:#EEE}
+  .hero__cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:6px}
+  /* fascia stato */
+  .band{border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);background:var(--carbone)}
+  .band__in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+  .band__p{color:#DDD;flex:1 1 320px;max-width:70ch}
+  /* intro */
+  .intro{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  @media(min-width:900px){.intro{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  .intro__t{display:flex;flex-direction:column;gap:14px}
+  .intro__t h2{color:#fff}
+  .intro__p{color:#DDD;max-width:56ch}
+  .sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--sp-4)}
+  .sec-head h2{color:#fff}
+  .sec-head--row{flex-direction:row;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px}
+  .gal__link{color:var(--grigio-450)}.gal__link:hover{color:#fff}
+  /* mappa */
+  .mappa__grid{display:grid;grid-template-columns:1fr;gap:var(--sp-5);align-items:start}
+  @media(min-width:900px){.mappa__grid{grid-template-columns:1fr 1fr;gap:var(--sp-6)}}
+  .mappa__media{background:var(--carbone);border:1px solid var(--border-on-dark);aspect-ratio:1/1;overflow:hidden}
+  .mappa__btn{position:relative;display:block;width:100%;height:100%}
+  .mappa__btn img{width:100%;height:100%;object-fit:cover}
+  .mappa__hint{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.7);color:#fff;padding:6px 10px}
+  .mappa__attesa{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:var(--grigio-450)}
+  .mappa__attesa img{width:140px;opacity:.5}
+  .mappa__t{display:flex;flex-direction:column;gap:12px}
+  .mappa__t h2{color:#fff}
+  .mappa__aree{display:flex;flex-direction:column;gap:10px}
+  .mappa__aree li{display:flex;gap:12px;align-items:flex-start;color:#DDD}
+  .mappa__dot{flex:none;width:10px;height:10px;margin-top:7px;background:var(--ev)}
+  .mappa__nome{color:#fff}
+  .mappa__link{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+  /* piloti */
+  .pil{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:center}
+  @media(min-width:900px){.pil{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+  .pil__t{display:flex;flex-direction:column;gap:14px}
+  .pil__k{color:var(--ev-scuro)}
+  .pil__p{color:var(--text-secondary);max-width:56ch}
+  .pil__list{display:flex;flex-direction:column;gap:10px}
+  .pil__list li{color:var(--nero);border-left:2px solid var(--ev-scuro);padding-left:14px}
+  .pil__cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px}
+  .pil__nota{color:#6B6B6B}
+  .pil__fig{display:flex;flex-direction:column;gap:10px}
+  .pil__img{aspect-ratio:3/2;overflow:hidden;background:#EEE}
+  .pil__img img{width:100%;height:100%;object-fit:cover}
+  .pil__fig figcaption{color:#6B6B6B}
+  /* sponsor */
+  .spons{display:flex;flex-direction:column;gap:28px}
+  .spons h2{color:#fff}
+  .spons__p{max-width:60ch;margin-top:-12px}
+  .spons__cta{color:#fff;align-self:flex-start}
+  /* contatti */
+  .ct{display:grid;grid-template-columns:1fr;gap:var(--sp-6)}
+  @media(min-width:900px){.ct{grid-template-columns:1fr 1fr}}
+  .ct__t{display:flex;flex-direction:column;gap:12px}
+  .ct__t h2{color:#fff}
+  .ct__list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .ct__list a{color:#fff}
+  .ct__form{display:flex;flex-direction:column;gap:18px;background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4)}
+  .ct__form .hint a{color:#fff}
+</style>

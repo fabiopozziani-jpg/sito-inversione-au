@@ -1,0 +1,62 @@
+---
+/** Archivio edizioni — elenco cronologico con accento colore per evento. */
+import Base from '../../../layouts/Base.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { edizioni } from '../../../data/archivio';
+---
+<Base title="Archivio edizioni e foto degli eventi | Inversione A U" description="Tutte le edizioni degli eventi Inversione A U dal 2017 a oggi: Polo Motor Show, Legnaro Motori, Rally Colli Euganei. Date, luoghi, numeri e foto ufficiali." active="eventi">
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Eventi', href: '/eventi/' }, { label: 'Archivio edizioni' }]} />
+  <header class="wrap pg-head">
+    <p class="type-mono text-meta">Dal 2017 a oggi</p>
+    <h1 class="type-h1">Archivio delle edizioni</h1>
+    <p class="lead">Ogni edizione dei nostri eventi con data, luogo, numeri e foto ufficiali. Dove ci sono, trovi anche i risultati.</p>
+  </header>
+
+  <section class="wrap section" aria-labelledby="ed-h">
+    <h2 id="ed-h" class="type-h2">Tutte le edizioni, dal 2017 a oggi</h2>
+    <p class="type-body-dark ed__intro">In ordine dalla più recente. Le edizioni ancora in programma sono segnalate.</p>
+    <ul class="ed stagger">
+      {edizioni.map(e => (
+        <li class="ed__i reveal" style={`--acc:${e.accent}`}>
+          <div class="ed__meta"><span class="type-mono ed__data">{e.data}</span><span class="type-mono text-meta">{e.luogo}</span></div>
+          <div class="ed__b">
+            <h3 class="type-h3">{e.nome}</h3>
+            <p class="type-body-dark">{e.testo}</p>
+            <span class="type-mono text-meta">{e.numeri}</span>
+          </div>
+          <div class="ed__cta"><a class="type-mono link-line" href={e.href}>{e.cta} <span class="arrow-x" aria-hidden="true">→</span></a></div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="hair" aria-labelledby="ft-h">
+    <div class="wrap section ft">
+      <div>
+        <h2 id="ft-h" class="type-h2">Manda le tue foto</h2>
+        <p class="type-body-dark">Hai fotografato una delle nostre edizioni? Mandacele: le pubblichiamo con il tuo nome accanto.</p>
+      </div>
+      <div class="ft__btns">
+        <a href="/contatti/" class="btn btn--primary">Scrivi all'associazione</a>
+        <a href="/foto-e-video/" class="btn btn--secondary">Guarda foto e video</a>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .pg-head{padding-top:var(--sp-4);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  h2{color:#fff;margin-bottom:8px}
+  .ed__intro{max-width:56ch;margin-bottom:var(--sp-4)}
+  .ed{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
+  .ed__i{display:grid;grid-template-columns:1fr;gap:12px;padding:24px 0 24px 20px;border-bottom:1px solid var(--border-on-dark);border-left:3px solid var(--acc)}
+  @media(min-width:900px){.ed__i{grid-template-columns:200px 1fr auto;gap:32px;align-items:start}}
+  .ed__meta{display:flex;flex-direction:column;gap:6px}
+  .ed__data{color:#fff}
+  .ed__b{display:flex;flex-direction:column;gap:8px;min-width:0}
+  .ed__b h3{color:#fff}
+  .ed__cta a{color:#fff;white-space:nowrap}
+  .ft{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+  .ft__btns{display:flex;gap:16px;flex-wrap:wrap}
+</style>

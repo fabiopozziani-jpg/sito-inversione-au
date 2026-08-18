@@ -1,0 +1,58 @@
+---
+/**
+ * Griglia foto con "Mostra altre" (senza ricaricare) e lightbox globale.
+ * strip=true: sotto i 720px diventa una striscia scorrevole (per gli hub evento).
+ */
+import type { Foto } from '../data/gallerie';
+interface Props { foto: Foto[]; credito?: string; perPagina?: number; strip?: boolean; id?: string }
+const { foto, credito = 'Foto: Inversione A U', perPagina = 24, strip = false, id = 'pg' } = Astro.props;
+---
+<div class="pgw" data-gallery data-credito={credito} data-pg data-per={perPagina}>
+  <ul class:list={['pg', { 'pg--strip': strip }]}>
+    {foto.map((f, i) => (
+      <li hidden={i >= perPagina}>
+        <button type="button" class="pg__btn" data-lb data-src={f.srcLarge} data-alt={f.alt} aria-label={`Ingrandisci: ${f.alt}`}>
+          <img src={f.src} srcset={`${f.src} 400w, ${f.src800} 800w, ${f.srcLarge} 1600w`} sizes="(max-width:720px) 78vw, (max-width:900px) 46vw, 30vw" alt={f.alt} width={f.w} height={f.h} loading={i < 4 ? 'eager' : 'lazy'} decoding="async" fetchpriority={i === 0 ? 'high' : 'auto'} />
+        </button>
+      </li>
+    ))}
+  </ul>
+  {foto.length > perPagina && (
+    <div class="pg__more">
+      <button type="button" class="btn btn--secondary" data-pg-more>Mostra altre {Math.min(perPagina, foto.length - perPagina)} foto</button>
+      <span class="type-mono text-meta" role="status" aria-live="polite" data-pg-count>{perPagina} di {foto.length} foto</span>
+    </div>
+  )}
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pg]').forEach(w => {
+    const per = Number(w.dataset.per) || 24;
+    const items = Array.from(w.querySelectorAll<HTMLLIElement>('.pg > li'));
+    const btn = w.querySelector<HTMLButtonElement>('[data-pg-more]');
+    const cnt = w.querySelector<HTMLElement>('[data-pg-count]');
+    btn?.addEventListener('click', () => {
+      const hidden = items.filter(li => li.hidden);
+      hidden.slice(0, per).forEach(li => { li.hidden = false; });
+      const rest = items.filter(li => li.hidden).length;
+      const shown = items.length - rest;
+      if (cnt) cnt.textContent = `${shown} di ${items.length} foto`;
+      if (!rest) btn.hidden = true; else btn.textContent = `Mostra altre ${Math.min(per, rest)} foto`;
+      hidden[0]?.querySelector<HTMLButtonElement>('button')?.focus();
+    });
+  });
+</script>
+<style>
+  .pg{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:600px){.pg{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.pg{grid-template-columns:repeat(3,1fr)}}
+  .pg__btn{display:block;width:100%;background:#1A1A1A;aspect-ratio:3/2;overflow:hidden}
+  .pg__btn img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-base) var(--ease-out)}
+  .pg__btn:hover img,.pg__btn:focus-visible img{transform:scale(1.03);opacity:.88}
+  .pg__more{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:var(--sp-4)}
+  @media(max-width:719px){
+    .pg--strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--grid-margin);scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 calc(-1*var(--grid-margin));padding:0 var(--grid-margin)}
+    .pg--strip::-webkit-scrollbar{display:none}
+    .pg--strip>li{flex:0 0 78%;scroll-snap-align:start}
+  }
+  @media (prefers-reduced-motion:reduce){.pg__btn img{transition:none;transform:none!important}}
+</style>

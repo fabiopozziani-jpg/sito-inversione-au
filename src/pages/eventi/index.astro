@@ -1,0 +1,63 @@
+---
+/** Eventi — calendario della stagione + rimando all'archivio. */
+import Base from '../../layouts/Base.astro';
+import EventCard from '../../components/EventCard.astro';
+import { eventi } from '../../data/eventi';
+const [rally, polo, legnaro] = eventi;
+---
+<Base title="Calendario eventi motorsport 2026 | Inversione A U" description="Il calendario 2026 di Inversione A U: Legnaro Motori (15 marzo), Polo Motor Show (13–14 giugno) e 1° Rally Colli Euganei ACI Sport (21–22 novembre). Date, luoghi e stato di ogni evento." active="eventi">
+  <header class="wrap pg-head">
+    <p class="type-mono text-meta">Calendario · Provincia di Padova</p>
+    <h1 class="type-h1">Eventi motorsport 2026 in Veneto</h1>
+    <p class="lead">Tre eventi in un anno: drift a Legnaro, circuito cittadino a Selve di Teolo, rally sui Colli Euganei.</p>
+  </header>
+
+  <section class="wrap section cal" aria-labelledby="cal-h">
+    <h2 id="cal-h" class="type-h2">Calendario della stagione 2026</h2>
+    <p class="type-body-dark cal__intro">Date, luoghi e stato di ogni evento. Da qui entri nella pagina con tutte le informazioni.</p>
+    <div class="cal__grid stagger">
+      <div class="cal__rally"><EventCard e={rally} big /></div>
+      <div class="cal__polo"><EventCard e={polo} big /></div>
+      <div class="cal__legnaro"><EventCard e={legnaro} /></div>
+      <div class="cal__next reveal">
+        <div class="cal__next-t">
+          <span class="type-mono text-meta">Prossima stagione</span>
+          <h3 class="type-h3">Calendario 2027</h3>
+          <p class="type-body-dark">Le date del 2027 saranno pubblicate entro dicembre 2026. Ti avvisiamo per email appena sono definite.</p>
+        </div>
+        <a href="/contatti/" class="btn btn--secondary">Ricevi le date via email</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="archivio" class="hair" aria-labelledby="arc-h">
+    <div class="wrap section arc">
+      <div>
+        <h2 id="arc-h" class="type-h2">Archivio delle edizioni passate</h2>
+        <p class="type-body-dark">Ogni edizione dal 2017 con data, luogo, numeri e foto ufficiali.</p>
+      </div>
+      <div class="arc__btns">
+        <a href="/eventi/archivio/" class="btn btn--primary">Apri l'archivio edizioni</a>
+        <a href="/foto-e-video/" class="btn btn--secondary">Guarda foto e video</a>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff;max-width:20ch;text-wrap:balance}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  .cal h2{color:#fff;margin-bottom:8px}
+  .cal__intro{max-width:56ch;margin-bottom:var(--sp-4)}
+  .cal__grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter);align-items:stretch}
+  @media(min-width:768px){.cal__grid{grid-template-columns:repeat(4,1fr)}.cal__rally,.cal__polo{grid-column:span 2}.cal__legnaro{grid-column:span 2}.cal__next{grid-column:span 2}}
+  @media(min-width:1024px){.cal__legnaro{grid-column:span 1}.cal__next{grid-column:span 3}}
+  .cal__grid>div>*{height:100%}
+  .cal__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px}
+  @media(min-width:1024px){.cal__next{flex-direction:row;align-items:center;flex-wrap:wrap}}
+  .cal__next-t{display:flex;flex-direction:column;gap:10px;min-width:0;max-width:60ch}
+  .cal__next-t h3{color:#fff}
+  .arc{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+  .arc h2{color:#fff;margin-bottom:8px}
+  .arc__btns{display:flex;gap:16px;flex-wrap:wrap}
+</style>
