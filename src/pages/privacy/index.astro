@@ -1,0 +1,68 @@
+---
+/** Informativa privacy — testo Ondata 5, email ufficiale. */
+import Base from '../../layouts/Base.astro';
+const email = 'info@inversioneau.com';
+const conserv: [string, string][] = [
+  ['Messaggi dal modulo contatti', '24 mesi'], ['Accrediti non accolti', '12 mesi'], ['Accrediti rilasciati', '5 anni'], ['Richieste sponsor senza seguito', '24 mesi'],
+  ['Contratti e contabilità', '10 anni'], ['Iscrizioni e documentazione sportiva', '10 anni'], ['Certificati di idoneità', 'Fino a scadenza e comunque non oltre 12 mesi'],
+  ['Fotografie', "A tempo indeterminato nell'archivio storico"], ['Dati di navigazione', '12 mesi'],
+];
+---
+<Base title="Informativa privacy | Inversione A U" description="Come Inversione A U A.S.D. tratta i dati personali raccolti con i moduli del sito: finalità, basi giuridiche, tempi di conservazione, destinatari e diritti dell'interessato." active="">
+  <header class="wrap pg-head">
+    <p class="type-mono text-meta">Ultimo aggiornamento: <time datetime="2026-08-18">18 agosto 2026</time></p>
+    <h1 class="type-h1">Come trattiamo i tuoi dati personali</h1>
+    <p class="lead">Questa pagina spiega quali dati raccogliamo con i moduli del sito, perché li usiamo, per quanto tempo li conserviamo e come puoi chiederne la cancellazione. Ai sensi del Regolamento UE 2016/679.</p>
+  </header>
+  <div class="wrap pv">
+    <section id="titolare"><h2 class="type-h2">Chi tratta i tuoi dati</h2>
+      <p>Il titolare del trattamento è l'Associazione Sportiva Dilettantistica Inversione A U, con sede legale in Via Selve 46/B a Saccolongo (PD), codice fiscale 92324000287 e partita IVA 05585020281. I dati identificativi completi dell'associazione sono in <a href="/contatti/#dati">Contatti</a>.</p>
+      <p>Per qualsiasi richiesta sui tuoi dati scrivi a <a href={`mailto:${email}`}>{email}</a>.</p></section>
+    <section id="dati"><h2 class="type-h2">Quali dati raccogliamo e perché</h2>
+      <h3 class="type-h3">Modulo contatti</h3><p>Nome, email, telefono, motivo della richiesta e testo del messaggio. Li usiamo solo per risponderti.</p>
+      <h3 class="type-h3">Richiesta di accredito stampa</h3><p>Dati anagrafici, testata, ruolo, numero di tessera o lettera di incarico, contatti, giorni di presenza, attrezzatura, eventuale autorizzazione ENAC per il drone, targa e modello del veicolo, nomi degli altri operatori. Servono per valutare la richiesta, emettere la pettorina e gestire la sicurezza in gara.</p>
+      <h3 class="type-h3">Richiesta sponsor o spazio espositivo</h3><p>Dati dell'azienda, settore, referente, contatti, interesse e budget indicativo. Li usiamo per formulare una proposta e per inviare la presentazione eventi richiesta.</p>
+      <h3 class="type-h3">Iscrizione a un evento sportivo</h3><p>Dati anagrafici, licenza, tessera, dati della vettura e certificato di idoneità sportiva agonistica, secondo quanto previsto dai regolamenti ACI Sport.</p>
+      <h3 class="type-h3">Navigazione su questo sito</h3><p>Dati tecnici di collegamento e statistiche di visita in forma aggregata. Lo strumento di statistica usato è da confermare prima della pubblicazione.</p></section>
+    <section id="base"><h2 class="type-h2">Perché possiamo trattarli</h2>
+      <ul><li>Consenso esplicito prestato con l'invio del modulo, per contatti, sponsor e accrediti (art. 6.1.a).</li><li>Esecuzione di un rapporto richiesto dall'interessato, per iscrizioni e tesseramento (art. 6.1.b).</li><li>Obblighi di legge, assicurativi e sportivi, per la documentazione di gara e la contabilità (art. 6.1.c).</li><li>Interesse legittimo all'informazione sportiva, per la cronaca degli eventi (art. 6.1.f).</li></ul></section>
+    <section id="conservazione"><h2 class="type-h2">Per quanto tempo li conserviamo</h2>
+      <dl class="dl">{conserv.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl></section>
+    <section id="destinatari"><h2 class="type-h2">Chi altro può vederli</h2>
+      <p>I dati sono trattati dai volontari incaricati dall'associazione e dai fornitori tecnici che ospitano il sito e i moduli, nominati responsabili del trattamento.</p>
+      <p>Per accrediti, iscrizioni e gare titolate, i dati necessari sono comunicati ad ACI Sport, alle autorità competenti e alle compagnie assicurative. Nessun dato è ceduto a terzi per finalità commerciali.</p></section>
+    <section id="salute"><h2 class="type-h2">Certificati medici e dati sulla salute</h2>
+      <p>Alcune iscrizioni comportano il trattamento di dati relativi alla salute, come il certificato di idoneità sportiva agonistica. Li trattiamo solo per la verifica di ammissibilità, li conserviamo separatamente e non li comunichiamo a soggetti diversi da quelli previsti dai regolamenti sportivi.</p></section>
+    <section id="foto"><h2 class="type-h2">Fotografie e riprese durante gli eventi</h2>
+      <p>La ripresa di manifestazioni sportive e di eventi che si svolgono in pubblico è consentita senza consenso quando l'immagine è collegata allo svolgimento dell'evento, come previsto dall'articolo 97 della legge sul diritto d'autore. Non pubblichiamo immagini che ledano la dignità o il decoro della persona ripresa.</p>
+      <p>Se compari in una fotografia pubblicata e vuoi che venga rimossa, scrivi a <a href={`mailto:${email}`}>{email}</a> indicando dove l'hai vista e in che punto dell'immagine ti trovi. Rimuoviamo la fotografia dai nostri canali entro 30 giorni.</p>
+      <p>Per le immagini di minori riconoscibili chiediamo sempre il consenso di chi esercita la responsabilità genitoriale prima della pubblicazione.</p></section>
+    <section id="trasferimenti"><h2 class="type-h2">Trasferimenti fuori dall'Unione Europea</h2>
+      <p>I moduli e le caselle di posta sono ospitati su servizi che possono trattare dati fuori dall'Unione Europea. In quel caso il trasferimento avviene sulla base delle clausole contrattuali standard approvate dalla Commissione europea.</p></section>
+    <section id="sicurezza-dati"><h2 class="type-h2">Come proteggiamo i dati</h2>
+      <p>Il sito usa connessione cifrata. L'accesso alle caselle e ai moduli è limitato alle persone incaricate, con credenziali personali e autenticazione a due fattori dove disponibile.</p></section>
+    <section id="cookie"><h2 class="type-h2">Cookie e statistiche di visita</h2>
+      <p>Usiamo cookie tecnici necessari al funzionamento del sito e statistiche di visita in forma aggregata. Non usiamo cookie di profilazione pubblicitaria.</p></section>
+    <section id="diritti"><h2 class="type-h2">I tuoi diritti e come esercitarli</h2>
+      <p>Puoi chiedere in ogni momento accesso, rettifica, cancellazione, limitazione e portabilità dei dati, opporti al trattamento e revocare il consenso. Scrivi a <a href={`mailto:${email}`}>{email}</a>: rispondiamo entro 30 giorni.</p>
+      <p>Se ritieni che il trattamento non sia conforme, puoi proporre reclamo al Garante per la protezione dei dati personali, Piazza Venezia 11, 00187 Roma.</p></section>
+    <section id="aggiornamenti"><h2 class="type-h2">Aggiornamenti a questa informativa</h2>
+      <p>Aggiorniamo questa pagina quando cambiano i moduli, i fornitori tecnici o le finalità del trattamento. La data in cima indica l'ultima revisione.</p></section>
+  </div>
+</Base>
+<style>
+  .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px;max-width:calc(80ch + 2*var(--grid-margin))}
+  .pg-head h1{color:#fff}
+  .lead{color:var(--text-body-on-dark);max-width:70ch;font-size:17px}
+  .pv{max-width:calc(80ch + 2*var(--grid-margin));display:flex;flex-direction:column;gap:var(--sp-6);padding-top:var(--sp-6);padding-bottom:var(--sp-12)}
+  .pv section{display:flex;flex-direction:column;gap:12px}
+  .pv h2{color:#fff;font-size:clamp(20px,2.4vw,28px)}
+  .pv h3{color:#fff;font-size:18px;margin-top:8px}
+  .pv p,.pv li{color:#DDD;line-height:1.65}
+  .pv ul{display:flex;flex-direction:column;gap:8px;list-style:disc;padding-left:22px}
+  .pv a{color:#fff;text-decoration:underline;text-underline-offset:4px}
+  .dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
+  .dl div{display:grid;grid-template-columns:1fr;gap:4px;padding:10px 0;border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:520px){.dl div{grid-template-columns:1fr 1fr;gap:16px}}
+  .dl dt{color:var(--grigio-450)} .dl dd{margin:0;color:#fff}
+</style>

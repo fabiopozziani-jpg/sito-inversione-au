@@ -1,0 +1,85 @@
+---
+/** Contatti — email/telefono, a chi scrivere, dati dell'associazione, modulo. */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+const email = 'info@inversioneau.com';
+const motivi = ['Informazioni generali', 'Iscrizione o partecipazione a un evento', 'Sponsor, espositori e partner', 'Volontari e commissari di percorso', 'Segnalazioni e reclami', 'Altro'];
+const canali = [
+  ['Piloti e navigatori', "Iscrizioni, requisiti di licenza e comunicazioni ufficiali passano dall'albo di gara.", 'Vai ai documenti di gara', '/rally-colli-euganei/documenti/'],
+  ['Aziende, sponsor ed espositori', 'Pacchetti, spazi espositivi e presentazione eventi: ti rispondiamo con una proposta.', 'Richiedi il progetto sponsor', '/sponsor/diventa-sponsor/#form-sponsor'],
+  ['Giornalisti, fotografi e videomaker', 'Non usare il modulo qui sotto: il modulo accrediti raccoglie i dati che ci servono per emettere la pettorina.', 'Compila la richiesta di accredito', '/stampa/accrediti/'],
+  ['Volontari e commissari di percorso', 'Un evento in strada chiusa sta in piedi grazie a chi presidia il percorso. Cerchiamo persone per i due giorni di gara, con formazione a nostro carico.', 'Candidati come volontario', '#scrivici'],
+];
+---
+<Base title="Contatti e dati dell'associazione | Inversione A U" description="Come contattare Inversione A U A.S.D.: email, telefono della segreteria e dell'organizzazione, dati dell'associazione e modulo per informazioni, iscrizioni, sponsor e volontariato." active="">
+  <header class="wrap pg-head">
+    <p class="type-mono text-meta">Inversione A U A.S.D.</p>
+    <h1 class="type-h1">Come contattare Inversione A U</h1>
+    <p class="lead">Per informazioni su eventi, iscrizioni, partnership e volontariato. Risposta entro 3 giorni lavorativi.</p>
+  </header>
+
+  <section class="wrap section ct" aria-label="Contatti">
+    <div class="ct__l">
+      <div class="blk">
+        <h2 class="type-h2">Email e telefono</h2>
+        <dl class="dl">
+          <div><dt class="type-mono">Email</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+          <div><dt class="type-mono">Segreteria</dt><dd><a href="tel:+393485701233">+39 348 570 1233</a></dd></div>
+          <div><dt class="type-mono">Organizzazione</dt><dd><a href="tel:+393489049212">+39 348 904 9212</a></dd></div>
+          <div><dt class="type-mono">Dove siamo</dt><dd>Saccolongo (PD) · Colli Euganei</dd></div>
+        </dl>
+        <p class="type-body-dark">Nelle settimane di gara i tempi al telefono si allungano: se hai fretta, scrivi via email e indica l'evento nell'oggetto.</p>
+      </div>
+      <div class="blk">
+        <h2 class="type-h2">A chi scrivere, in base a cosa ti serve</h2>
+        <ul class="can stagger">
+          {canali.map(([k, t, l, h]) => <li class="card card--left reveal"><span class="type-mono text-meta">{k}</span><p>{t}</p><a class="type-mono link-line can__l" href={h}>{l} <span class="arrow-x" aria-hidden="true">→</span></a></li>)}
+        </ul>
+      </div>
+      <div class="blk" id="dati">
+        <h2 class="type-h2">Dati dell'associazione</h2>
+        <dl class="dl">
+          <div><dt class="type-mono">Denominazione</dt><dd>Associazione Sportiva Dilettantistica Inversione A U</dd></div>
+          <div><dt class="type-mono">Sede legale</dt><dd>Via Selve 46/B · Saccolongo (PD)</dd></div>
+          <div><dt class="type-mono">Codice fiscale</dt><dd>92324000287</dd></div>
+          <div><dt class="type-mono">Partita IVA</dt><dd>05585020281</dd></div>
+          <div><dt class="type-mono">Costituita il</dt><dd>20 novembre 2023</dd></div>
+        </dl>
+        <a class="type-mono link-line can__l" href="/associazione/#trasparenza">Leggi l'atto costitutivo e lo statuto <span class="arrow-x" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <form id="scrivici" class="form-box ct__f" data-mailform data-to={email} data-subject="Messaggio dal sito · Inversione A U" novalidate>
+      <h2 class="type-h2">Scrivici un messaggio</h2>
+      <div class="errbox" role="alert" tabindex="-1" hidden data-errors></div>
+      <div class="f-grid">
+        <label class="field"><span>Nome e cognome *</span><input type="text" name="nome" autocomplete="name" required /></label>
+        <label class="field"><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label>
+        <label class="field"><span>Telefono</span><input type="tel" name="telefono" autocomplete="tel" /></label>
+        <label class="field"><span>Motivo *</span><select name="motivo" required>{motivi.map(m => <option value={m}>{m}</option>)}</select></label>
+        <label class="field f-full"><span>Messaggio *</span><textarea name="messaggio" rows="5" required minlength="10"></textarea></label>
+      </div>
+      <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
+      <button type="submit" class="btn btn--primary">Invia messaggio</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</Base>
+<script>import '../../scripts/mailform';</script>
+<style>
+  .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  h2{color:#fff}
+  .ct{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  @media(min-width:1024px){.ct{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+  .ct__l{display:flex;flex-direction:column;gap:var(--sp-8)}
+  .blk{display:flex;flex-direction:column;gap:14px}
+  .dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
+  .dl div{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:520px){.dl div{grid-template-columns:160px 1fr;gap:16px}}
+  .dl dt{color:var(--grigio-450)} .dl dd{margin:0;color:#fff} .dl a{color:#fff;text-decoration:none;border-bottom:1px solid var(--grigio-500)} .dl a:hover{border-bottom-color:#fff}
+  .can{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:640px){.can{grid-template-columns:1fr 1fr}}
+  .can__l{color:#fff;align-self:flex-start;margin-top:auto}
+  .ct__f{position:sticky;top:calc(var(--header-h) + 16px)}
+</style>

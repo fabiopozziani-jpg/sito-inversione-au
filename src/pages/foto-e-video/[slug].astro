@@ -1,0 +1,74 @@
+---
+/** Galleria per edizione — route dinamica /foto-e-video/<slug>/ (polo-motor-show-2026, legnaro-motori-2026, rally-colli-euganei-2026). */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import PhotoGrid from '../../components/PhotoGrid.astro';
+import { gallerie, galleriaPerSlug } from '../../data/gallerie';
+const g = galleriaPerSlug(Astro.params.slug ?? '');
+if (!g) return new Response(null, { status: 404 });
+const altre = gallerie.filter(x => x.slug !== g.slug);
+const hubHref: Record<string, string> = { polo: '/eventi/polo-motor-show/', legnaro: '/eventi/legnaro-motori/', rally: '/rally-colli-euganei/' };
+const kicker: Record<string, string> = { polo: 'Polo Motor Show · 13–14 giugno 2026 · Selve di Teolo', legnaro: 'Legnaro Motori · 15 marzo 2026 · Legnaro', rally: '1° Rally Colli Euganei · 21–22 novembre 2026 · Colli Euganei' };
+const intro: Record<string, string> = {
+  polo: "Le foto ufficiali dei due giorni, scattate dai fotografi e videomaker accreditati dell'associazione. Tocca una foto per vederla grande.",
+  legnaro: 'Le foto ufficiali della prima edizione, scattate dai fotografi accreditati. Tocca una foto per vederla grande.',
+  rally: 'Le foto ufficiali della gara saranno pubblicate qui dopo il rally.',
+};
+const titolo = `Foto ${g.evento === 'legnaro' ? 'di' : 'del'} ${g.nomeEvento.replace('1° ', '')} ${g.anno}`;
+---
+<Base title={`${titolo} | Inversione A U`} description={`${titolo}: le immagini ufficiali dell'edizione ${g.anno}, libere per la stampa con credit. Galleria con lightbox.`} active="media" bodyClass={`ctx-${g.evento}`}>
+  <header class="wrap pg-head">
+    <p class="type-mono k-ev">{kicker[g.evento]}</p>
+    <h1 class="type-h1">{titolo}</h1>
+    <p class="lead">{intro[g.evento]}</p>
+  </header>
+  <nav class="wrap tabs" aria-label="Foto degli altri eventi">
+    {gallerie.map(x => <a href={`/foto-e-video/${x.slug}/`} aria-current={x.slug === g.slug ? 'page' : undefined}>{x.nomeEvento.replace('1° ', '')} {x.anno}</a>)}
+    <a href="/eventi/archivio/">Archivio edizioni <span class="arrow-x" aria-hidden="true">→</span></a>
+  </nav>
+
+  <section id="foto" class="wrap section" aria-labelledby="foto-h">
+    {g.stato === 'pubblicata' ? (
+      <>
+        <h2 id="foto-h" class="type-h2 gh">Tutte le foto · {g.foto.length}</h2>
+        <PhotoGrid foto={g.foto} credito={g.credito} perPagina={24} id={`pg-${g.evento}`} />
+      </>
+    ) : (
+      <div class="card card--left"><h2 id="foto-h" class="type-h3">Galleria in attesa</h2><p>{g.notaVuota}</p><a class="type-mono link-line" href={hubHref[g.evento]}>Vai alla pagina dell'evento <span class="arrow-x" aria-hidden="true">→</span></a></div>
+    )}
+  </section>
+
+  {g.stato === 'pubblicata' && (
+    <section id="uso" class="wrap section uso" aria-labelledby="uso-h">
+      <h2 id="uso-h" class="type-h2 gh">Come usare le foto</h2>
+      <p>Le foto si possono pubblicare liberamente citando l'autore. Il credit obbligatorio è: <span class="type-mono uso__cr">{g.credito}</span></p>
+      <p>Per i file originali ad alta risoluzione, o per un uso commerciale, <a href="/contatti/">scrivici</a>: rispondiamo entro 3 giorni lavorativi.</p>
+    </section>
+  )}
+
+  <section class="hair" aria-labelledby="alt-h">
+    <div class="wrap section alt">
+      <div>
+        <h2 id="alt-h" class="type-h2 gh">Foto degli altri eventi</h2>
+        <nav class="tabs tabs--inline" aria-label="Altre gallerie">{altre.map(x => <a href={`/foto-e-video/${x.slug}/`}>{x.nomeEvento.replace('1° ', '')} {x.anno}</a>)}</nav>
+      </div>
+      <div class="alt__btns"><a href="/foto-e-video/" class="btn btn--ev">Guarda foto e video</a><a href={hubHref[g.evento]} class="btn btn--secondary">Torna alla pagina dell'evento</a></div>
+    </div>
+  </section>
+</Base>
+<style>
+  .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-3);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  .gh{color:#fff;margin-bottom:var(--sp-3)}
+  .tabs{display:flex;gap:8px 24px;flex-wrap:wrap;padding-bottom:8px;border-bottom:1px solid var(--border-on-dark)}
+  .tabs a{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:color var(--dur-fast) var(--ease-out)}
+  .tabs a:hover,.tabs a:focus-visible{color:#fff}
+  .tabs a[aria-current]{color:#fff;border-bottom-color:var(--ev)}
+  .tabs--inline{border-bottom:0;padding-bottom:0;margin-top:8px}
+  .uso p{color:#DDD;max-width:70ch;margin-bottom:10px}
+  .uso a{color:#fff}
+  .uso__cr{color:#fff}
+  .alt{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+  .alt__btns{display:flex;gap:16px;flex-wrap:wrap}
+</style>

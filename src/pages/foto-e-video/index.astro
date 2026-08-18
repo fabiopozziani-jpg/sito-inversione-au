@@ -1,0 +1,84 @@
+---
+/** Foto e video — una card per galleria; video in arrivo; rimando all'area stampa. */
+import Base from '../../layouts/Base.astro';
+import { gallerie } from '../../data/gallerie';
+const ordine = ['rally', 'polo', 'legnaro'];
+const gal = [...gallerie].sort((a, b) => ordine.indexOf(a.evento) - ordine.indexOf(b.evento));
+const testo: Record<string, string> = { rally: 'Online entro il 24 novembre 2026, dopo la gara.', polo: 'Due giorni di drift, rally show e raduno.', legnaro: 'La prima edizione, marzo 2026.' };
+const video: { titolo: string; url: string; cover: string }[] = []; // FASE 4: collection Media (video)
+---
+<Base title="Foto e video eventi motorsport | Inversione A U" description="Le gallerie fotografiche ufficiali degli eventi Inversione A U: Polo Motor Show, Legnaro Motori e Rally Colli Euganei. Foto libere per la stampa con credit." active="media">
+  <header class="wrap pg-head">
+    <p class="type-mono text-meta">Foto e video</p>
+    <h1 class="type-h1">Foto e video degli eventi</h1>
+    <p class="lead">Tutte le immagini ufficiali dei nostri eventi, scattate dai fotografi accreditati. Pubblicabili liberamente citando l'autore.</p>
+  </header>
+
+  <section id="foto-per-evento" class="wrap section" aria-labelledby="fpe-h">
+    <h2 id="fpe-h" class="type-h2">Foto per evento</h2>
+    <p class="type-body-dark sec-intro">Le gallerie ufficiali di ogni evento della stagione.</p>
+    <div class="gcards stagger">
+      {gal.map(g => (
+        <a href={`/foto-e-video/${g.slug}/`} class="gcard reveal" style={`--acc:${g.accent}`}>
+          <div class="gcard__img img-zoom">
+            {g.stato === 'pubblicata'
+              ? <img src={g.copertina.src} alt={g.copertina.alt} width="800" height="533" loading="lazy" decoding="async" />
+              : <span class="type-mono gcard__attesa">Galleria in attesa</span>}
+          </div>
+          <div class="gcard__b">
+            <span class="type-mono gcard__k">{g.nomeEvento} · {g.anno}</span>
+            <h3 class="type-h3">Foto {g.evento === 'legnaro' ? 'di' : 'del'} {g.nomeEvento.replace('1° ', '')}</h3>
+            <span class="type-mono text-meta">{g.stato === 'pubblicata' ? `${g.foto.length} foto` : 'Online dal 24 novembre'}</span>
+            <span class="type-body-dark">{testo[g.evento]}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="video" class="wrap section" aria-labelledby="vid-h">
+    <h2 id="vid-h" class="type-h2">Video degli eventi</h2>
+    {video.length ? (
+      <div class="vgrid">{video.map(v => <a class="vcard" href={v.url} target="_blank" rel="noopener"><img src={v.cover} alt="" loading="lazy" /><span class="type-mono">{v.titolo} ↗</span></a>)}</div>
+    ) : (
+      <div class="card card--left vid__attesa"><span class="type-mono text-meta">In preparazione</span><p>Gli highlight del Polo Motor Show 2026 e il racconto della giornata di Legnaro Motori sono in montaggio. Li pubblichiamo qui e sui nostri canali.</p></div>
+    )}
+  </section>
+
+  <section class="hair" aria-labelledby="st-h">
+    <div class="wrap section st">
+      <div>
+        <h2 id="st-h" class="type-h2">Materiali per la stampa</h2>
+        <p class="type-body-dark">Loghi, comunicati, testo di presentazione e foto ad alta risoluzione sono nell'area stampa. Per fotografare o riprendere durante gli eventi serve l'accredito.</p>
+      </div>
+      <div class="st__btns"><a href="/stampa/" class="btn btn--primary">Area stampa</a><a href="/stampa/accrediti/" class="btn btn--secondary">Richiedi accredito</a></div>
+    </div>
+  </section>
+</Base>
+<style>
+  .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  h2{color:#fff}
+  .sec-intro{max-width:56ch;margin:8px 0 var(--sp-4)}
+  .gcards{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:768px){.gcards{grid-template-columns:repeat(3,1fr)}}
+  .gcard{display:flex;flex-direction:column;text-decoration:none;color:#fff;background:var(--carbone);border:1px solid var(--border-on-dark);border-top:3px solid var(--acc);transition:border-color var(--dur-fast) var(--ease-out)}
+  .gcard:hover,.gcard:focus-visible{border-color:var(--acc)}
+  .gcard__img{aspect-ratio:3/2;background:#1A1A1A;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .gcard__img img{width:100%;height:100%;object-fit:cover}
+  .gcard__attesa{color:var(--grigio-450)}
+  .gcard__b{padding:20px 24px 24px;display:flex;flex-direction:column;gap:8px}
+  .gcard__k{color:var(--acc)}
+  .card{background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4);display:flex;flex-direction:column;gap:10px}
+  .card--left{border-left:3px solid #fff}
+  .vid__attesa{margin-top:var(--sp-3);max-width:70ch}
+  .vid__attesa p{color:#DDD}
+  .vgrid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter);margin-top:var(--sp-3)}
+  @media(min-width:768px){.vgrid{grid-template-columns:1fr 1fr}}
+  .vcard{display:flex;flex-direction:column;gap:10px;color:#fff;text-decoration:none}
+  .vcard img{aspect-ratio:16/9;object-fit:cover;width:100%}
+  .st{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+  .st h2{margin-bottom:8px}
+  .st__btns{display:flex;gap:16px;flex-wrap:wrap}
+</style>

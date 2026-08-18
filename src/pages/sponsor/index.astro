@@ -1,0 +1,96 @@
+---
+/** Sponsor e patrocini — patrocini, partner di stagione, sponsor per evento, numeri, CTA. */
+import Base from '../../layouts/Base.astro';
+import SponsorBlock from '../../components/SponsorBlock.astro';
+import StatBlock from '../../components/StatBlock.astro';
+import CTABlock from '../../components/CTABlock.astro';
+import { annuali, sponsorEvento } from '../../data/sponsor';
+const spPolo = sponsorEvento('polo'), spLegnaro = sponsorEvento('legnaro');
+const patrocini = ['Comune di Teolo', 'Comune di Galzignano Terme', 'Comune di Cinto Euganeo', 'Comune di Legnaro', 'ACI Padova'];
+const numeri = [
+  { value: '15.000+', label: 'spettatori a evento' }, { value: 'circa 100', label: 'equipaggi in due giorni' }, { value: '300+', label: 'auto esposte' }, { value: '23', label: 'sponsor' },
+  { value: '4', label: 'espositori' }, { value: '8', label: 'fotografi e videomaker' }, { value: '3', label: 'eventi nel 2026' },
+];
+---
+<Base title="Sponsor e patrocini | Inversione A U" description="Le aziende partner di stagione, gli sponsor dei singoli eventi e gli enti che patrocinano Polo Motor Show, Legnaro Motori e Rally Colli Euganei. Come diventare sponsor." active="sponsor">
+  <header class="wrap pg-head">
+    <p class="type-mono text-meta">I partner di Inversione A U</p>
+    <h1 class="type-h1">Sponsor e patrocini degli eventi</h1>
+    <p class="lead">Le aziende che sostengono l'intera stagione e gli enti che patrocinano gli eventi. Gli sponsor legati a un singolo evento sono nella pagina di quell'evento.</p>
+  </header>
+
+  <section id="patrocini" class="wrap section" aria-labelledby="pat-h">
+    <h2 id="pat-h" class="type-h2">Enti che patrocinano i nostri eventi</h2>
+    <p class="type-body-dark p">Il patrocinio non è una sponsorizzazione. È il riconoscimento formale con cui un ente pubblico riconosce il valore sportivo e culturale di un evento e ne autorizza lo svolgimento sul proprio territorio.</p>
+    <p class="hint">I patrocini si rinnovano a ogni edizione. Questo elenco riguarda la stagione 2026.</p>
+    <div class="pat">
+      <div class="pat__logo"><img src="/img/logo_aci_sport.png" alt="ACI Sport" width="120" height="120" loading="lazy" /></div>
+      <div class="pat__logo"><img src="/img/stemma_comune.png" alt="Stemma comunale" width="100" height="120" loading="lazy" /></div>
+      <ul class="pat__list">{patrocini.map(p => <li class="type-mono">{p}</li>)}</ul>
+    </div>
+  </section>
+
+  <section id="partner-annuali" class="wrap section" aria-labelledby="pa-h">
+    <h2 id="pa-h" class="type-h2">Partner di stagione</h2>
+    <p class="type-body-dark p">Sono i partner del marchio Inversione A U. Il loro logo è presente in ogni evento della stagione, sui materiali stampati, nei comunicati e su questo sito per tutti i dodici mesi.</p>
+    <SponsorBlock sponsors={annuali} columns={5} mono={false} />
+  </section>
+
+  <section class="wrap section" aria-labelledby="se-h">
+    <h2 id="se-h" class="type-h2">Sponsor dei singoli eventi</h2>
+    <p class="type-body-dark p">Un'azienda può scegliere un solo evento invece dell'intera stagione. In quel caso il marchio vive dentro l'evento che ha scelto: percorso, materiali, comunicati e pagina dedicata.</p>
+    <div class="ev">
+      <div id="sponsor-polo" class="ev__b" style="--acc:#6FC7DB">
+        <span class="type-mono ev__k">Polo Motor Show · 13–14 giugno 2026</span>
+        <h3 class="type-h3">Sponsor del Polo Motor Show</h3>
+        <p class="type-body-dark">Le aziende del circuito cittadino di Selve di Teolo.</p>
+        <SponsorBlock sponsors={spPolo} columns={4} mono={false} />
+        <a class="type-mono link-line ev__l" href="/eventi/polo-motor-show/#sponsor">Vai alla pagina dell'evento <span class="arrow-x" aria-hidden="true">→</span></a>
+      </div>
+      <div id="sponsor-legnaro" class="ev__b" style="--acc:#A8D8B4">
+        <span class="type-mono ev__k">Legnaro Motori · 15 marzo 2026</span>
+        <h3 class="type-h3">Sponsor di Legnaro Motori</h3>
+        <p class="type-body-dark">Le aziende della prima edizione del format fuori dai Colli.</p>
+        <div class="ev__small"><SponsorBlock sponsors={spLegnaro} columns={Math.max(1, Math.min(4, spLegnaro.length))} mono={false} /></div>
+        <a class="type-mono link-line ev__l" href="/eventi/legnaro-motori/#sponsor">Vai alla pagina dell'evento <span class="arrow-x" aria-hidden="true">→</span></a>
+      </div>
+      <div id="sponsor-rally" class="ev__b" style="--acc:#00BA89">
+        <span class="type-mono ev__k">1° Rally Colli Euganei · 21–22 novembre 2026</span>
+        <h3 class="type-h3">Sponsor del 1° Rally Colli Euganei</h3>
+        <p class="type-body-dark">La prima edizione è sostenuta dai partner di stagione. Gli sponsor propri del rally si aggiungono qui man mano che gli accordi si chiudono.</p>
+        <div class="ev__row"><span class="pill">Elenco in aggiornamento</span><a class="type-mono link-line ev__l" href="/sponsor/diventa-sponsor/#form-sponsor">Diventa sponsor del rally <span class="arrow-x" aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="numeri-sponsor" class="wrap section" aria-labelledby="ns-h">
+    <h2 id="ns-h" class="type-h2 ns__h">Cosa vede uno sponsor a un nostro evento</h2>
+    <StatBlock stats={numeri} columns={4} />
+  </section>
+
+  <CTABlock kicker="Stagione 2027" title="Porta il tuo marchio sui Colli Euganei" text="Costruiamo ogni proposta sull'azienda che abbiamo davanti. Ti mostriamo dove finisce il tuo marchio e cosa ricevi a fine stagione." image="/foto/polo_esposizione_auto.jpg">
+    <a href="/sponsor/diventa-sponsor/#form-sponsor" class="btn btn--primary">Richiedi il progetto sponsor</a>
+    <a href="/sponsor/diventa-sponsor/#espositori" class="btn btn--secondary">Chiedi uno spazio espositivo</a>
+  </CTABlock>
+</Base>
+<style>
+  .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  h2{color:#fff;margin-bottom:8px}
+  .p{max-width:70ch;margin-bottom:12px}
+  .hint{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450);display:block;margin-bottom:var(--sp-4)}
+  .pat{display:flex;gap:var(--sp-4);align-items:center;flex-wrap:wrap}
+  .pat__logo{background:var(--carbone);border:1px solid var(--border-on-dark);padding:20px;display:flex;align-items:center;justify-content:center;min-width:140px;min-height:140px}
+  .pat__logo img{max-height:100px;width:auto}
+  .pat__list{display:flex;flex-direction:column;gap:8px;color:#fff}
+  .ev{display:flex;flex-direction:column;gap:var(--sp-6);margin-top:var(--sp-4)}
+  .ev__b{display:flex;flex-direction:column;gap:12px;padding-left:20px;border-left:3px solid var(--acc)}
+  .ev__k{color:var(--acc)}
+  .ev__b h3{color:#fff}
+  .ev__small{max-width:600px}
+  .ev__l{color:#fff;align-self:flex-start}
+  .ev__row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .pill{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--grigio-500);color:var(--grigio-200);padding:3px 8px}
+  .ns__h{margin-bottom:var(--sp-4)}
+</style>

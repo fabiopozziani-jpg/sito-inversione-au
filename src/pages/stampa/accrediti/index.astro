@@ -1,0 +1,121 @@
+---
+/** Accrediti stampa — sub-nav rally (la pagina è nell'hub), requisiti, scadenze, sicurezza, drone, pettorina, modulo. */
+import '../../../styles/hub.css';
+import Base from '../../../layouts/Base.astro';
+import EventSubnav from '../../../components/EventSubnav.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { subnav } from '../../../data/rally';
+const email = 'info@inversioneau.com';
+const eventi = ['1° Rally Colli Euganei ACI Sport — 21–22 novembre 2026', 'Polo Motor Show — edizione 2027', 'Legnaro Motori — edizione 2027'];
+const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social'];
+---
+<Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description="Come richiedere l'accredito stampa per il 1° Rally Colli Euganei: chi può chiederlo, scadenze, regole di sicurezza in prova speciale, riprese con drone, ritiro della pettorina e modulo di richiesta." active="rally" bodyClass="ctx-rally">
+  <EventSubnav items={subnav} current="/stampa/accrediti/" bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Stampa', href: '/stampa/' }, { label: 'Accrediti stampa' }]} />
+  <header class="wrap pg-head">
+    <h1 class="type-h1">Accrediti stampa per il Rally Colli Euganei</h1>
+    <p class="lead">Giornalisti, fotografi e videomaker: compila il modulo e ricevi l'esito via email entro cinque giorni lavorativi.</p>
+  </header>
+
+  <section id="chi" class="wrap section s" aria-labelledby="chi-h">
+    <h2 id="chi-h" class="type-h2">Chi può chiedere l'accredito</h2>
+    <p class="type-body-dark p">L'accredito è nominativo e va richiesto da chi lavora sull'evento, non da chi lo guarda.</p>
+    <ul class="lista-ev">
+      <li>Giornalista con tessera dell'Ordine.</li><li>Fotografo o videomaker con incarico scritto di una redazione.</li>
+      <li>Testata online o canale video con pubblicazioni verificabili sul motorsport.</li><li>Operatore televisivo con richiesta della propria emittente.</li>
+    </ul>
+    <p class="type-body-dark p">Non rilasciamo accrediti per uso personale, per accesso agevolato al pubblico o per riprese a scopo commerciale.</p>
+  </section>
+
+  <section id="scadenze" class="wrap section s" aria-labelledby="sc-h">
+    <h2 id="sc-h" class="type-h2">Entro quando richiederlo e quando rispondiamo</h2>
+    <dl class="dati sc">
+      <div><dt class="type-mono">Chiusura richieste</dt><dd>14 novembre 2026, ore 18:00<span class="hint">Una settimana prima della gara</span></dd></div>
+      <div><dt class="type-mono">Tempi di risposta</dt><dd>Entro 5 giorni lavorativi<span class="hint">Esito via email, anche in caso di rifiuto</span></dd></div>
+    </dl>
+    <p class="type-body-dark p">Dopo la chiusura non è possibile aggiungere operatori. Se il tuo gruppo cambia, avvisaci prima della data di chiusura: dopo, la pettorina in più non esiste.</p>
+  </section>
+
+  <section id="sicurezza" class="wrap section s" aria-labelledby="sic-h">
+    <h2 id="sic-h" class="type-h2">Regole di sicurezza in prova speciale</h2>
+    <p class="type-body-dark p">Una prova speciale è una strada chiusa con auto in gara a velocità piena. Chi ha la pettorina può stare dove il pubblico non può, e per questo risponde in prima persona del proprio comportamento.</p>
+    <ul class="lista-ev">
+      <li>Pettorina sempre visibile.</li><li>Le indicazioni dei commissari hanno la precedenza su qualunque esigenza di ripresa.</li>
+      <li>Vietato sostare in curva esterna, in zona di frenata, oltre le reti e nelle vie di fuga.</li><li>Vietato attraversare a prova aperta.</li>
+    </ul>
+    <p class="type-body-dark p">Chi non rispetta le regole perde la pettorina sul posto e l'accredito per le edizioni successive.</p>
+    <div class="card card--rosso"><h3 class="type-h3">Riprese con drone</h3><p>Le riprese con drone richiedono l'autorizzazione ENAC, il patentino del pilota e il coordinamento con la direzione di gara. Se hai indicato il drone nel modulo, ti scriviamo per chiederti i documenti. Senza autorizzazione confermata per iscritto, il drone non vola: la sospensione della prova speciale per un drone non autorizzato ricade sull'operatore.</p></div>
+  </section>
+
+  <section id="pettorina" class="wrap section s" aria-labelledby="pet-h">
+    <h2 id="pet-h" class="type-h2">Dove e quando si ritira la pettorina</h2>
+    <dl class="pet">
+      <div><dt class="type-mono">Dove</dt><dd>Sala stampa presso il parco assistenza</dd></div>
+      <div><dt class="type-mono">Quando</dt><dd>Sabato 21 novembre dalle 08:00 alle 18:00 · domenica 22 dalle 06:30</dd></div>
+      <div><dt class="type-mono">Cosa portare</dt><dd>Documento d'identità e tessera dell'Ordine o lettera di incarico</dd></div>
+    </dl>
+    <p class="type-body-dark p">Ogni operatore ritira la propria pettorina di persona.</p>
+  </section>
+
+  <section id="modulo" class="wrap section" aria-labelledby="mod-h">
+    <form class="form-box" data-mailform data-to={email} data-subject="Richiesta accredito stampa · Rally Colli Euganei" novalidate>
+      <h2 id="mod-h" class="type-h2">Modulo di richiesta accredito</h2>
+      <div class="errbox" role="alert" tabindex="-1" hidden data-errors></div>
+      <div class="f-grid">
+        <label class="field"><span>Evento *</span><select name="evento" required>{eventi.map(e => <option value={e}>{e}</option>)}</select></label>
+        <label class="field"><span>Ruolo *</span><select name="ruolo" required>{ruoli.map(r => <option value={r}>{r}</option>)}</select></label>
+        <label class="field"><span>Nome e cognome *</span><input type="text" name="nome" autocomplete="name" required /></label>
+        <label class="field"><span>Testata o committente *</span><input type="text" name="testata" autocomplete="organization" required /></label>
+        <label class="field"><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label>
+        <label class="field"><span>Cellulare * — lo usiamo solo nei giorni di gara</span><input type="tel" name="cellulare" autocomplete="tel" required minlength="8" /></label>
+        <label class="field"><span>N° tessera Ordine o link alla lettera di incarico</span><input type="text" name="tessera" /></label>
+        <label class="field"><span>Quante persone accrediti, te compreso *</span><input type="number" name="operatori" min="1" max="10" value="1" required /></label>
+        <label class="field f-full"><span>Nome e cognome degli altri operatori</span><input type="text" name="altri_operatori" /></label>
+        <fieldset class="f-full" data-almeno-una="Giorni di presenza">
+          <legend>Giorni di presenza *</legend>
+          <label class="chk"><input type="checkbox" name="sabato" /><span>Sabato 21 novembre — verifiche e shakedown</span></label>
+          <label class="chk"><input type="checkbox" name="domenica" /><span>Domenica 22 novembre — prove speciali e arrivo</span></label>
+        </fieldset>
+        <fieldset class="f-full">
+          <legend>Attrezzatura</legend>
+          <label class="chk"><input type="checkbox" name="fotocamera" /><span>Fotocamera e teleobiettivo</span></label>
+          <label class="chk"><input type="checkbox" name="videocamera" /><span>Videocamera o attrezzatura video</span></label>
+          <label class="chk"><input type="checkbox" name="drone" data-drone /><span>Drone</span></label>
+          <div class="card card--rosso drone" hidden data-drone-box aria-live="polite">
+            <p>Con il drone servono autorizzazione ENAC, patentino del pilota, assicurazione RC e coordinamento con la direzione di gara. Nessun volo è consentito sopra il pubblico o la sede stradale durante la prova.</p>
+            <label class="field"><span>Numero di autorizzazione ENAC</span><input type="text" name="enac" /></label>
+          </div>
+        </fieldset>
+        <label class="field"><span>Targa del veicolo *</span><input type="text" name="targa" required /></label>
+        <label class="field"><span>Marca, modello e colore *</span><input type="text" name="veicolo" required /></label>
+        <label class="field f-full"><span>Cosa hai in programma di pubblicare</span><textarea name="note" rows="3"></textarea></label>
+      </div>
+      <label class="chk"><input type="checkbox" name="regolamento" required /><span>Ho letto il regolamento di sicurezza e mi impegno a rispettarlo, comprese le indicazioni dei commissari di percorso.</span></label>
+      <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
+      <button type="submit" class="btn btn--ev">Invia richiesta</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</Base>
+<script>
+  import '../../../scripts/mailform';
+  const d = document.querySelector<HTMLInputElement>('[data-drone]'), box = document.querySelector<HTMLElement>('[data-drone-box]');
+  d?.addEventListener('change', () => { if (box) box.hidden = !d.checked; });
+</script>
+<style>
+  .pg-head{padding-top:var(--sp-4);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff;max-width:22ch;text-wrap:balance}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  h2{color:#fff}
+  .s{padding-top:var(--sp-6);padding-bottom:var(--sp-6);display:flex;flex-direction:column;gap:14px;max-width:calc(80ch + 2*var(--grid-margin))}
+  .p{max-width:70ch}
+  .sc dd{display:flex;flex-direction:column;gap:6px;font-size:18px}
+  .pet{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
+  .pet div{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:520px){.pet div{grid-template-columns:160px 1fr;gap:16px}}
+  .pet dt{color:var(--grigio-450)} .pet dd{margin:0;color:#fff}
+  .card--rosso h3{color:#fff}
+  .drone{margin-top:8px}
+  .drone p{color:#DDD;font-size:15px}
+  .form-box{max-width:960px}
+</style>
