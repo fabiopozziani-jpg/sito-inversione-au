@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # file da eliminare (spostati qui perche' il bridge non puo' cancellare)
 _to_delete/
+
+# ponte cloud<->mac (file di servizio)
+.trigger/
