@@ -1,4 +1,5 @@
 /* Hub evento — il colore dell'evento vive solo qui, via --ev sul body.ctx-* */
+:root{--ev:var(--bianco);--ev-scuro:var(--nero);--ev-alt:var(--bianco)}
 .ctx-rally{--ev:var(--rally-verde);--ev-scuro:var(--rally-teal-scuro);--ev-alt:var(--rally-teal)}
 .ctx-polo{--ev:var(--polo);--ev-scuro:var(--polo-scuro);--ev-alt:var(--polo)}
 .ctx-legnaro{--ev:var(--legnaro-menta);--ev-scuro:var(--legnaro-blu);--ev-alt:var(--legnaro-blu)}

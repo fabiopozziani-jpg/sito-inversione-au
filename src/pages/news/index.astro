@@ -1,0 +1,81 @@
+---
+/** News — elenco con filtri (evento / a chi interessa), lato client su data-attributes. */
+import Base from '../../layouts/Base.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { postsOrdinati } from '../../data/news';
+const posts = postsOrdinati();
+const eventi = ['Tutte le news', 'Rally Colli Euganei', 'Polo Motor Show', 'Legnaro Motori', 'Associazione'];
+const chi = ['Tutti', 'Per il pubblico', 'Per i concorrenti'];
+const aggiornato = posts.map(p => p.iso).sort().reverse()[0];
+const MESI = ['GEN','FEB','MAR','APR','MAG','GIU','LUG','AGO','SET','OTT','NOV','DIC'];
+const fmt = (iso: string) => `${iso.slice(8,10)} ${MESI[Number(iso.slice(5,7))-1]} ${iso.slice(0,4)}`;
+---
+<Base title="News e comunicati stampa | Inversione A U" description="Notizie, comunicati stampa e aggiornamenti sugli eventi Inversione A U: Rally Colli Euganei, Polo Motor Show, Legnaro Motori e vita dell'associazione." active="news">
+  <header class="wrap pg-head">
+    <h1 class="type-h1">News dagli eventi</h1>
+    <p class="lead">Comunicati e aggiornamenti sui tre eventi della stagione e sull'associazione.</p>
+    <div class="filtri" data-news-filtri>
+      <div class="filtri__g">
+        <p class="type-mono text-meta" id="grp-evento">Evento</p>
+        <div class="chips" role="group" aria-labelledby="grp-evento">{eventi.map((e, i) => <button type="button" class="chip" data-f="evento" data-v={i === 0 ? '' : e} aria-pressed={i === 0 ? 'true' : 'false'}>{e}</button>)}</div>
+      </div>
+      <div class="filtri__g">
+        <p class="type-mono text-meta" id="grp-chi">A chi interessa</p>
+        <div class="chips" role="group" aria-labelledby="grp-chi">{chi.map((c, i) => <button type="button" class="chip" data-f="chi" data-v={i === 0 ? '' : c} aria-pressed={i === 0 ? 'true' : 'false'}>{c}</button>)}</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="wrap section" aria-labelledby="sel-h" data-news>
+    <div class="sel">
+      <h2 id="sel-h" class="type-h2" data-sel>Tutte le news</h2>
+      <p role="status" aria-live="polite" class="type-mono text-meta" data-conta>{posts.length} news · aggiornato al {fmt(aggiornato)}</p>
+    </div>
+    <div class="grid stagger" data-grid>
+      {posts.map(p => <div data-evento={p.event} data-chi={p.chi}><NewsCard image={p.image} category={p.category} date={p.date} title={p.title} excerpt={p.excerpt} href={`/news/${p.slug}/`} /></div>)}
+    </div>
+    <div class="vuoto" hidden data-vuoto>
+      <p role="status">Nessuna news con questa scelta. Prova con «Tutte le news».</p>
+      <button type="button" class="btn btn--secondary" data-reset>Mostra tutte le news</button>
+    </div>
+  </section>
+</Base>
+<script>
+  const root = document.querySelector<HTMLElement>('[data-news]');
+  const filtri = document.querySelector<HTMLElement>('[data-news-filtri]');
+  if (root && filtri) {
+    const items = Array.from(root.querySelectorAll<HTMLElement>('[data-grid] > div'));
+    const sel = root.querySelector<HTMLElement>('[data-sel]')!, conta = root.querySelector<HTMLElement>('[data-conta]')!, vuoto = root.querySelector<HTMLElement>('[data-vuoto]')!;
+    const tot = conta.textContent ?? '';
+    const state = { evento: '', chi: '' };
+    const run = () => {
+      let n = 0;
+      items.forEach(el => { const ok = (!state.evento || el.dataset.evento === state.evento) && (!state.chi || el.dataset.chi === state.chi); el.hidden = !ok; if (ok) n++; });
+      const ev = state.evento, ch = state.chi;
+      const base = !ev ? 'News' : ev === 'Associazione' ? 'News dall’associazione' : `News sul ${ev}`;
+      const who = ch === 'Per il pubblico' ? ' per il pubblico' : ch === 'Per i concorrenti' ? ' per i concorrenti' : '';
+      sel.textContent = !ev && !ch ? 'Tutte le news' : base + who;
+      conta.textContent = (!ev && !ch) ? tot : `${n} news`;
+      vuoto.hidden = n > 0;
+      filtri.querySelectorAll<HTMLButtonElement>('.chip').forEach(b => { b.setAttribute('aria-pressed', String((state as any)[b.dataset.f!] === (b.dataset.v ?? ''))); });
+    };
+    filtri.addEventListener('click', e => { const b = (e.target as Element).closest<HTMLButtonElement>('.chip'); if (!b) return; (state as any)[b.dataset.f!] = b.dataset.v ?? ''; run(); });
+    root.querySelector('[data-reset]')?.addEventListener('click', () => { state.evento = ''; state.chi = ''; run(); });
+  }
+</script>
+<style>
+  .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:14px}
+  .pg-head h1{color:#fff}
+  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
+  .filtri{display:flex;flex-direction:column;gap:16px;margin-top:12px}
+  .filtri__g{display:flex;flex-direction:column;gap:8px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.02em;padding:8px 14px;border:1px solid #555;color:#BBB;transition:all var(--dur-fast) var(--ease-out)}
+  .chip:hover,.chip:focus-visible{border-color:#fff;color:#fff}
+  .chip[aria-pressed="true"]{background:#fff;color:#000;border-color:#fff}
+  .sel{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
+  .sel h2{color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:32px}
+  .vuoto{display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:var(--sp-4);border:1px solid var(--border-on-dark)}
+  .vuoto p{color:#DDD}
+</style>

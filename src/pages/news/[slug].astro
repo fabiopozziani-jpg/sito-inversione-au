@@ -1,0 +1,71 @@
+---
+/** Articolo news — route dinamica (SSR): /news/<slug>/ */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { getPost, postsRecenti, eventoKey } from '../../data/news';
+const post = getPost(Astro.params.slug ?? '');
+if (!post) return new Response(null, { status: 404 });
+const altre = postsRecenti(6).filter(p => p.slug !== post.slug).slice(0, 3);
+const ctx = eventoKey(post.event);
+const dataEstesa = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Rome' }).format(new Date(post.iso + 'T12:00:00'));
+---
+<Base title={`${post.title} | Inversione A U`} description={post.excerpt} active="news" bodyClass={ctx ? `ctx-${ctx}` : ''}>
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Notizie', href: '/news/' }, { label: post.title }]} />
+  <article class="wrap art">
+    <header class="art__head">
+      <div class="art__meta">
+        <span class="pill pill--ev">{post.event} · {post.chi.toLowerCase()}</span>
+        <span class="type-mono text-meta"><time datetime={post.iso}>{dataEstesa}</time> · {post.tipo}</span>
+      </div>
+      <h1 class="type-h1">{post.title}</h1>
+      <p class="art__lead">{post.lead}</p>
+    </header>
+    <figure class="art__fig">
+      <div class="art__img"><img src={post.image} alt={post.imageAlt} width="1600" height="1067" fetchpriority="high" decoding="async" /></div>
+      <figcaption class="hint">{post.credito}</figcaption>
+    </figure>
+    <div class="art__body">
+      {post.corpo.map(b => b.t === 'p' ? <p set:html={b.html} />
+        : b.t === 'h2' ? <h2 class="type-h3">{b.testo}</h2>
+        : b.t === 'quote' ? <blockquote><p>{b.testo}</p><cite class="type-mono">{b.cite}</cite></blockquote>
+        : <dl class="art__dl">{b.righe.map(([k, v]) => <div><dt class="type-mono">{k}</dt><dd class="type-mono">{v}</dd></div>)}</dl>)}
+    </div>
+    {(post.cta || post.cta2) && (
+      <div class="art__cta">
+        {post.cta && <a href={post.cta.href} class="btn btn--ev" target={post.cta.esterno ? '_blank' : undefined} rel={post.cta.esterno ? 'noopener' : undefined}>{post.cta.label}</a>}
+        {post.cta2 && <a href={post.cta2.href} class="btn btn--secondary">{post.cta2.label}</a>}
+      </div>
+    )}
+  </article>
+  <section class="hair" aria-labelledby="altre-h">
+    <div class="wrap section">
+      <h2 id="altre-h" class="type-h2 altre__h">Altre news</h2>
+      <div class="altre stagger">{altre.map(p => <NewsCard image={p.image} category={p.category} date={p.date} title={p.title} excerpt={p.excerpt} href={`/news/${p.slug}/`} />)}</div>
+    </div>
+  </section>
+</Base>
+<style>
+  .art{padding-top:var(--sp-4);padding-bottom:var(--sp-10);display:flex;flex-direction:column;gap:var(--sp-5)}
+  .art__head{display:flex;flex-direction:column;gap:14px;max-width:820px}
+  .art__meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .art h1{color:#fff;text-wrap:balance}
+  .art__lead{color:#DDD;font-size:19px;line-height:1.55;max-width:60ch}
+  .art__fig{display:flex;flex-direction:column;gap:8px}
+  .art__img{aspect-ratio:16/9;overflow:hidden;background:#1A1A1A}
+  .art__img img{width:100%;height:100%;object-fit:cover}
+  .art__body{max-width:720px;display:flex;flex-direction:column;gap:18px}
+  .art__body p{color:#DDD;font-size:17px;line-height:1.65}
+  .art__body a{color:#fff}
+  .art__body h2{color:#fff;margin-top:12px}
+  .art__body blockquote{margin:8px 0;padding:4px 0 4px 20px;border-left:3px solid var(--ev);display:flex;flex-direction:column;gap:8px}
+  .art__body blockquote p{color:#fff;font-size:19px}
+  .art__body cite{color:var(--grigio-450);font-style:normal}
+  .art__dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
+  .art__dl div{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--border-on-dark)}
+  .art__dl dt{color:var(--grigio-450)} .art__dl dd{margin:0;color:#fff}
+  .art__cta{display:flex;gap:16px;flex-wrap:wrap}
+  .altre__h{color:#fff;margin-bottom:var(--sp-4)}
+  .altre{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+</style>

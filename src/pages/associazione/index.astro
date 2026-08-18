@@ -1,0 +1,209 @@
+---
+/** Associazione — chi siamo, come lavoriamo, numeri, storia, direttivo, trasparenza, tesseramento. */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import StatBlock from '../../components/StatBlock.astro';
+import Timeline from '../../components/Timeline.astro';
+import CTABlock from '../../components/CTABlock.astro';
+const email = 'info@inversioneau.com';
+const numeri = [
+  { value: '15.000+', label: 'spettatori' }, { value: 'circa 100', label: 'equipaggi in due giorni' }, { value: '300+', label: 'auto esposte' },
+  { value: '30+', label: 'persone nello staff' }, { value: '23', label: 'sponsor' }, { value: '8', label: 'fotografi e videomaker' },
+];
+const storia = [
+  { time: '2017', title: 'Nasce il team drift', text: 'Un gruppo di amici, un piazzale e le prime BMW di traverso. Partecipiamo agli eventi del Nord Italia.' },
+  { time: '2019', title: 'I primi raduni', text: 'Passiamo dall’altra parte: organizziamo i primi eventi statici dedicati all’automobile. La risposta supera le previsioni.' },
+  { time: '2022', title: 'Dai raduni agli eventi in pista', text: 'Primo anno da organizzatori di eventi dinamici su piazzali e circuiti cittadini. Entriamo nell’organizzazione del Polo Motor Show.' },
+  { time: '2023', title: 'Nasce l’associazione', text: 'Firmiamo l’atto costitutivo di Inversione A U A.S.D. e ci diamo una struttura: consiglio direttivo, statuto, libro dei soci.' },
+  { time: '2024–2025', title: 'Il Polo Motor Show cresce', text: 'Il circuito cittadino di Selve di Teolo arriva a oltre 15.000 spettatori e 300 auto esposte.' },
+  { time: '2026', title: 'Tre eventi in un anno', text: 'Legnaro Motori a marzo, Polo Motor Show a giugno e, a novembre, il 1° Rally Colli Euganei: un rally torna sui Colli dopo più di trent’anni.' },
+];
+const direttivo = [
+  { nome: 'Matteo Pescante', ruolo: 'Presidente', nota: 'Rappresenta l’associazione e firma i rapporti con enti e federazione.' },
+  { nome: 'Andrea D’Alberto', ruolo: 'Vicepresidente', nota: 'Coordina l’organizzazione degli eventi e i rapporti con i Comuni.' },
+  { nome: 'Matteo Casarin', ruolo: 'Tesoriere', nota: 'Tiene la contabilità e i rapporti con sponsor e fornitori.' },
+  { nome: 'Fabio Pozziani', ruolo: 'Segretario', nota: 'Cura verbali, libro dei soci e comunicazioni dell’associazione.' },
+  { nome: 'Thomas Scapocchin', ruolo: 'Consigliere', nota: 'Segue il percorso e la sicurezza in gara insieme allo staff.' },
+];
+const dati: [string, string][] = [
+  ['Denominazione', 'Associazione Sportiva Dilettantistica Inversione A U'], ['Sigla', 'A.S.D. Inversione A U'], ['Sede legale', 'Via Selve 46/B · Saccolongo (PD)'],
+  ['Codice fiscale', '92324000287'], ['Partita IVA', '05585020281'], ['Costituita il', '20 novembre 2023'], ['Codice attività', '931910 · Enti e organizzazioni sportive'],
+];
+const documenti = [
+  { label: 'Atto costitutivo e statuto', href: '/documenti/atto-costitutivo-e-statuto-inversione-a-u-asd.pdf' },
+  { label: 'Certificato del codice fiscale', href: '/documenti/certificato-codice-fiscale-inversione-a-u-asd.pdf' },
+  { label: 'Certificato della partita IVA', href: '/documenti/certificato-partita-iva-inversione-a-u-asd.pdf' },
+];
+const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo'];
+---
+<Base title="Associazione motorsport a Padova | Inversione A U" description="Inversione A U è un'associazione sportiva dilettantistica di Padova: dal 2017 team drift, dal 2023 A.S.D. Organizza Legnaro Motori, Polo Motor Show e il Rally Colli Euganei. Chi siamo, storia, direttivo, statuto e tesseramento." active="associazione">
+  <section class="hero" aria-labelledby="hero-h1">
+    <img class="hero__img" src="/foto/bmw_m3_e30_fumo.jpg" alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap hero__in">
+      <p class="type-mono hero__kicker">Associazione sportiva dilettantistica · Padova</p>
+      <h1 id="hero-h1" class="hero__h1"><span class="type-display">Inversione A U</span><span class="hero__sub">Associazione sportiva dilettantistica di Padova</span></h1>
+      <p class="type-mono hero__meta">Costituita nel 2023 · attivi dal 2017</p>
+      <div><a href="#tesseramento" class="btn btn--primary">Diventa socio</a></div>
+    </div>
+  </section>
+
+  <section id="chi-siamo" class="wrap section chi" aria-labelledby="chi-h">
+    <div class="chi__t">
+      <p class="type-mono text-meta">Chi siamo</p>
+      <h2 id="chi-h" class="type-h2 reveal-wipe"><span>Chi siamo e cosa organizziamo</span></h2>
+      <p>Volontari, piloti, meccanici e vicini di casa. Il direttivo e i soci operativi sono le stesse persone che trovate in prova speciale: chi traccia il percorso, chi parla con i sindaci, chi monta le reti alle sei di mattina.</p>
+      <p>Organizziamo tre eventi all'anno in provincia di Padova: una giornata di drift, due giorni di circuito cittadino e un rally con titolazione ACI Sport.</p>
+      <p>Lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco. Gli eventi restano dei territori che li ospitano: senza il paese che ci accoglie, non si passa.</p>
+    </div>
+    <div class="chi__img img-zoom reveal"><img src="/foto/inversione_au_e36_hay.jpg" alt="" loading="lazy" decoding="async" width="800" height="533" /></div>
+  </section>
+
+  <section id="mission" class="wrap section" aria-labelledby="mis-h">
+    <h2 id="mis-h" class="type-h2">Come lavoriamo</h2>
+    <p class="type-body-dark sec-intro">Tre regole che decidono se un evento si fa e come si fa.</p>
+    <div class="reg stagger">
+      {[
+        ['01', "Il territorio prima dell'evento", 'Ogni gara si costruisce con i Comuni, le Pro Loco e chi vive sulle strade che usiamo. Se un paese non ci vuole, non passiamo.'],
+        ['02', 'Sicurezza e regolamenti', 'Zone pubblico segnalate, personale formato, licenze e omologazioni ACI Sport. Le regole non sono un limite: sono la condizione per correre.'],
+        ['03', 'Motorsport aperto al pubblico', 'Paddock visitabili, piloti che rispondono alle domande e spazio a chi inizia. Il motorsport si guarda da vicino.'],
+      ].map(([n, t, d]) => <div class="card reg__c reveal"><span class="type-mono text-meta">{n}</span><h3 class="type-h3">{t}</h3><p>{d}</p></div>)}
+    </div>
+  </section>
+
+  <section id="numeri" class="wrap section num" aria-labelledby="num-h">
+    <div class="num__t">
+      <h2 id="num-h" class="type-h2">I numeri dei nostri eventi</h2>
+      <p class="type-body-dark">La stagione 2026 in cifre: tre eventi, un solo gruppo di volontari.</p>
+      <p class="hint">Dati riferiti alle ultime edizioni del Polo Motor Show</p>
+    </div>
+    <div class="num__n"><StatBlock stats={numeri} columns={2} /></div>
+  </section>
+
+  <section id="storia" class="wrap section" aria-labelledby="sto-h">
+    <h2 id="sto-h" class="type-h2">La nostra storia, dal 2017</h2>
+    <p class="type-body-dark sec-intro">Nove anni: da gruppo di amici con qualche BMW a organizzatori di un rally titolato.</p>
+    <Timeline items={storia} />
+  </section>
+
+  <section id="direttivo" class="on-light" aria-labelledby="dir-h">
+    <div class="wrap section">
+      <h2 id="dir-h" class="type-h2">Il consiglio direttivo</h2>
+      <p class="sec-intro dir__intro">Le persone che firmano le decisioni dell'associazione e rispondono degli eventi.</p>
+      <ul class="dir stagger">
+        {direttivo.map(d => <li class="dir__c reveal"><h3 class="type-h3">{d.nome}</h3><span class="type-mono dir__r">{d.ruolo}</span><p>{d.nota}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section id="trasparenza" class="wrap section tra" aria-labelledby="tra-h">
+    <div class="tra__t">
+      <h2 id="tra-h" class="type-h2">Documenti e dati dell'associazione</h2>
+      <p class="type-body-dark">Dati fiscali, atto costitutivo e statuto: quello che serve per fatturare, firmare o controllare.</p>
+      <dl class="tra__dl">
+        {dati.map(([k, v]) => <div><dt class="type-mono">{k}</dt><dd>{v}</dd></div>)}
+        <div><dt class="type-mono">Email</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+      </dl>
+    </div>
+    <ul class="tra__docs">
+      {documenti.map(d => <li><a class="tra__doc" href={d.href} target="_blank" rel="noopener"><span class="tra__doc-t">{d.label}</span><span class="hint">PDF · si apre in una nuova pagina ↗</span></a></li>)}
+    </ul>
+  </section>
+
+  <section id="tesseramento" class="hair" aria-labelledby="tes-h">
+    <div class="wrap section tes">
+      <div class="tes__t">
+        <h2 id="tes-h" class="type-h2">Come diventare socio</h2>
+        <p class="type-body-dark">Cosa dà la tessera, quanto costa e come si richiede. Risposta entro 3 giorni lavorativi.</p>
+        <p class="tes__p">Da socio partecipi a tutte le attività dell'associazione, voti in assemblea e puoi candidarti al consiglio direttivo. Chi vuole, entra nello staff degli eventi.</p>
+        <ul class="lista-ev tes__list">
+          <li>Socio ordinario — quota annuale stabilita ogni anno dal consiglio direttivo</li>
+          <li>Socio operativo — partecipa all'organizzazione degli eventi</li>
+          <li>Sostenitore — sostiene l'attività senza ruolo operativo</li>
+          <li>La tessera vale per l'anno solare. Il rinnovo si apre a gennaio.</li>
+        </ul>
+      </div>
+      <form class="tes__form" data-mailform data-to={email} data-subject="Richiesta tessera · Inversione A U" novalidate>
+        <h3 class="type-h3">Richiedi la tessera</h3>
+        <label class="field"><span>Nome e cognome</span><input type="text" name="nome" placeholder="Es. Marco Franceschetti" autocomplete="name" required /></label>
+        <label class="field"><span>Email</span><input type="email" name="email" placeholder="nome@email.it" autocomplete="email" required /></label>
+        <label class="field"><span>Tipo di tessera</span><select name="tessera">{tessere.map(t => <option value={t}>{t}</option>)}</select></label>
+        <button type="submit" class="btn btn--primary tes__btn">Invia la richiesta</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <CTABlock kicker="I nostri eventi" title="Gli eventi che organizziamo" text="Legnaro Motori, Polo Motor Show e il 1° Rally Colli Euganei: tre eventi, un territorio.">
+    <a href="/eventi/" class="btn btn--primary">Vedi il calendario</a>
+    <a href="/eventi/archivio/" class="btn btn--secondary">Apri l'archivio</a>
+  </CTABlock>
+</Base>
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const msg = f.querySelector<HTMLElement>('.form-msg');
+      if (!f.checkValidity()) { msg && (msg.textContent = 'Controlla i campi: nome ed email sono obbligatori.'); f.reportValidity(); return; }
+      const d = new FormData(f);
+      const body = [...d.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
+      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
+      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
+    });
+  });
+</script>
+<style>
+  .hero{position:relative;height:64vh;min-height:460px;background:var(--nero);overflow:hidden;display:flex}
+  .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.75) 100%)}
+  .hero__in{position:relative;align-self:flex-end;width:100%;padding-bottom:var(--sp-7,56px);display:flex;flex-direction:column;gap:14px;color:#fff}
+  .hero__kicker{color:var(--grigio-200)}
+  .hero__h1{display:flex;flex-direction:column;gap:8px;color:#fff}
+  .hero__h1 .type-display{font-size:clamp(40px,7vw,96px)}
+  .hero__sub{font-family:var(--font-display);font-stretch:125%;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(16px,2vw,24px)}
+  .hero__meta{color:var(--grigio-200)}
+  h2{color:#fff}
+  .on-light h2{color:var(--nero)}
+  .sec-intro{max-width:56ch;margin:8px 0 var(--sp-4)}
+  .chi{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:center}
+  @media(min-width:900px){.chi{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+  .chi__t{display:flex;flex-direction:column;gap:14px}
+  .chi__t p:not(.type-mono){color:#DDD;max-width:56ch}
+  .chi__img{aspect-ratio:4/3;overflow:hidden;background:#1A1A1A}
+  .chi__img img{width:100%;height:100%;object-fit:cover}
+  .reg{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:768px){.reg{grid-template-columns:repeat(3,1fr)}}
+  .reg__c h3{color:#fff}
+  .num{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  @media(min-width:900px){.num{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
+  .num__t{display:flex;flex-direction:column;gap:12px}
+  .dir__intro{color:var(--text-secondary)}
+  .dir{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:640px){.dir{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.dir{grid-template-columns:repeat(5,1fr)}}
+  .dir__c{border-top:2px solid var(--nero);padding-top:16px;display:flex;flex-direction:column;gap:8px}
+  .dir__c h3{font-size:18px}
+  .dir__r{color:#6B6B6B}
+  .dir__c p{color:var(--text-secondary);font-size:15px}
+  .tra{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  @media(min-width:900px){.tra{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
+  .tra__t{display:flex;flex-direction:column;gap:12px}
+  .tra__dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark);margin-top:8px}
+  .tra__dl div{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:520px){.tra__dl div{grid-template-columns:180px 1fr;gap:16px}}
+  .tra__dl dt{color:var(--grigio-450)}
+  .tra__dl dd{margin:0;color:#fff}
+  .tra__dl a{color:#fff}
+  .tra__docs{display:flex;flex-direction:column;gap:12px}
+  .tra__doc{display:flex;flex-direction:column;gap:6px;padding:20px 24px;background:var(--carbone);border:1px solid var(--border-on-dark);text-decoration:none;color:#fff;transition:border-color var(--dur-fast) var(--ease-out)}
+  .tra__doc:hover,.tra__doc:focus-visible{border-color:#fff}
+  .tra__doc-t{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .tes{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  @media(min-width:900px){.tes{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+  .tes__t{display:flex;flex-direction:column;gap:12px}
+  .tes__p{color:#DDD;max-width:56ch}
+  .tes__list{margin-top:8px}
+  .tes__form{display:flex;flex-direction:column;gap:18px;background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4)}
+  .tes__form h3{color:#fff}
+  .tes__btn{width:100%}
+</style>
