@@ -71,9 +71,7 @@ a:hover .img-zoom img,.img-zoom:hover img{transform:scale(1.04)}
 .sponsor-fade img{opacity:.8}
 .sponsor-fade img:hover{opacity:1}
 
-/* header compatto oltre 120px di scorrimento */
-.ia-utility{transition:opacity var(--dur-base) var(--ease-out),transform var(--dur-base) var(--ease-out)}
-.site-header.is-compact .ia-utility{opacity:0;transform:translateY(-8px);height:0;overflow:hidden;border-bottom-width:0}
+/* header compatto: gestito in SiteHeader.astro (griglia 1fr->0fr, nessun salto di altezza) */
 
 /* ── movimento ridotto: il moto diventa dissolvenza ──────────── */
 @media (prefers-reduced-motion: reduce){

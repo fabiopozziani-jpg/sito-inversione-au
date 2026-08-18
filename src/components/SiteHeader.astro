@@ -24,9 +24,11 @@ const eventi = [
 ---
 <header class="site-header" id="site-header">
   <div class="ia-utility">
+    <div class="ia-utility__clip">
     <div class="wrap ia-utility__in">
       <span class="ia-desk type-mono text-meta">Associazione sportiva dilettantistica Inversione A U</span>
       <a class="type-mono link-line ia-utility__press" href="/stampa/">Stampa <span class="arrow-diag" aria-hidden="true">↗</span></a>
+    </div>
     </div>
   </div>
 
@@ -94,8 +96,11 @@ const eventi = [
 
 <style>
   .site-header{position:sticky;top:0;z-index:100;background:var(--nero);border-bottom:1px solid var(--border-on-dark)}
-  .ia-utility{border-bottom:1px solid var(--border-on-dark)}
+  .ia-utility{display:grid;grid-template-rows:1fr;border-bottom:1px solid var(--border-on-dark);transition:grid-template-rows var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out)}
+  .ia-utility__clip{min-height:0;overflow:hidden;opacity:1;transition:opacity var(--dur-fast) var(--ease-out)}
   .ia-utility__in{height:32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .site-header.is-compact .ia-utility{grid-template-rows:0fr;border-color:transparent}
+  .site-header.is-compact .ia-utility__clip{opacity:0}
   .ia-utility__press{color:#999;transition:color var(--dur-fast) var(--ease-out)}
   .ia-utility__press:hover{color:#fff}
   .ia-bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;transition:height var(--dur-base) var(--ease-out)}
@@ -143,7 +148,21 @@ const eventi = [
   setH();
   if (header && 'ResizeObserver' in window) new ResizeObserver(setH).observe(header);
   addEventListener('resize', setH);
-  addEventListener('scroll', () => { header?.classList.toggle('is-compact', scrollY > 120); }, { passive: true });
+  // Isteresi: si compatta oltre 120px, si riespande solo sotto 32px. Evita il tremolio intorno alla soglia,
+  // perche' la compattazione accorcia l'header e sposta il contenuto proprio mentre si scorre.
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking || !header) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = scrollY;
+      if (y > 120) header.classList.add('is-compact');
+      else if (y < 32) header.classList.remove('is-compact');
+      ticking = false;
+    });
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   // Menu a tendina: apre su hover, su focus (tastiera) e su tap del bottone; chiude con Escape e click esterno.
   const drops = document.querySelectorAll<HTMLElement>('[data-drop]');
