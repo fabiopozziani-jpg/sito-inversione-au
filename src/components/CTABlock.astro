@@ -1,0 +1,24 @@
+---
+interface Props { kicker?: string; title: string; text?: string; image?: string }
+const { kicker, title, text, image } = Astro.props;
+---
+<section class="cta">
+  {image && <img class="cta__img" src={image} alt="" loading="lazy" decoding="async" />}
+  {image && <div class="cta__scrim" aria-hidden="true"></div>}
+  <div class="cta__in">
+    {kicker && <p class="type-mono cta__k">{kicker}</p>}
+    <h2 class="cta__h">{title}</h2>
+    {text && <p class="cta__p">{text}</p>}
+    <div class="cta__btns"><slot /></div>
+  </div>
+</section>
+<style>
+  .cta{position:relative;background:var(--nero);overflow:hidden;padding:clamp(48px,8vw,96px) var(--grid-margin);text-align:center;color:#fff}
+  .cta__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .cta__scrim{position:absolute;inset:0;background:rgba(0,0,0,.7)}
+  .cta__in{position:relative;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .cta__k{color:var(--grigio-450);letter-spacing:.08em}
+  .cta__h{font-family:var(--font-display);font-stretch:125%;font-weight:900;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(30px,4vw,44px);line-height:1.1;text-wrap:balance}
+  .cta__p{color:var(--text-body-on-dark)}
+  .cta__btns{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+</style>

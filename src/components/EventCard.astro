@@ -1,0 +1,35 @@
+---
+import type { Evento } from '../data/eventi';
+interface Props { e: Evento; big?: boolean }
+const { e, big = false } = Astro.props;
+const concluso = e.stato === 'conclusa';
+---
+<a href={e.href} class:list={['ec reveal', { 'ec--big': big }]} style={`--ev:${e.accent}`}>
+  <div class="ec__media img-zoom">
+    <img src={e.cover} alt="" width="800" height="533" loading="lazy" decoding="async" />
+    <div class="ec__scrim" aria-hidden="true"></div>
+    {concluso && <span class="type-mono ec__badge">Evento concluso</span>}
+    <div class="ev-bar ec__bar" aria-hidden="true"></div>
+  </div>
+  <div class="ec__body">
+    <span class="type-mono ec__date">{e.dataLabel} · {e.luogo}</span>
+    <h3 class="type-h3">{e.nome}</h3>
+    <p class="ec__p">{e.testoCard}</p>
+    <span class="ec__cta">{e.ctaCard} <span class="arrow-x" aria-hidden="true">→</span></span>
+  </div>
+</a>
+<style>
+  .ec{display:flex;flex-direction:column;text-decoration:none;background:var(--carbone);border:1px solid var(--border-on-dark);color:#fff;transition:border-color var(--dur-base) var(--ease-out)}
+  .ec:hover,.ec:focus-visible{border-color:var(--ev)}
+  .ec__media{position:relative;flex:1 1 auto;min-height:180px;background:#1A1A1A;aspect-ratio:16/10}
+  .ec--big .ec__media{min-height:280px}
+  .ec__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ec__scrim{position:absolute;left:0;right:0;bottom:0;height:60%;background:var(--scrim-hero)}
+  .ec__badge{position:absolute;top:0;left:0;background:#fff;color:#000;padding:7px 12px}
+  .ec__bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--ev)}
+  .ec__body{padding:20px 20px 24px;display:flex;flex-direction:column;gap:10px}
+  .ec__date{color:var(--ev)}
+  .ec h3{color:#fff}
+  .ec__p{color:var(--text-body-on-dark)}
+  .ec__cta{font-family:var(--font-body);font-weight:600;font-size:14px;color:#fff;display:inline-flex;gap:8px;margin-top:4px}
+</style>

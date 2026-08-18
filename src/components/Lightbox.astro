@@ -1,0 +1,90 @@
+---
+/**
+ * Lightbox globale — un solo <dialog> per pagina, montato nel layout.
+ * Qualunque <button data-lb data-src data-alt> dentro un contenitore [data-gallery] la apre;
+ * le frecce scorrono tra i bottoni dello stesso contenitore.
+ * showModal() gestisce da solo focus, sfondo inerte ed Escape.
+ */
+---
+<dialog class="lb" id="lightbox" aria-label="Foto ingrandita">
+  <div class="lb__box">
+    <div class="lb__stage">
+      <img class="lb__img" src="" alt="" />
+      <button type="button" class="lb__nav lb__nav--prev" data-lb-prev aria-label="Foto precedente">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button type="button" class="lb__nav lb__nav--next" data-lb-next aria-label="Foto successiva">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button type="button" class="lb__close" data-lb-close aria-label="Chiudi la foto ingrandita">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+    <div class="lb__cap">
+      <p class="lb__alt"></p>
+      <div class="lb__meta">
+        <span class="type-mono tabellone lb__pos"><span class="cifra"></span></span>
+        <span class="type-mono text-meta lb__cred"></span>
+      </div>
+    </div>
+  </div>
+</dialog>
+<style>
+  .lb{border:0;padding:0;background:var(--nero);color:#fff;max-width:min(1600px,96vw);max-height:96vh;width:100%;opacity:1;transition:opacity var(--dur-fast) linear,display var(--dur-fast) allow-discrete,overlay var(--dur-fast) allow-discrete}
+  .lb:not([open]){opacity:0}
+  @starting-style{.lb[open]{opacity:0}}
+  .lb::backdrop{background:rgba(0,0,0,.92)}
+  .lb__box{display:flex;flex-direction:column;background:var(--nero)}
+  .lb__stage{position:relative;background:#0A0A0A}
+  .lb__img{display:block;width:100%;max-height:74vh;object-fit:contain;background:#0A0A0A}
+  .lb__nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);border:1px solid var(--border-on-dark);color:#fff;transition:background-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+  .lb__nav--prev{left:12px}.lb__nav--next{right:12px}
+  .lb__nav:hover,.lb__nav:focus-visible{background:#fff;color:#000}
+  .lb__close{position:absolute;top:12px;right:12px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);border:1px solid var(--border-on-dark);color:#fff;transition:background-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+  .lb__close:hover,.lb__close:focus-visible{background:#fff;color:#000}
+  .lb__cap{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-2) var(--sp-2) var(--sp-3);border-top:1px solid var(--border-on-dark);flex-wrap:wrap}
+  .lb__alt{flex:1 1 420px;max-width:70ch}
+  .lb__meta{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+  @media (prefers-reduced-motion:reduce){.lb{transition:none}}
+</style>
+<script>
+  const dlg = document.getElementById('lightbox') as HTMLDialogElement | null;
+  if (dlg) {
+    const img = dlg.querySelector<HTMLImageElement>('.lb__img')!;
+    const alt = dlg.querySelector<HTMLElement>('.lb__alt')!;
+    const pos = dlg.querySelector<HTMLElement>('.lb__pos .cifra')!;
+    const cred = dlg.querySelector<HTMLElement>('.lb__cred')!;
+    let items: HTMLButtonElement[] = [], i = 0, origin: HTMLElement | null = null, tx = 0;
+
+    const show = (n: number) => {
+      i = (n + items.length) % items.length;
+      const b = items[i];
+      img.src = b.dataset.src || ''; img.alt = b.dataset.alt || '';
+      alt.textContent = b.dataset.alt || '';
+      pos.parentElement!.classList.add('is-swap');
+      pos.textContent = `${i + 1} / ${items.length}`;
+      requestAnimationFrame(() => pos.parentElement!.classList.remove('is-swap'));
+      cred.textContent = b.closest<HTMLElement>('[data-gallery]')?.dataset.credito || '';
+      // precarica solo la precedente e la successiva
+      [i - 1, i + 1].forEach(k => { const s = items[(k + items.length) % items.length]?.dataset.src; if (s) { const im = new Image(); im.src = s; } });
+    };
+    const open = (b: HTMLButtonElement) => {
+      const g = b.closest<HTMLElement>('[data-gallery]') || document.body;
+      items = Array.from(g.querySelectorAll<HTMLButtonElement>('button[data-lb]'));
+      origin = b; show(items.indexOf(b));
+      if (!dlg.open) { dlg.showModal(); document.body.style.overflow = 'hidden'; }
+    };
+    document.addEventListener('click', (e) => {
+      const b = (e.target as Element).closest<HTMLButtonElement>('button[data-lb]');
+      if (b) open(b);
+    });
+    dlg.querySelector('[data-lb-prev]')?.addEventListener('click', () => show(i - 1));
+    dlg.querySelector('[data-lb-next]')?.addEventListener('click', () => show(i + 1));
+    dlg.querySelector('[data-lb-close]')?.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') { e.preventDefault(); show(i - 1); } if (e.key === 'ArrowRight') { e.preventDefault(); show(i + 1); } });
+    dlg.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });
+    dlg.addEventListener('touchend', (e) => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1); });
+    dlg.addEventListener('close', () => { document.body.style.overflow = ''; origin?.focus(); origin = null; });
+  }
+</script>

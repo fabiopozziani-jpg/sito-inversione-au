@@ -1,0 +1,24 @@
+---
+/** Testata di sezione: titolo (h2 vero), riga introduttiva, link opzionale a destra. */
+interface Props { title: string; intro?: string; href?: string; label?: string; id?: string; light?: boolean; wipe?: boolean }
+const { title, intro, href, label, id, light = false, wipe = false } = Astro.props;
+---
+<div class:list={['sh', { 'sh--light': light }]}>
+  <div class="sh__t">
+    <h2 id={id} class:list={['type-h2', { 'reveal-wipe': wipe }]}>{wipe ? <span>{title}</span> : title}</h2>
+    {intro && <p class="sh__intro">{intro}</p>}
+  </div>
+  {href && <a class="type-mono sh__link" href={href}>{label} <span class="arrow-x" aria-hidden="true">→</span></a>}
+</div>
+<style>
+  .sh{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
+  .sh__t{min-width:0}
+  .sh h2{color:#fff;margin:0 0 8px}
+  .sh__intro{color:var(--text-body-on-dark);max-width:56ch}
+  .sh__link{color:var(--grigio-450);text-decoration:none;white-space:nowrap;transition:color var(--dur-fast) var(--ease-out)}
+  .sh__link:hover,.sh__link:focus-visible{color:#fff}
+  .sh--light h2{color:var(--nero)}
+  .sh--light .sh__intro{color:var(--text-secondary)}
+  .sh--light .sh__link{color:#6B6B6B}
+  .sh--light .sh__link:hover{color:var(--nero)}
+</style>

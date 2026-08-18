@@ -1,0 +1,23 @@
+---
+interface Props { stats: { value: string; label: string }[]; columns?: number; light?: boolean }
+const { stats, columns = Math.min(stats.length, 3), light = false } = Astro.props;
+---
+<dl class:list={['sb', { 'sb--light': light }]} style={`--c:${columns}`}>
+  {stats.map(s => (
+    <div class="sb__cell">
+      <dt class="type-mono sb__l">{s.label}</dt>
+      <dd class="sb__v">{s.value}</dd>
+    </div>
+  ))}
+</dl>
+<style>
+  .sb{display:grid;grid-template-columns:repeat(var(--c),1fr);gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark);margin:0}
+  .sb__cell{background:var(--nero);padding:32px 24px;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:8px}
+  .sb__v{font-family:var(--font-display);font-stretch:125%;font-weight:900;font-size:clamp(32px,4vw,48px);line-height:1;color:#fff;margin:0}
+  .sb__l{color:var(--grigio-450);letter-spacing:.08em}
+  .sb--light{background:var(--border-divider);border-color:var(--border-divider)}
+  .sb--light .sb__cell{background:var(--bianco)}
+  .sb--light .sb__v{color:var(--nero)}
+  .sb--light .sb__l{color:#6B6B6B}
+  @media(max-width:640px){.sb{grid-template-columns:1fr 1fr}}
+</style>

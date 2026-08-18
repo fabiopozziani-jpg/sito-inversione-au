@@ -1,0 +1,33 @@
+---
+import type { Sponsor } from '../data/sponsor';
+/** Griglia loghi. mono=true → monocromo (guscio del sito); mono=false → colore (hub evento). */
+interface Props { title?: string; sponsors: Sponsor[]; columns?: number; light?: boolean; mono?: boolean; headingLevel?: 2 | 3 }
+const { title, sponsors, columns = 4, light = false, mono = true, headingLevel = 2 } = Astro.props;
+const H = `h${headingLevel}` as 'h2' | 'h3';
+---
+<div class:list={['spb sponsor-fade', { 'spb--light': light, 'spb--mono': mono }]} style={`--c:${columns}`}>
+  {title && <H class="type-mono spb__h">{title}</H>}
+  <ul class="spb__grid">
+    {sponsors.map(s => (
+      <li class="spb__cell">
+        {s.url
+          ? <a href={s.url} target="_blank" rel="noopener"><img src={s.logo} alt={s.name} loading="lazy" decoding="async" /></a>
+          : <img src={s.logo} alt={s.name} loading="lazy" decoding="async" />}
+      </li>
+    ))}
+  </ul>
+</div>
+<style>
+  .spb__h{color:var(--grigio-450);letter-spacing:.08em;margin-bottom:24px}
+  .spb__grid{display:grid;grid-template-columns:repeat(var(--c),1fr);gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark)}
+  .spb__cell{background:var(--nero);aspect-ratio:2/1;display:flex;align-items:center;justify-content:center;padding:16px}
+  .spb__cell img{max-width:70%;max-height:60%;width:auto;height:auto;opacity:.8;transition:opacity var(--dur-base) var(--ease-out)}
+  .spb__cell:hover img{opacity:1}
+  .spb--mono .spb__cell img{filter:grayscale(1) brightness(0) invert(1)}
+  .spb--light .spb__grid{background:var(--border-divider);border-color:var(--border-divider)}
+  .spb--light .spb__cell{background:var(--bianco)}
+  .spb--light .spb__h{color:#6B6B6B}
+  .spb--light.spb--mono .spb__cell img{filter:grayscale(1)}
+  @media(max-width:900px){.spb__grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.spb__grid{grid-template-columns:repeat(2,1fr)}}
+</style>
