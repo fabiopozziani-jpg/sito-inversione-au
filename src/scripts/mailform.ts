@@ -2,9 +2,12 @@
  * Moduli "mailto" (FASE 2): validazione lato client, elenco errori accessibile, apertura del client di posta
  * con oggetto e testo compilati. FASE 5: sostituiti da Wix Forms (stesso markup, cambia solo l'invio).
  */
+const NOMI: Record<string, string> = { privacy: 'Consenso privacy', regolamento: 'Regolamento di sicurezza', presentazione: 'Presentazione sponsor' };
 const label = (el: HTMLElement) => {
-  const l = el.closest('label')?.querySelector('.lab, .field > span, span')?.textContent?.replace('*', '').trim();
-  return l || el.getAttribute('name') || 'Campo';
+  const name = el.getAttribute('name') || '';
+  if (NOMI[name]) return NOMI[name];
+  const l = el.closest('label')?.querySelector('.lab, .field > span, span')?.textContent?.replace('*', '').split('—')[0].trim();
+  return l || name || 'Campo';
 };
 document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
   const errBox = f.querySelector<HTMLElement>('[data-errors]');
