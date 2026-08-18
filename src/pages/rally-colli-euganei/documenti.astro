@@ -1,0 +1,182 @@
+---
+/** Rally — Documenti di gara: Sportity, ultime pubblicazioni, albo (tabella per gruppi), stato vuoto. */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import EventSubnav from '../../components/EventSubnav.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { rally, subnav, documenti, gruppiAlbo, fmtData } from '../../data/rally';
+const url = '/rally-colli-euganei/documenti/';
+
+const list = documenti.map(d => ({ ...d, t: new Date(d.iso).getTime() })).sort((a, b) => b.t - a.t);
+const now = Date.now();
+const ref = Math.max(now, list[0]?.t ?? 0);
+const NEW_MS = 3 * 24 * 3600 * 1000;
+const docs = list.map(d => ({
+  ...d,
+  gruppo: d.gruppo ?? 'Regolamento e programma',
+  nuovo: !d.superato && ref - d.t <= NEW_MS,
+  revLine: d.revPrev && d.revPrevIso ? `Versione ${d.rev} · sostituisce la versione ${d.revPrev} del ${fmtData(d.revPrevIso)}` : '',
+  superatoLine: d.superato ? `Superato dalla versione ${d.superatoDa}` : '',
+}));
+const gruppi = gruppiAlbo.map(label => ({ label, docs: docs.filter(d => d.gruppo === label) })).filter(g => g.docs.length);
+const ultimi = list.filter(d => !d.superato).slice(0, 3);
+const hasDocs = docs.length > 0;
+---
+<Base
+  title="Documenti di gara — Rally Colli Euganei 2026 | Inversione A U"
+  description="Albo di gara del 1° Rally Colli Euganei: regolamento particolare, programma, tabella tempi, comunicazioni del direttore di gara e modulistica. Notifiche con l'app Sportity."
+  active="rally" bodyClass="ctx-rally"
+>
+  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Documenti di gara' }]} />
+
+  <header class="wrap pg-head">
+    <div class="pg-head__row">
+      <div>
+        <h1 class="type-h1">Documenti di gara e comunicazioni ufficiali</h1>
+        <p class="lead" style="margin-top:12px">Tutti i documenti ufficiali del 1° Rally Colli Euganei, dal più recente. Vale sempre l'ultima versione.</p>
+      </div>
+      {hasDocs && <p class="type-mono k-meta">Aggiornato al <time datetime={list[0].iso.slice(0, 10)}>{fmtData(list[0].iso, true)}</time></p>}
+    </div>
+  </header>
+
+  <!-- SPORTITY -->
+  <section id="sportity" class="wrap sp" aria-labelledby="sp-h">
+    <div class="sp__box reveal">
+      <div class="sp__t">
+        <span class="type-mono k-ev">Comunicazioni del direttore di gara</span>
+        <h2 id="sp-h" class="type-h3">Ricevi gli avvisi di gara sul telefono</h2>
+        <p>Le comunicazioni ufficiali arrivano come notifica sul telefono, tramite l'app Sportity.</p>
+        <p>Sportity è l'app usata dai rally di tutto il mondo per l'albo di gara. È gratuita, non chiede registrazione e non serve creare un account. Basta inserire una volta la password del canale del rally.</p>
+        <p>Le comunicazioni pubblicate su Sportity sono le stesse dell'albo di gara qui sotto. Se non riesci a installare l'app, trovi tutto in questa pagina.</p>
+      </div>
+      <div class="sp__steps">
+        <ol class="sp__ol">
+          <li>Scarica l'app Sportity dallo store del tuo telefono. Su iPhone si chiama App Store, su Android si chiama Play Store.</li>
+          <li>Apri l'app. Tocca il segno + in alto a destra.</li>
+          <li>Scrivi la password del canale, in maiuscolo, senza spazi:<br />
+            {rally.sportity.password
+              ? <span class="type-mono sp__pw">{rally.sportity.password}</span>
+              : <span class="hint">la password del canale sarà pubblicata qui con il programma di gara</span>}
+          </li>
+          <li>Tocca Aggiungi. Il canale del 1° Rally Colli Euganei compare nell'elenco.</li>
+          <li>Lascia attive le notifiche. Ogni nuova comunicazione del direttore di gara ti arriva sul telefono.</li>
+        </ol>
+        <div class="sp__store">
+          <a class="link-box" href={rally.sportity.ios} target="_blank" rel="noopener">Scarica l'app per iPhone ↗</a>
+          <a class="link-box" href={rally.sportity.android} target="_blank" rel="noopener">Scarica l'app per Android ↗</a>
+        </div>
+        <span class="hint">I due pulsanti aprono lo store in una nuova pagina</span>
+      </div>
+    </div>
+  </section>
+
+  {hasDocs ? (
+    <>
+      <section id="aggiornamenti" class="wrap section ult" aria-labelledby="ult-h">
+        <h2 id="ult-h" class="type-h2">Pubblicati negli ultimi giorni</h2>
+        <p class="type-body-dark ult__intro">Le tre pubblicazioni più recenti. Se non vedi nulla di nuovo, l'albo non è cambiato.</p>
+        <div class="ult__grid stagger">
+          {ultimi.map(u => (
+            <a class="card card--top reveal ult__a" href={u.href} target="_blank" rel="noopener">
+              <span class="type-mono k-meta"><time datetime={u.iso}>{fmtData(u.iso)}</time></span>
+              <span class="ult__t">{u.title}</span>
+              <span class="type-mono k-ev">{u.revPrev ? `Revisione ${u.rev}` : 'Nuova pubblicazione'}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="albo" class="wrap section albo" aria-labelledby="albo-h">
+        <h2 id="albo-h" class="type-h2">Albo di gara</h2>
+        <p class="type-body-dark albo__intro">Tutti i documenti pubblicati, dal più recente. Ogni riga si apre o si scarica.</p>
+        <dl class="albo__leg">
+          <div><dt class="type-mono">Versione</dt><dd>— un documento può essere corretto e ripubblicato. Il numero di versione dice quante volte è stato aggiornato. Vale sempre l'ultima.</dd></div>
+          <div><dt class="type-mono">Nuovo</dt><dd>— pubblicato negli ultimi 3 giorni.</dd></div>
+          <div><dt class="type-mono">Testo barrato</dt><dd>— documento superato da una versione più recente. Resta in elenco per consultazione, ma non è più valido.</dd></div>
+        </dl>
+        <div class="tbl-wrap">
+          <table class="tbl albo__tbl">
+            <caption class="type-mono">Albo di gara — documenti pubblicati, dal più recente</caption>
+            <thead><tr><th scope="col">Documento</th><th scope="col">Versione</th><th scope="col">Pubblicato il</th><th scope="col">File</th></tr></thead>
+            <tbody>
+              {gruppi.map(g => (
+                <>
+                  <tr class="gruppo"><th colspan="4" scope="colgroup">{g.label}</th></tr>
+                  {g.docs.map(d => (
+                    <tr class:list={{ superato: d.superato }}>
+                      <td>
+                        <div class="albo__doc"><span class="type-mono k-ev">{d.num}</span><span class="doc-title">{d.title}</span>{d.nuovo && <span class="pill pill--pieno">Nuovo</span>}{d.superato && <span class="pill">Superato</span>}</div>
+                        {d.revLine && <div class="hint">{d.revLine}</div>}
+                        {d.superatoLine && <div class="hint">{d.superatoLine}</div>}
+                      </td>
+                      <td class="type-mono">{d.rev ?? '—'}</td>
+                      <td class="type-mono"><time datetime={d.iso}>{fmtData(d.iso, true)}</time></td>
+                      <td>
+                        <div class="albo__file">
+                          <div class="albo__links"><a class="type-mono" href={d.href} target="_blank" rel="noopener">Apri ↗</a><a class="type-mono" href={d.href} download>Scarica ↓</a></div>
+                          <span class="hint">{d.file}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="hint">«Apri» mostra il documento in una nuova pagina · «Scarica» lo salva sul dispositivo</p>
+        <p class="type-body-dark">Per assistenza sui documenti: <a class="albo__mail" href={`mailto:${rally.email}`}>{rally.email}</a></p>
+      </section>
+    </>
+  ) : (
+    <section class="wrap section" aria-label="Albo di gara">
+      <div class="card card--left vuoto reveal">
+        <span class="type-mono k-ev">Albo di gara</span>
+        <p class="type-h3 vuoto__t" role="status">Nessun documento pubblicato</p>
+        <p>Il regolamento particolare di gara, il programma, la tabella tempi e i moduli di iscrizione compaiono qui alla pubblicazione ufficiale, con data, ora e numero di revisione. Le comunicazioni del direttore di gara arrivano anche su Sportity.</p>
+        <a class="type-mono link-line vuoto__a" href="#sportity">Attiva le notifiche su Sportity <span class="arrow-x" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .sp{padding-bottom:var(--sp-4)}
+  .sp__box{display:grid;grid-template-columns:1fr;gap:var(--sp-5);background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--ev);padding:var(--sp-5)}
+  @media(min-width:900px){.sp__box{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  .sp__t{display:flex;flex-direction:column;gap:12px}
+  .sp__t h2{color:#fff}
+  .sp__t p{color:var(--text-body-on-dark)}
+  .sp__steps{display:flex;flex-direction:column;gap:16px}
+  .sp__ol{list-style:decimal;padding-left:22px;display:flex;flex-direction:column;gap:12px;color:#DDD}
+  .sp__ol li::marker{font-family:var(--font-mono);color:var(--ev)}
+  .sp__pw{display:inline-block;margin-top:6px;background:var(--nero);border:1px solid var(--ev);color:#fff;padding:8px 14px;font-size:16px;letter-spacing:.14em}
+  .sp__store{display:flex;gap:12px;flex-wrap:wrap}
+  /* ultimi */
+  .ult h2{color:#fff;margin-bottom:8px}
+  .ult__intro{max-width:56ch;margin-bottom:var(--sp-4)}
+  .ult__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--grid-gutter)}
+  .ult__a{text-decoration:none;color:#fff;transition:border-color var(--dur-fast) var(--ease-out)}
+  .ult__a:hover,.ult__a:focus-visible{border-color:#fff}
+  .ult__t{font-weight:600;color:#fff;flex:1}
+  /* albo */
+  .albo{display:flex;flex-direction:column;gap:16px}
+  .albo h2{color:#fff}
+  .albo__intro{max-width:56ch;margin-top:-8px}
+  .albo__leg{display:flex;flex-direction:column;gap:6px;max-width:80ch;margin-bottom:8px}
+  .albo__leg div{display:flex;gap:8px;flex-wrap:wrap}
+  .albo__leg dt{color:#fff}
+  .albo__leg dd{margin:0;color:var(--text-body-on-dark)}
+  .albo__doc{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .doc-title{color:#fff;font-weight:600}
+  .albo__file{display:flex;flex-direction:column;gap:6px}
+  .albo__links{display:flex;gap:16px}
+  .albo__links a{color:#fff;text-decoration:none;border-bottom:1px solid var(--grigio-500)}
+  .albo__links a:hover{border-bottom-color:#fff}
+  .albo__mail{color:#fff}
+  /* vuoto */
+  .vuoto{max-width:80ch;gap:12px}
+  .vuoto__t{color:#fff}
+  .vuoto__a{color:#fff;align-self:flex-start}
+</style>

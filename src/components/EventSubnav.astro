@@ -1,0 +1,34 @@
+---
+/**
+ * Sub-nav evento: si appoggia sotto l'header sticky (top: var(--header-h)), scorre in orizzontale su mobile.
+ * Colore di sfondo e bordo = colori dell'evento. La voce attiva porta aria-current.
+ */
+interface Item { label: string; href: string }
+interface Props { items: Item[]; current: string; bg: string; accent: string; label: string }
+const { items, current, bg, accent, label } = Astro.props;
+const norm = (p: string) => p.replace(/\/+$/, '') + '/';
+const cur = norm(current);
+---
+<nav class="ev-subnav" aria-label={label} style={`--sub-bg:${bg};--sub-accent:${accent}`}>
+  <div class="wrap ev-subnav__in">
+    {items.map(i => (
+      <a href={i.href} class="ev-subnav__a" aria-current={norm(i.href) === cur ? 'page' : undefined}>{i.label}</a>
+    ))}
+  </div>
+</nav>
+<script>
+  // porta la voce attiva in vista quando la barra scorre in orizzontale (mobile)
+  document.querySelectorAll<HTMLElement>('.ev-subnav [aria-current="page"]').forEach(a => {
+    const box = a.closest<HTMLElement>('.ev-subnav__in');
+    if (box && box.scrollWidth > box.clientWidth) box.scrollLeft = Math.max(0, a.offsetLeft - 16);
+  });
+</script>
+<style>
+  .ev-subnav{position:sticky;top:var(--header-h);z-index:90;background:var(--sub-bg);border-top:3px solid var(--sub-accent)}
+  .ev-subnav__in{display:flex;gap:28px;align-items:center;height:var(--subnav-h);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .ev-subnav__in::-webkit-scrollbar{display:none}
+  .ev-subnav__a{font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:2px solid transparent;padding:4px 0;white-space:nowrap;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
+  .ev-subnav__a:hover,.ev-subnav__a:focus-visible{color:#fff;border-bottom-color:#fff}
+  .ev-subnav__a[aria-current="page"]{color:#fff;border-bottom-color:#fff}
+  .ev-subnav__a:focus-visible{outline-offset:4px}
+</style>

@@ -1,0 +1,150 @@
+---
+/** Rally — Percorso e prove speciali. Mappa (lightbox quando c'è), dati chiave, schede PS, tabella tempi. */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import EventSubnav from '../../components/EventSubnav.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { rally, subnav, prove } from '../../data/rally';
+const url = '/rally-colli-euganei/percorso/';
+---
+<Base
+  title="Percorso e prove speciali — Rally Colli Euganei 2026 | Inversione A U"
+  description="Il percorso del 1° Rally Colli Euganei: mappa, prove speciali con chilometri e orari di passaggio, tabella tempi e zone pubblico. In pubblicazione dopo l'omologazione."
+  active="rally" bodyClass="ctx-rally"
+>
+  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Percorso e prove speciali' }]} />
+
+  <header class="wrap pg-head">
+    <h1 class="type-h1">Percorso e prove speciali</h1>
+    <p class="lead">Dove si corre, quanti chilometri si cronometrano e a che ora passa la prima vettura.</p>
+    <p class="nota">Il percorso è in approvazione. Mappa definitiva, elenco delle prove speciali e zone pubblico saranno pubblicati entro il {rally.pubblicazionePercorso}.</p>
+  </header>
+
+  <!-- MAPPA -->
+  <section id="mappa" class="wrap mappa" aria-labelledby="mappa-h">
+    <h2 id="mappa-h" class="type-h2">La mappa del percorso</h2>
+    <p class="type-body-dark mappa__intro">Il tracciato completo con prove speciali, riordini e parcheggi per il pubblico.</p>
+    {rally.mappaPercorso ? (
+      <button type="button" class="mappa__btn img-zoom" data-lb data-src={rally.mappaPercorso} data-alt="Mappa del percorso del 1° Rally Colli Euganei" aria-label="Ingrandisci la mappa del percorso">
+        <img src={rally.mappaPercorso} alt="Mappa del percorso del 1° Rally Colli Euganei" loading="lazy" decoding="async" />
+        <span class="mappa__zoom" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </span>
+        <span class="type-mono mappa__hint">Tocca per ingrandire</span>
+      </button>
+    ) : (
+      <div class="mappa__attesa card card--top reveal">
+        <img src={rally.targa} alt="" width="200" height="200" loading="lazy" decoding="async" />
+        <div>
+          <p class="type-mono k-ev">In pubblicazione</p>
+          <p class="mappa__attesa-t">La mappa ufficiale del percorso sarà pubblicata qui entro il {rally.pubblicazionePercorso}, dopo l'omologazione ACI Sport.</p>
+        </div>
+      </div>
+    )}
+    <p class="type-body-dark mappa__nota">Non pubblichiamo tracce GPX. La mappa e i punti di accesso alle zone pubblico sono l'unico riferimento ufficiale.</p>
+  </section>
+
+  <!-- DATI CHIAVE -->
+  <section class="wrap dati-sec" aria-label="Dati chiave del percorso">
+    <dl class="dati reveal">
+      <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">30–40 km</dd></div>
+      <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2 · 21–22 nov 2026</dd></div>
+      <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">3 · 2 passaggi</dd></div>
+    </dl>
+  </section>
+
+  <!-- PROVE SPECIALI -->
+  <section id="prove-speciali" class="wrap section ps" aria-labelledby="ps-h">
+    <div class="ps__head">
+      <h2 id="ps-h" class="type-h2">Le prove speciali</h2>
+      <span class="pill pill--ev">Provvisorio</span>
+    </div>
+    <p class="type-body-dark ps__intro">Una scheda per ogni prova: chilometri, orari e come raggiungerla.</p>
+    <p class="ps__p">Le prove si ripetono su due passaggi. Gli orari indicati sono i passaggi della prima vettura: le vetture successive transitano a distanza di un minuto l'una dall'altra.</p>
+    <div class="ps__grid stagger">
+      {prove.map(p => (
+        <article class="ps__card reveal">
+          <div class="ps__media">
+            {p.mappa
+              ? <button type="button" class="ps__mappa img-zoom" data-lb data-src={p.mappa} data-alt={`Tracciato ${p.sigla} ${p.nome}`}><img src={p.mappa} alt={`Tracciato ${p.sigla} ${p.nome}`} loading="lazy" decoding="async" /></button>
+              : <div class="ps__mappa-attesa"><span class="type-mono">Tracciato in pubblicazione</span></div>}
+          </div>
+          <div class="ps__body">
+            <span class="type-mono k-ev">{p.sigla}</span>
+            <h3 class="type-h3">{p.nome}</h3>
+            <dl class="ps__dl">
+              <dt>Lunghezza</dt><dd class="tabular">{p.km}</dd>
+              <dt>Chiusura della strada</dt><dd>{p.chiusura}</dd>
+              <dt>Prima vettura</dt><dd>{p.prima}</dd>
+              <dt>Zona pubblico</dt><dd>{p.pubblico}</dd>
+            </dl>
+            <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>
+            <span class="hint">Si apre in una nuova pagina</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- TABELLA TEMPI -->
+  <section id="tabella-tempi" class="hair" aria-labelledby="tt-h">
+    <div class="wrap section tt">
+      <h2 id="tt-h" class="type-h2">Tabella tempi</h2>
+      <p class="type-body-dark tt__intro">Il documento ufficiale con distanze e orari teorici di passaggio, prova per prova.</p>
+      <p class="tt__p">La tabella distanze e tempi indica, per ogni tratto del rally, i chilometri da percorrere e l'ora teorica di passaggio della prima vettura. È il documento che gli equipaggi usano per rispettare i tempi di trasferimento e che il pubblico usa per sapere quando arrivano le auto.</p>
+      <div class="tt__grid">
+        <div class="card card--left">
+          <h3 class="type-h3">Quando viene pubblicata</h3>
+          <p>La tabella viene pubblicata nella settimana di gara, appena fornita da ACI Sport, e resta scaricabile in PDF fino alla fine del rally.</p>
+        </div>
+        <div class="card tt__dl">
+          <span class="type-mono tt__file"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Scarica la tabella tempi in PDF</span>
+          <span class="hint">Disponibile alla pubblicazione · la troverai anche nei <a href="/rally-colli-euganei/documenti/">documenti di gara</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .mappa{display:flex;flex-direction:column;gap:12px;padding-bottom:var(--sp-8)}
+  .mappa h2{color:#fff}
+  .mappa__intro{max-width:56ch}
+  .mappa__btn{position:relative;display:block;width:100%;background:var(--carbone);border:1px solid var(--border-on-dark);aspect-ratio:2/1;overflow:hidden;text-align:left}
+  .mappa__btn img{width:100%;height:100%;object-fit:cover}
+  .mappa__zoom{position:absolute;top:12px;right:12px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);color:#fff}
+  .mappa__hint{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.7);color:#fff;padding:6px 10px}
+  .mappa__attesa{flex-direction:row;align-items:center;flex-wrap:wrap;gap:24px}
+  .mappa__attesa img{width:120px}
+  .mappa__attesa-t{color:#DDD;max-width:56ch;margin-top:8px}
+  .mappa__nota{max-width:70ch}
+  .dati-sec{padding-bottom:var(--sp-4)}
+  /* prove */
+  .ps__head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .ps h2{color:#fff}
+  .ps__intro{max-width:56ch;margin-bottom:12px}
+  .ps__p{color:#DDD;max-width:70ch;margin-bottom:var(--sp-5)}
+  .ps__grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:768px){.ps__grid{grid-template-columns:repeat(3,1fr)}}
+  .ps__card{background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--ev);display:flex;flex-direction:column}
+  .ps__media{aspect-ratio:16/10;background:#1A1A1A;overflow:hidden}
+  .ps__mappa{display:block;width:100%;height:100%;overflow:hidden}
+  .ps__mappa img{width:100%;height:100%;object-fit:cover}
+  .ps__mappa-attesa{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--grigio-450);border-bottom:1px solid var(--border-on-dark)}
+  .ps__body{padding:var(--sp-4);display:flex;flex-direction:column;gap:12px}
+  .ps__body h3{color:#fff;margin-top:-4px}
+  .ps__dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:15px}
+  .ps__dl dt{color:var(--grigio-450)}
+  .ps__dl dd{margin:0;color:#fff}
+  /* tabella tempi */
+  .tt{display:flex;flex-direction:column;gap:12px}
+  .tt h2{color:#fff}
+  .tt__intro{max-width:56ch}
+  .tt__p{color:#DDD;max-width:70ch;margin-bottom:var(--sp-3)}
+  .tt__grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:768px){.tt__grid{grid-template-columns:1fr 1fr}}
+  .tt__dl{justify-content:center}
+  .tt__file{display:inline-flex;align-items:center;gap:10px;color:var(--grigio-450)}
+  .tt__dl .hint a{color:#fff}
+</style>

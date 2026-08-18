@@ -1,0 +1,256 @@
+---
+/**
+ * Hub Rally — 1° Rally Colli Euganei ACI Sport.
+ * Struttura V4: hero + countdown · accesso rapido · due porte (corro / vengo a vedere) · percorso · storia · notizie · sponsor · contatti.
+ */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import EventSubnav from '../../components/EventSubnav.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import SponsorBlock from '../../components/SponsorBlock.astro';
+import { rally, subnav, statoRally } from '../../data/rally';
+import { annuali, sponsorEvento } from '../../data/sponsor';
+
+const { stato, giorni } = statoRally();
+const sponsorRally = [...annuali, ...sponsorEvento('rally')];
+const news = [
+  { image: '/foto/fabia_skoda_bosco.jpg', category: 'Concorrenti', date: '12 LUG 2026', title: 'Il 1° Rally Colli Euganei è ufficiale', excerpt: 'Iscrizioni: apertura in autunno. Date e modulistica in arrivo.', href: '/news/rally-colli-euganei-ufficiale/' },
+  { image: '/foto/polo_pubblico_sera.jpg', category: 'Spettatori', date: '03 LUG 2026', title: 'Zone pubblico: dove vedere il rally', excerpt: 'Le aree consigliate lungo le tre prove speciali, con parcheggi e orari.', href: '/news/rally-zone-pubblico/' },
+];
+---
+<Base
+  title="Rally Colli Euganei 2026 · 21–22 novembre | Inversione A U"
+  description="Il 1° Rally Colli Euganei ACI Sport si corre il 21 e 22 novembre 2026 sui Colli Euganei, Padova. Percorso, iscrizioni, informazioni per il pubblico e documenti di gara."
+  active="rally" bodyClass="ctx-rally"
+>
+  <EventSubnav items={subnav} current={rally.base} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-h1">
+    <img class="hero__img" src={rally.hero} alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap hero__in">
+      <img class="hero__targa" src={rally.targa} alt="" width="220" height="220" decoding="async" />
+      <div class="hero__meta">
+        <p class="type-mono hero__kicker">{rally.dataLabel} · {rally.luogo} · titolazione ACI Sport</p>
+        <img class="hero__aci" src="/img/logo_aci_sport.png" alt="ACI Sport" width="88" height="40" decoding="async" />
+      </div>
+      <h1 id="hero-h1" class="type-display hero__h1">{rally.nome}</h1>
+      <p class="hero__intro">Prima edizione. Due giorni di gara sulle strade dei Colli Euganei, con titolazione ACI Sport.</p>
+      {stato === 'pre' && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
+      {stato === 'in' && <p class="type-mono hero__count hero__count--live">Il rally è in corso</p>}
+      {stato === 'post' && <a class="type-mono link-line hero__count" href="/foto-e-video/rally-colli-euganei-2026/">Rally concluso · classifiche e foto <span class="arrow-x" aria-hidden="true">→</span></a>}
+      <div class="hero__cta">
+        <a href="/rally-colli-euganei/documenti/" class="btn btn--primary">Apri i documenti di gara</a>
+        <a href="/rally-colli-euganei/percorso/" class="btn btn--secondary">Guarda il percorso</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESSO RAPIDO -->
+  <nav class="wrap qa" aria-label="Accesso rapido al rally">
+    <ul class="qa__grid">
+      {[
+        ['01', 'Concorrenti', '/rally-colli-euganei/concorrenti/'],
+        ['02', 'Spettatori', '/rally-colli-euganei/spettatori/'],
+        ['03', 'Documenti di gara', '/rally-colli-euganei/documenti/'],
+        ['04', 'Accrediti stampa', '/stampa/accrediti/'],
+      ].map(([n, t, h]) => (
+        <li><a href={h} class="type-mono"><span class="qa__n">{n}</span>{t}</a></li>
+      ))}
+    </ul>
+  </nav>
+
+  <!-- DUE PORTE -->
+  <section class="wrap section porte stagger" aria-label="Scegli il tuo percorso">
+    <a href="/rally-colli-euganei/concorrenti/" class="porta porta--verde reveal">
+      <span class="type-mono porta__k">Piloti, navigatori e team</span>
+      <h2 class="type-h2">Corro il rally</h2>
+      <p>Come iscriversi, quali licenze servono, documenti di gara ed elenco degli equipaggi ammessi.</p>
+      <span class="type-mono porta__l">Apri l'area concorrenti <span class="arrow-x" aria-hidden="true">→</span></span>
+    </a>
+    <a href="/rally-colli-euganei/spettatori/" class="porta porta--teal reveal">
+      <span class="type-mono porta__k">Pubblico, famiglie e appassionati</span>
+      <h2 class="type-h2">Vengo a vedere il rally</h2>
+      <p>Programma e orari, dove guardare in sicurezza, parcheggi e come arrivare sui Colli.</p>
+      <span class="type-mono porta__l">Apri le informazioni per il pubblico <span class="arrow-x" aria-hidden="true">→</span></span>
+    </a>
+  </section>
+
+  <!-- PERCORSO -->
+  <section class="wrap section percorso" aria-labelledby="percorso-h">
+    <div class="percorso__head">
+      <div>
+        <h2 id="percorso-h" class="type-h2 reveal-wipe"><span>Il percorso e le prove speciali</span></h2>
+        <p class="type-body-dark percorso__intro">Le prove speciali sono in approvazione. Qui pubblicheremo mappa, chilometri e orari.</p>
+      </div>
+      <a href="/rally-colli-euganei/percorso/" class="type-mono link-line percorso__link">Guarda il percorso <span class="arrow-x" aria-hidden="true">→</span></a>
+    </div>
+    <p class="percorso__p">Il tracciato attraversa le strade dei Colli Euganei. L'elenco delle prove speciali e la tabella tempi saranno pubblicati dopo l'omologazione del percorso, entro il {rally.pubblicazionePercorso}.</p>
+    <div class="percorso__grid">
+      <div class="percorso__targa reveal">
+        <img src={rally.targa} alt="Targa 1° Rally Colli Euganei 2026" width="320" height="320" loading="lazy" decoding="async" />
+        <span class="hint">Mappa dei Colli Euganei — prove speciali in via di definizione</span>
+      </div>
+      <dl class="dati reveal">
+        <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">30–40 km</dd></div>
+        <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2</dd></div>
+        <div><dt class="type-mono">Al via</dt><dd class="type-mono">21–22 nov 2026</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- STORIA (fondo bianco) -->
+  <section class="on-light" aria-labelledby="storia-h">
+    <div class="wrap section storia">
+      <div class="storia__t">
+        <p class="type-mono storia__k">La storia</p>
+        <h2 id="storia-h" class="type-h2">Dopo più di trent'anni il rally torna sui Colli Euganei</h2>
+        <p>Su queste strade si correva un rally: tornanti stretti, muretti a secco, pubblico sui prati dei Colli. Quella storia si è interrotta più di trent'anni fa.</p>
+        <p>Il 1° Rally Colli Euganei la riprende, con titolazione ACI Sport e l'organizzazione di Inversione A U A.S.D. Non è una rievocazione: è una gara vera, a cronometro, su strade chiuse al traffico.</p>
+      </div>
+      <dl class="storia__dl reveal">
+        <div><dt class="type-mono">Ultimo rally sui Colli</dt><dd>Anni '80 · Rally del Santo</dd></div>
+        <div><dt class="type-mono">Prima edizione</dt><dd>21–22 novembre 2026</dd></div>
+        <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport</dd></div>
+        <div><dt class="type-mono">Organizzazione</dt><dd>Inversione A U A.S.D.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- NOTIZIE -->
+  <section class="wrap section" aria-labelledby="news-h">
+    <div class="percorso__head">
+      <div>
+        <h2 id="news-h" class="type-h2">Ultime notizie sul rally</h2>
+        <p class="type-body-dark percorso__intro">Comunicati e aggiornamenti su iscrizioni, percorso e informazioni per il pubblico.</p>
+      </div>
+      <a href="/news/" class="type-mono link-line percorso__link">Leggi tutte le notizie del rally <span class="arrow-x" aria-hidden="true">→</span></a>
+    </div>
+    <div class="news-grid stagger">
+      {news.map(n => <NewsCard {...n} />)}
+    </div>
+  </section>
+
+  <!-- SPONSOR -->
+  <section id="sponsor-rally" class="hair" aria-labelledby="sponsor-h">
+    <div class="wrap section sponsor">
+      <h2 id="sponsor-h" class="type-h2">Sponsor del rally</h2>
+      <p class="type-body-dark sponsor__p">La prima edizione è sostenuta dai partner di stagione. Gli sponsor propri del rally si aggiungono qui man mano che gli accordi si chiudono.</p>
+      <SponsorBlock title="Partner di stagione" sponsors={sponsorRally} columns={5} mono={false} headingLevel={3} />
+      <a href="/sponsor/diventa-sponsor/" class="type-mono link-line sponsor__cta">Diventa sponsor del rally <span class="arrow-x" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti" class="hair" aria-labelledby="contatti-h">
+    <div class="wrap section contatti">
+      <div class="contatti__t">
+        <p class="type-mono k-ev">Contatti</p>
+        <h2 id="contatti-h" class="type-h2">Scrivi all'organizzazione</h2>
+        <p class="type-body-dark">Domande su iscrizioni, percorso o accrediti: rispondiamo entro 3 giorni lavorativi.</p>
+        <p class="type-body-dark">Per le comunicazioni ufficiali del direttore di gara fa fede l'albo di gara. Per tutto il resto scrivici o chiamaci.</p>
+        <ul class="contatti__list">
+          <li><a class="type-mono link-line" href={`mailto:${rally.email}`}>{rally.email}</a></li>
+          {rally.telefoni.map(t => <li><a class="type-mono link-line" href={`tel:${t.tel}`}>{t.label} · {t.num}</a></li>)}
+        </ul>
+      </div>
+      <!-- FASE 5: Wix Forms. Per ora apre il client di posta con i campi compilati. -->
+      <form class="contatti__form" data-mailform data-to={rally.email} data-subject="Richiesta · Rally Colli Euganei" novalidate>
+        <label class="field"><span>Nome e cognome</span><input type="text" name="nome" autocomplete="name" required /></label>
+        <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
+        <label class="field"><span>Messaggio</span><textarea name="messaggio" rows="4" required></textarea></label>
+        <div><button type="submit" class="btn btn--ev">Invia richiesta</button></div>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Modulo "mailto": apre il programma di posta con oggetto e testo già compilati (FASE 5 → Wix Forms)
+  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const msg = f.querySelector<HTMLElement>('.form-msg');
+      if (!f.checkValidity()) { msg && (msg.textContent = 'Controlla i campi evidenziati: nome, email e messaggio sono obbligatori.'); f.reportValidity(); return; }
+      const d = new FormData(f);
+      const body = [...d.entries()].filter(([k]) => k !== 'messaggio').map(([k, v]) => `${k}: ${v}`).join('\n') + '\n\n' + (d.get('messaggio') ?? '');
+      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
+      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
+    });
+  });
+</script>
+
+<style>
+  .hero{position:relative;height:78vh;min-height:560px;background:var(--nero);overflow:hidden;display:flex}
+  .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.75) 100%)}
+  .hero__in{position:relative;align-self:flex-end;width:100%;padding-bottom:var(--sp-8);display:flex;flex-direction:column;gap:14px;color:#fff}
+  .hero__targa{width:clamp(96px,12vw,140px);height:auto;margin-bottom:6px}
+  .hero__meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .hero__kicker{color:var(--grigio-200);letter-spacing:.08em}
+  .hero__aci{height:28px;width:auto}
+  .hero__h1{color:#fff;font-size:clamp(34px,6vw,84px);text-wrap:balance;max-width:16ch}
+  .hero__intro{max-width:52ch;color:#EEE}
+  .hero__count{color:var(--rally-verde);font-size:14px}
+  .hero__count .cifra{color:#fff;font-size:1.3em}
+  .hero__count--live{color:var(--rally-verde)}
+  .hero__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
+  /* accesso rapido */
+  .qa{padding-left:0;padding-right:0}
+  .qa__grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:900px){.qa__grid{grid-template-columns:repeat(4,1fr)}}
+  .qa__grid a{display:flex;align-items:center;gap:12px;padding:20px clamp(16px,3vw,28px);color:#fff;text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out)}
+  .qa__grid li:nth-child(2n) a{border-right:0}
+  @media(min-width:900px){.qa__grid a{border-bottom:0}.qa__grid li:nth-child(2n) a{border-right:1px solid var(--border-on-dark)}.qa__grid li:last-child a{border-right:0}}
+  .qa__grid a:hover,.qa__grid a:focus-visible{background:var(--carbone)}
+  .qa__n{color:var(--rally-verde)}
+  /* porte */
+  .porte{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
+  @media(min-width:768px){.porte{grid-template-columns:1fr 1fr}}
+  .porta{display:flex;flex-direction:column;gap:12px;padding:clamp(24px,4vw,40px);text-decoration:none;color:#fff;background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--porta);transition:border-color var(--dur-fast) var(--ease-out),background-color var(--dur-fast) var(--ease-out);min-height:260px}
+  .porta--verde{--porta:var(--rally-verde)} .porta--teal{--porta:var(--rally-teal)}
+  .porta:hover,.porta:focus-visible{border-color:var(--porta);background:#151515}
+  .porta__k{color:var(--porta)}
+  .porta h2{color:#fff}
+  .porta p{color:var(--text-body-on-dark);max-width:44ch;flex:1}
+  .porta__l{color:#fff}
+  /* percorso */
+  .percorso__head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-3)}
+  .percorso__head h2{color:#fff;margin-bottom:8px}
+  .percorso__intro{max-width:56ch}
+  .percorso__link{color:var(--grigio-450);white-space:nowrap}.percorso__link:hover{color:#fff}
+  .percorso__p{color:#DDD;max-width:70ch;margin-bottom:var(--sp-5)}
+  .percorso__grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter);align-items:start}
+  @media(min-width:900px){.percorso__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}}
+  .percorso__targa{background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+  .percorso__targa img{width:min(60%,260px)}
+  /* storia */
+  .storia{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  @media(min-width:900px){.storia{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
+  .storia__k{color:var(--rally-teal-scuro);margin-bottom:12px}
+  .storia h2{margin-bottom:20px;text-wrap:balance}
+  .storia__t p{color:var(--text-secondary);max-width:60ch;margin-bottom:14px}
+  .storia__dl{display:flex;flex-direction:column;border-top:2px solid var(--nero)}
+  .storia__dl div{display:grid;grid-template-columns:1fr;gap:4px;padding:16px 0;border-bottom:1px solid var(--border-divider)}
+  @media(min-width:520px){.storia__dl div{grid-template-columns:180px 1fr;gap:16px}}
+  .storia__dl dt{color:#6B6B6B}
+  .storia__dl dd{margin:0;color:var(--nero);font-weight:600}
+  /* notizie */
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+  /* sponsor */
+  .sponsor{display:flex;flex-direction:column;gap:24px}
+  .sponsor h2{color:#fff}
+  .sponsor__p{max-width:64ch;margin-top:-8px}
+  .sponsor__cta{color:#fff;align-self:flex-start}
+  /* contatti */
+  .contatti{display:grid;grid-template-columns:1fr;gap:var(--sp-6)}
+  @media(min-width:900px){.contatti{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  .contatti__t{display:flex;flex-direction:column;gap:12px}
+  .contatti__t h2{color:#fff}
+  .contatti__t p{max-width:52ch}
+  .contatti__list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .contatti__list a{color:#fff}
+  .contatti__form{display:flex;flex-direction:column;gap:18px;background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4)}
+</style>

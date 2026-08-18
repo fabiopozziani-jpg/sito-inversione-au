@@ -1,0 +1,26 @@
+---
+/** Briciole: ultimo elemento senza link e con aria-current. */
+interface Item { label: string; href?: string }
+interface Props { items: Item[]; light?: boolean }
+const { items, light = false } = Astro.props;
+---
+<nav class:list={['bc', { 'bc--light': light }]} aria-label="Percorso di navigazione">
+  <ol class="wrap bc__ol">
+    {items.map((it, i) => (
+      <li class="bc__li">
+        {it.href && i < items.length - 1 ? <a href={it.href}>{it.label}</a> : <span aria-current="page">{it.label}</span>}
+        {i < items.length - 1 && <span class="bc__sep" aria-hidden="true">/</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+<style>
+  .bc{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450)}
+  .bc__ol{display:flex;flex-wrap:wrap;gap:8px;padding-top:var(--sp-3);padding-bottom:0}
+  .bc__li{display:inline-flex;gap:8px;align-items:center}
+  .bc a{color:var(--grigio-450);text-decoration:none;transition:color var(--dur-fast) var(--ease-out)}
+  .bc a:hover,.bc a:focus-visible{color:#fff}
+  .bc [aria-current]{color:#fff}
+  .bc__sep{color:var(--grigio-500)}
+  .bc--light,.bc--light a{color:#6B6B6B}.bc--light a:hover,.bc--light [aria-current]{color:var(--nero)}
+</style>

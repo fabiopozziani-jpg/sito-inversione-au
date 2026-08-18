@@ -1,0 +1,207 @@
+---
+/** Rally — Concorrenti: iscrizioni (3 stati), requisiti, scadenze, rimando all'albo, elenco iscritti con filtro. */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import EventSubnav from '../../components/EventSubnav.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { rally, subnav, scadenze, requisiti, iscritti, classi, iscrittiAggiornatoAl, iscrittiPdf } from '../../data/rally';
+const url = '/rally-colli-euganei/concorrenti/';
+const stato = rally.statoIscrizioni;
+const isc = {
+  'non-aperte': { kicker: 'Iscrizioni non ancora aperte', titolo: 'Le iscrizioni non sono ancora aperte', testo: `L'apertura è prevista per ${rally.aperturaPrevista}. Lasciaci la tua email: ti scriviamo il giorno stesso in cui le iscrizioni aprono.` },
+  'aperte': { kicker: 'Iscrizioni aperte', titolo: `Iscrizioni aperte fino al ${rally.chiusuraIscrizioni}`, testo: 'La domanda di iscrizione si compila sul portale ACI Sport. Tieni a portata di mano licenza, dati della vettura e dati del navigatore.' },
+  'chiuse': { kicker: 'Iscrizioni chiuse', titolo: 'Iscrizioni chiuse', testo: `Le iscrizioni si sono chiuse il ${rally.chiusuraIscrizioni}. Gli equipaggi ammessi sono nell'elenco iscritti qui sotto.` },
+}[stato];
+const haIscritti = iscritti.length > 0;
+---
+<Base
+  title="Iscrizioni e concorrenti — Rally Colli Euganei 2026 | Inversione A U"
+  description="Come iscriversi al 1° Rally Colli Euganei ACI Sport: licenze richieste, scadenze, modulo di iscrizione ed elenco degli equipaggi ammessi."
+  active="rally" bodyClass="ctx-rally"
+>
+  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Concorrenti' }]} />
+
+  <header class="wrap pg-head">
+    <h1 class="type-h1">Concorrenti: iscrizione al Rally Colli Euganei</h1>
+    <p class="lead">Come iscriversi, quali licenze servono, quali documenti scaricare e chi è ammesso alla partenza.</p>
+  </header>
+
+  <div class="wrap">
+    <div class="card card--rosso avviso" role="note">
+      <span class="type-mono avviso__k">Elenco provvisorio</span>
+      <p class="avviso__p">I requisiti qui sotto non sono ancora definitivi. Fanno fede il Regolamento Particolare di Gara e le disposizioni ACI Sport, che pubblichiamo nell'albo di gara. Verifica l'ultima versione prima di iscriverti.</p>
+      <span class="hint">Ultima revisione · 12 LUG 2026</span>
+    </div>
+  </div>
+
+  <!-- ISCRIZIONI -->
+  <section id="iscrizioni" class="wrap section isc" aria-labelledby="isc-h">
+    <h2 id="isc-h" class="type-h2">Iscrizioni e requisiti di licenza</h2>
+    <p class="type-body-dark isc__intro">Stato delle iscrizioni, licenze richieste e date da tenere sotto controllo.</p>
+    <div class="isc__grid">
+      <div class="isc__col">
+        <div class="card card--top reveal">
+          <span class="type-mono k-ev">{isc.kicker}</span>
+          <h3 class="type-h3">{isc.titolo}</h3>
+          <p>{isc.testo}</p>
+          {stato === 'non-aperte' && (
+            <form class="avviso-form" data-mailform data-to={rally.email} data-subject="Avvisami all'apertura delle iscrizioni · Rally Colli Euganei" novalidate>
+              <div class="avviso-form__row">
+                <label class="field"><span>La tua email</span><input type="email" name="email" placeholder="nome@email.it" autocomplete="email" required /></label>
+                <button type="submit" class="btn btn--ev">Avvisami all'apertura</button>
+              </div>
+              <span class="hint">Usiamo l'indirizzo solo per questo avviso</span>
+              <p class="form-msg" role="status" aria-live="polite"></p>
+            </form>
+          )}
+          {stato === 'aperte' && (
+            <div class="isc__cta">
+              <a href={rally.moduloUrl} target="_blank" rel="noopener" class="btn btn--ev">Compila la domanda di iscrizione ↗</a>
+              <span class="hint">Si apre in una nuova pagina, sul sito ACI Sport</span>
+              <p>Dopo l'invio riceverai la conferma dalla segreteria entro 3 giorni lavorativi.</p>
+            </div>
+          )}
+          {stato === 'chiuse' && <a href="#elenco-iscritti" class="btn btn--secondary">Vai all'elenco iscritti</a>}
+        </div>
+        <div class="req">
+          <div class="req__head"><h3 class="type-h3">Requisiti di licenza</h3><span class="pill pill--ev">Provvisorio</span></div>
+          <p class="type-body-dark">Sono ammessi equipaggi con licenza ACI Sport in corso di validità:</p>
+          <ul class="lista-ev">{requisiti.map(r => <li>{r}</li>)}</ul>
+          <p class="hint">In caso di dubbio scrivi a <a href={`mailto:${rally.email}`}>{rally.email}</a></p>
+        </div>
+      </div>
+      <div class="isc__col">
+        <h3 class="type-h3">Date da segnare</h3>
+        <div class="tbl-wrap">
+          <table class="tbl tbl--scad">
+            <thead><tr><th scope="col">Fase</th><th scope="col">Data</th><th scope="col">Ora</th></tr></thead>
+            <tbody>{scadenze.map(s => <tr><th scope="row">{s.fase}</th><td>{s.data}</td><td class="tabular">{s.ora}</td></tr>)}</tbody>
+          </table>
+        </div>
+        <p class="hint">Le date confermate vengono pubblicate anche nell'albo di gara</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALBO (fondo bianco) -->
+  <section class="on-light" aria-labelledby="albo-h">
+    <div class="wrap section albo">
+      <div>
+        <p class="type-mono albo__k">Albo di gara digitale</p>
+        <h2 id="albo-h" class="type-h2">Documenti di gara</h2>
+        <p class="albo__p">Regolamento, programma, tabella tempi, comunicazioni del direttore di gara e modulistica.</p>
+        <p class="albo__p">Ogni documento è numerato, datato e vale nella sua ultima versione. L'albo resta aggiornato fino al giorno di gara.</p>
+      </div>
+      <a href="/rally-colli-euganei/documenti/" class="btn btn--ev">Apri l'albo di gara</a>
+    </div>
+  </section>
+
+  <!-- ELENCO ISCRITTI -->
+  <section id="elenco-iscritti" class="wrap section el" aria-labelledby="el-h">
+    <div class="el__head">
+      <div>
+        <h2 id="el-h" class="type-h2">Elenco iscritti</h2>
+        <p class="type-body-dark">Tutti gli equipaggi ammessi. Cerca il tuo nome o filtra per classe.</p>
+      </div>
+      {iscrittiPdf && <span class="el__pdf"><a class="link-box" href={iscrittiPdf} target="_blank" rel="noopener">Scarica l'elenco iscritti in PDF ↓</a><span class="hint">Il PDF è il documento ufficiale · si apre in una nuova pagina</span></span>}
+    </div>
+    {haIscritti ? (
+      <div class="el__body" data-iscritti>
+        <div class="el__filtri">
+          <label class="field el__classe"><span>Classe</span>
+            <select name="classe" data-f-classe><option value="">Tutte le classi</option>{classi.map(c => <option value={c}>{c}</option>)}</select>
+          </label>
+          <label class="field el__cerca"><span>Cerca per cognome, vettura o numero di gara</span><input type="search" name="q" placeholder="Es. Fabia, Sartori, 4" data-f-q /></label>
+          <p class="hint el__conta" aria-live="polite" data-conta>{iscritti.length} equipaggi su {iscritti.length}</p>
+        </div>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <caption class="type-mono">Elenco iscritti{iscrittiAggiornatoAl && ` · aggiornato al ${iscrittiAggiornatoAl}`}</caption>
+            <thead><tr><th scope="col">N° di gara</th><th scope="col">Equipaggio</th><th scope="col">Vettura</th><th scope="col">Classe</th></tr></thead>
+            <tbody>
+              {iscritti.map(i => <tr data-classe={i.classe} data-testo={`${i.equipaggio} ${i.vettura} ${i.num}`.toLowerCase()}><th scope="row" class="num">{i.num}</th><td class="el__eq">{i.equipaggio}</td><td>{i.vettura}</td><td class="type-mono">{i.classe}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <div class="el__vuoto" hidden data-vuoto>
+          <p role="status" aria-live="polite">Nessun equipaggio corrisponde alla ricerca. Prova con un cognome, con il nome della vettura o con il numero di gara.</p>
+          <button type="button" class="btn btn--secondary" data-reset>Cancella la ricerca</button>
+        </div>
+      </div>
+    ) : (
+      <div class="card card--left reveal">
+        <p role="status" class="el__attesa">L'elenco degli equipaggi ammessi viene pubblicato nella settimana di gara. Lo trovi qui, leggibile dal telefono e scaricabile in PDF.</p>
+      </div>
+    )}
+  </section>
+</Base>
+
+<script>
+  // filtro elenco iscritti (classe + ricerca), tutto lato client, senza dipendenze
+  const box = document.querySelector<HTMLElement>('[data-iscritti]');
+  if (box) {
+    const sel = box.querySelector<HTMLSelectElement>('[data-f-classe]')!;
+    const q = box.querySelector<HTMLInputElement>('[data-f-q]')!;
+    const rows = [...box.querySelectorAll<HTMLTableRowElement>('tbody tr')];
+    const conta = box.querySelector<HTMLElement>('[data-conta]')!;
+    const vuoto = box.querySelector<HTMLElement>('[data-vuoto]')!;
+    const tbl = box.querySelector<HTMLElement>('.tbl-wrap')!;
+    const run = () => {
+      const c = sel.value, t = q.value.trim().toLowerCase();
+      let n = 0;
+      rows.forEach(r => { const ok = (!c || r.dataset.classe === c) && (!t || (r.dataset.testo ?? '').includes(t)); r.hidden = !ok; if (ok) n++; });
+      conta.textContent = `${n} equipaggi su ${rows.length}`;
+      vuoto.hidden = n > 0; tbl.hidden = n === 0;
+    };
+    sel.addEventListener('change', run); q.addEventListener('input', run);
+    box.querySelector('[data-reset]')?.addEventListener('click', () => { sel.value = ''; q.value = ''; run(); q.focus(); });
+  }
+  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const msg = f.querySelector<HTMLElement>('.form-msg');
+      if (!f.checkValidity()) { msg && (msg.textContent = 'Inserisci un indirizzo email valido.'); f.reportValidity(); return; }
+      const d = new FormData(f);
+      const body = [...d.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
+      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
+      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
+    });
+  });
+</script>
+
+<style>
+  .avviso{gap:8px}
+  .avviso__k{color:var(--alert-rosso)}
+  .avviso__p{color:#fff;max-width:80ch}
+  .isc h2{color:#fff;margin-bottom:8px}
+  .isc__intro{max-width:56ch;margin-bottom:var(--sp-5)}
+  .isc__grid{display:grid;grid-template-columns:1fr;gap:var(--sp-6)}
+  @media(min-width:900px){.isc__grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+  .isc__col{display:flex;flex-direction:column;gap:var(--sp-4);min-width:0}
+  .isc__col h3{color:#fff}
+  .avviso-form{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+  .avviso-form__row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+  .avviso-form__row .field{flex:1 1 220px}
+  .isc__cta{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:8px}
+  .req{display:flex;flex-direction:column;gap:12px}
+  .req__head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .req .hint a{color:#fff}
+  .tbl--scad{min-width:0}
+  /* albo (bianco) */
+  .albo{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-5);flex-wrap:wrap}
+  .albo__k{color:var(--rally-teal-scuro);margin-bottom:12px}
+  .albo h2{margin-bottom:12px}
+  .albo__p{color:var(--text-secondary);max-width:60ch;margin-bottom:8px}
+  /* elenco */
+  .el h2{color:#fff;margin-bottom:8px}
+  .el__head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
+  .el__pdf{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .el__body{display:flex;flex-direction:column;gap:16px}
+  .el__filtri{display:grid;grid-template-columns:1fr;gap:16px;align-items:end}
+  @media(min-width:768px){.el__filtri{grid-template-columns:220px 1fr auto}}
+  .el__eq{font-weight:600;color:#fff}
+  .el__vuoto{display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:var(--sp-4);border:1px solid var(--border-on-dark)}
+  .el__vuoto p{color:#DDD}
+  .el__attesa{color:#DDD !important;max-width:70ch}
+</style>
