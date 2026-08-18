@@ -1,0 +1,178 @@
+---
+/**
+ * Header master — sempre monocromo. Sticky, si condensa oltre 120px di scorrimento.
+ * I due menu a tendina sono bottoni con aria-expanded: funzionano con mouse, tastiera e touch.
+ */
+interface Props { active?: string }
+const { active = '' } = Astro.props;
+const is = (k: string) => (active === k ? 'page' : undefined);
+
+const rally = [
+  ['Il Rally', '/rally-colli-euganei/'],
+  ['Percorso e prove speciali', '/rally-colli-euganei/percorso/'],
+  ['Concorrenti', '/rally-colli-euganei/concorrenti/'],
+  ['Spettatori', '/rally-colli-euganei/spettatori/'],
+  ['Documenti di gara', '/rally-colli-euganei/documenti/'],
+  ['Stampa e accrediti', '/stampa/accrediti/'],
+];
+const eventi = [
+  ['Calendario stagione', '/eventi/'],
+  ['Polo Motor Show', '/eventi/polo-motor-show/'],
+  ['Legnaro Motori', '/eventi/legnaro-motori/'],
+  ['Archivio edizioni', '/eventi/archivio/'],
+];
+---
+<header class="site-header" id="site-header">
+  <div class="ia-utility">
+    <div class="wrap ia-utility__in">
+      <span class="ia-desk type-mono text-meta">Associazione sportiva dilettantistica Inversione A U</span>
+      <a class="type-mono link-line ia-utility__press" href="/stampa/">Stampa <span class="arrow-diag" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="wrap ia-bar">
+    <a href="/" class="ia-logo" aria-label="Inversione A U — home">
+      <img src="/img/logo_negativo_bianco.png" alt="Inversione A U" width="160" height="46" />
+    </a>
+
+    <nav class="ia-desk ia-nav" aria-label="Principale">
+      <div class="ia-drop" data-drop>
+        <a href="/rally-colli-euganei/" class="ia-nav__a" aria-current={is('rally')}>Rally Colli Euganei</a>
+        <button type="button" class="ia-drop__btn" aria-expanded="false" aria-controls="drop-rally" aria-label="Apri il menu Rally Colli Euganei">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="ia-drop__panel" id="drop-rally" hidden>
+          {rally.map(([l, h]) => <li><a href={h}>{l}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="ia-drop" data-drop>
+        <a href="/eventi/" class="ia-nav__a" aria-current={is('eventi')}>Eventi</a>
+        <button type="button" class="ia-drop__btn" aria-expanded="false" aria-controls="drop-eventi" aria-label="Apri il menu Eventi">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="ia-drop__panel" id="drop-eventi" hidden>
+          {eventi.map(([l, h]) => <li><a href={h}>{l}</a></li>)}
+        </ul>
+      </div>
+
+      <a href="/associazione/" class="ia-nav__a" aria-current={is('associazione')}>Associazione</a>
+      <a href="/news/" class="ia-nav__a" aria-current={is('news')}>Notizie</a>
+      <a href="/foto-e-video/" class="ia-nav__a" aria-current={is('media')}>Foto e video</a>
+      <a href="/sponsor/" class="ia-nav__a" aria-current={is('sponsor')}>Sponsor</a>
+      <a href="/contatti/" class="btn btn--primary ia-cta">Contatti</a>
+    </nav>
+
+    <button type="button" class="ia-burg type-mono" aria-expanded="false" aria-controls="menu-mobile">Menu</button>
+  </div>
+
+  <div class="menu-mobile" id="menu-mobile" hidden>
+    <div class="menu-mobile__top">
+      <img src="/img/logo_negativo_bianco.png" alt="Inversione A U" width="140" height="40" />
+      <button type="button" class="type-mono menu-mobile__close">Chiudi ✕</button>
+    </div>
+    <nav class="menu-mobile__nav wrap" aria-label="Menu principale">
+      <a href="/rally-colli-euganei/" class="type-h3 menu-mobile__h">Rally Colli Euganei</a>
+      <ul class="menu-mobile__sub" style="--acc:var(--rally-verde)">
+        {rally.slice(1).map(([l, h]) => <li><a href={h} class="type-mono">{l}</a></li>)}
+      </ul>
+      <a href="/eventi/" class="type-h3 menu-mobile__h hair">Eventi</a>
+      <ul class="menu-mobile__sub" style="--acc:var(--polo)">
+        {eventi.slice(1).map(([l, h]) => <li><a href={h} class="type-mono">{l}</a></li>)}
+      </ul>
+      <a href="/associazione/" class="type-h3 menu-mobile__h hair">Associazione</a>
+      <a href="/news/" class="type-h3 menu-mobile__h hair">Notizie</a>
+      <a href="/foto-e-video/" class="type-h3 menu-mobile__h hair">Foto e video</a>
+      <a href="/sponsor/" class="type-h3 menu-mobile__h hair">Sponsor</a>
+      <div class="menu-mobile__cta">
+        <a href="/contatti/" class="btn btn--primary">Contatti</a>
+        <a href="/stampa/" class="type-mono text-meta">Stampa →</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header{position:sticky;top:0;z-index:100;background:var(--nero);border-bottom:1px solid var(--border-on-dark)}
+  .ia-utility{border-bottom:1px solid var(--border-on-dark)}
+  .ia-utility__in{height:32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .ia-utility__press{color:#999;transition:color var(--dur-fast) var(--ease-out)}
+  .ia-utility__press:hover{color:#fff}
+  .ia-bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;transition:height var(--dur-base) var(--ease-out)}
+  .site-header.is-compact .ia-bar{height:56px}
+  .ia-logo img{height:46px;width:auto;transition:height var(--dur-base) var(--ease-out)}
+  .site-header.is-compact .ia-logo img{height:32px}
+  .ia-nav{display:flex;gap:26px;align-items:center}
+  .ia-nav__a{position:relative;font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;padding:6px 0;transition:color var(--dur-fast) var(--ease-out)}
+  .ia-nav__a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform var(--dur-fast) var(--ease-out)}
+  .ia-nav__a:hover,.ia-nav__a:focus-visible{color:#fff}
+  .ia-nav__a:hover::after,.ia-nav__a:focus-visible::after,.ia-nav__a[aria-current="page"]::after{transform:scaleX(1)}
+  .ia-cta{min-height:0;padding:10px 18px}
+  .ia-drop{position:relative;display:flex;align-items:center;gap:6px}
+  .ia-drop__btn{display:inline-flex;align-items:center;color:rgba(255,255,255,.85);padding:6px 2px;transition:color var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+  .ia-drop__btn:hover{color:#fff}
+  .ia-drop__btn[aria-expanded="true"]{transform:rotate(180deg)}
+  .ia-drop__panel{position:absolute;top:100%;left:-20px;padding-top:14px;z-index:110}
+  .ia-drop__panel[hidden]{display:none}
+  .ia-drop__panel li{background:var(--nero);border-left:1px solid var(--border-on-dark);border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);min-width:250px}
+  .ia-drop__panel li:first-child{border-top:1px solid var(--border-on-dark)}
+  .ia-drop__panel a{display:block;font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;padding:13px 20px;transition:color var(--dur-fast) var(--ease-out),background-color var(--dur-fast) var(--ease-out)}
+  .ia-drop__panel a:hover,.ia-drop__panel a:focus-visible{color:#fff;background:var(--carbone)}
+  .ia-burg{display:none;border:1px solid #555;color:#fff;padding:8px 14px;align-items:center;gap:8px}
+  @media (max-width:1179px){.ia-desk{display:none !important}.ia-burg{display:inline-flex}}
+  /* menu mobile: entrata con @starting-style, nessun JS per l'animazione */
+  .menu-mobile{position:fixed;inset:0;z-index:200;background:var(--nero);display:flex;flex-direction:column;overflow:auto;opacity:1;transform:none;transition:opacity var(--dur-base) var(--ease-out),transform var(--dur-base) var(--ease-out),display var(--dur-base) allow-discrete}
+  .menu-mobile[hidden]{display:none;opacity:0;transform:translateY(-8px)}
+  @starting-style{.menu-mobile{opacity:0;transform:translateY(-8px)}}
+  .menu-mobile__top{display:flex;align-items:center;justify-content:space-between;padding:14px var(--grid-margin);border-bottom:1px solid var(--border-on-dark)}
+  .menu-mobile__top img{height:40px;width:auto}
+  .menu-mobile__close{border:1px solid #555;color:#fff;padding:8px 14px}
+  .menu-mobile__nav{display:flex;flex-direction:column;padding-top:24px;padding-bottom:40px}
+  .menu-mobile__h{color:#fff;text-decoration:none;padding:14px 0}
+  .menu-mobile__sub{display:flex;flex-direction:column;gap:2px;padding:0 0 14px 16px;border-left:2px solid var(--acc);margin-left:2px}
+  .menu-mobile__sub a{color:rgba(255,255,255,.85);text-decoration:none;padding:8px 0;display:block}
+  .menu-mobile__sub a:hover{color:#fff}
+  .menu-mobile__cta{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+  .menu-mobile__cta .type-mono{text-align:center;text-decoration:none;padding:6px}
+</style>
+
+<script>
+  // Altezza reale dell'header in --header-h: la sub-nav evento ci si appoggia sopra.
+  const header = document.getElementById('site-header');
+  const setH = () => header && document.documentElement.style.setProperty('--header-h', header.getBoundingClientRect().height + 'px');
+  setH();
+  if (header && 'ResizeObserver' in window) new ResizeObserver(setH).observe(header);
+  addEventListener('resize', setH);
+  addEventListener('scroll', () => { header?.classList.toggle('is-compact', scrollY > 120); }, { passive: true });
+
+  // Menu a tendina: apre su hover, su focus (tastiera) e su tap del bottone; chiude con Escape e click esterno.
+  const drops = document.querySelectorAll<HTMLElement>('[data-drop]');
+  const closeAll = (except?: HTMLElement) => drops.forEach(d => { if (d !== except) toggle(d, false); });
+  const toggle = (d: HTMLElement, open: boolean) => {
+    const btn = d.querySelector<HTMLButtonElement>('.ia-drop__btn');
+    const panel = d.querySelector<HTMLElement>('.ia-drop__panel');
+    if (!btn || !panel) return;
+    btn.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+  };
+  drops.forEach(d => {
+    const btn = d.querySelector<HTMLButtonElement>('.ia-drop__btn');
+    d.addEventListener('mouseenter', () => { closeAll(d); toggle(d, true); });
+    d.addEventListener('mouseleave', () => toggle(d, false));
+    d.addEventListener('focusin', () => { closeAll(d); toggle(d, true); });
+    d.addEventListener('focusout', (e) => { if (!d.contains(e.relatedTarget as Node)) toggle(d, false); });
+    btn?.addEventListener('click', () => { const open = btn.getAttribute('aria-expanded') === 'true'; closeAll(d); toggle(d, !open); });
+  });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeAll(); closeMobile(); } });
+  addEventListener('click', (e) => { if (!(e.target as Element).closest('[data-drop]')) closeAll(); });
+
+  // Menu mobile: aria-expanded, blocco scroll, focus sul pulsante di chiusura, ritorno del focus.
+  const burg = document.querySelector<HTMLButtonElement>('.ia-burg');
+  const mobile = document.getElementById('menu-mobile');
+  const closeBtn = mobile?.querySelector<HTMLButtonElement>('.menu-mobile__close');
+  const openMobile = () => { if (!mobile) return; mobile.hidden = false; burg?.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; closeBtn?.focus(); };
+  const closeMobile = () => { if (!mobile || mobile.hidden) return; mobile.hidden = true; burg?.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; burg?.focus(); };
+  burg?.addEventListener('click', openMobile);
+  closeBtn?.addEventListener('click', closeMobile);
+  mobile?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
+</script>

@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# file da eliminare (spostati qui perche' il bridge non puo' cancellare)
+_to_delete/

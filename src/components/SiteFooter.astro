@@ -1,0 +1,77 @@
+---
+/**
+ * Footer master — monocromo. È la casa di Stampa, Privacy e delle pagine istituzionali.
+ * Recapiti: solo indirizzi sul dominio e ruoli, mai nomi propri (Ondata 5).
+ */
+const cols = [
+  { title: 'Eventi', links: [
+    ['Rally Colli Euganei', '/rally-colli-euganei/'],
+    ['Polo Motor Show', '/eventi/polo-motor-show/'],
+    ['Legnaro Motori', '/eventi/legnaro-motori/'],
+    ['Archivio edizioni', '/eventi/archivio/'],
+  ]},
+  { title: 'Partecipa', links: [
+    ['Concorrenti del rally', '/rally-colli-euganei/concorrenti/'],
+    ['Documenti di gara', '/rally-colli-euganei/documenti/'],
+    ['Accrediti stampa', '/stampa/accrediti/'],
+    ['Diventa sponsor', '/sponsor/diventa-sponsor/'],
+  ]},
+  { title: 'Associazione', links: [
+    ['Chi siamo', '/associazione/'],
+    ['Documenti e trasparenza', '/associazione/#trasparenza'],
+    ['Notizie', '/news/'],
+    ['Foto e video', '/foto-e-video/'],
+    ['Contatti', '/contatti/'],
+    ['Informativa privacy', '/privacy/'],
+  ]},
+];
+const anno = new Date().getFullYear();
+---
+<footer class="ft">
+  <div class="wrap ft__grid">
+    <div class="ft__brand">
+      <img src="/img/logo_negativo_bianco.png" alt="Inversione A U" width="200" height="88" loading="lazy" />
+      <address class="type-mono text-meta ft__addr">
+        A.S.D. Inversione A U<br />
+        Via Selve 46/B · Saccolongo (PD)<br />
+        <a href="mailto:info@inversioneau.com">info@inversioneau.com</a>
+      </address>
+    </div>
+    {cols.map(c => (
+      <nav class="ft__col" aria-label={c.title}>
+        <h2 class="type-mono ft__h">{c.title}</h2>
+        <ul>
+          {c.links.map(([l, h]) => <li><a href={h} class="ft__a">{l}</a></li>)}
+        </ul>
+      </nav>
+    ))}
+  </div>
+  <div class="ft__bottom">
+    <div class="wrap ft__bottom-in type-mono text-meta">
+      <span>© {anno} Inversione A U A.S.D. — C.F. 92324000287 · P.IVA 05585020281</span>
+      <span class="ft__social">
+        <a href="https://www.instagram.com/inversione.au/" class="ft__a" rel="noopener" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/polomotorshow.teolo/" class="ft__a" rel="noopener" target="_blank">Facebook</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft{background:var(--nero);border-top:1px solid var(--border-on-dark);color:#fff}
+  .ft__grid{padding-top:var(--sp-8);padding-bottom:var(--sp-4);display:grid;grid-template-columns:1fr;gap:var(--sp-4)}
+  @media(min-width:720px){.ft__grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1024px){.ft__grid{grid-template-columns:2fr 1fr 1fr 1fr}}
+  .ft__brand{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+  .ft__brand img{height:88px;width:auto}
+  .ft__addr{font-style:normal;line-height:1.7}
+  .ft__addr a{color:inherit;text-decoration:none}
+  .ft__addr a:hover{color:#fff}
+  .ft__col ul{display:flex;flex-direction:column;gap:12px}
+  .ft__h{font-size:13px;letter-spacing:.08em;margin-bottom:12px}
+  .ft__a{font-family:var(--font-body);font-size:14px;color:#999;text-decoration:none;text-underline-offset:4px;transition:color var(--dur-fast) var(--ease-out)}
+  .ft__a:hover,.ft__a:focus-visible{color:#fff;text-decoration:underline}
+  .ft__bottom{border-top:1px solid var(--border-on-dark)}
+  .ft__bottom-in{padding-top:20px;padding-bottom:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .ft__social{display:flex;gap:20px}
+</style>

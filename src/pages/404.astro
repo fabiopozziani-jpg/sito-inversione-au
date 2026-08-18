@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Pagina non trovata | Inversione A U" description="La pagina che cerchi non esiste o è stata spostata. Torna alla home o cerca tra gli eventi di Inversione A U." noindex={true}>
+  <section class="wrap section nf">
+    <p class="type-mono text-meta">Errore 404</p>
+    <h1 class="type-h1">Pagina non trovata</h1>
+    <p class="type-body-dark nf__p">L'indirizzo che hai aperto non esiste o è cambiato. Da qui puoi tornare alla home o andare direttamente al rally.</p>
+    <div class="nf__cta">
+      <a href="/" class="btn btn--primary">Torna alla home</a>
+      <a href="/rally-colli-euganei/" class="btn btn--secondary">Vai al Rally Colli Euganei <span class="arrow-x" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Base>
+<style>
+  .nf{min-height:60vh;display:flex;flex-direction:column;justify-content:center;gap:var(--sp-2)}
+  .nf__p{max-width:56ch}
+  .nf__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--sp-2)}
+</style>

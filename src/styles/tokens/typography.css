@@ -1,0 +1,25 @@
+:root{
+--font-display:'Archivo',sans-serif; /* usare con font-stretch:125% (Expanded) */
+--font-body:'Inter',sans-serif;
+--font-mono:'JetBrains Mono',monospace;
+--stretch-expanded:125%;
+/* Scala fluida */
+--text-display:clamp(64px,8vw,96px);
+--text-h1:clamp(44px,5vw,56px);
+--text-h2:clamp(30px,3.2vw,36px);
+--text-h3:clamp(22px,2vw,24px);
+--text-body:17px;
+--text-small:14px;
+--text-mono:13px;
+--leading-body:1.6;
+--leading-tight:1.05;
+--tracking-display:.02em;
+--tracking-mono:.06em;
+}
+.type-display,.type-h1,.type-h2{font-family:var(--font-display);font-stretch:var(--stretch-expanded);text-transform:uppercase;letter-spacing:var(--tracking-display);line-height:var(--leading-tight)}
+.type-display{font-size:var(--text-display);font-weight:900}
+.type-h1{font-size:var(--text-h1);font-weight:900}
+.type-h2{font-size:var(--text-h2);font-weight:700}
+.type-h3{font-family:var(--font-display);font-stretch:var(--stretch-expanded);font-size:var(--text-h3);font-weight:600;line-height:1.2}
+.type-body{font-family:var(--font-body);font-size:var(--text-body);line-height:var(--leading-body)}
+.type-mono{font-family:var(--font-mono);font-size:var(--text-mono);font-weight:500;text-transform:uppercase;letter-spacing:var(--tracking-mono)}

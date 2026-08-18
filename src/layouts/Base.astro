@@ -1,0 +1,51 @@
+---
+/**
+ * Layout base — Inversione A U
+ * Ogni pagina passa title e description (Ondata 5). `active` accende la voce di menu.
+ */
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: '' | 'rally' | 'eventi' | 'associazione' | 'news' | 'media' | 'sponsor';
+  /** classe di contesto evento sul <body>: es. "ctx-rally" — il colore vive solo qui */
+  bodyClass?: string;
+  noindex?: boolean;
+}
+const { title, description, active = '', bodyClass = '', noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+---
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>document.documentElement.classList.replace('no-js','js')</script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+    <SiteHeader active={active} />
+    <main id="contenuto">
+      <slot />
+    </main>
+    <SiteFooter />
+    <script src="../scripts/movimento.js"></script>
+  </body>
+</html>

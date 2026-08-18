@@ -1,0 +1,32 @@
+:root{
+/* Master — monocromo */
+--nero:#000000;
+--carbone:#111111;
+--grigio-800:#333333;
+--grigio-500:#777777;
+--grigio-450:#8C8C8C; /* metadati su fondo scuro, AA */
+--grigio-200:#ECECEC;
+--bianco:#FFFFFF;
+/* Eventi — accenti (solo nei contesti evento) */
+--polo:#6FC7DB;
+--polo-scuro:#1E7A91; /* derivato: testo/CTA Polo su bianco, AA */
+--rally-teal-scuro:#006C7C;
+--rally-teal:#009DA8;
+--rally-verde:#00BA89;
+--legnaro-menta:#A8D8B4;
+--legnaro-blu:#3C5490;
+/* Semantici */
+--surface-page:var(--nero);
+--surface-editorial:var(--bianco);
+--surface-card:var(--carbone);
+--text-on-dark:var(--bianco);
+--text-on-light:var(--nero);
+--text-secondary:var(--grigio-800);
+--text-meta:var(--grigio-500);
+--border-divider:var(--grigio-200);
+--border-on-dark:#2A2A2A;
+--scrim-hero:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 100%); /* @kind other */
+--focus-ring:2px solid var(--bianco);
+--alert-rosso:#E01E37;
+--text-body-on-dark:#BBBBBB;
+}

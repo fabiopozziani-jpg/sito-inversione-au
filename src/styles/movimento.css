@@ -1,0 +1,88 @@
+/* Sistema di movimento — Inversione A U
+   Tre motivi: il taglio (.reveal-wipe), lo schieramento (.stagger), il tabellone (.tabellone).
+   Si animano solo transform e opacity (piu' background-color e border-color su aree piccole).
+   Nessuna ombra, nessun parallasse, nessun will-change. */
+
+:root{
+  --dur-fast:150ms;
+  --dur-base:250ms;
+  --ease-out:cubic-bezier(0,0,.2,1);
+  --stagger:40ms;
+}
+
+/* ── 1 · il taglio ───────────────────────────────────────────── */
+.reveal-wipe{overflow:hidden}
+.js .reveal-wipe > *{transform:translateX(-101%);transition:transform var(--dur-base) var(--ease-out)}
+.js .reveal-wipe.is-in > *{transform:none}
+
+/* ── rivelazione base ────────────────────────────────────────── */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity var(--dur-base) var(--ease-out),transform var(--dur-base) var(--ease-out)}
+.js .reveal.is-in{opacity:1;transform:none}
+
+/* ── 2 · lo schieramento (massimo 5, poi ritardo zero) ───────── */
+.js .stagger > *{transition-delay:calc(var(--i,0) * var(--stagger))}
+.js .stagger > *:nth-child(1){--i:0}
+.js .stagger > *:nth-child(2){--i:1}
+.js .stagger > *:nth-child(3){--i:2}
+.js .stagger > *:nth-child(4){--i:3}
+.js .stagger > *:nth-child(5){--i:4}
+.js .stagger > *:nth-child(n+6){--i:0}
+
+/* ── 3 · il tabellone ────────────────────────────────────────── */
+.tabellone{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.tabellone .cifra{transition:opacity var(--dur-fast) linear}
+.tabellone.is-swap .cifra{opacity:0}
+
+/* ── stati dei componenti ────────────────────────────────────── */
+/* link con linea che cresce da sinistra */
+.link-line{position:relative;text-decoration:none}
+.link-line::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform var(--dur-fast) var(--ease-out)}
+.link-line:hover::after,.link-line:focus-visible::after{transform:scaleX(1)}
+.link-line[aria-current]::after{transform:scaleX(1)}
+
+/* frecce che traslano */
+.arrow-x,.arrow-diag,.arrow-down{display:inline-block;transition:transform var(--dur-fast) var(--ease-out)}
+a:hover > .arrow-x,button:hover > .arrow-x,a:focus-visible > .arrow-x{transform:translateX(4px)}
+a:hover > .arrow-diag,a:focus-visible > .arrow-diag{transform:translate(3px,-3px)}
+a:hover > .arrow-down,a:focus-visible > .arrow-down{transform:translateY(3px)}
+
+/* barra accento della card evento: cresce da sinistra */
+.ev-bar{transform:scaleX(.4);transform-origin:left;transition:transform var(--dur-base) var(--ease-out)}
+a:hover .ev-bar,a:focus-visible .ev-bar{transform:scaleX(1)}
+
+/* card evento: il bordo cambia colore, la card non si muove */
+.js .stagger > a,.js .stagger > .reveal{transition:opacity var(--dur-base) var(--ease-out),transform var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out);transition-delay:calc(var(--i,0) * var(--stagger))}
+
+/* fotografia dentro un riquadro rigido */
+.img-zoom{overflow:hidden}
+.img-zoom img{transition:transform var(--dur-base) var(--ease-out)}
+a:hover .img-zoom img,.img-zoom:hover img{transform:scale(1.04)}
+
+/* righe di documenti e tabelle */
+.row-hover{transition:background-color var(--dur-fast) var(--ease-out)}
+.row-hover:hover{background-color:#111}
+
+/* campi di modulo */
+.fld{transition:border-color var(--dur-fast) var(--ease-out)}
+.fld:focus{border-color:#fff}
+
+/* loghi sponsor */
+.sponsor-fade img,section img[alt][style*="max-width: 70%"]{transition:opacity var(--dur-base) var(--ease-out)}
+.sponsor-fade img{opacity:.8}
+.sponsor-fade img:hover{opacity:1}
+
+/* header compatto oltre 120px di scorrimento */
+.ia-utility{transition:opacity var(--dur-base) var(--ease-out),transform var(--dur-base) var(--ease-out)}
+.site-header.is-compact .ia-utility{opacity:0;transform:translateY(-8px);height:0;overflow:hidden;border-bottom-width:0}
+
+/* ── movimento ridotto: il moto diventa dissolvenza ──────────── */
+@media (prefers-reduced-motion: reduce){
+  .reveal,.reveal-wipe > *{transform:none !important;transition:opacity var(--dur-fast) linear}
+  .stagger > *{transition-delay:0 !important}
+  .ev-bar{transform:none !important}
+  .img-zoom img{transform:none !important}
+  .link-line::after{transform:scaleX(1) !important;opacity:0;transition:opacity var(--dur-fast) linear}
+  .link-line:hover::after,.link-line:focus-visible::after,.link-line[aria-current]::after{opacity:1}
+  .arrow-x,.arrow-diag,.arrow-down{transform:none !important}
+  html{scroll-behavior:auto}
+}

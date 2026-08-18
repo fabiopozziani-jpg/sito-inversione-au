@@ -1,0 +1,17 @@
+:root{
+/* Base 8px */
+--sp-1:8px;--sp-2:16px;--sp-3:24px;--sp-4:32px;--sp-5:40px;--sp-6:48px;--sp-8:64px;--sp-10:80px;--sp-12:96px;--sp-16:128px;
+/* Griglia 12 colonne */
+--grid-max:1280px;
+--grid-gutter:24px;
+--grid-margin:clamp(16px,4vw,64px);
+/* Bordi e raggi: sistema squadrato, nessun raggio */
+--radius-0:0;
+--border-hairline:1px;
+--border-accent:3px; /* barra colore evento */
+/* Animazione */
+--ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+--dur-fast:150ms; /* @kind other */
+--dur-base:200ms; /* @kind other */
+--dur-slow:300ms; /* @kind other */
+}

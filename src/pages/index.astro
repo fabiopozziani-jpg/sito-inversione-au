@@ -1,8 +1,78 @@
 ---
-import Hero from '../components/Hero.astro';
-import Layout from '../layouts/Layout.astro';
----
+/**
+ * Home — versione di fondazione.
+ * Hero reale con i testi definitivi (Ondata 5). Le sezioni successive arrivano con il porting completo.
+ */
+import Base from '../layouts/Base.astro';
 
-<Layout>
-	<Hero />
-</Layout>
+const gara = new Date('2026-11-21T08:00:00+01:00');
+const oggi = new Date();
+const giorni = Math.ceil((gara.getTime() - oggi.getTime()) / 864e5);
+const countdown =
+  giorni > 1 ? `T−${giorni} GIORNI AL VIA · 21 NOVEMBRE 2026`
+  : giorni === 1 ? `T−1 GIORNO AL VIA · DOMANI, 21 NOVEMBRE`
+  : giorni > -2 ? `GARA IN CORSO · 21–22 NOVEMBRE 2026`
+  : `EDIZIONE CONCLUSA · 21–22 NOVEMBRE 2026`;
+---
+<Base
+  title="Eventi motorsport in Veneto | Inversione A U"
+  description="Rally, drift e raduni sui Colli Euganei: il 1° Rally Colli Euganei ACI Sport è il 21 e 22 novembre 2026. Calendario, percorso e informazioni per il pubblico."
+  active=""
+>
+  <section class="hero" aria-labelledby="hero-h1">
+    <div class="hero__media" aria-hidden="true"></div>
+    <div class="wrap hero__in">
+      <p class="type-mono hero__kicker">Prossimo evento · 21–22 novembre 2026 · Colli Euganei</p>
+      <h1 id="hero-h1" class="hero__h1">
+        <span class="type-display reveal-wipe"><span>Inversione A U</span></span>
+        <span class="type-h2 hero__sub">Eventi motorsport sui Colli Euganei</span>
+      </h1>
+      <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span></p>
+      <p class="hero__intro type-body-dark">Un rally torna sui Colli Euganei dopo più di trent'anni. Titolazione ACI Sport, auto moderne, due giorni di gara.</p>
+      <div class="hero__cta">
+        <a href="/rally-colli-euganei/percorso/" class="btn btn--primary">Guarda il percorso</a>
+        <a href="/rally-colli-euganei/" class="btn btn--secondary">Leggi le informazioni del rally <span class="arrow-x" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="wrap accesso" aria-label="Accesso rapido">
+    <ul class="accesso__grid stagger">
+      <li><a href="/rally-colli-euganei/concorrenti/"><span class="type-mono">Piloti e navigatori</span><span class="accesso__d">Iscrizioni, scadenze, elenco iscritti</span></a></li>
+      <li><a href="/rally-colli-euganei/spettatori/"><span class="type-mono">Spettatori</span><span class="accesso__d">Programma, dove vedere le prove, come arrivare</span></a></li>
+      <li><a href="/rally-colli-euganei/documenti/"><span class="type-mono">Documenti di gara</span><span class="accesso__d">Regolamento, ordini di partenza, comunicati</span></a></li>
+      <li><a href="/stampa/accrediti/"><span class="type-mono">Giornalisti e fotografi</span><span class="accesso__d">Come richiedere l'accredito</span></a></li>
+    </ul>
+  </nav>
+
+  <section class="wrap section" aria-labelledby="wip">
+    <p class="type-mono text-meta">Sito in costruzione</p>
+    <h2 id="wip" class="type-h2">Le altre sezioni arrivano nelle prossime pubblicazioni</h2>
+    <p class="type-body-dark wip__p">Stagione 2026, chi siamo, notizie, foto e partner saranno online man mano che il porting del prototipo procede. Questa pagina serve a verificare fondazioni, header, footer e movimento sul dominio di anteprima.</p>
+  </section>
+</Base>
+
+<style>
+  .hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;background:var(--carbone);overflow:hidden}
+  .hero__media{position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 100%),
+    radial-gradient(120% 80% at 70% 20%,#2a2a2a 0%,#0a0a0a 70%)}
+  .hero__in{position:relative;padding-top:var(--sp-12);padding-bottom:var(--sp-10);display:flex;flex-direction:column;gap:var(--sp-3);max-width:100%}
+  .hero__kicker{color:rgba(255,255,255,.85)}
+  .hero__h1{display:flex;flex-direction:column;gap:var(--sp-1)}
+  .hero__h1 .type-display{display:block}
+  .hero__sub{font-weight:600;color:rgba(255,255,255,.85)}
+  .hero__count{color:var(--rally-verde)}
+  .hero__intro{max-width:56ch;font-size:var(--text-body)}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--sp-1)}
+  .accesso{padding-top:0}
+  .accesso__grid{display:grid;grid-template-columns:1fr;border:1px solid var(--border-on-dark)}
+  @media(min-width:640px){.accesso__grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1024px){.accesso__grid{grid-template-columns:repeat(4,1fr)}}
+  .accesso__grid li{border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:1024px){.accesso__grid li{border-bottom:0;border-right:1px solid var(--border-on-dark)}.accesso__grid li:last-child{border-right:0}}
+  .accesso__grid a{display:flex;flex-direction:column;gap:6px;padding:20px;text-decoration:none;color:#fff;transition:background-color var(--dur-fast) var(--ease-out)}
+  .accesso__grid a:hover,.accesso__grid a:focus-visible{background:var(--carbone)}
+  .accesso__d{font-family:var(--font-body);font-size:14px;color:var(--text-body-on-dark)}
+  .wip__p{max-width:68ch;margin-top:var(--sp-2)}
+</style>
