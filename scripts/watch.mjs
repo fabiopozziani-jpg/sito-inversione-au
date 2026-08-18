@@ -39,7 +39,7 @@ function deploy() {
     console.log('✘ build fallita — dettagli in .trigger/log.txt'); busy = false; return;
   }
   const p = run('npm', ['run', 'preview']);
-  const url = (p.out.match(/https?:\/\/[^\s"'<>]+wix-site-host\.com[^\s"'<>]*/) || [])[0] || '';
+  const url = ((p.out.match(/https?:\/\/[^\s"'<>]+wix-site-host\.com[^\s"'<>)\]]*/) || [])[0] || '').replace(/[).,;]+$/, '');
   let git = 'nessuna modifica da committare';
   const st = run('git', ['status', '--porcelain']);
   if (st.out.trim()) {
