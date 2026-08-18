@@ -74,10 +74,10 @@ const url = '/rally-colli-euganei/percorso/';
             <span class="type-mono k-ev">{p.sigla}</span>
             <h3 class="type-h3">{p.nome}</h3>
             <dl class="ps__dl">
-              <dt>Lunghezza</dt><dd class="tabular">{p.km}</dd>
-              <dt>Chiusura della strada</dt><dd>{p.chiusura}</dd>
-              <dt>Prima vettura</dt><dd>{p.prima}</dd>
-              <dt>Zona pubblico</dt><dd>{p.pubblico}</dd>
+              <div><dt>Lunghezza</dt><dd class="tabular">{p.km}</dd></div>
+              <div><dt>Chiusura della strada</dt><dd>{p.chiusura}</dd></div>
+              <div><dt>Prima vettura</dt><dd>{p.prima}</dd></div>
+              <div><dt>Zona pubblico</dt><dd>{p.pubblico}</dd></div>
             </dl>
             <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>
             <span class="hint">Si apre in una nuova pagina</span>
@@ -126,7 +126,8 @@ const url = '/rally-colli-euganei/percorso/';
   .ps__intro{max-width:56ch;margin-bottom:12px}
   .ps__p{color:#DDD;max-width:70ch;margin-bottom:var(--sp-5)}
   .ps__grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
-  @media(min-width:768px){.ps__grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:680px){.ps__grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.ps__grid{grid-template-columns:repeat(3,1fr)}}
   .ps__card{background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--ev);display:flex;flex-direction:column}
   .ps__media{aspect-ratio:16/10;background:#1A1A1A;overflow:hidden}
   .ps__mappa{display:block;width:100%;height:100%;overflow:hidden}
@@ -134,8 +135,9 @@ const url = '/rally-colli-euganei/percorso/';
   .ps__mappa-attesa{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--grigio-450);border-bottom:1px solid var(--border-on-dark)}
   .ps__body{padding:var(--sp-4);display:flex;flex-direction:column;gap:12px}
   .ps__body h3{color:#fff;margin-top:-4px}
-  .ps__dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:15px}
-  .ps__dl dt{color:var(--grigio-450)}
+  .ps__dl{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;font-size:15px}
+  .ps__dl div{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .ps__dl dt{color:var(--grigio-450);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
   .ps__dl dd{margin:0;color:#fff}
   /* tabella tempi */
   .tt{display:flex;flex-direction:column;gap:12px}
