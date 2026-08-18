@@ -28,9 +28,26 @@
     }
   }
 
+  // Rete di sicurezza attiva: a ogni scorrimento (una volta per frame) rivela cio' che e' entrato in vista.
+  // Se l'IntersectionObserver non dovesse scattare, il contenuto compare comunque.
+  var pending = false;
+  function revealVisible() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () {
+      pending = false;
+      var els = document.querySelectorAll('.reveal:not(.is-in), .reveal-wipe:not(.is-in)');
+      for (var i = 0; i < els.length; i++) {
+        if (els[i].getBoundingClientRect().top < window.innerHeight * 0.95) els[i].classList.add('is-in');
+      }
+    });
+  }
+
   function boot() {
     scan();
     new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
+    window.addEventListener('scroll', revealVisible, { passive: true });
+    window.addEventListener('resize', revealVisible);
     // Rete di sicurezza: se qualcosa non viene mai osservato, resta comunque visibile.
     setTimeout(function () {
       document.querySelectorAll('.reveal:not(.is-in), .reveal-wipe:not(.is-in)').forEach(function (el) {
