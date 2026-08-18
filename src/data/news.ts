@@ -29,7 +29,7 @@ export const posts: Post[] = [
       { t: 'quote', testo: "«Riportare un rally su queste strade dopo più di trent'anni è il motivo per cui è nata l'associazione. Ora tocca ai concorrenti.»", cite: 'Il direttivo di Inversione A U' },
       { t: 'h2', testo: 'Le date da segnare' },
       { t: 'dl', righe: [['Apertura iscrizioni', '25 SET 2026'], ['Chiusura iscrizioni', 'Da confermare'], ['Ricognizioni', 'Da confermare'], ['Gara', '21–22 NOV 2026']] },
-      { t: 'p', html: 'Per informazioni: <a href="mailto:info@inversioneau.com">info@inversioneau.com</a>.' },
+      { t: 'p', html: 'Per informazioni: <a href="mailto:inversione.au3@gmail.com">inversione.au3@gmail.com</a>.' },
     ],
     cta: { label: 'Vai alla pagina concorrenti', href: '/rally-colli-euganei/concorrenti/' }, cta2: { label: 'Scarica i documenti di gara', href: '/rally-colli-euganei/documenti/' } },
   { slug: 'rally-zone-pubblico', title: 'Zone pubblico: dove vedere il rally', excerpt: 'Le aree consigliate lungo le tre prove speciali, con parcheggi e orari.',

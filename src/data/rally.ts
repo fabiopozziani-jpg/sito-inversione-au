@@ -13,7 +13,7 @@ export const rally = {
   dataLabel: '21–22 novembre 2026',
   dataIso: '2026-11-21',
   luogo: 'Colli Euganei, Padova',
-  email: 'info@inversioneau.com',
+  email: 'inversione.au3@gmail.com',
   telefoni: [
     { label: 'Segreteria', num: '+39 348 570 1233', tel: '+393485701233' },
     { label: 'Organizzazione', num: '+39 348 904 9212', tel: '+393489049212' },

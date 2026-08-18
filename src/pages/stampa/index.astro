@@ -3,7 +3,7 @@
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import { posts } from '../../data/news';
-const email = 'info@inversioneau.com';
+const email = 'inversione.au3@gmail.com';
 const comunicati = posts.filter(p => p.tipo === 'comunicato stampa').sort((a, b) => (a.iso < b.iso ? 1 : -1));
 const BOILER = 'Inversione A U A.S.D. è un’associazione sportiva dilettantistica di Padova che organizza eventi motorsport sui Colli Euganei. Nasce come team drift nel 2017, organizza eventi dinamici dal 2022 e si costituisce in associazione nel 2023. Nel 2026 firma tre manifestazioni: Legnaro Motori il 15 marzo, il Polo Motor Show il 13 e 14 giugno e il 1° Rally Colli Euganei ACI Sport il 21 e 22 novembre, il primo rally sui Colli dopo più di trent’anni. Le ultime edizioni hanno superato i 15.000 spettatori, con circa 100 equipaggi in due giorni e oltre 300 auto esposte.';
 const loghi = [
