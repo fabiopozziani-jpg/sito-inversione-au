@@ -11,6 +11,7 @@ import SponsorBlock from '../../components/SponsorBlock.astro';
 import { subnav, statoRally } from '../../data/rally';
 import { caricaRally, caricaSponsor, senzaAnnuali, caricaPosts, ordinaPerData } from '../../lib/contenuti';
 import { IMMAGINI, imgFill } from '../../data/rallyImmagini';
+import { srcsetFill } from '../../data/media';
 const [{ rally }, sponsor, tuttiIPost] = await Promise.all([caricaRally(), caricaSponsor(), caricaPosts()]);
 const annuali = sponsor.annuali;
 const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali);
@@ -40,7 +41,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-h1">
-    <img class="hero__img" src={rally.hero} alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
+    <img class="hero__img" src={rally.hero} srcset={srcsetFill(rally.hero) || undefined} sizes="100vw" alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
       <img class="hero__targa" src={rally.targa} alt="" width="1400" height="643" fetchpriority="high" decoding="async" />

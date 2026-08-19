@@ -4,6 +4,8 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import { caricaTeam } from '../../lib/contenuti';
 import { IMMAGINI, imgFill, imgFit } from '../../data/rallyImmagini';
+import { srcsetFill } from '../../data/media';
+const heroStaff = imgFill(IMMAGINI.staff, 1920, 1080);
 import { documenti as pdfWix } from '../../data/filesWix';
 import StatBlock from '../../components/StatBlock.astro';
 import Timeline from '../../components/Timeline.astro';
@@ -42,7 +44,7 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
 ---
 <Base title="Associazione motorsport a Padova | Inversione A U" description="Inversione A U, associazione sportiva dilettantistica di Padova: team drift dal 2017, A.S.D. dal 2023. Organizza Legnaro Motori, Polo Motor Show e il rally." active="associazione">
   <section class="hero" aria-labelledby="hero-h1">
-    <img class="hero__img" src={imgFill(IMMAGINI.staff, 1920, 1080)} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
+    <img class="hero__img" src={heroStaff} srcset={srcsetFill(heroStaff) || undefined} sizes="100vw" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
       <p class="type-mono hero__kicker">Associazione sportiva dilettantistica · Padova</p>

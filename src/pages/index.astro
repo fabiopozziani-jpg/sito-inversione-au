@@ -14,6 +14,8 @@ import SponsorBlock from '../components/SponsorBlock.astro';
 import CTABlock from '../components/CTABlock.astro';
 import { numeri } from '../data/eventi';
 import { rallyImg, RALLY_IMG, IMMAGINI, imgFit } from '../data/rallyImmagini';
+import { srcsetFill } from '../data/media';
+const heroHome = rallyImg(RALLY_IMG.heroHome, 1920, 1080);
 import { caricaEventi, caricaPosts, ordinaPerData, caricaGallerie, fotoRecentiDa, caricaSponsor } from '../lib/contenuti';
 const [eventiTutti, tuttiIPost, gallerie, sponsor] = await Promise.all([caricaEventi(), caricaPosts(), caricaGallerie(), caricaSponsor()]);
 const trova = (k: string) => eventiTutti.find(e => e.key === k)!;
@@ -40,7 +42,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
 >
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-h1">
-    <img class="hero__img" src={rallyImg(RALLY_IMG.heroHome, 1920, 1080)} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
+    <img class="hero__img" src={heroHome} srcset={srcsetFill(heroHome) || undefined} sizes="100vw" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
       <img class="hero__targa" src={imgFit(IMMAGINI.targaRally, 1400)} alt="" width="1400" height="643" fetchpriority="high" decoding="async" />

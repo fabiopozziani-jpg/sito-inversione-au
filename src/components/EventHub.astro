@@ -13,6 +13,7 @@ import { testiStato, type Hub } from '../data/hub';
 import type { Galleria } from '../data/gallerie';
 import type { Sponsor } from '../data/sponsor';
 import { senzaAnnuali } from '../lib/contenuti';
+import { srcsetFill } from '../data/media';
 
 interface Props { h: Hub; gallerie: Galleria[]; sponsor: { annuali: Sponsor[]; perEvento: (k: string) => Sponsor[] } }
 const { h, gallerie, sponsor } = Astro.props;
@@ -39,7 +40,7 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
 <EventSubnav items={nav} current={`${h.href}#evento`} bg={bg} accent={accent} label={`Sezioni di ${h.nome}`} />
 
 <section class="hero" aria-labelledby="hero-h1">
-  <img class="hero__img" src={h.hero} alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
+  <img class="hero__img" src={h.hero} srcset={srcsetFill(h.hero) || undefined} sizes="100vw" alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
   <div class="hero__scrim" aria-hidden="true"></div>
   <div class="wrap hero__in">
     <img class="hero__logo" src={h.logo} alt="" width="220" height="120" decoding="async" />

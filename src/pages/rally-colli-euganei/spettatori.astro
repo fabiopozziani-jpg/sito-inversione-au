@@ -8,6 +8,8 @@ import CTABlock from '../../components/CTABlock.astro';
 import { subnav, consentito, vietato } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 import { rallyImg, RALLY_IMG } from '../../data/rallyImmagini';
+import { srcsetFill } from '../../data/media';
+const heroSpett = rallyImg(RALLY_IMG.heroSpettatori, 1920, 1080);
 const { rally, programma } = await caricaRally();
 const url = '/rally-colli-euganei/spettatori/';
 ---
@@ -21,7 +23,7 @@ const url = '/rally-colli-euganei/spettatori/';
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-h1">
-    <img class="hero__img" src={rallyImg(RALLY_IMG.heroSpettatori, 1920, 1080)} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
+    <img class="hero__img" src={heroSpett} srcset={srcsetFill(heroSpett) || undefined} sizes="100vw" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
       <p class="type-mono hero__kicker">{rally.dataLabel} · Colli Euganei</p>
