@@ -3,7 +3,7 @@ interface Props { kicker?: string; title: string; text?: string; image?: string 
 const { kicker, title, text, image } = Astro.props;
 ---
 <section class="cta">
-  {image && <img class="cta__img" src={image} alt="" loading="lazy" decoding="async" />}
+  {image && <img class="cta__img" src={image} alt="" width="1600" height="1067" loading="lazy" decoding="async" />}
   {image && <div class="cta__scrim" aria-hidden="true"></div>}
   <div class="cta__in">
     {kicker && <p class="type-mono cta__k">{kicker}</p>}

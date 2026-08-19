@@ -119,13 +119,19 @@ export function fotoRecentiDa(gallerie: Galleria[], n = 8): (Foto & { evento: st
 
 type SponsorCms = { nome: string; logo?: string; url?: string; livello?: string; evento?: string; ordine?: number; attivo?: boolean };
 const tuttiStatici = [...annualiStatici, ...sponsorRallyStatici, ...sponsorPoloStatici, ...sponsorLegnaroStatici];
-const logoStatico = (nome: string) => tuttiStatici.find(x => x.name.toLowerCase() === nome.toLowerCase())?.logo ?? '';
+const staticoPerNome = (nome: string) => tuttiStatici.find(x => x.name.toLowerCase() === nome.toLowerCase());
+const logoStatico = (nome: string) => staticoPerNome(nome)?.logo ?? '';
 /** { annuali, perEvento(chiave) } — dal CMS o statici. */
 export async function caricaSponsor() {
   const cms = await query<SponsorCms>('Sponsor', { sort: [{ fieldName: 'ordine' }], limit: 300 });
   if (!cms || !cms.length) return { annuali: annualiStatici, perEvento: (k: string) => ({ rally: sponsorRallyStatici, polo: sponsorPoloStatici, legnaro: sponsorLegnaroStatici }[k] ?? []) };
   const attivi = cms.filter(x => x.attivo !== false && x.nome);
-  const conv = (x: SponsorCms): Sponsor => ({ name: x.nome, logo: imgFit(x.logo, 400, logoStatico(x.nome)), url: x.url || undefined });
+  const conv = (x: SponsorCms): Sponsor => {
+    const i = wixImg(x.logo); const st = staticoPerNome(x.nome);
+    // imgFit(…, 400) ridimensiona nel riquadro 400×400: le dimensioni rese seguono il lato lungo
+    const k = i ? 400 / Math.max(i.w, i.h, 1) : 0;
+    return { name: x.nome, logo: imgFit(x.logo, 400, logoStatico(x.nome)), url: x.url || undefined, w: i ? Math.round(i.w * k) : st?.w, h: i ? Math.round(i.h * k) : st?.h };
+  };
   const annuali = attivi.filter(x => x.livello === 'stagione').map(conv);
   const perEvento = (k: string) => attivi.filter(x => x.livello !== 'stagione' && (x.evento ?? '').split(/[,\s]+/).includes(k)).map(conv);
   return { annuali, perEvento };

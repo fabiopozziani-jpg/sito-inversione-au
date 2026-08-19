@@ -13,7 +13,7 @@ const altre = ordinaPerData(tutti).filter(p => p.slug !== post.slug).slice(0, 3)
 const ctx = eventoKey(post.event);
 const dataEstesa = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Rome' }).format(new Date(post.iso + 'T12:00:00'));
 ---
-<Base title={`${post.title} | Inversione A U`} description={post.excerpt} active="news" bodyClass={ctx ? `ctx-${ctx}` : ''} image={post.image} imageAlt={post.title} ogType="article"
+<Base title={post.title.length <= 44 ? `${post.title} | Inversione A U` : post.title} description={post.excerpt} active="news" bodyClass={ctx ? `ctx-${ctx}` : ''} image={post.image} imageAlt={post.title} ogType="article"
   jsonld={{ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: post.title, description: post.excerpt, datePublished: post.iso, dateModified: post.iso, image: [new URL(post.image, 'https://www.inversioneau.com').href], author: { '@id': 'https://www.inversioneau.com/#org' }, publisher: { '@id': 'https://www.inversioneau.com/#org' }, mainEntityOfPage: `https://www.inversioneau.com/news/${post.slug}/`, inLanguage: 'it' }}>
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Notizie', href: '/news/' }, { label: post.title }]} />
   <article class="wrap art">

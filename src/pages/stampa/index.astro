@@ -21,7 +21,7 @@ const altri = [
   ['Targa rally · PNG', mk('targa-rally-colli-euganei.png')], ['Polo bianco · PNG', mk('logo-polo-2026-bianco.png')], ['Polo nero · PNG', mk('logo-polo-2026-nero.png')],
 ];
 ---
-<Base title="Area stampa e accrediti | Inversione A U" description="Area stampa Inversione A U: comunicati, foto in alta risoluzione, testo di presentazione, loghi e brand book. Come richiedere l'accredito per il Rally Colli Euganei e gli altri eventi." active="" image="/img/social/stampa.jpg" imageAlt="Area stampa Inversione A U">
+<Base title="Area stampa e accrediti | Inversione A U" description="Area stampa Inversione A U: comunicati, foto in alta risoluzione, testo di presentazione, loghi e brand book. Come chiedere l'accredito per gli eventi." active="" image="/img/social/stampa.jpg" imageAlt="Area stampa Inversione A U">
   <header class="wrap pg-head">
     <p class="type-mono text-meta">Area stampa · accesso libero, senza password</p>
     <h1 class="type-h1">Stampa: comunicati, foto e accrediti</h1>
@@ -86,7 +86,7 @@ const altri = [
     <ul class="mk stagger">
       {loghi.map(l => (
         <li class="reveal"><a class="mk__a" href={l.file} download>
-          <span class:list={['mk__img', { 'mk__img--light': !l.dark }]}><img src={l.web} alt="" loading="lazy" decoding="async" /></span>
+          <span class:list={['mk__img', { 'mk__img--light': !l.dark }]}><img src={l.web} alt="" width={l.web.includes('targa') ? 600 : l.web.includes('legnaro') ? 364 : 300} height={l.web.includes('targa') ? 275 : 300} loading="lazy" decoding="async" /></span>
           <h3 class="type-h3">{l.t}</h3><span class="type-mono">{l.s}</span><span class="hint">{l.n}</span>
         </a></li>
       ))}
@@ -144,7 +144,7 @@ const altri = [
   .mk__a:hover,.mk__a:focus-visible{border-color:#fff}
   .mk__img{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;background:#000;padding:20px;margin-bottom:8px}
   .mk__img--light{background:#fff}
-  .mk__img img{max-height:100%;width:auto;max-width:100%}
+  .mk__img img{max-height:100%;width:auto;height:auto;max-width:100%}
   .mk__a h3{font-size:18px}
   .mk__a .type-mono{color:var(--grigio-200)}
   .alt{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-4);margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:1px solid var(--border-on-dark)}
