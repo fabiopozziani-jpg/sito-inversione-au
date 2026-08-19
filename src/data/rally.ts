@@ -2,7 +2,7 @@
  * 1° Rally Colli Euganei ACI Sport — dati dell'evento (FASE 2: statici; FASE 4: collection CMS).
  * Regola: quello che non è confermato resta "da definire" — nessun dato inventato.
  */
-import { rallyImg, rallyAlt, RALLY_IMG } from './rallyImmagini';
+import { rallyImg, rallyAlt, RALLY_IMG, IMMAGINI, imgFit } from './rallyImmagini';
 export type Stato = 'pre' | 'in' | 'post';
 
 export const rally = {
@@ -41,7 +41,9 @@ export const rally = {
   mappaPercorso: '',
   mappaZone: '',
   hero: rallyImg(RALLY_IMG.heroRally, 1920, 1080), heroAlt: rallyAlt(RALLY_IMG.heroRally),
-  targa: '/img/rally/targa_2026.png',
+  targa: imgFit(IMMAGINI.targaRally, 1400),
+  targaW: 1400,
+  targaH: 643,
 };
 
 export const subnav = [

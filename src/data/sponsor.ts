@@ -10,6 +10,7 @@ export const annuali: Sponsor[] = [
   s('baap-bergamaschi', 'BAAP Bergamaschi'),
   s('cesaro-group', 'Cesaro Group'),
   s('rally-team', 'Rally Team'),
+  { name: 'Ctrl+G', logo: '', url: 'https://www.ctrlg.it/' },
 ];
 export const rally: Sponsor[] = [];
 export const polo: Sponsor[] = [

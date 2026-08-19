@@ -159,7 +159,7 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   <h2 id="sp-h" class="type-h2">Sponsor dell’evento</h2>
   <p class="type-body-dark spons__p">{h.sponsorIntro}</p>
   {spEvento.length > 0 && <SponsorBlock title="Sponsor di questa edizione" sponsors={spEvento} columns={Math.min(4, Math.max(2, spEvento.length))} mono={false} headingLevel={3} />}
-  <SponsorBlock title="Partner di stagione" sponsors={annuali} columns={5} mono={false} headingLevel={3} />
+  <SponsorBlock title="Partner di stagione" sponsors={annuali} columns={6} mono={false} headingLevel={3} />
   <a class="type-mono link-line spons__cta" href="/sponsor/diventa-sponsor/#form-sponsor">Diventa sponsor dell’edizione {h.annoProx} <span class="arrow-x" aria-hidden="true">→</span></a>
 </section>
 

@@ -43,7 +43,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <img class="hero__img" src={rally.hero} alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
-      <img class="hero__targa" src={rally.targa} alt="" width="600" height="338" fetchpriority="high" decoding="async" />
+      <img class="hero__targa" src={rally.targa} alt="" width="1400" height="643" fetchpriority="high" decoding="async" />
       <div class="hero__meta">
         <p class="type-mono hero__kicker">{rally.dataLabel} · {rally.luogo} · titolazione ACI Sport</p>
         <img class="hero__aci" src="/img/logo_aci_sport.png" alt="ACI Sport" width="44" height="44" decoding="async" />
@@ -103,7 +103,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <p class="percorso__p">Il tracciato attraversa le strade dei Colli Euganei. L'elenco delle prove speciali e la tabella tempi saranno pubblicati più avanti, appena definiti.</p>
     <div class="percorso__grid">
       <div class="percorso__targa reveal">
-        <img src={rally.targa} alt="Targa 1° Rally Colli Euganei 2026" width="320" height="320" loading="lazy" decoding="async" />
+        <img src={rally.targa} alt="Targa 1° Rally Colli Euganei 2026" width="1400" height="643" loading="lazy" decoding="async" />
         <span class="hint">Mappa e prove speciali in arrivo</span>
       </div>
       <dl class="dati reveal">
@@ -233,7 +233,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .percorso__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);align-items:start}
   @media(min-width:900px){.percorso__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}}
   .percorso__targa{background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
-  .percorso__targa img{width:min(60%,260px)}
+  .percorso__targa img{width:min(78%,300px)}
   /* storia */
   .storia{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5);align-items:start}
   @media(min-width:900px){.storia{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.storia__dl{grid-column:1 / -1}}

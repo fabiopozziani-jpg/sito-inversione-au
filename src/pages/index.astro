@@ -13,7 +13,7 @@ import PhotoStrip from '../components/PhotoStrip.astro';
 import SponsorBlock from '../components/SponsorBlock.astro';
 import CTABlock from '../components/CTABlock.astro';
 import { numeri } from '../data/eventi';
-import { rallyImg, RALLY_IMG } from '../data/rallyImmagini';
+import { rallyImg, RALLY_IMG, IMMAGINI, imgFit } from '../data/rallyImmagini';
 import { caricaEventi, caricaPosts, ordinaPerData, caricaGallerie, fotoRecentiDa, caricaSponsor } from '../lib/contenuti';
 const [eventiTutti, tuttiIPost, gallerie, sponsor] = await Promise.all([caricaEventi(), caricaPosts(), caricaGallerie(), caricaSponsor()]);
 const trova = (k: string) => eventiTutti.find(e => e.key === k)!;
@@ -43,7 +43,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <img class="hero__img" src={rallyImg(RALLY_IMG.heroHome, 1920, 1080)} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
-      <img class="hero__targa" src="/img/rally/targa_2026.png" alt="" width="600" height="338" fetchpriority="high" decoding="async" />
+      <img class="hero__targa" src={imgFit(IMMAGINI.targaRally, 1400)} alt="" width="1400" height="643" fetchpriority="high" decoding="async" />
       <p class="type-mono hero__kicker">Prossimo evento · 21–22 novembre 2026 · Colli Euganei</p>
       <h1 id="hero-h1" class="hero__h1">
         <span class="type-mono hero__name">Inversione A U</span>
@@ -125,7 +125,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   <section class="hair" aria-labelledby="partner">
     <div class="wrap section partner">
       <SectionHead id="partner" title="I nostri partner" intro="Le aziende che sostengono i nostri eventi 2026" />
-      <SponsorBlock sponsors={annuali} columns={5} mono={false} />
+      <SponsorBlock sponsors={annuali} columns={6} mono={false} />
       <a href="/sponsor/diventa-sponsor/" class="partner__cta">
         <span class="partner__cta-t">
           <span class="type-mono text-meta">Stagione 2027</span>

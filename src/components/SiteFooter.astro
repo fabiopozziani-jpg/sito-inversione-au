@@ -1,4 +1,5 @@
 ---
+import { IMMAGINI, imgFit } from '../data/rallyImmagini';
 /**
  * Footer master — monocromo. È la casa di Stampa, Privacy e delle pagine istituzionali.
  * Recapiti: solo indirizzi sul dominio e ruoli, mai nomi propri (Ondata 5).
@@ -48,7 +49,14 @@ const anno = new Date().getFullYear();
   </div>
   <div class="ft__bottom">
     <div class="wrap ft__bottom-in type-mono text-meta">
-      <span>© {anno} Inversione A U A.S.D. — C.F. 92324000287 · P.IVA 05585020281</span>
+      <span class="ft__cred">
+        <img class="ft__ctrlg" src={imgFit(IMMAGINI.ctrlg, 200)} alt="" width="600" height="440" loading="lazy" decoding="async" />
+        <span class="ft__cred-t">
+          <span>© {anno}, INVERSIONE A U</span>
+          <span>Tutti i diritti riservati | Strategy &amp; design <a class="ft__a ft__by" href="https://www.ctrlg.it/" rel="noopener" target="_blank">by Ctrl+G</a></span>
+        </span>
+      </span>
+      <span class="ft__pi">C.F. 92324000287 · P.IVA 05585020281</span>
       <span class="ft__social">
         <a href="https://www.instagram.com/inversione.au/" class="ft__a" rel="noopener" target="_blank">Instagram</a>
         <a href="https://www.facebook.com/inversione.au" class="ft__a" rel="noopener" target="_blank">Facebook</a>
@@ -74,4 +82,10 @@ const anno = new Date().getFullYear();
   .ft__bottom{border-top:1px solid var(--border-on-dark)}
   .ft__bottom-in{padding-top:20px;padding-bottom:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .ft__social{display:flex;gap:20px}
+  .ft__cred{display:flex;align-items:center;gap:14px}
+  .ft__ctrlg{width:34px;height:auto;flex:none;opacity:.85}
+  .ft__cred-t{display:flex;flex-direction:column;gap:6px}
+  .ft__by{font-family:inherit;font-size:inherit;letter-spacing:inherit;color:#999;text-decoration:underline;text-underline-offset:3px}
+  .ft__by:hover,.ft__by:focus-visible{color:#fff}
+  .ft__pi{align-self:center}
 </style>

@@ -3,29 +3,30 @@
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import { caricaTeam } from '../../lib/contenuti';
+import { IMMAGINI, imgFill, imgFit } from '../../data/rallyImmagini';
 import { documenti as pdfWix } from '../../data/filesWix';
 import StatBlock from '../../components/StatBlock.astro';
 import Timeline from '../../components/Timeline.astro';
 import CTABlock from '../../components/CTABlock.astro';
 const email = 'inversione.au3@gmail.com';
 const numeri = [
-  { value: '15.000+', label: 'spettatori' }, { value: 'circa 100', label: 'equipaggi in due giorni' }, { value: '300+', label: 'auto esposte' },
-  { value: '30+', label: 'persone nello staff' }, { value: '23', label: 'sponsor' }, { value: '8', label: 'fotografi e videomaker' },
+  { value: '10.000+', label: 'spettatori' }, { value: 'circa 100', label: 'equipaggi in due giorni' }, { value: '400+', label: 'auto esposte' },
+  { value: '30+', label: 'persone nello staff' }, { value: '23', label: 'sponsor e partner' }, { value: '8', label: 'fotografi e videomaker' },
 ];
 const storia = [
-  { time: '2017', title: 'Nasce il team drift', text: 'Un gruppo di amici, un piazzale e le prime BMW di traverso. Partecipiamo agli eventi del Nord Italia.' },
-  { time: '2019', title: 'I primi raduni', text: 'Passiamo dall’altra parte: organizziamo i primi eventi statici dedicati all’automobile. La risposta supera le previsioni.' },
-  { time: '2022', title: 'Dai raduni agli eventi in pista', text: 'Primo anno da organizzatori di eventi dinamici su piazzali e circuiti cittadini. Entriamo nell’organizzazione del Polo Motor Show.' },
-  { time: '2023', title: 'Nasce l’associazione', text: 'Firmiamo l’atto costitutivo di Inversione A U A.S.D. e ci diamo una struttura: consiglio direttivo, statuto, libro dei soci.' },
-  { time: '2024–2025', title: 'Il Polo Motor Show cresce', text: 'Il circuito cittadino di Selve di Teolo arriva a oltre 15.000 spettatori e 300 auto esposte.' },
-  { time: '2026', title: 'Tre eventi in un anno', text: 'Legnaro Motori a marzo, Polo Motor Show a giugno e, a novembre, il 1° Rally Colli Euganei: un rally torna sui Colli dopo più di trent’anni.' },
+  { time: '2017', title: 'Il team drift', text: 'Inversione A U nasce come team amatoriale legato al drifting e alla cultura automobilistica, con la partecipazione agli eventi del Nord Italia.' },
+  { time: '2019', title: 'I primi eventi statici', text: 'L’attività si sposta dalla partecipazione all’organizzazione: nascono i primi raduni dedicati all’automobile.' },
+  { time: '2022', title: 'Dagli statici agli eventi dinamici', text: 'Primo anno da organizzatori di eventi dinamici su piazzali e circuiti cittadini, con l’ingresso nell’organizzazione del Polo Motor Show.' },
+  { time: '2023', title: 'Nasce l’Associazione Sportiva Dilettantistica', text: 'L’esperienza maturata negli anni diventa una struttura: atto costitutivo, statuto, consiglio direttivo e libro dei soci.' },
+  { time: '2024–2025', title: 'Il Polo Motor Show cresce', text: 'Il circuito cittadino di Selve di Teolo consolida il format, con la finale italiana dell’Hot Wheels Legends Tour nel 2025.' },
+  { time: '2026', title: 'Tre format, tre discipline', text: 'Legnaro Motori a marzo, Polo Motor Show a giugno e, a novembre, il 1° Rally Colli Euganei: il rally torna sui Colli dopo più di trent’anni.' },
 ];
 const direttivoStatico = [
-  { nome: 'Matteo Pescante', ruolo: 'Presidente', nota: 'Rappresenta l’associazione e firma i rapporti con enti e federazione.' },
-  { nome: 'Andrea D’Alberto', ruolo: 'Vicepresidente', nota: 'Coordina l’organizzazione degli eventi e i rapporti con i Comuni.' },
-  { nome: 'Matteo Casarin', ruolo: 'Tesoriere', nota: 'Tiene la contabilità e i rapporti con sponsor e fornitori.' },
-  { nome: 'Fabio Pozziani', ruolo: 'Segretario', nota: 'Cura verbali, libro dei soci e comunicazioni dell’associazione.' },
-  { nome: 'Thomas Scapocchin', ruolo: 'Consigliere', nota: 'Segue il percorso e la sicurezza in gara insieme allo staff.' },
+  { nome: 'Matteo Pescante', ruolo: 'Presidente', nota: 'Rappresenta legalmente l’associazione e coordina le attività istituzionali e organizzative.' },
+  { nome: 'Andrea D’Alberto', ruolo: 'Vicepresidente', nota: 'Supporta la presidenza e coordina le attività operative e organizzative legate agli eventi.' },
+  { nome: 'Matteo Casarin', ruolo: 'Tesoriere', nota: 'Cura gli aspetti economici e amministrativi e i rapporti con sponsor, fornitori e partner.' },
+  { nome: 'Fabio Pozziani', ruolo: 'Segretario', nota: 'Gestisce documenti, verbali, libro soci e comunicazioni istituzionali.' },
+  { nome: 'Thomas Scapocchin', ruolo: 'Consigliere', nota: 'Collabora alle attività sportive e operative: percorsi, pista e sicurezza.' },
 ];
 const direttivo = (await caricaTeam()) ?? direttivoStatico;
 const dati: [string, string][] = [
@@ -41,11 +42,11 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
 ---
 <Base title="Associazione motorsport a Padova | Inversione A U" description="Inversione A U, associazione sportiva dilettantistica di Padova: team drift dal 2017, A.S.D. dal 2023. Organizza Legnaro Motori, Polo Motor Show e il rally." active="associazione">
   <section class="hero" aria-labelledby="hero-h1">
-    <img class="hero__img" src="/foto/bmw_m3_e30_fumo.jpg" alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
+    <img class="hero__img" src={imgFill(IMMAGINI.staff, 1920, 1080)} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
       <p class="type-mono hero__kicker">Associazione sportiva dilettantistica · Padova</p>
-      <h1 id="hero-h1" class="hero__h1"><span class="type-display">Inversione A U</span><span class="hero__sub">Associazione sportiva dilettantistica di Padova</span></h1>
+      <h1 id="hero-h1" class="hero__h1"><span class="type-display">Inversione A U</span><span class="hero__sub">Motorsport, organizzazione e territorio</span></h1>
       <p class="type-mono hero__meta">Costituita nel 2023 · attivi dal 2017</p>
       <div><a href="#tesseramento" class="btn btn--primary">Diventa socio</a></div>
     </div>
@@ -55,44 +56,44 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
     <div class="chi__t">
       <p class="type-mono text-meta">Chi siamo</p>
       <h2 id="chi-h" class="type-h2 reveal-wipe"><span>Chi siamo e cosa organizziamo</span></h2>
-      <p>Volontari, piloti, meccanici e vicini di casa. Il direttivo e i soci operativi sono le stesse persone che trovate in prova speciale: chi traccia il percorso, chi parla con i sindaci, chi monta le reti alle sei di mattina.</p>
-      <p>Organizziamo tre eventi all'anno in provincia di Padova: una giornata di drift, due giorni di circuito cittadino e un rally con titolazione ACI Sport.</p>
-      <p>Lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco. Gli eventi restano dei territori che li ospitano: senza il paese che ci accoglie, non si passa.</p>
+      <p>Inversione A U A.S.D. è un'associazione sportiva dilettantistica nata dall'esperienza diretta nel motorsport, oggi impegnata nella progettazione, nell'organizzazione e nella gestione di eventi automobilistici.</p>
+      <p>Dal 2017 abbiamo costruito un percorso che ci ha portati dall'attività sportiva e dalla partecipazione agli eventi alla gestione diretta di manifestazioni sempre più strutturate.</p>
+      <p>Operiamo attraverso un'organizzazione stabile, un consiglio direttivo e una rete di collaboratori, tecnici, professionisti e volontari: eventi accessibili, sicuri e professionalmente organizzati.</p>
     </div>
-    <div class="chi__img img-zoom reveal"><img src="/foto/inversione_au_e36_hay.jpg" alt="" loading="lazy" decoding="async" width="800" height="533" /></div>
+    <div class="chi__img img-zoom reveal"><img src={imgFill(IMMAGINI.twinDrift, 1200, 900)} alt={IMMAGINI.twinDrift.alt} loading="lazy" decoding="async" width="1200" height="900" /></div>
   </section>
 
   <section id="mission" class="wrap section" aria-labelledby="mis-h">
-    <h2 id="mis-h" class="type-h2">Come lavoriamo</h2>
-    <p class="type-body-dark sec-intro">Tre regole che decidono se un evento si fa e come si fa.</p>
+    <h2 id="mis-h" class="type-h2">Il nostro modo di fare motorsport</h2>
+    <p class="type-body-dark sec-intro">Competenza, sicurezza e collaborazione. Organizzare un evento automobilistico significa coordinare persone, strutture, regolamenti, istituzioni e pubblico: lo facciamo lavorando su tre principi.</p>
     <div class="reg stagger">
       {[
-        ['01', "Il territorio prima dell'evento", 'Ogni gara si costruisce con i Comuni, le Pro Loco e chi vive sulle strade che usiamo. Se un paese non ci vuole, non passiamo.'],
-        ['02', 'Sicurezza e regolamenti', 'Zone pubblico segnalate, personale formato, licenze e omologazioni ACI Sport. Le regole non sono un limite: sono la condizione per correre.'],
-        ['03', 'Motorsport aperto al pubblico', 'Paddock visitabili, piloti che rispondono alle domande e spazio a chi inizia. Il motorsport si guarda da vicino.'],
+        ['01', 'Organizzazione', 'Ogni manifestazione nasce da una pianificazione strutturata che coinvolge enti, fornitori, partner, partecipanti e personale operativo: percorso, aree, logistica e comunicazione.'],
+        ['02', 'Sicurezza', 'Procedure, regolamenti, personale dedicato e coordinamento con gli organismi competenti sono parte della progettazione. Per le attività sportive valgono i regolamenti degli enti e delle federazioni di riferimento.'],
+        ['03', 'Territorio', 'Gli eventi non vengono organizzati in un territorio: vengono costruiti insieme al territorio. Comuni, enti, associazioni locali e comunità ospitanti sono parte del lavoro.'],
       ].map(([n, t, d]) => <div class="card reg__c reveal"><span class="type-mono text-meta">{n}</span><h3 class="type-h3">{t}</h3><p>{d}</p></div>)}
     </div>
   </section>
 
   <section id="numeri" class="wrap section num" aria-labelledby="num-h">
     <div class="num__t">
-      <h2 id="num-h" class="type-h2">I numeri dei nostri eventi</h2>
-      <p class="type-body-dark">La stagione 2026 in cifre: tre eventi, un solo gruppo di volontari.</p>
+      <h2 id="num-h" class="type-h2">I nostri numeri</h2>
+      <p class="type-body-dark">Tre eventi in un anno, una sola struttura organizzativa.</p>
       <p class="hint">Dati riferiti alle ultime edizioni del Polo Motor Show</p>
     </div>
     <div class="num__n"><StatBlock stats={numeri} columns={2} /></div>
   </section>
 
   <section id="storia" class="wrap section" aria-labelledby="sto-h">
-    <h2 id="sto-h" class="type-h2">La nostra storia, dal 2017</h2>
-    <p class="type-body-dark sec-intro">Nove anni: da gruppo di amici con qualche BMW a organizzatori di un rally titolato.</p>
+    <h2 id="sto-h" class="type-h2">Una struttura nata dal motorsport</h2>
+    <p class="type-body-dark sec-intro">Dalla passione all'organizzazione. La costituzione dell'associazione, nel 2023, trasforma l'esperienza maturata sul campo in una struttura capace di gestire direttamente eventi sportivi, rapporti istituzionali e attività rivolte al pubblico.</p>
     <Timeline items={storia} />
   </section>
 
   <section id="direttivo" class="on-light" aria-labelledby="dir-h">
     <div class="wrap section">
       <h2 id="dir-h" class="type-h2">Il consiglio direttivo</h2>
-      <p class="sec-intro dir__intro">Le persone che firmano le decisioni dell'associazione e rispondono degli eventi.</p>
+      <p class="sec-intro dir__intro">Le persone che guidano l'associazione. Il consiglio direttivo è l'organo di indirizzo e gestione: le diverse competenze dei suoi componenti coprono gli aspetti organizzativi, amministrativi, istituzionali e sportivi.</p>
       <ul class="dir stagger">
         {direttivo.map(d => <li class="dir__c reveal"><h3 class="type-h3">{d.nome}</h3><span class="type-mono dir__r">{d.ruolo}</span><p>{d.nota}</p></li>)}
       </ul>
@@ -116,13 +117,13 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
   <section id="tesseramento" class="hair" aria-labelledby="tes-h">
     <div class="wrap section tes">
       <div class="tes__t">
-        <h2 id="tes-h" class="type-h2">Come diventare socio</h2>
-        <p class="type-body-dark">Cosa dà la tessera, quanto costa e come si richiede.</p>
-        <p class="tes__p">Da socio partecipi a tutte le attività dell'associazione, voti in assemblea e puoi candidarti al consiglio direttivo. Chi vuole, entra nello staff degli eventi.</p>
+        <h2 id="tes-h" class="type-h2">Diventa parte di Inversione A U</h2>
+        <p class="type-body-dark">Soci, collaboratori e appassionati.</p>
+        <p class="tes__p">L'associazione è aperta a chi vuole partecipare alle sue attività e contribuire allo sviluppo dei progetti. Essere soci significa partecipare alla vita associativa e, per chi desidera impegnarsi direttamente, entrare nella squadra che lavora agli eventi.</p>
         <ul class="lista-ev tes__list">
-          <li>Socio ordinario — quota annuale stabilita ogni anno dal consiglio direttivo</li>
-          <li>Socio operativo — partecipa all'organizzazione degli eventi</li>
-          <li>Sostenitore — sostiene l'attività senza ruolo operativo</li>
+          <li>Socio ordinario — partecipa alle attività associative e alla vita dell'associazione</li>
+          <li>Socio operativo — collabora alla progettazione e alla gestione degli eventi</li>
+          <li>Socio sostenitore — supporta le attività contribuendo allo sviluppo dei progetti</li>
           <li>La tessera vale per l'anno solare. Il rinnovo si apre a gennaio.</li>
         </ul>
       </div>
@@ -139,7 +140,25 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
     </div>
   </section>
 
-  <CTABlock kicker="I nostri eventi" title="Gli eventi che organizziamo" text="Legnaro Motori, Polo Motor Show e il 1° Rally Colli Euganei: tre eventi, un territorio.">
+  <section id="eventi" class="wrap section" aria-labelledby="ev-h">
+    <h2 id="ev-h" class="type-h2">Gli eventi di Inversione A U</h2>
+    <p class="type-body-dark sec-intro">Tre manifestazioni, un'unica organizzazione. Durante l'anno sviluppiamo eventi differenti per format, pubblico e disciplina, mantenendo lo stesso approccio organizzativo.</p>
+    <div class="reg stagger">
+      {[
+        ['Legnaro Motori', 'Un appuntamento dedicato alla cultura automobilistica e al mondo dei motori.', '/eventi/legnaro-motori/'],
+        ['Polo Motor Show', 'Una manifestazione che unisce motorsport, spettacolo, esposizione e pubblico attraverso un circuito cittadino.', '/eventi/polo-motor-show/'],
+        ['Rally Colli Euganei', 'Una competizione automobilistica che riporta il rally sui Colli Euganei attraverso un\'organizzazione sportiva strutturata.', '/rally-colli-euganei/'],
+      ].map(([t, d, href]) => (
+        <a class="card reg__c ev__c reveal" href={href}>
+          <h3 class="type-h3">{t}</h3>
+          <p>{d}</p>
+          <span class="type-mono ev__go">Apri la pagina <span class="arrow-x" aria-hidden="true">&#8594;</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <CTABlock kicker="Una squadra, una struttura, un obiettivo" title="Portare il motorsport fuori dai soliti circuiti" text="Organizziamo eventi che abbiano valore sportivo, qualità organizzativa e una relazione forte con il pubblico e con il territorio.">
     <a href="/eventi/" class="btn btn--primary">Vedi il calendario</a>
     <a href="/eventi/archivio/" class="btn btn--secondary">Apri l'archivio</a>
   </CTABlock>
@@ -169,6 +188,10 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
   .reg{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
   @media(min-width:768px){.reg{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .reg__c h3{color:#fff}
+  .ev__c{text-decoration:none;display:flex;flex-direction:column;gap:12px;transition:border-color var(--dur-fast) var(--ease-out)}
+  .ev__c:hover,.ev__c:focus-visible{border-color:#fff}
+  .ev__go{color:var(--grigio-450);margin-top:auto}
+  .ev__c:hover .ev__go{color:#fff}
   .num{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.num{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
   .num__t{display:flex;flex-direction:column;gap:12px}
