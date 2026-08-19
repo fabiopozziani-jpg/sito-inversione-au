@@ -15,11 +15,11 @@ export const rallyRef = (n: number) => wixRef(f(n).id, f(n).name, f(n).w, f(n).h
 
 /** Scelte editoriali (stessa numerazione dei file). */
 export const RALLY_IMG = {
-  heroHome: 10,      // hero della home: strada forestale, auto a destra
-  heroRally: 3,      // hero dell'hub rally e cover della card evento
+  heroHome: 5,       // hero della home: auto scura di spalle, colli nella foschia (titolo leggibile)
+  heroRally: 12,     // hero dell'hub rally e cover della card evento: auto a destra, bosco scuro a sinistra
   heroSpettatori: 11,
   newsIscrizioni: 7,
   newsRicognizioni: 4,
   newsUfficiale: 12,
-  newsZonePubblico: 5,
+  newsZonePubblico: 10,
 } as const;
