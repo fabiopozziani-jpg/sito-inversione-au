@@ -3,20 +3,149 @@
  "folderId": "d30c57bcf24646be81d870070f4c84ef",
  "nota": "Immagini del rally realizzate con IA (auto senza livree, targhe e sponsor; mood autunnale). Non sono foto di gara.",
  "foto": [
-  {"n":1,"id":"2be2d6_efc5a0822e8748ad916227d42bcac59d~mv2.jpg","name":"inversione-au-rally-colli-euganei-01.jpg","alt":"Vettura da rally bianca di fronte su una strada coperta di foglie nel bosco autunnale","w":1535,"h":1024},
-  {"n":2,"id":"2be2d6_4c63d4121842405490e957379c28a972~mv2.jpg","name":"inversione-au-rally-colli-euganei-02.jpg","alt":"Vettura da rally bianca in derapata su un tornante pieno di foglie","w":1920,"h":1054},
-  {"n":3,"id":"2be2d6_8349055d25e94a14bfe6210dc0ccd809~mv2.jpg","name":"inversione-au-rally-colli-euganei-03.jpg","alt":"Vettura da rally bianca in traverso sull'asfalto coperto di foglie dei Colli","w":1858,"h":1195},
-  {"n":4,"id":"2be2d6_c9546f3b500e4e0cb3ec51f101138f3b~mv2.jpg","name":"inversione-au-rally-colli-euganei-04.jpg","alt":"Vettura da rally bianca in curva su una strada nel bosco in autunno","w":1920,"h":1119},
-  {"n":5,"id":"2be2d6_9c9b0569515242f1aaf9df99e89bddef~mv2.jpg","name":"inversione-au-rally-colli-euganei-05.jpg","alt":"Vettura da rally grigia vista da dietro con i colli nella foschia sullo sfondo","w":1537,"h":1023},
-  {"n":6,"id":"2be2d6_0a20b6b9a38e4985a9bdaab0b342c8d2~mv2.jpg","name":"inversione-au-rally-colli-euganei-06.jpg","alt":"Vettura da rally azzurra in derapata su sterrato tra gli alberi","w":1672,"h":941},
-  {"n":7,"id":"2be2d6_d88f184fc478406ea81eba41477d778a~mv2.jpg","name":"inversione-au-rally-colli-euganei-07.jpg","alt":"Vettura da rally bianca in azione tra le foglie nel bosco","w":1737,"h":906},
-  {"n":8,"id":"2be2d6_1de57d19a77d41bd843fdcc041753685~mv2.jpg","name":"inversione-au-rally-colli-euganei-08.jpg","alt":"Vettura da rally bianca in curva su una strada stretta nel bosco","w":1536,"h":1024},
-  {"n":9,"id":"2be2d6_4dc8bea9940c43648732a1f496c56da7~mv2.jpg","name":"inversione-au-rally-colli-euganei-09.jpg","alt":"Vettura da rally grigia in curva su una strada bagnata d'autunno","w":1578,"h":997},
-  {"n":10,"id":"2be2d6_7ddf9bb7d2564e4a98e2d3d9914a4618~mv2.jpg","name":"inversione-au-rally-colli-euganei-10.jpg","alt":"Vettura da rally bianca su una strada forestale tra gli alberi gialli dell'autunno","w":1920,"h":1266},
-  {"n":11,"id":"2be2d6_277b080858db466a9fa094714dd3e099~mv2.jpg","name":"inversione-au-rally-colli-euganei-11.jpg","alt":"Vettura da rally grigia lungo il guard rail su una strada coperta di foglie","w":1536,"h":1024},
-  {"n":12,"id":"2be2d6_8dd80d426e6041f091aa0e610e7361c8~mv2.jpg","name":"inversione-au-rally-colli-euganei-12.jpg","alt":"Vettura da rally bianca in derapata accanto a un muretto a secco","w":1448,"h":1086},
-  {"n":13,"id":"2be2d6_f24d6806cb1c42c69cb753581806b5ca~mv2.jpg","name":"inversione-au-rally-colli-euganei-13.jpg","alt":"Vettura da rally bianca e nera su una strada asfaltata tra le foglie","w":1579,"h":996},
-  {"n":14,"id":"2be2d6_33c1933ad4e14892b123d03db7521b73~mv2.jpg","name":"inversione-au-rally-colli-euganei-14.jpg","alt":"Vettura da rally bianca in curva su una strada tra gli alberi","w":1736,"h":906},
-  {"n":15,"id":"2be2d6_f09a1ce2066942beaa18532812fb5dd2~mv2.jpg","name":"inversione-au-rally-colli-euganei-15.jpg","alt":"Vettura da rally bianca di fronte su una strada tra rocce e foglie","w":1920,"h":1155}
+  {
+   "n": 1,
+   "id": "2be2d6_efc5a0822e8748ad916227d42bcac59d~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-01.jpg",
+   "alt": "Vettura da rally bianca di fronte su una strada coperta di foglie nel bosco autunnale",
+   "w": 1535,
+   "h": 1024
+  },
+  {
+   "n": 2,
+   "id": "2be2d6_4c63d4121842405490e957379c28a972~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-02.jpg",
+   "alt": "Vettura da rally bianca in derapata su un tornante pieno di foglie",
+   "w": 1920,
+   "h": 1054
+  },
+  {
+   "n": 3,
+   "id": "2be2d6_8349055d25e94a14bfe6210dc0ccd809~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-03.jpg",
+   "alt": "Vettura da rally bianca in traverso sull'asfalto coperto di foglie dei Colli",
+   "w": 1858,
+   "h": 1195
+  },
+  {
+   "n": 4,
+   "id": "2be2d6_c9546f3b500e4e0cb3ec51f101138f3b~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-04.jpg",
+   "alt": "Vettura da rally bianca in curva su una strada nel bosco in autunno",
+   "w": 1920,
+   "h": 1119
+  },
+  {
+   "n": 5,
+   "id": "2be2d6_9c9b0569515242f1aaf9df99e89bddef~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-05.jpg",
+   "alt": "Vettura da rally grigia vista da dietro con i colli nella foschia sullo sfondo",
+   "w": 1537,
+   "h": 1023
+  },
+  {
+   "n": 6,
+   "id": "2be2d6_0a20b6b9a38e4985a9bdaab0b342c8d2~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-06.jpg",
+   "alt": "Vettura da rally azzurra in derapata su sterrato tra gli alberi",
+   "w": 1672,
+   "h": 941
+  },
+  {
+   "n": 7,
+   "id": "2be2d6_d88f184fc478406ea81eba41477d778a~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-07.jpg",
+   "alt": "Vettura da rally bianca in azione tra le foglie nel bosco",
+   "w": 1737,
+   "h": 906
+  },
+  {
+   "n": 8,
+   "id": "2be2d6_1de57d19a77d41bd843fdcc041753685~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-08.jpg",
+   "alt": "Vettura da rally bianca in curva su una strada stretta nel bosco",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "n": 9,
+   "id": "2be2d6_4dc8bea9940c43648732a1f496c56da7~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-09.jpg",
+   "alt": "Vettura da rally grigia in curva su una strada bagnata d'autunno",
+   "w": 1578,
+   "h": 997
+  },
+  {
+   "n": 10,
+   "id": "2be2d6_7ddf9bb7d2564e4a98e2d3d9914a4618~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-10.jpg",
+   "alt": "Vettura da rally bianca su una strada forestale tra gli alberi gialli dell'autunno",
+   "w": 1920,
+   "h": 1266
+  },
+  {
+   "n": 11,
+   "id": "2be2d6_277b080858db466a9fa094714dd3e099~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-11.jpg",
+   "alt": "Vettura da rally grigia lungo il guard rail su una strada coperta di foglie",
+   "w": 1536,
+   "h": 1024
+  },
+  {
+   "n": 12,
+   "id": "2be2d6_8dd80d426e6041f091aa0e610e7361c8~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-12.jpg",
+   "alt": "Vettura da rally bianca in derapata accanto a un muretto a secco",
+   "w": 1448,
+   "h": 1086
+  },
+  {
+   "n": 13,
+   "id": "2be2d6_f24d6806cb1c42c69cb753581806b5ca~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-13.jpg",
+   "alt": "Vettura da rally bianca e nera su una strada asfaltata tra le foglie",
+   "w": 1579,
+   "h": 996
+  },
+  {
+   "n": 14,
+   "id": "2be2d6_33c1933ad4e14892b123d03db7521b73~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-14.jpg",
+   "alt": "Vettura da rally bianca in curva su una strada tra gli alberi",
+   "w": 1736,
+   "h": 906
+  },
+  {
+   "n": 15,
+   "id": "2be2d6_f09a1ce2066942beaa18532812fb5dd2~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-15.jpg",
+   "alt": "Vettura da rally bianca di fronte su una strada tra rocce e foglie",
+   "w": 1920,
+   "h": 1155
+  },
+  {
+   "n": 16,
+   "id": "2be2d6_e0224ffad1004cadb9d46d91a922e0cd~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-16.jpg",
+   "alt": "Vettura da rally scura di spalle su una strada dei Colli in autunno",
+   "w": 1929,
+   "h": 1143
+  },
+  {
+   "n": 17,
+   "id": "2be2d6_9856a1cb5e3b474eb7b962c6f6ec7d5a~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-17.jpg",
+   "alt": "Vettura da rally bianca in azione su una strada coperta di foglie",
+   "w": 2309,
+   "h": 1119
+  },
+  {
+   "n": 18,
+   "id": "2be2d6_e14906763bf44c1baa9680e21cc9f1e4~mv2.jpg",
+   "name": "inversione-au-rally-colli-euganei-18.jpg",
+   "alt": "Vettura da rally chiara in curva tra i boschi dei Colli in autunno",
+   "w": 2147,
+   "h": 941
+  }
  ]
 }

@@ -43,23 +43,22 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <img class="hero__img" src={rallyImg(RALLY_IMG.heroHome, 1920, 1080)} alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
+      <img class="hero__targa" src="/img/rally/targa_2026.png" alt="" width="600" height="338" fetchpriority="high" decoding="async" />
       <p class="type-mono hero__kicker">Prossimo evento · 21–22 novembre 2026 · Colli Euganei</p>
       <h1 id="hero-h1" class="hero__h1">
-        <span class="hero__name">Inversione A U</span>
-        <span class="hero__sub">Eventi motorsport sui Colli Euganei</span>
+        <span class="type-mono hero__name">Inversione A U</span>
+        <span class="hero__sub">Torna il rally sui Colli Euganei</span>
       </h1>
       <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span></p>
-      <p class="hero__intro">Un rally torna sui Colli Euganei dopo più di trent'anni. Titolazione ACI Sport, auto moderne, due giorni di gara.</p>
       <div class="hero__cta">
         <a href="/rally-colli-euganei/percorso/" class="btn btn--primary">Guarda il percorso</a>
         <a href="/rally-colli-euganei/" class="btn btn--secondary">Leggi le informazioni del rally <span class="arrow-x" aria-hidden="true">→</span></a>
       </div>
-      <p class="type-mono hero__note">Percorso completo in pubblicazione entro il 30 settembre 2026</p>
     </div>
   </section>
 
   <!-- ACCESSO RAPIDO -->
-  <nav class="wrap accesso" aria-label="Accesso rapido">
+  <nav class="accesso" aria-label="Accesso rapido">
     <ul class="accesso__grid">
       {[
         ['01', 'Piloti e navigatori', 'Iscrizioni, scadenze, elenco iscritti', '/rally-colli-euganei/concorrenti/'],
@@ -78,12 +77,12 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <div class="stagione stagger">
       <div class="stagione__rally"><EventCard e={rally} big /></div>
       <div class="stagione__polo"><EventCard e={polo} big /></div>
-      <div class="stagione__legnaro"><EventCard e={legnaro} /></div>
+      <div class="stagione__legnaro"><EventCard e={legnaro} big /></div>
       <div class="stagione__next reveal">
         <div class="stagione__next-t">
           <span class="type-mono text-meta">Prossima stagione</span>
           <h3 class="type-h3">Calendario 2027</h3>
-          <p class="type-body-dark">Le date del 2027 saranno pubblicate entro dicembre 2026. Lasciaci la tua email e te le mandiamo.</p>
+          <p class="type-body-dark">Le date del 2027 saranno pubblicate nei prossimi mesi. Lasciaci la tua email e te le mandiamo.</p>
         </div>
         <a href="/contatti/" class="btn btn--secondary">Ricevi le date via email</a>
       </div>
@@ -95,9 +94,8 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <div class="chi__t">
       <p class="type-mono text-meta chi__k">L'associazione</p>
       <h2 id="chi-h" class="type-h2">Chi è Inversione A U</h2>
-      <p class="chi__intro type-body-dark">Chi organizza gli eventi, da dove veniamo e con chi lavoriamo sul territorio.</p>
       <p class="chi__p">Siamo nati nel 2017 come team di drifting. Nel 2019 abbiamo organizzato i primi raduni, dal 2022 gli eventi dinamici. Nel 2023 siamo diventati un'associazione sportiva dilettantistica.</p>
-      <p class="chi__p">Oggi lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco. Chi monta le reti alle sei di mattina è lo stesso che firma i permessi.</p>
+      <p class="chi__p">Oggi lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco. Il nostro desiderio? Fare la differenza nel campo motorsport per il nostro territorio.</p>
       <a href="/associazione/" class="type-mono link-line chi__link">Leggi la storia dell'associazione <span class="arrow-x" aria-hidden="true">→</span></a>
     </div>
     <div class="chi__n">
@@ -118,27 +116,26 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
 
   <!-- FOTO -->
   <div class="wrap section">
-    <PhotoStrip foto={fotoRecenti(8)} title="Foto degli ultimi eventi" intro="Una selezione dalle gallerie ufficiali di Polo Motor Show e Legnaro Motori." href="/foto-e-video/" credito="Foto: Inversione A U" id="foto-home" />
+    <PhotoStrip full foto={fotoRecenti(10)} title="Foto degli ultimi eventi" intro="Una selezione dalle gallerie ufficiali di Polo Motor Show e Legnaro Motori." href="/foto-e-video/" credito="Foto: Inversione A U" id="foto-home" />
   </div>
 
   <!-- PARTNER -->
   <section class="hair" aria-labelledby="partner">
     <div class="wrap section partner">
-      <SectionHead id="partner" title="I nostri partner" intro="Le aziende che sostengono l'associazione per tutta la stagione, non per un solo evento." />
-      <SponsorBlock sponsors={annuali} columns={5} mono={true} />
+      <SectionHead id="partner" title="I nostri partner" intro="Le aziende che sostengono i nostri eventi 2026" />
+      <SponsorBlock sponsors={annuali} columns={5} mono={false} />
       <a href="/sponsor/diventa-sponsor/" class="partner__cta">
         <span class="partner__cta-t">
           <span class="type-mono text-meta">Stagione 2027</span>
           <h3 class="type-h3">Come diventare sponsor <span class="arrow-x" aria-hidden="true">→</span></h3>
         </span>
-        <span class="type-body-dark partner__cta-d">Due pacchetti, dal singolo evento alla stagione, più la partnership tecnica.</span>
       </a>
-      <p class="type-body-dark partner__p">Nel 2026 ci affiancano 23 sponsor e 4 espositori, davanti a oltre 15.000 spettatori nelle due giornate del Polo Motor Show.</p>
+      <p class="type-body-dark partner__p">Nel 2026 al Polo Motor Show ci hanno affiancato 23 sponsor ufficiali e 4 espositori, davanti a oltre 10.000 spettatori nelle due giornate di evento e al nostro pubblico online.</p>
     </div>
   </section>
 
   <!-- CHIUSURA -->
-  <CTABlock kicker="Inversione A U" title="Fai parte di Inversione A U" text="Piloti, volontari e aziende: serve gente per far correre tre eventi in un anno. Rispondiamo entro 3 giorni lavorativi." image="/foto/polo_pubblico_sera.jpg">
+  <CTABlock kicker="Inversione A U" title="Fai parte di Inversione A U" text="Piloti, volontari e sponsor, una grande famiglia in crescita, unita dal motorsport." image="/foto/polo_pubblico_sera.jpg">
     <a href="/associazione/#tesseramento" class="btn btn--primary">Diventa socio</a>
     <a href="/contatti/" class="btn btn--secondary">Scrivi all'associazione</a>
   </CTABlock>
@@ -151,19 +148,20 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   .hero__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.5) 40%,rgba(0,0,0,.15) 75%,rgba(0,0,0,0) 100%),linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.72) 100%)}
   .hero__in{position:relative;align-self:flex-end;width:100%;padding-bottom:var(--sp-8);display:flex;flex-direction:column;gap:16px;color:#fff}
   .hero__kicker{color:var(--grigio-200);letter-spacing:.08em}
-  .hero__h1{display:flex;flex-direction:column;gap:10px;font-family:var(--font-display);font-stretch:125%;text-transform:uppercase;letter-spacing:.02em;text-wrap:balance}
-  .hero__name{font-weight:900;font-size:clamp(36px,9.5vw,96px);line-height:1.02}
-  .hero__sub{font-weight:600;letter-spacing:.04em;font-size:clamp(18px,2.2vw,28px);line-height:1.2}
+  .hero__targa{width:min(400px,72vw);height:auto;margin-bottom:4px}
+  .hero__h1{display:flex;flex-direction:column;gap:8px;text-wrap:balance}
+  .hero__name{font-size:14px;letter-spacing:.16em;color:var(--grigio-200);text-transform:uppercase}
+  .hero__sub{font-family:var(--font-display);font-stretch:125%;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(34px,7.6vw,84px);line-height:1.03}
   .hero__count{color:var(--grigio-200);font-size:14px}
   .hero__intro{max-width:52ch}
   .hero__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
   .hero__note{color:var(--grigio-200)}
   /* accesso rapido */
-  .accesso{padding-left:0;padding-right:0}
+  .accesso{width:100%}
   .accesso__grid{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
   @media(min-width:640px){.accesso__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   @media(min-width:1180px){.accesso__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-  .accesso__grid a{display:flex;flex-direction:column;gap:8px;padding:24px clamp(16px,3vw,28px);text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out);height:100%}
+  .accesso__grid a{display:flex;flex-direction:column;gap:8px;padding:24px clamp(16px,3vw,28px);height:100%;text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out);height:100%}
   @media(min-width:1180px){.accesso__grid a{border-bottom:0}.accesso__grid li:last-child a{border-right:0}}
   .accesso__grid a:hover,.accesso__grid a:focus-visible{background:var(--carbone)}
   .accesso__n{color:var(--rally-verde)}
@@ -172,7 +170,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   /* stagione */
   .stagione{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);align-items:stretch}
   @media(min-width:768px){.stagione{grid-template-columns:repeat(4,minmax(0,1fr))}.stagione__rally{grid-column:span 4}.stagione__polo,.stagione__legnaro{grid-column:span 2}.stagione__next{grid-column:span 4}}
-  @media(min-width:1024px){.stagione__rally{grid-column:span 2;grid-row:span 2}.stagione__polo{grid-column:span 2}.stagione__legnaro{grid-column:span 1}.stagione__next{grid-column:span 1}}
+  @media(min-width:1024px){.stagione{grid-template-columns:repeat(3,minmax(0,1fr))}.stagione__rally{grid-column:span 2}.stagione__polo{grid-column:span 1}.stagione__legnaro{grid-column:span 1}.stagione__next{grid-column:span 2}}
   .stagione__rally>*,.stagione__polo>*,.stagione__legnaro>*{height:100%}
   .stagione__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px}
   @media(min-width:768px) and (max-width:1023px){.stagione__next{flex-direction:row;align-items:center;flex-wrap:wrap}}

@@ -3,7 +3,7 @@
  * Sono immagini realizzate con IA: auto senza livree, targhe e sponsor, mood autunnale. Non sono foto di gara.
  * Riserva statica per le pagine: nel CMS gli stessi file sono nei campi Eventi.hero (rally) e News.immagine.
  */
-import { wixFill, wixRef } from './media';
+import { wixFill, wixFit, wixRef } from './media';
 import m from './media/rally-colli-euganei-2026.json';
 
 const f = (n: number) => m.foto[n - 1];
@@ -15,11 +15,26 @@ export const rallyRef = (n: number) => wixRef(f(n).id, f(n).name, f(n).w, f(n).h
 
 /** Scelte editoriali (stessa numerazione dei file). */
 export const RALLY_IMG = {
-  heroHome: 5,       // hero della home: auto scura di spalle, colli nella foschia (titolo leggibile)
-  heroRally: 12,     // hero dell'hub rally e cover della card evento: auto a destra, bosco scuro a sinistra
-  heroSpettatori: 11,
+  heroHome: 16,      // hero della home (scelta di Fabio, 19/8)
+  heroRally: 17,     // hero dell'hub rally e cover della card evento (scelta di Fabio, 19/8)
+  heroSpettatori: 18,
   newsIscrizioni: 7,
   newsRicognizioni: 4,
   newsUfficiale: 12,
   newsZonePubblico: 10,
 } as const;
+
+/** Immagini singole caricate nel Media Manager (cartella sito-immagini). */
+export const IMMAGINI = {
+  /** Mappa delle aree del Polo Motor Show 2026 (fornita da Inversione A U). */
+  mappaPolo: { id: '2be2d6_e1959ebe25174b298e63189695bc01cc~mv2.jpg', name: 'mappa-polo-motor-show.jpg', w: 1600, h: 1584,
+    alt: 'Mappa delle aree del Polo Motor Show a Selve di Teolo: circuito, aree pubblico, food, paddock e parcheggi' },
+  /** Mappa delle aree di Legnaro Motori 2026. */
+  mappaLegnaro: { id: '2be2d6_ad567159f3e24fee9c10c999e070ac8a~mv2.jpg', name: 'mappa-legnaro-motori.jpg', w: 1000, h: 1000,
+    alt: 'Mappa di Legnaro Motori: pista drift, area pubblico, raduno auto sportive e paddock in Viale dello Sport' },
+  /** Foto d'epoca: Coppa Italia · Rally Città del Santo, Padova 1986. */
+  santo1986: { id: '2be2d6_ed6a4ccb07374db59c38ea97dccedb08~mv2.jpg', name: 'rally-citta-del-santo-1986.jpg', w: 735, h: 499,
+    alt: 'Lancia 037 numero 8 in gara al Rally Città del Santo, Padova 1986, con il pubblico a bordo strada' },
+} as const;
+export const imgFill = (i: { id: string; name: string }, w: number, h: number) => wixFill(i.id, i.name, w, h);
+export const imgFit = (i: { id: string; name: string }, max: number) => wixFit(i.id, i.name, max);

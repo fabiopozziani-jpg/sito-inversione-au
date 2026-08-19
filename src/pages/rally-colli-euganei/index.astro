@@ -60,7 +60,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   </section>
 
   <!-- ACCESSO RAPIDO -->
-  <nav class="wrap qa" aria-label="Accesso rapido al rally">
+  <nav class="qa" aria-label="Accesso rapido al rally">
     <ul class="qa__grid">
       {[
         ['01', 'Concorrenti', '/rally-colli-euganei/concorrenti/'],
@@ -199,7 +199,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .hero__count--live{color:var(--rally-verde)}
   .hero__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
   /* accesso rapido */
-  .qa{padding-left:0;padding-right:0}
+  .qa{width:100%}
   .qa__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
   @media(min-width:900px){.qa__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .qa__grid a{display:flex;align-items:baseline;gap:12px;line-height:1.3;padding:20px clamp(16px,3vw,28px);color:#fff;text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out)}
