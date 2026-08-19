@@ -59,6 +59,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
 
   <!-- ACCESSO RAPIDO -->
   <nav class="accesso" aria-label="Accesso rapido">
+    <div class="wrap">
     <ul class="accesso__grid">
       {[
         ['01', 'Piloti e navigatori', 'Iscrizioni, scadenze, elenco iscritti', '/rally-colli-euganei/concorrenti/'],
@@ -69,6 +70,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
         <li><a href={h}><span class="type-mono accesso__n">{n}</span><span class="type-mono accesso__t">{t}</span><span class="accesso__d">{d}</span></a></li>
       ))}
     </ul>
+    </div>
   </nav>
 
   <!-- STAGIONE -->
@@ -157,8 +159,8 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   .hero__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
   .hero__note{color:var(--grigio-200)}
   /* accesso rapido */
-  .accesso{width:100%}
-  .accesso__grid{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
+  .accesso{width:100%;border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
+  .accesso__grid{display:grid;grid-template-columns:minmax(0,1fr)}
   @media(min-width:640px){.accesso__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   @media(min-width:1180px){.accesso__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .accesso__grid a{display:flex;flex-direction:column;gap:8px;padding:24px clamp(16px,3vw,28px);height:100%;text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out);height:100%}

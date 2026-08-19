@@ -61,6 +61,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
 
   <!-- ACCESSO RAPIDO -->
   <nav class="qa" aria-label="Accesso rapido al rally">
+    <div class="wrap">
     <ul class="qa__grid">
       {[
         ['01', 'Concorrenti', '/rally-colli-euganei/concorrenti/'],
@@ -71,6 +72,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         <li><a href={h} class="type-mono"><span class="qa__n">{n}</span>{t}</a></li>
       ))}
     </ul>
+    </div>
   </nav>
 
   <!-- DUE PORTE -->
@@ -202,8 +204,8 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .hero__count--live{color:var(--rally-verde)}
   .hero__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
   /* accesso rapido */
-  .qa{width:100%}
-  .qa__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
+  .qa{width:100%;border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
+  .qa__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   @media(min-width:900px){.qa__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .qa__grid a{display:flex;align-items:baseline;gap:12px;line-height:1.3;padding:20px clamp(16px,3vw,28px);color:#fff;text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out)}
   .qa__grid li:nth-child(2n) a{border-right:0}
