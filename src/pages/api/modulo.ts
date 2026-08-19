@@ -15,7 +15,8 @@ const GRAZIE: Record<ChiaveModulo, string> = {
 const finestra = new Map<string, number[]>(); // ip → timestamp invii
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
 
-export const POST: APIRoute = async ({ request, clientAddress }) => {
+export const POST: APIRoute = async (ctx) => {
+  const { request } = ctx;
   // stessa origine (il modulo è inviato dalle pagine del sito)
   const origin = request.headers.get('origin'); const host = request.headers.get('host');
   if (origin && host && !origin.endsWith('//' + host)) return json({ ok: false, errori: ['Richiesta non valida.'] }, 403);
@@ -30,7 +31,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (!MODULI[modulo]) return json({ ok: false, errori: ['Modulo sconosciuto.'] }, 400);
   if (String(d.sito_web || '').trim()) return json({ ok: true, messaggio: 'Grazie.' }); // honeypot: rispondiamo ok senza inviare
   // limite per IP
-  let ip = 'x'; try { ip = clientAddress; } catch { ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'x'; }
+  let ip = 'x'; try { ip = ctx.clientAddress; } catch { ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'x'; } // clientAddress può non essere disponibile sull'hosting Wix
   const ora = Date.now(); const rec = (finestra.get(ip) || []).filter(t => ora - t < 600_000);
   if (rec.length >= 6) return json({ ok: false, errori: ['Troppi invii in pochi minuti: riprova più tardi o scrivi a inversione.au3@gmail.com.'] }, 429);
   const { valori, errori } = prepara(modulo, d);
