@@ -1,6 +1,7 @@
 /**
- * Sitemap XML generata dal server: route fisse + news + gallerie (dal CMS, con riserva statica).
- * URL assolute sul dominio di produzione (astro.config `site`), come il canonical.
+ * Sitemap dei contenuti dinamici (news + gallerie dal CMS) e delle route fisse.
+ * Wix serve già /sitemap.xml e /robots.txt dalle pagine registrate nel pannello; questa sitemap aggiuntiva va indicata
+ * nel Robots.txt Editor di Wix (riga `Sitemap: https://www.inversioneau.com/sitemap-contenuti.xml`).
  */
 import type { APIRoute } from 'astro';
 import { caricaPosts, caricaGallerie } from '../lib/contenuti';

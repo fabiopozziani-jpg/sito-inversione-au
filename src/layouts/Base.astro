@@ -26,6 +26,10 @@ const { title, description, active = '', bodyClass = '', noindex = false, image 
 const origin = (Astro.site ?? Astro.url).origin;
 const canonical = new URL(Astro.url.pathname, origin).href;
 const ogImage = new URL(image, origin).href;
+// dimensioni dell'immagine social: 1200×630 per le nostre immagini social, altrimenti lette dall'URL wixstatic (fill/w_X,h_Y)
+const dim = image.match(/\/fill\/w_(\d+),h_(\d+)/);
+const ogW = dim ? dim[1] : image.startsWith('/img/social/') ? '1200' : '';
+const ogH = dim ? dim[2] : image.startsWith('/img/social/') ? '630' : '';
 const org = {
   '@context': 'https://schema.org', '@type': 'SportsOrganization', '@id': `${origin}/#org`,
   name: 'Inversione A U A.S.D.', alternateName: 'Inversione A U', url: origin, logo: `${origin}/img/logo_positivo_nero.png`,
@@ -42,9 +46,9 @@ const ld = [org, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])]
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>document.documentElement.classList.replace('no-js','js')</script>
-    <title wix-seo-tag="true">{title}</title>
-    <meta wix-seo-tag="true" name="description" content={description} />
-    <link wix-seo-tag="true" rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:site_name" content="Inversione A U" />
     <meta property="og:title" content={title} />
@@ -53,8 +57,8 @@ const ld = [org, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])]
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    {ogW && <meta property="og:image:width" content={ogW} />}
+    {ogH && <meta property="og:image:height" content={ogH} />}
     <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -63,6 +67,7 @@ const ld = [org, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])]
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
     <meta name="theme-color" content="#000000" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://static.wixstatic.com" crossorigin />
     <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
     <slot name="head" />

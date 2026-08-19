@@ -1,6 +1,0 @@
-# Inversione A U — www.inversioneau.com
-User-agent: *
-Allow: /
-Disallow: /api/
-
-Sitemap: https://www.inversioneau.com/sitemap.xml

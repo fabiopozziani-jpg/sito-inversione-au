@@ -16,8 +16,14 @@ const intro: Record<string, string> = {
   rally: 'Le foto ufficiali della gara saranno pubblicate qui dopo il rally.',
 };
 const titolo = `Foto ${g.evento === 'legnaro' ? 'di' : 'del'} ${g.nomeEvento.replace('1° ', '')} ${g.anno}`;
+// Dati strutturati: galleria immagini (prime 12 foto a piena risoluzione) + immagine di condivisione = copertina
+const galleriaLd = g.foto.length ? {
+  '@context': 'https://schema.org', '@type': 'ImageGallery', name: titolo, url: `https://www.inversioneau.com/foto-e-video/${g.slug}/`,
+  about: { '@type': 'SportsEvent', name: `${g.nomeEvento} ${g.anno}` }, publisher: { '@id': 'https://www.inversioneau.com/#org' }, inLanguage: 'it',
+  image: g.foto.slice(0, 12).map(f => ({ '@type': 'ImageObject', contentUrl: f.srcLarge, thumbnailUrl: f.src, description: f.alt, creditText: g.credito.replace(/^Foto: /, '') })),
+} : undefined;
 ---
-<Base title={`${titolo} | Inversione A U`} description={`${titolo}: le immagini ufficiali dell'edizione ${g.anno}, libere per la stampa con credit. Galleria con lightbox.`} active="media" bodyClass={`ctx-${g.evento}`}>
+<Base title={`${titolo} | Inversione A U`} description={`${titolo}: le immagini ufficiali dell'edizione ${g.anno}, libere per la stampa con credit. Galleria con lightbox.`} active="media" bodyClass={`ctx-${g.evento}`} image={g.copertina.src || undefined} imageAlt={g.copertina.alt || titolo} jsonld={galleriaLd}>
   <header class="wrap pg-head">
     <p class="type-mono k-ev">{kicker[g.evento]}</p>
     <h1 class="type-h1">{titolo}</h1>
