@@ -17,9 +17,9 @@ export const mediakit = {
   'logo-legnaro-2026-2.png': `${IMG}2be2d6_13add9529d044780b52cd4d73bd8c162~mv2.png`,
   'logo-legnaro-2026-vettoriale.pdf': pdf('2be2d6_bdc9745c562b4bebb782cbed00c93695', 'logo-legnaro-2026-vettoriale.pdf'),
   'logo-polo-2026-bianco.png': `${IMG}2be2d6_6da7381275ff410da8ee7f780aada8fb~mv2.png`,
-  'logo-polo-2026-bianco.svg': `${SVG}2be2d6_2d1b311be3d649d6845cfcfe00036f27.svg`,
+  'logo-polo-2026-bianco.svg': '/mediakit/logo-polo-2026-bianco.svg', // SVG da 2 MB: il Media Manager non lo accetta, resta nel sito
   'logo-polo-2026-nero.png': `${IMG}2be2d6_5d8efee82a2e42999cc0720dd90cb954~mv2.png`,
-  'logo-polo-2026-nero.svg': `${SVG}2be2d6_ff8d2c67d54e4bc48c2c2c3b76965885.svg`,
+  'logo-polo-2026-nero.svg': '/mediakit/logo-polo-2026-nero.svg',
   'targa-rally-colli-euganei.png': `${IMG}2be2d6_a5e3f110c33f484bb3482581bd4da470~mv2.png`,
   'targa-rally-colli-euganei.svg': `${SVG}2be2d6_362e803bc11c4149bd05977735b7864d.svg`,
 } as const;
