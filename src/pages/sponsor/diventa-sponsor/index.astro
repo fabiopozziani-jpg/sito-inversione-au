@@ -56,10 +56,10 @@ const budget = ['Da definire', 'Fino a 1.000 €', '1.000 – 3.000 €', '3.000
       ))}
     </div>
     <div class="tbl-wrap cmp">
-      <table class="tbl">
+      <table class="tbl tbl--cards">
         <caption class="type-mono">Cosa ricevi con ciascun pacchetto</caption>
         <thead><tr><th scope="col">Cosa ricevi</th><th scope="col">Partner di stagione</th><th scope="col">Sponsor di un evento</th></tr></thead>
-        <tbody>{confronto.map(([v, a, e]) => <tr><th scope="row">{v}</th><td>{a}</td><td>{e}</td></tr>)}</tbody>
+        <tbody>{confronto.map(([v, a, e]) => <tr><th scope="row">{v}</th><td data-label="Partner di stagione">{a}</td><td data-label="Sponsor di un evento">{e}</td></tr>)}</tbody>
       </table>
     </div>
     <p class="hint">Non pubblichiamo un listino. Ogni proposta si costruisce sull'azienda, sul settore e sull'evento scelto.</p>

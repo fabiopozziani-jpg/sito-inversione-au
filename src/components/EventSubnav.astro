@@ -17,14 +17,22 @@ const cur = norm(current);
   </div>
 </nav>
 <script>
-  // porta la voce attiva in vista quando la barra scorre in orizzontale (mobile)
-  document.querySelectorAll<HTMLElement>('.ev-subnav [aria-current="page"]').forEach(a => {
-    const box = a.closest<HTMLElement>('.ev-subnav__in');
-    if (box && box.scrollWidth > box.clientWidth) box.scrollLeft = Math.max(0, a.offsetLeft - 16);
+  // porta la voce attiva in vista e segnala con una sfumatura che la barra continua a destra/sinistra
+  document.querySelectorAll<HTMLElement>('.ev-subnav').forEach(nav => {
+    const box = nav.querySelector<HTMLElement>('.ev-subnav__in')!;
+    const a = nav.querySelector<HTMLElement>('[aria-current="page"]');
+    if (a && box.scrollWidth > box.clientWidth) box.scrollLeft = Math.max(0, a.offsetLeft - 16);
+    const upd = () => { nav.classList.toggle('has-more', box.scrollLeft + box.clientWidth < box.scrollWidth - 4); nav.classList.toggle('has-less', box.scrollLeft > 4); };
+    box.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
   });
 </script>
 <style>
-  .ev-subnav{position:sticky;top:var(--header-h);z-index:90;background:var(--sub-bg);border-top:3px solid var(--sub-accent)}
+  .ev-subnav{position:sticky;top:var(--header-h);z-index:90;background:var(--sub-bg);border-top:3px solid var(--sub-accent);position:sticky}
+  .ev-subnav::after,.ev-subnav::before{content:"";position:absolute;top:0;bottom:0;width:40px;pointer-events:none;opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
+  .ev-subnav::after{right:0;background:linear-gradient(90deg,transparent,var(--sub-bg))}
+  .ev-subnav::before{left:0;background:linear-gradient(-90deg,transparent,var(--sub-bg))}
+  .ev-subnav.has-more::after,.ev-subnav.has-less::before{opacity:1}
+  @media(max-width:1179px){.ev-subnav__in{height:48px;gap:22px}}
   .ev-subnav__in{display:flex;gap:28px;align-items:center;height:var(--subnav-h);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .ev-subnav__in::-webkit-scrollbar{display:none}
   .ev-subnav__a{font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:2px solid transparent;padding:4px 0;white-space:nowrap;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}

@@ -86,3 +86,19 @@ fieldset{border:0;padding:0;margin:0;min-width:0;display:flex;flex-direction:col
 legend{padding:0;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450);margin-bottom:6px}
 .form-box{display:flex;flex-direction:column;gap:18px;background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4)}
 .form-box h2,.form-box h3{color:#fff}
+
+/* tabelle → schede impilate sotto i 640px (data-label sui td) */
+@media(max-width:639px){
+  .tbl-wrap:has(.tbl--cards){border:0;overflow:visible}
+  .tbl--cards{min-width:0;border-top:1px solid var(--border-on-dark)}
+  .tbl--cards caption{padding:8px 0 12px}
+  .tbl--cards thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tbl--cards tbody tr{display:block;padding:14px 0;border-bottom:1px solid var(--border-on-dark)}
+  .tbl--cards tbody th,.tbl--cards tbody td{display:block;padding:0;border:0;white-space:normal}
+  .tbl--cards tbody th{margin-bottom:8px}
+  .tbl--cards tbody td{margin-top:6px}
+  .tbl--cards tbody td[data-label]::before{content:attr(data-label);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grigio-450);margin-bottom:2px}
+  .tbl--cards tbody tr.gruppo{padding:18px 0 6px;border-bottom:0}
+  .tbl--cards tbody tr.gruppo th{margin:0;background:none;border-top:2px solid var(--ev);padding-top:8px}
+  .tbl--cards .num{width:auto}
+}

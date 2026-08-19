@@ -29,5 +29,5 @@ const H = `h${headingLevel}` as 'h2' | 'h3';
   .spb--light .spb__h{color:#6B6B6B}
   .spb--light.spb--mono .spb__cell img{filter:grayscale(1)}
   @media(max-width:900px){.spb__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media(max-width:560px){.spb__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.spb__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spb__grid>*:last-child:nth-child(odd){grid-column:span 2}}
 </style>

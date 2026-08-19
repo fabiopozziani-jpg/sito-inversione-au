@@ -74,9 +74,9 @@ const haIscritti = iscritti.length > 0;
       <div class="isc__col">
         <h3 class="type-h3">Date da segnare</h3>
         <div class="tbl-wrap">
-          <table class="tbl tbl--scad">
+          <table class="tbl tbl--scad tbl--cards">
             <thead><tr><th scope="col">Fase</th><th scope="col">Data</th><th scope="col">Ora</th></tr></thead>
-            <tbody>{scadenze.map(s => <tr><th scope="row">{s.fase}</th><td>{s.data}</td><td class="tabular">{s.ora}</td></tr>)}</tbody>
+            <tbody>{scadenze.map(s => <tr><th scope="row">{s.fase}</th><td data-label="Data">{s.data}</td><td class="tabular" data-label="Ora">{s.ora}</td></tr>)}</tbody>
           </table>
         </div>
         <p class="hint">Le date confermate vengono pubblicate anche nell'albo di gara</p>
@@ -116,11 +116,11 @@ const haIscritti = iscritti.length > 0;
           <p class="hint el__conta" aria-live="polite" data-conta>{iscritti.length} equipaggi su {iscritti.length}</p>
         </div>
         <div class="tbl-wrap">
-          <table class="tbl">
+          <table class="tbl tbl--cards">
             <caption class="type-mono">Elenco iscritti{iscrittiAggiornatoAl && ` · aggiornato al ${iscrittiAggiornatoAl}`}</caption>
             <thead><tr><th scope="col">N° di gara</th><th scope="col">Equipaggio</th><th scope="col">Vettura</th><th scope="col">Classe</th></tr></thead>
             <tbody>
-              {iscritti.map(i => <tr data-classe={i.classe} data-testo={`${i.equipaggio} ${i.vettura} ${i.num}`.toLowerCase()}><th scope="row" class="num">{i.num}</th><td class="el__eq">{i.equipaggio}</td><td>{i.vettura}</td><td class="type-mono">{i.classe}</td></tr>)}
+              {iscritti.map(i => <tr data-classe={i.classe} data-testo={`${i.equipaggio} ${i.vettura} ${i.num}`.toLowerCase()}><th scope="row" class="num">N° {i.num}</th><td class="el__eq" data-label="Equipaggio">{i.equipaggio}</td><td data-label="Vettura">{i.vettura}</td><td class="type-mono" data-label="Classe">{i.classe}</td></tr>)}
             </tbody>
           </table>
         </div>

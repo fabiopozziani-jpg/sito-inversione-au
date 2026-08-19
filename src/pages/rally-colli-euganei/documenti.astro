@@ -96,7 +96,7 @@ const hasDocs = docs.length > 0;
           <div><dt class="type-mono">Testo barrato</dt><dd>— documento superato da una versione più recente. Resta in elenco per consultazione, ma non è più valido.</dd></div>
         </dl>
         <div class="tbl-wrap">
-          <table class="tbl albo__tbl">
+          <table class="tbl albo__tbl tbl--cards">
             <caption class="type-mono">Albo di gara — documenti pubblicati, dal più recente</caption>
             <thead><tr><th scope="col">Documento</th><th scope="col">Versione</th><th scope="col">Pubblicato il</th><th scope="col">File</th></tr></thead>
             <tbody>
@@ -110,9 +110,9 @@ const hasDocs = docs.length > 0;
                         {d.revLine && <div class="hint">{d.revLine}</div>}
                         {d.superatoLine && <div class="hint">{d.superatoLine}</div>}
                       </td>
-                      <td class="type-mono">{d.rev ?? '—'}</td>
-                      <td class="type-mono"><time datetime={d.iso}>{fmtData(d.iso, true)}</time></td>
-                      <td>
+                      <td class="type-mono" data-label="Versione">{d.rev ?? '—'}</td>
+                      <td class="type-mono" data-label="Pubblicato il"><time datetime={d.iso}>{fmtData(d.iso, true)}</time></td>
+                      <td data-label="File">
                         <div class="albo__file">
                           <div class="albo__links"><a class="type-mono" href={d.href} target="_blank" rel="noopener">Apri ↗</a><a class="type-mono" href={d.href} download>Scarica ↓</a></div>
                           <span class="hint">{d.file}</span>
