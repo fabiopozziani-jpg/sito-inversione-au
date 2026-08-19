@@ -3,7 +3,7 @@
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import { caricaTeam } from '../../lib/contenuti';
-import { documenti } from '../../data/filesWix';
+import { documenti as pdfWix } from '../../data/filesWix';
 import StatBlock from '../../components/StatBlock.astro';
 import Timeline from '../../components/Timeline.astro';
 import CTABlock from '../../components/CTABlock.astro';
@@ -33,9 +33,9 @@ const dati: [string, string][] = [
   ['Codice fiscale', '92324000287'], ['Partita IVA', '05585020281'], ['Costituita il', '20 novembre 2023'], ['Codice attività', '931910 · Enti e organizzazioni sportive'],
 ];
 const documenti = [
-  { label: 'Atto costitutivo e statuto', href: documenti.statuto },
-  { label: 'Certificato del codice fiscale', href: documenti.codiceFiscale },
-  { label: 'Certificato della partita IVA', href: documenti.partitaIva },
+  { label: 'Atto costitutivo e statuto', href: pdfWix.statuto },
+  { label: 'Certificato del codice fiscale', href: pdfWix.codiceFiscale },
+  { label: 'Certificato della partita IVA', href: pdfWix.partitaIva },
 ];
 const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo'];
 ---
