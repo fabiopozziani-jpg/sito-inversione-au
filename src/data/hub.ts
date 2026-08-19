@@ -19,6 +19,13 @@ export type Hub = {
   pilotiTesto: string; pilotiVoci: string[]; pilotiNota: string; pilotiImage: string; pilotiCaption: string;
   sponsorIntro: string;
   motivi: string[];
+  /** Ospiti delle edizioni passate: fasce testo/foto alternate sotto il programma. */
+  specialGuest?: SpecialGuest[];
+};
+
+export type SpecialGuest = {
+  anno: string; titolo: string; testo: string; punti: string[];
+  img: string; alt: string; didascalia: string;
 };
 
 const motiviBase = ['Informazioni sull’evento', 'Voglio esporre la mia auto', 'Voglio correre', 'Sono un’azienda', 'Voglio dare una mano come volontario', 'Sono un giornalista'];
@@ -60,6 +67,30 @@ export const hubs: Record<'polo' | 'legnaro', Hub> = {
     pilotiImage: '/foto/polo_e30_turchese_drift.jpg', pilotiCaption: 'Polo Motor Show · rally show sul tracciato cittadino',
     sponsorIntro: 'Le aziende che hanno sostenuto l’edizione 2026.',
     motivi: motiviBase,
+    specialGuest: [
+      {
+        anno: '2026', titolo: 'Danny Lazzarin · Shark Garage',
+        testo: 'Per due giorni il paddock ha ospitato Danny Lazzarin e il brand Shark Garage. In esposizione la Mercedes Classe A AMG del concorso Shark Garage, con i biglietti dell’estrazione in vendita nell’area evento. Danny è rimasto in mezzo al pubblico per tutto il weekend, tra circuito, raduni e area espositori.',
+        punti: [
+          'Mercedes Classe A AMG del concorso in mostra per entrambe le giornate',
+          'Biglietti dell’estrazione in vendita nell’area evento',
+          'Incontro con il pubblico per tutto il weekend',
+        ],
+        img: imgFit(IMMAGINI.guest2026, 1200), alt: IMMAGINI.guest2026.alt,
+        didascalia: 'Polo Motor Show 2026 · Danny Lazzarin per Shark Garage',
+      },
+      {
+        anno: '2025', titolo: 'Hot Wheels Legends Tour · Carmagheddon',
+        testo: 'L’edizione 2025 ha ospitato la finale italiana dell’Hot Wheels Legends Tour, presentata dai Carmagheddon. La sera, accanto al circuito, la festa per il milione di iscritti al loro canale YouTube. Per tutto l’evento è rimasto aperto lo stand ufficiale Hot Wheels, con il merchandising e i pezzi da collezione.',
+        punti: [
+          'Finale italiana dell’Hot Wheels Legends Tour',
+          'Festa per il milione di iscritti dei Carmagheddon, accanto al circuito',
+          'Stand ufficiale Hot Wheels con merchandising e rarità',
+        ],
+        img: imgFit(IMMAGINI.guest2025, 1200), alt: IMMAGINI.guest2025.alt,
+        didascalia: 'Polo Motor Show 2025 · i Carmagheddon alla finale italiana',
+      },
+    ],
   },
   legnaro: {
     key: 'legnaro', nome: 'Legnaro Motori', anno: '2026', annoProx: '2027',

@@ -33,6 +33,8 @@ export const IMMAGINI = {
   mappaLegnaro: { id: '2be2d6_ad567159f3e24fee9c10c999e070ac8a~mv2.jpg', name: 'mappa-legnaro-motori.jpg', w: 1000, h: 1000,
     alt: 'Mappa di Legnaro Motori: pista drift, area pubblico, raduno auto sportive e paddock in Viale dello Sport' },
   /** Foto d'epoca: Coppa Italia · Rally Città del Santo, Padova 1986. */
+  guest2026: { id: '2be2d6_cc1eda643dc44c2aa3ed203f240ebecd~mv2.png', name: 'special-guest-2026-danny-lazzarin.png', w: 1200, h: 1158, alt: 'Danny Lazzarin a braccia conserte accanto al logo Shark Garage' },
+  guest2025: { id: '2be2d6_9c0092e2192149d4b4f4cb579db94b8c~mv2.png', name: 'special-guest-2025-hot-wheels-carmagheddon.png', w: 961, h: 652, alt: 'I tre Carmagheddon sotto i loghi Carmagheddon e Hot Wheels Legends Tour' },
   stemmaLegnaro: { id: '2be2d6_2ed52aee8d6f42c2bf4f88af1b9f5c53~mv2.png', name: 'comune-di-legnaro.png', w: 373, h: 340, alt: 'Stemma del Comune di Legnaro' },
   santo1986: { id: '2be2d6_ed6a4ccb07374db59c38ea97dccedb08~mv2.jpg', name: 'rally-citta-del-santo-1986.jpg', w: 735, h: 499,
     alt: 'Lancia 037 numero 8 in gara al Rally Città del Santo, Padova 1986, con il pubblico a bordo strada' },

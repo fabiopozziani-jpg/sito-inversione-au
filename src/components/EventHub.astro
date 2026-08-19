@@ -25,6 +25,7 @@ const email = 'inversione.au3@gmail.com';
 const nav = [
   { label: 'L’evento', href: `${h.href}#evento` },
   { label: 'Programma', href: `${h.href}#programma` },
+  ...(h.specialGuest?.length ? [{ label: 'Special guest', href: `${h.href}#special-guest` }] : []),
   ...(t.showMappa ? [{ label: 'Mappa e parcheggi', href: `${h.href}#mappa` }] : []),
   { label: 'Foto', href: galleryUrl },
   ...(t.showPiloti ? [{ label: 'Piloti ed espositori', href: `${h.href}#piloti` }] : []),
@@ -77,6 +78,30 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   </div>
   <Timeline items={h.programma} />
 </section>
+
+{h.specialGuest?.length && (
+  <section id="special-guest" class="wrap section sg" aria-labelledby="sg-h">
+    <div class="sec-head">
+      <p class="type-mono k-ev">Special guest</p>
+      <h2 id="sg-h" class="type-h2">Chi è passato dal {h.nome}</h2>
+      <p class="type-body-dark">Ogni edizione porta in paddock un ospite che il pubblico non si aspetta di trovare qui.</p>
+    </div>
+    {h.specialGuest.map((g, i) => (
+      <article class:list={['sg__riga reveal', { 'sg__riga--inv': i % 2 === 1 }]}>
+        <div class="sg__t">
+          <p class="type-mono k-ev">Special guest {g.anno}</p>
+          <h3 class="type-h2 sg__h">{g.titolo}</h3>
+          <p class="sg__p">{g.testo}</p>
+          <ul class="sg__punti">{g.punti.map(v => <li>{v}</li>)}</ul>
+        </div>
+        <figure class="sg__fig">
+          <div class="sg__img"><img src={g.img} alt={g.alt} loading="lazy" decoding="async" /></div>
+          <figcaption class="type-mono">{g.didascalia}</figcaption>
+        </figure>
+      </article>
+    ))}
+  </section>
+)}
 
 {t.showGallery && (
   <section id="gallery" class="wrap section gal" aria-labelledby="gal-h">
@@ -192,6 +217,20 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   .sec-head h2{color:#fff}
   .sec-head--row{flex-direction:row;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px}
   .gal__link{color:var(--grigio-450)}.gal__link:hover{color:#fff}
+  /* special guest */
+  .sg{display:flex;flex-direction:column;gap:var(--sp-7)}
+  .sg__riga{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5);align-items:center}
+  @media(min-width:900px){.sg__riga{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--sp-6)}}
+  @media(min-width:900px){.sg__riga--inv .sg__t{order:2}.sg__riga--inv .sg__fig{order:1}}
+  .sg__t{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .sg__h{color:#fff;max-width:20ch;text-wrap:balance}
+  .sg__p{color:#DDD;max-width:56ch}
+  .sg__punti{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+  .sg__punti li{color:#DDD;border-left:2px solid var(--ev);padding-left:14px}
+  .sg__fig{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+  .sg__img{display:flex;align-items:center;justify-content:center}
+  .sg__img img{width:auto;max-width:100%;max-height:440px;height:auto}
+  .sg__fig figcaption{color:var(--grigio-450)}
   /* mappa */
   .mappa__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5);align-items:start}
   @media(min-width:900px){.mappa__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--sp-6)}}
