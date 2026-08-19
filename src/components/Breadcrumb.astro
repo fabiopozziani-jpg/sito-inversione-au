@@ -3,7 +3,10 @@
 interface Item { label: string; href?: string }
 interface Props { items: Item[]; light?: boolean }
 const { items, light = false } = Astro.props;
+const origin = (Astro.site ?? Astro.url).origin;
+const ld = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.label, ...(it.href ? { item: new URL(it.href, origin).href } : {}) })) };
 ---
+<script type="application/ld+json" set:html={JSON.stringify(ld)} />
 <nav class:list={['bc', { 'bc--light': light }]} aria-label="Percorso di navigazione">
   <ol class="wrap bc__ol">
     {items.map((it, i) => (

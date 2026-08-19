@@ -15,9 +15,26 @@ interface Props {
   /** classe di contesto evento sul <body>: es. "ctx-rally" — il colore vive solo qui */
   bodyClass?: string;
   noindex?: boolean;
+  /** immagine di condivisione 1200×630 (path assoluto del sito) */
+  image?: string;
+  imageAlt?: string;
+  ogType?: 'website' | 'article';
+  /** dati strutturati aggiuntivi (JSON-LD), uno o più oggetti */
+  jsonld?: Record<string, unknown> | Record<string, unknown>[];
 }
-const { title, description, active = '', bodyClass = '', noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+const { title, description, active = '', bodyClass = '', noindex = false, image = '/img/social/inversione-au.jpg', imageAlt = 'Inversione A U — eventi motorsport sui Colli Euganei', ogType = 'website', jsonld } = Astro.props;
+const origin = (Astro.site ?? Astro.url).origin;
+const canonical = new URL(Astro.url.pathname, origin).href;
+const ogImage = new URL(image, origin).href;
+const org = {
+  '@context': 'https://schema.org', '@type': 'SportsOrganization', '@id': `${origin}/#org`,
+  name: 'Inversione A U A.S.D.', alternateName: 'Inversione A U', url: origin, logo: `${origin}/img/logo_positivo_nero.png`,
+  email: 'inversione.au3@gmail.com', telephone: '+39 348 570 1233',
+  address: { '@type': 'PostalAddress', streetAddress: 'Via Selve 46/B', addressLocality: 'Saccolongo', addressRegion: 'PD', postalCode: '35030', addressCountry: 'IT' },
+  sameAs: ['https://www.instagram.com/inversione.au/', 'https://www.facebook.com/polomotorshow.teolo/'],
+  sport: 'Motorsport',
+};
+const ld = [org, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])];
 ---
 <!doctype html>
 <html lang="it" class="no-js">
@@ -29,10 +46,21 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).hr
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:site_name" content="Inversione A U" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="it_IT" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
     <meta name="theme-color" content="#000000" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

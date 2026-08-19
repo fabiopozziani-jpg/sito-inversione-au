@@ -17,8 +17,8 @@ if (!existsSync(TRIG)) writeFileSync(TRIG, '');
 let last = statSync(TRIG).mtimeMs;
 let busy = false;
 
-const run = (cmd, args) => {
-  const r = spawnSync(cmd, args, { encoding: 'utf8', shell: process.platform === 'win32', maxBuffer: 50 * 1024 * 1024 });
+const run = (cmd, args, timeout) => {
+  const r = spawnSync(cmd, args, { encoding: 'utf8', shell: process.platform === 'win32', maxBuffer: 50 * 1024 * 1024, timeout, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' } });
   const out = (r.stdout || '') + (r.stderr || '');
   appendFileSync(LOG, `\n$ ${cmd} ${args.join(' ')}\n${out}\n`);
   return { ok: r.status === 0, out };
@@ -46,6 +46,12 @@ function deploy() {
     run('git', ['add', '-A']);
     const c = run('git', ['commit', '-m', msg]);
     git = c.ok ? (c.out.match(/\[[^\]]+\]/) || ['commit ok'])[0] : 'commit FALLITO';
+  }
+  // push su origin se il remote esiste (backup fuori dal Mac); non blocca mai il flusso
+  const rem = run('git', ['remote', 'get-url', 'origin']);
+  if (rem.ok && rem.out.trim()) {
+    const push = run('git', ['push', '-u', 'origin', 'HEAD'], 60000);
+    git += push.ok ? ' · push ok' : ' · push FALLITO (' + (push.out || '').split('\n').filter(Boolean).slice(-1)[0] + ')';
   }
   const res = `${p.ok && url ? 'OK' : 'ERRORE PREVIEW'} ${stamp()}\nmessaggio: ${msg}\npreview: ${url || '(nessun URL trovato)'}\ngit: ${git}\n`;
   writeFileSync(RES, res);

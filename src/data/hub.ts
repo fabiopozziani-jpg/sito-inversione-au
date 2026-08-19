@@ -124,3 +124,17 @@ export function testiStato(h: Hub, galleryUrl: string) {
     periodo: h.dataFine && h.dataFine !== h.dataInizio ? `${h.dataInizio}–${h.dataFine}` : h.dataInizio,
   };
 }
+
+/** JSON-LD SportsEvent per gli hub (edizione appena conclusa o in programma). */
+export function eventLd(h: Hub) {
+  const fine = h.dataFine.match(/\d{4}$/) ? h.dataFine : h.dataFine + ' ' + h.anno;
+  const giorni = { polo: ['2026-06-13', '2026-06-14'], legnaro: ['2026-03-15', '2026-03-15'] }[h.key];
+  return {
+    '@context': 'https://schema.org', '@type': 'SportsEvent', name: `${h.nome} ${h.anno}`, sport: 'Motorsport',
+    startDate: giorni[0], endDate: giorni[1], eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: { '@type': 'Place', name: h.luogo, address: { '@type': 'PostalAddress', addressLocality: h.luogo, addressRegion: 'PD', addressCountry: 'IT' } },
+    organizer: { '@id': 'https://www.inversioneau.com/#org' }, image: `https://www.inversioneau.com/img/social/${h.key === 'polo' ? 'polo-motor-show' : 'legnaro-motori'}.jpg`,
+    description: h.claim, url: `https://www.inversioneau.com${h.href}`,
+  };
+}
