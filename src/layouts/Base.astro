@@ -42,9 +42,9 @@ const ld = [org, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])]
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>document.documentElement.classList.replace('no-js','js')</script>
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    <title wix-seo-tag="true">{title}</title>
+    <meta wix-seo-tag="true" name="description" content={description} />
+    <link wix-seo-tag="true" rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:site_name" content="Inversione A U" />
     <meta property="og:title" content={title} />
