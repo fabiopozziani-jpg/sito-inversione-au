@@ -10,6 +10,7 @@ import NewsCard from '../../components/NewsCard.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
 import { subnav, statoRally } from '../../data/rally';
 import { caricaRally, caricaSponsor, senzaAnnuali, caricaPosts, ordinaPerData } from '../../lib/contenuti';
+import { IMMAGINI, imgFill } from '../../data/rallyImmagini';
 const [{ rally }, sponsor, tuttiIPost] = await Promise.all([caricaRally(), caricaSponsor(), caricaPosts()]);
 const annuali = sponsor.annuali;
 const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali);
@@ -42,13 +43,12 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <img class="hero__img" src={rally.hero} alt="" width="1600" height="1067" fetchpriority="high" decoding="async" />
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
-      <img class="hero__targa" src={rally.targa} alt="" width="220" height="220" decoding="async" />
+      <img class="hero__targa" src={rally.targa} alt="" width="600" height="338" fetchpriority="high" decoding="async" />
       <div class="hero__meta">
         <p class="type-mono hero__kicker">{rally.dataLabel} · {rally.luogo} · titolazione ACI Sport</p>
         <img class="hero__aci" src="/img/logo_aci_sport.png" alt="ACI Sport" width="44" height="44" decoding="async" />
       </div>
-      <h1 id="hero-h1" class="type-display hero__h1">{rally.nome}</h1>
-      <p class="hero__intro">Prima edizione. Due giorni di gara sulle strade dei Colli Euganei, con titolazione ACI Sport.</p>
+      <h1 id="hero-h1" class="type-display hero__h1">{rally.titoloHero}</h1>
       {stato === 'pre' && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
       {stato === 'in' && <p class="type-mono hero__count hero__count--live">Il rally è in corso</p>}
       {stato === 'post' && <a class="type-mono link-line hero__count" href="/foto-e-video/rally-colli-euganei-2026/">Rally concluso · classifiche e foto <span class="arrow-x" aria-hidden="true">→</span></a>}
@@ -94,15 +94,15 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <div class="percorso__head">
       <div>
         <h2 id="percorso-h" class="type-h2 reveal-wipe"><span>Il percorso e le prove speciali</span></h2>
-        <p class="type-body-dark percorso__intro">Le prove speciali sono in approvazione. Qui pubblicheremo mappa, chilometri e orari.</p>
+        <p class="type-body-dark percorso__intro">Qui pubblicheremo mappa, chilometri e orari delle prove speciali.</p>
       </div>
       <a href="/rally-colli-euganei/percorso/" class="type-mono link-line percorso__link">Guarda il percorso <span class="arrow-x" aria-hidden="true">→</span></a>
     </div>
-    <p class="percorso__p">Il tracciato attraversa le strade dei Colli Euganei. L'elenco delle prove speciali e la tabella tempi saranno pubblicati dopo l'omologazione del percorso, entro il {rally.pubblicazionePercorso}.</p>
+    <p class="percorso__p">Il tracciato attraversa le strade dei Colli Euganei. L'elenco delle prove speciali e la tabella tempi saranno pubblicati più avanti, appena definiti.</p>
     <div class="percorso__grid">
       <div class="percorso__targa reveal">
         <img src={rally.targa} alt="Targa 1° Rally Colli Euganei 2026" width="320" height="320" loading="lazy" decoding="async" />
-        <span class="hint">Mappa dei Colli Euganei — prove speciali in via di definizione</span>
+        <span class="hint">Mappa e prove speciali in arrivo</span>
       </div>
       <dl class="dati reveal">
         <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">30–40 km</dd></div>
@@ -118,9 +118,13 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
       <div class="storia__t">
         <p class="type-mono storia__k">La storia</p>
         <h2 id="storia-h" class="type-h2">Dopo più di trent'anni il rally torna sui Colli Euganei</h2>
-        <p>Su queste strade si correva un rally: tornanti stretti, muretti a secco, pubblico sui prati dei Colli. Quella storia si è interrotta più di trent'anni fa.</p>
+        <p>Su queste strade si correva il rally del Santo: tornanti stretti, muretti a secco, pubblico sui prati dei Colli. Quella storia si è interrotta più di trent'anni fa.</p>
         <p>Il 1° Rally Colli Euganei la riprende, con titolazione ACI Sport e l'organizzazione di Inversione A U A.S.D. Non è una rievocazione: è una gara vera, a cronometro, su strade chiuse al traffico.</p>
       </div>
+      <figure class="storia__foto reveal">
+        <img src={imgFill(IMMAGINI.santo1986, 735, 499)} alt={IMMAGINI.santo1986.alt} width="735" height="499" loading="lazy" decoding="async" />
+        <figcaption class="hint">Coppa Italia · Rally Città del Santo, Padova 1986</figcaption>
+      </figure>
       <dl class="storia__dl reveal">
         <div><dt class="type-mono">Ultimo rally sui Colli</dt><dd>Anni '80 · Rally del Santo</dd></div>
         <div><dt class="type-mono">Prima edizione</dt><dd>21–22 novembre 2026</dd></div>
@@ -148,7 +152,6 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   <section id="sponsor-rally" class="hair" aria-labelledby="sponsor-h">
     <div class="wrap section sponsor">
       <h2 id="sponsor-h" class="type-h2">Sponsor del rally</h2>
-      <p class="type-body-dark sponsor__p">La prima edizione è sostenuta dai partner di stagione. Gli sponsor propri del rally si aggiungono qui man mano che gli accordi si chiudono.</p>
       <SponsorBlock title="Partner di stagione" sponsors={sponsorRally} columns={5} mono={false} headingLevel={3} />
       <a href="/sponsor/diventa-sponsor/" class="type-mono link-line sponsor__cta">Diventa sponsor del rally <span class="arrow-x" aria-hidden="true">→</span></a>
     </div>
@@ -160,7 +163,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
       <div class="contatti__t">
         <p class="type-mono k-ev">Contatti</p>
         <h2 id="contatti-h" class="type-h2">Scrivi all'organizzazione</h2>
-        <p class="type-body-dark">Domande su iscrizioni, percorso o accrediti: rispondiamo entro 3 giorni lavorativi.</p>
+        <p class="type-body-dark">Domande su iscrizioni, percorso o accrediti: scrivi alla segreteria.</p>
         <p class="type-body-dark">Per le comunicazioni ufficiali del direttore di gara fa fede l'albo di gara. Per tutto il resto scrivici o chiamaci.</p>
         <ul class="contatti__list">
           <li><a class="type-mono link-line" href={`mailto:${rally.email}`}>{rally.email}</a></li>
@@ -188,7 +191,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.52) 42%,rgba(0,0,0,.15) 78%,rgba(0,0,0,0) 100%),linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.75) 100%)}
   .hero__in{position:relative;align-self:flex-end;width:100%;padding-bottom:var(--sp-8);display:flex;flex-direction:column;gap:14px;color:#fff}
-  .hero__targa{width:clamp(96px,12vw,140px);height:auto;margin-bottom:6px}
+  .hero__targa{width:min(400px,72vw);height:auto;margin-bottom:6px}
   .hero__meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .hero__kicker{color:var(--grigio-200);letter-spacing:.08em}
   .hero__aci{height:44px;width:auto}
@@ -228,8 +231,10 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .percorso__targa{background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
   .percorso__targa img{width:min(60%,260px)}
   /* storia */
-  .storia{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
-  @media(min-width:900px){.storia{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
+  .storia{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5);align-items:start}
+  @media(min-width:900px){.storia{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.storia__dl{grid-column:1 / -1}}
+  .storia__foto{margin:0;display:flex;flex-direction:column;gap:10px}
+  .storia__foto img{width:100%;height:auto}
   .storia__k{color:var(--rally-teal-scuro);margin-bottom:12px}
   .storia h2{margin-bottom:20px;text-wrap:balance}
   .storia__t p{color:var(--text-secondary);max-width:60ch;margin-bottom:14px}

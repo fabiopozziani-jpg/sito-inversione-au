@@ -7,8 +7,8 @@ import type { APIRoute } from 'astro';
 import { MODULI, prepara, inviaWix, type ChiaveModulo } from '../../lib/moduli';
 
 const GRAZIE: Record<ChiaveModulo, string> = {
-  richieste: 'Grazie, abbiamo ricevuto il messaggio. Rispondiamo entro 3 giorni lavorativi a ',
-  sponsor: 'Grazie, abbiamo ricevuto la richiesta. Ti ricontattiamo entro 3 giorni lavorativi a ',
+  richieste: 'Grazie, abbiamo ricevuto il messaggio. Ti rispondiamo a ',
+  sponsor: 'Grazie, abbiamo ricevuto la richiesta. Ti ricontattiamo a ',
   accrediti: 'Richiesta di accredito ricevuta. Confermiamo via email prima dell\'evento a ',
   avvisami: 'Fatto: ti avvisiamo all\'apertura delle iscrizioni a ',
 };

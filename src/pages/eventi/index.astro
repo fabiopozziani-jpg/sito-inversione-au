@@ -25,7 +25,7 @@ const [rally, polo, legnaro] = [trova('rally'), trova('polo'), trova('legnaro')]
         <div class="cal__next-t">
           <span class="type-mono text-meta">Prossima stagione</span>
           <h3 class="type-h3">Calendario 2027</h3>
-          <p class="type-body-dark">Le date del 2027 saranno pubblicate entro dicembre 2026. Ti avvisiamo per email appena sono definite.</p>
+          <p class="type-body-dark">Le date del 2027 saranno pubblicate nei prossimi mesi. Lasciaci la tua email e te le mandiamo.</p>
         </div>
         <a href="/contatti/" class="btn btn--secondary">Ricevi le date via email</a>
       </div>
@@ -57,7 +57,9 @@ const [rally, polo, legnaro] = [trova('rally'), trova('polo'), trova('legnaro')]
   .cal__grid>div>*{height:100%}
   .cal__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px}
   @media(min-width:1024px){.cal__next{flex-direction:row;align-items:center;flex-wrap:wrap}}
-  .cal__next-t{display:flex;flex-direction:column;gap:10px;min-width:0;max-width:60ch}
+  .cal__next-t{display:flex;flex-direction:column;gap:10px;min-width:0;max-width:60ch;flex:1 1 320px}
+  .cal__next .btn{flex:0 0 auto;align-self:flex-start}
+  @media(min-width:1024px){.cal__next .btn{align-self:center}}
   .cal__next-t h3{color:#fff}
   .arc{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
   .arc h2{color:#fff;margin-bottom:8px}

@@ -10,7 +10,7 @@ const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf } = await c
 const url = '/rally-colli-euganei/concorrenti/';
 const stato = rally.statoIscrizioni;
 const isc = {
-  'non-aperte': { kicker: 'Iscrizioni non ancora aperte', titolo: 'Le iscrizioni non sono ancora aperte', testo: `L'apertura è prevista per ${rally.aperturaPrevista}. Lasciaci la tua email: ti scriviamo il giorno stesso in cui le iscrizioni aprono.` },
+  'non-aperte': { kicker: 'Iscrizioni non ancora aperte', titolo: 'Le iscrizioni non sono ancora aperte', testo: `L'apertura è prevista ${rally.aperturaPrevista}. Lasciaci la tua email: ti scriviamo il giorno stesso in cui le iscrizioni aprono.` },
   'aperte': { kicker: 'Iscrizioni aperte', titolo: `Iscrizioni aperte fino al ${rally.chiusuraIscrizioni}`, testo: 'La domanda di iscrizione si compila sul portale ACI Sport. Tieni a portata di mano licenza, dati della vettura e dati del navigatore.' },
   'chiuse': { kicker: 'Iscrizioni chiuse', titolo: 'Iscrizioni chiuse', testo: `Le iscrizioni si sono chiuse il ${rally.chiusuraIscrizioni}. Gli equipaggi ammessi sono nell'elenco iscritti qui sotto.` },
 }[stato];
@@ -62,7 +62,7 @@ const haIscritti = iscritti.length > 0;
             <div class="isc__cta">
               <a href={rally.moduloUrl} target="_blank" rel="noopener" class="btn btn--ev">Compila la domanda di iscrizione ↗</a>
               <span class="hint">Si apre in una nuova pagina, sul sito ACI Sport</span>
-              <p>Dopo l'invio riceverai la conferma dalla segreteria entro 3 giorni lavorativi.</p>
+              <p>Dopo l'invio riceverai la conferma dalla segreteria.</p>
               <p class="hint"><a href={rally.aciUrl} target="_blank" rel="noopener" class="link-line">Scheda dell'evento nel calendario ACI Sport</a></p>
             </div>
           )}

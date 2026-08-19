@@ -7,6 +7,8 @@ export type Stato = 'pre' | 'in' | 'post';
 
 export const rally = {
   nome: '1° Rally Colli Euganei ACI Sport',
+  /** Titolo mostrato nell'hero: senza la titolazione (scelta di Fabio, 19/8). */
+  titoloHero: '1° Rally Colli Euganei',
   breve: 'Rally Colli Euganei',
   base: '/rally-colli-euganei/',
   inizio: '2026-11-21T08:00:00+01:00',
@@ -25,8 +27,8 @@ export const rally = {
   /** Scheda dell'evento nel calendario ufficiale ACI Sport */
   aciUrl: 'https://www.acisport.it/it/acisport/dettaglio-calendari/7506131/1%C2%B0-rally-colli-euganei',
   chiusuraIscrizioni: '6 novembre 2026',
-  aperturaPrevista: 'settembre 2026',
-  pubblicazionePercorso: '30 settembre 2026',
+  /** Testo vago finché non c'è una data ufficiale (scelta di Fabio, 19/8). */
+  aperturaPrevista: 'a breve',
   /** Sportity: password del canale (vuota = non ancora pubblicata) */
   sportity: {
     password: '',
@@ -61,9 +63,8 @@ export function statoRally(now = Date.now()): { stato: Stato; giorni: number } {
 
 const TBD = '— · da definire';
 export const prove = [
-  { sigla: 'PS 1 e 4', nome: 'Galzignano Terme', km: '5,6 km', chiusura: TBD, prima: TBD, pubblico: 'Sì, segnalata e presidiata', maps: 'https://www.google.com/maps/search/?api=1&query=Galzignano+Terme+parcheggio', mappa: '' },
-  { sigla: 'PS 2 e 5', nome: 'Teolo — Castelnuovo', km: '8,2 km', chiusura: TBD, prima: TBD, pubblico: 'Sì, due zone segnalate e presidiate', maps: 'https://www.google.com/maps/search/?api=1&query=Teolo+parcheggio', mappa: '' },
-  { sigla: 'PS 3 e 6', nome: 'Cinto Euganeo', km: '6,4 km', chiusura: TBD, prima: TBD, pubblico: 'No, prova chiusa al pubblico', maps: 'https://www.google.com/maps/search/?api=1&query=Cinto+Euganeo+parcheggio', mappa: '' },
+  { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: 'Coming soon', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
+  { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: 'Coming soon', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
 ];
 
 export const scadenze = [
@@ -104,12 +105,8 @@ export const programma = [
     { ora: TBD2, titolo: 'Shakedown', nota: 'Prova di messa a punto su un tratto breve. È la prima occasione per vedere le auto in azione.' },
   ] },
   { titolo: 'Domenica 22 novembre', voci: [
-    { ora: TBD2, titolo: 'Partenza', nota: 'Cerimoniale di partenza nel centro di Teolo' },
-    { ora: TBD2, prima: 'Prima vettura: ' + TBD2, titolo: 'PS 01 — Galzignano Terme', nota: '5,6 km · zona pubblico segnalata' },
-    { ora: TBD2, prima: 'Prima vettura: ' + TBD2, titolo: 'PS 02 — Teolo / Castelnuovo', nota: '8,2 km · due zone pubblico' },
-    { ora: TBD2, prima: 'Prima vettura: ' + TBD2, titolo: 'PS 03 — Cinto Euganeo', nota: '6,4 km · nessun accesso pubblico' },
-    { ora: TBD2, titolo: 'Riordino e assistenza', nota: 'Rientro vetture, secondo giro di prove a seguire' },
-    { ora: TBD2, prima: 'Prima vettura: ' + TBD2, titolo: 'Secondo passaggio sulle prove', nota: 'PS 04 · 05 · 06 sugli stessi tracciati' },
+    { ora: TBD2, titolo: 'Partenza', nota: 'Cerimoniale di partenza · luogo da definire' },
+    { ora: TBD2, prima: 'Prima vettura: ' + TBD2, titolo: 'PS 01', nota: 'Primo passaggio sulla prima prova speciale' },
     { ora: TBD2, titolo: 'Arrivo e premiazioni', nota: 'Palco arrivo · ingresso libero' },
   ] },
 ];

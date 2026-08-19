@@ -11,7 +11,7 @@ const url = '/rally-colli-euganei/percorso/';
 ---
 <Base
   title="Percorso Rally Colli Euganei 2026 | Inversione A U"
-  description="Percorso del 1° Rally Colli Euganei: mappa, prove speciali con chilometri e orari, tabella tempi e zone pubblico. In pubblicazione dopo l'omologazione."
+  description="Percorso del 1° Rally Colli Euganei: due prove speciali ripetute tre volte, mappa, orari di passaggio e tabella tempi. Dettagli in pubblicazione."
   active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
 >
   <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
@@ -20,7 +20,6 @@ const url = '/rally-colli-euganei/percorso/';
   <header class="wrap pg-head">
     <h1 class="type-h1">Percorso e prove speciali</h1>
     <p class="lead">Dove si corre, quanti chilometri si cronometrano e a che ora passa la prima vettura.</p>
-    <p class="nota">Il percorso è in approvazione. Mappa definitiva, elenco delle prove speciali e zone pubblico saranno pubblicati entro il {rally.pubblicazionePercorso}.</p>
   </header>
 
   <!-- MAPPA -->
@@ -40,11 +39,10 @@ const url = '/rally-colli-euganei/percorso/';
         <img src={rally.targa} alt="" width="200" height="200" loading="lazy" decoding="async" />
         <div>
           <p class="type-mono k-ev">In pubblicazione</p>
-          <p class="mappa__attesa-t">La mappa ufficiale del percorso sarà pubblicata qui entro il {rally.pubblicazionePercorso}, dopo l'omologazione ACI Sport.</p>
+          <p class="mappa__attesa-t">La mappa ufficiale del percorso viene pubblicata qui appena definita, insieme ai punti di accesso per il pubblico.</p>
         </div>
       </div>
     )}
-    <p class="type-body-dark mappa__nota">Non pubblichiamo tracce GPX. La mappa e i punti di accesso alle zone pubblico sono l'unico riferimento ufficiale.</p>
   </section>
 
   <!-- DATI CHIAVE -->
@@ -52,7 +50,7 @@ const url = '/rally-colli-euganei/percorso/';
     <dl class="dati reveal">
       <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">30–40 km</dd></div>
       <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2 · 21–22 nov 2026</dd></div>
-      <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">3 · 2 passaggi</dd></div>
+      <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">2 · 3 passaggi</dd></div>
     </dl>
   </section>
 
@@ -62,14 +60,14 @@ const url = '/rally-colli-euganei/percorso/';
       <h2 id="ps-h" class="type-h2">Le prove speciali</h2>
       <span class="pill pill--ev">Provvisorio</span>
     </div>
-    <p class="type-body-dark ps__intro">Una scheda per ogni prova: chilometri, orari e come raggiungerla.</p>
-    <p class="ps__p">Le prove si ripetono su due passaggi. Gli orari indicati sono i passaggi della prima vettura: le vetture successive transitano a distanza di un minuto l'una dall'altra.</p>
+    <p class="type-body-dark ps__intro">Due prove speciali, ripetute tre volte ciascuna: sei passaggi cronometrati in tutto.</p>
+    <p class="ps__p">Tracciati, chilometraggi e orari vengono pubblicati qui appena definiti. Gli orari indicati saranno i passaggi della prima vettura: le vetture successive transitano a distanza di un minuto l'una dall'altra.</p>
     <div class="ps__grid stagger">
       {prove.map(p => (
         <article class="ps__card reveal">
           <div class="ps__media">
             {p.mappa
-              ? <button type="button" class="ps__mappa img-zoom" data-lb data-src={p.mappa} data-alt={`Tracciato ${p.sigla} ${p.nome}`}><img src={p.mappa} alt={`Tracciato ${p.sigla} ${p.nome}`} loading="lazy" decoding="async" /></button>
+              ? <button type="button" class="ps__mappa img-zoom" data-lb data-src={p.mappa} data-alt={`Tracciato ${p.nome}`}><img src={p.mappa} alt={`Tracciato ${p.nome}`} loading="lazy" decoding="async" /></button>
               : <div class="ps__mappa-attesa"><span class="type-mono">Tracciato in pubblicazione</span></div>}
           </div>
           <div class="ps__body">
@@ -81,8 +79,10 @@ const url = '/rally-colli-euganei/percorso/';
               <div><dt>Prima vettura</dt><dd>{p.prima}</dd></div>
               <div><dt>Zona pubblico</dt><dd>{p.pubblico}</dd></div>
             </dl>
-            <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>
-            <span class="hint">Si apre in una nuova pagina</span>
+            {p.maps
+              ? <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>
+              : <span class="link-box link-box--off">Mappa Google Maps · coming soon</span>}
+            <span class="hint">{p.maps ? 'Si apre in una nuova pagina' : 'Il punto di accesso arriva con la pubblicazione del percorso'}</span>
           </div>
         </article>
       ))}
@@ -129,7 +129,6 @@ const url = '/rally-colli-euganei/percorso/';
   .ps__p{color:#DDD;max-width:70ch;margin-bottom:var(--sp-5)}
   .ps__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
   @media(min-width:680px){.ps__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(min-width:1024px){.ps__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .ps__card{background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--ev);display:flex;flex-direction:column}
   .ps__media{aspect-ratio:16/10;background:#1A1A1A;overflow:hidden}
   .ps__media:has(.ps__mappa-attesa){aspect-ratio:auto;height:64px}
@@ -142,6 +141,7 @@ const url = '/rally-colli-euganei/percorso/';
   .ps__dl div{display:flex;flex-direction:column;gap:3px;min-width:0}
   .ps__dl dt{color:var(--grigio-450);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
   .ps__dl dd{margin:0;color:#fff}
+  .link-box--off{display:block;border:1px solid var(--border-on-dark);padding:12px 14px;color:var(--grigio-450);font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
   /* tabella tempi */
   .tt{display:flex;flex-direction:column;gap:12px}
   .tt h2{color:#fff}

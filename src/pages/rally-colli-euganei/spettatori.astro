@@ -1,5 +1,5 @@
 ---
-/** Rally — Spettatori: programma, zone pubblico, sicurezza, mappa zone, come arrivare, chiusura. */
+/** Rally — Spettatori: programma, dove guardare, sicurezza, come arrivare, chiusura. */
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
@@ -13,7 +13,7 @@ const url = '/rally-colli-euganei/spettatori/';
 ---
 <Base
   title="Spettatori — Rally Colli Euganei 2026 | Inversione A U"
-  description="Come vedere il 1° Rally Colli Euganei il 21 e 22 novembre 2026: programma, zone pubblico, regole di sicurezza, parcheggi e come arrivare sui Colli."
+  description="Come vedere il 1° Rally Colli Euganei il 21 e 22 novembre 2026: programma, dove guardare la gara, regole di sicurezza e come arrivare sui Colli."
   active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
 >
   <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
@@ -26,8 +26,8 @@ const url = '/rally-colli-euganei/spettatori/';
     <div class="wrap hero__in">
       <p class="type-mono hero__kicker">{rally.dataLabel} · Colli Euganei</p>
       <h1 id="hero-h1" class="type-h1">Come vedere il 1° Rally Colli Euganei</h1>
-      <p class="hero__intro">Ingresso libero. Programma, zone da cui guardare in sicurezza, parcheggi e come arrivare.</p>
-      <div><a href="/rally-colli-euganei/percorso/" class="btn btn--ev">Vedi percorso e zone pubblico</a></div>
+      <p class="hero__intro">Ingresso libero. Programma, regole di sicurezza e come arrivare sui Colli.</p>
+      <div><a href="/rally-colli-euganei/percorso/" class="btn btn--ev">Vedi percorso e prove speciali</a></div>
     </div>
   </section>
 
@@ -48,18 +48,14 @@ const url = '/rally-colli-euganei/spettatori/';
         </ol>
       </div>
     ))}
-    <div class="card card--left prog__wa">
-      <p class="prog__wa-p">Nel weekend di gara pubblichiamo ritardi, sospensioni e variazioni su un canale WhatsApp. Solo l'organizzazione può scrivere: ricevi gli avvisi senza notifiche di gruppo.</p>
-      {rally.whatsapp
-        ? <><a class="link-box" href={rally.whatsapp} target="_blank" rel="noopener">Entra nel canale WhatsApp del rally ↗</a><span class="hint">Si apre in una nuova pagina</span></>
-        : <span class="hint">Il link al canale sarà pubblicato qui prima del rally</span>}
-    </div>
   </section>
 
   <!-- ZONE PUBBLICO -->
   <section id="zone-pubblico" class="wrap zone" aria-labelledby="zone-h">
-    <h2 id="zone-h" class="type-h2">Percorso e zone pubblico</h2>
-    <p class="type-body-dark zone__p">Le zone pubblico sono aree scelte dall'organizzazione, delimitate e presidiate dai commissari. Hanno buona visuale, un percorso di accesso a piedi e un parcheggio indicato.</p>
+    <h2 id="zone-h" class="type-h2">Dove guardare la gara</h2>
+    <p class="type-body-dark zone__p">Le zone da cui si assiste al rally sono aree scelte dall'organizzazione, delimitate e presidiate dai commissari: buona visuale, accesso a piedi e un punto dove lasciare l'auto.</p>
+    <p class="type-body-dark zone__p">Le prove speciali, i punti di accesso e le coordinate per raggiungerli vengono pubblicati sulla pagina del percorso, prova per prova, appena il tracciato è definito.</p>
+    <a class="link-box zone__cta" href="/rally-colli-euganei/percorso/">Vai a percorso e prove speciali <span class="arrow-x" aria-hidden="true">→</span></a>
   </section>
 
   <!-- SICUREZZA -->
@@ -99,36 +95,20 @@ const url = '/rally-colli-euganei/spettatori/';
     </div>
   </section>
 
-  <!-- MAPPA ZONE -->
-  <section class="wrap section" aria-label="Mappa delle zone pubblico">
-    <div class="mz reveal">
-      <div class="mz__media">
-        {rally.mappaZone
-          ? <button type="button" class="mz__btn img-zoom" data-lb data-src={rally.mappaZone} data-alt="Mappa delle zone pubblico del Rally Colli Euganei"><img src={rally.mappaZone} alt="Mappa delle zone pubblico del Rally Colli Euganei" loading="lazy" decoding="async" /></button>
-          : <div class="mz__attesa"><img src={rally.targa} alt="" width="160" height="160" loading="lazy" decoding="async" /><span class="type-mono">Mappa zone pubblico · in pubblicazione</span></div>}
-      </div>
-      <div class="mz__t">
-        <h3 class="type-h3">La mappa delle zone pubblico</h3>
-        <p class="type-body-dark">Mappa e zone pubblico saranno pubblicate dopo l'approvazione e l'omologazione del percorso.</p>
-        <a class="link-box" href="/rally-colli-euganei/percorso/">Vai alle prove speciali <span class="arrow-x" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
   <!-- COME ARRIVARE (bianco) -->
   <section class="on-light" aria-labelledby="arr-h">
     <div class="wrap section arr">
       <h2 id="arr-h" class="type-h2">Come arrivare</h2>
       <div class="arr__grid stagger">
-        <div class="arr__col reveal"><span class="type-mono arr__k">In auto</span><p>Autostrada A13, uscita Terme Euganee, poi direzione Colli. In prossimità dell'evento segui la segnaletica gialla del rally.</p></div>
-        <div class="arr__col reveal"><span class="type-mono arr__k">Parcheggi</span><p>Ogni zona pubblico ha un parcheggio dedicato e segnalato.</p></div>
+        <div class="arr__col reveal"><span class="type-mono arr__k">In auto</span><p>Autostrada A13, uscita Terme Euganee, poi direzione Colli Euganei.</p></div>
+        <div class="arr__col reveal"><span class="type-mono arr__k">Coordinate delle prove</span><p>I punti da cui si raggiungono le prove speciali vengono pubblicati sulla <a href="/rally-colli-euganei/percorso/">pagina del percorso</a>, insieme al tracciato.</p></div>
         <div class="arr__col reveal"><span class="type-mono arr__k">Ristoro e paesi</span><p>Il rally attraversa i centri dei Colli Euganei. Bar, ristoranti e punti di ristoro dei paesi restano aperti per tutta la durata della gara.</p></div>
       </div>
     </div>
   </section>
 
-  <CTABlock kicker={rally.dataLabel} title="L'ingresso è libero" text="Non serve un biglietto. Scegli la zona pubblico, arriva presto e resta dietro le protezioni.">
-    <a href="/rally-colli-euganei/percorso/" class="btn btn--ev">Scegli la tua zona pubblico</a>
+  <CTABlock kicker={rally.dataLabel} title="L'ingresso è libero" text="Non serve un biglietto. Scegli dove metterti lungo il percorso, arriva presto e resta dietro le protezioni.">
+    <a href="/rally-colli-euganei/percorso/" class="btn btn--ev">Scegli dove andare lungo il percorso</a>
   </CTABlock>
 </Base>
 
@@ -149,12 +129,11 @@ const url = '/rally-colli-euganei/spettatori/';
   @media(min-width:640px){.prog__riga{grid-template-columns:190px 1fr;gap:24px}}
   .prog__ora,.prog__t{display:flex;flex-direction:column;gap:4px;min-width:0}
   .prog__titolo{font-weight:600;color:#fff}
-  .prog__wa{max-width:70ch}
-  .prog__wa-p{color:#DDD}
   /* zone */
   .zone{padding-bottom:var(--sp-8)}
   .zone h2{color:#fff;margin-bottom:8px}
   .zone__p{max-width:70ch}
+  .zone__cta{display:inline-flex;margin-top:var(--sp-3)}
   /* sicurezza */
   .sic{border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);background:#0A0A0A}
   .sic h2{color:#fff;margin-bottom:8px}
@@ -173,20 +152,11 @@ const url = '/rally-colli-euganei/spettatori/';
   .sic__avv p{color:#fff;font-size:15px}
   .sic__prima{margin-top:var(--sp-5);max-width:70ch;display:flex;flex-direction:column;gap:12px}
   .sic__prima h3{color:#fff}
-  /* mappa zone */
-  .mz{display:grid;grid-template-columns:minmax(0,1fr);background:var(--carbone);border:1px solid var(--border-on-dark)}
-  @media(min-width:900px){.mz{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
-  .mz__media{aspect-ratio:16/8;background:#1A1A1A;overflow:hidden}
-  .mz__btn{display:block;width:100%;height:100%}
-  .mz__btn img{width:100%;height:100%;object-fit:cover}
-  .mz__attesa{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:var(--grigio-450)}
-  .mz__attesa img{width:120px;opacity:.6}
-  .mz__t{padding:var(--sp-4);display:flex;flex-direction:column;gap:12px}
-  .mz__t h3{color:#fff}
   /* arrivare */
   .arr h2{margin-bottom:32px}
   .arr__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-4)}
   .arr__col{border-top:2px solid var(--nero);padding-top:16px}
   .arr__k{color:var(--rally-teal-scuro);display:block;margin-bottom:8px}
   .arr__col p{color:var(--text-secondary)}
+  .arr__col p a{color:var(--nero);text-decoration:underline;text-underline-offset:3px}
 </style>
