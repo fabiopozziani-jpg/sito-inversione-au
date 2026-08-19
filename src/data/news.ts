@@ -21,7 +21,7 @@ export const posts: Post[] = [
     date: '25 SET 2026', iso: '2026-09-25', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per i concorrenti', image: rallyImg(RALLY_IMG.newsIscrizioni, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsIscrizioni), tipo: 'comunicato stampa',
     lead: 'Da oggi i concorrenti possono iscriversi alla prima edizione, in programma il 21 e 22 novembre 2026. Le iscrizioni chiudono in una data ancora da confermare.', credito: 'Foto: archivio Inversione A U',
     corpo: [
-      { t: 'p', html: "Il 1° Rally Colli Euganei apre le iscrizioni. La gara si corre il 21 e 22 novembre 2026, con partenza e arrivo a Teolo e tre prove speciali tra Castelnuovo, Galzignano Terme e Teolo. È il ritorno di un rally su queste strade dopo più di trent'anni." },
+      { t: 'p', html: "Il 1° Rally Colli Euganei apre le iscrizioni. La gara si corre il 21 e 22 novembre 2026 sulle strade dei Colli Euganei, su due prove speciali ripetute tre volte. È il ritorno di un rally su queste strade dopo più di trent'anni." },
       { t: 'h2', testo: 'Come iscriversi' },
       { t: 'p', html: "Il modulo d'iscrizione, il regolamento particolare di gara e il programma sono pubblicati nell'<a href=\"/rally-colli-euganei/documenti/\">albo di gara digitale</a>. Le domande vanno inviate complete di tutti gli allegati." },
       { t: 'p', html: "Il numero massimo di vetture ammesse è ancora da confermare. Fa fede l'ordine di ricezione delle domande complete." },
