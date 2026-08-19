@@ -62,6 +62,7 @@ const titolo = `Foto ${g.evento === 'legnaro' ? 'di' : 'del'} ${g.nomeEvento.rep
   .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
   .gh{color:#fff;margin-bottom:var(--sp-3)}
   .tabs{display:flex;gap:8px 24px;flex-wrap:wrap;padding-bottom:8px;border-bottom:1px solid var(--border-on-dark)}
+  @media(max-width:639px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*var(--grid-margin));padding-left:var(--grid-margin);padding-right:var(--grid-margin)}.tabs::-webkit-scrollbar{display:none}.tabs a{white-space:nowrap}}
   .tabs a{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:color var(--dur-fast) var(--ease-out)}
   .tabs a:hover,.tabs a:focus-visible{color:#fff}
   .tabs a[aria-current]{color:#fff;border-bottom-color:var(--ev)}
