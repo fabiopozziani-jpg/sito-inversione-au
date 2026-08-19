@@ -21,7 +21,8 @@ export const polo: Sponsor[] = [
   s('labor','Labor F.lli Corazzari'), s('rally-bar','Rally Bar'), s('auto31','Auto 31 Service'), s('datex','Datex'),
   s('centro-del-piede','Centrodelpiede.it'), s('lovato','Costruzioni Lovato'),
 ];
-export const legnaro: Sponsor[] = [ s('baap-bergamaschi','BAAP Bergamaschi'), s('centro-del-piede','Centrodelpiede.it') ];
+/** Riserva statica: i loghi veri stanno nel CMS (Media Manager). Senza logo SponsorBlock scrive il nome. */
+export const legnaro: Sponsor[] = [ s('baap-bergamaschi','BAAP Bergamaschi'), s('centro-del-piede','Centrodelpiede.it'), s('dealernet','Dealernet'), { name: 'Duo', logo: '' }, { name: 'Pit Stop Centro Revisioni', logo: '' }, { name: 'Belluco Farm', logo: '' } ];
 
 const perEvento: Record<string, Sponsor[]> = { rally, polo, legnaro };
 /** Sponsor propri dell'evento, esclusi i partner di stagione (che si mostrano a parte). */

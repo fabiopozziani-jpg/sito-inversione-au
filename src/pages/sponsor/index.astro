@@ -5,6 +5,7 @@ import SponsorBlock from '../../components/SponsorBlock.astro';
 import StatBlock from '../../components/StatBlock.astro';
 import CTABlock from '../../components/CTABlock.astro';
 import { caricaSponsor, senzaAnnuali } from '../../lib/contenuti';
+import { IMMAGINI, imgFit } from '../../data/rallyImmagini';
 const sponsor = await caricaSponsor();
 const annuali = sponsor.annuali;
 const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali);
@@ -28,7 +29,8 @@ const numeri = [
     <p class="hint">I patrocini si rinnovano a ogni edizione. Questo elenco riguarda la stagione 2026.</p>
     <div class="pat">
       <div class="pat__logo"><img src="/img/logo_aci_sport.png" alt="ACI Sport" width="120" height="120" loading="lazy" /></div>
-      <div class="pat__logo"><img src="/img/stemma_comune.png" alt="Stemma comunale" width="100" height="120" loading="lazy" /></div>
+      <div class="pat__logo"><img src="/img/stemma_comune.png" alt="Stemma del Comune di Teolo" width="100" height="120" loading="lazy" /></div>
+      <div class="pat__logo"><img src={imgFit(IMMAGINI.stemmaLegnaro, 400)} alt="Stemma del Comune di Legnaro" width="373" height="340" loading="lazy" /></div>
       <ul class="pat__list">{patrocini.map(p => <li class="type-mono">{p}</li>)}</ul>
     </div>
   </section>
