@@ -12,13 +12,25 @@ type RispostaQuery<T> = { dataItems: { id: string; data: T }[]; pagingMetadata?:
 
 const API = 'https://www.wixapis.com/wix-data/v2/items/query';
 const cache = new Map<string, { t: number; v: unknown }>();
-const TTL = 60_000; // 1 minuto in memoria per processo: alleggerisce le richieste ripetute
+const TTL = 5 * 60_000; // 5 minuti: oltre, si serve subito la copia in memoria e si aggiorna in sottofondo (stale-while-revalidate)
+const inCorso = new Map<string, Promise<unknown>>();
 
 /** Interroga una collection e restituisce gli item (campo `_id` incluso). `null` se la richiesta fallisce. */
 export async function query<T = Record<string, unknown>>(collection: string, opts: { filter?: Filtro; sort?: Ordine; limit?: number; skip?: number } = {}): Promise<(T & { _id: string })[] | null> {
   const key = collection + JSON.stringify(opts);
   const hit = cache.get(key);
   if (hit && Date.now() - hit.t < TTL) return hit.v as (T & { _id: string })[];
+  if (hit) { // copia scaduta: la restituisco subito e la rinfresco senza far aspettare la pagina
+    if (!inCorso.has(key)) inCorso.set(key, scarica<T>(collection, opts, key).finally(() => inCorso.delete(key)));
+    return hit.v as (T & { _id: string })[];
+  }
+  if (inCorso.has(key)) return (await inCorso.get(key)) as (T & { _id: string })[] | null;
+  const p = scarica<T>(collection, opts, key).finally(() => inCorso.delete(key));
+  inCorso.set(key, p);
+  return p;
+}
+
+async function scarica<T>(collection: string, opts: { filter?: Filtro; sort?: Ordine; limit?: number; skip?: number }, key: string): Promise<(T & { _id: string })[] | null> {
   try {
     const out: (T & { _id: string })[] = [];
     let skip = opts.skip ?? 0;
