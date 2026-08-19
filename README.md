@@ -18,7 +18,10 @@ Sito ufficiale di Inversione A U A.S.D. Costruito con **Astro 5** e l'integrazio
 ## Struttura
 - `src/pages/` — route (una cartella = un URL pulito; `[slug].astro` per news e gallerie)
 - `src/components/` — componenti (header, footer, hub evento, sub-nav, gallerie, lightbox, tabelle…)
-- `src/data/` — contenuti statici in attesa del CMS (`rally.ts`, `hub.ts`, `news.ts`, `gallerie.ts`, `sponsor.ts`, `archivio.ts`, `eventi.ts`)
+- `src/lib/cms.ts` — lettura delle collection CMS Wix (Wix Data v2) lato server con l'autenticazione ambientale di `@wix/astro`; cache in memoria 5 min (stale-while-revalidate)
+- `src/lib/contenuti.ts` — loader per pagina (`caricaPosts`, `caricaGallerie`, `caricaSponsor`, `caricaEventi`, `caricaHub`, `caricaRally`, `caricaEdizioni`, `caricaTeam`): CMS prima, dati statici di `src/data/` come riserva
+- `src/data/` — contenuti statici di riserva e tipi (`rally.ts`, `hub.ts`, `news.ts`, `gallerie.ts`, `sponsor.ts`, `archivio.ts`, `eventi.ts`); `media.ts` + `media/*.json` = id delle foto nel Media Manager
+- **Collection CMS** (progetto headless): `Eventi`, `Programma`, `News`, `Documenti`, `Iscritti`, `ProveSpeciali`, `Scadenze`, `Sponsor`, `Gallerie`, `Foto`, `Video`, `Edizioni`, `Team`. Campo `evento`/`chiave` = `rally · polo · legnaro`. Le immagini sono campi IMAGE (Media Manager: `sito-gallerie/<slug>`, `sito-loghi-sponsor`, `sito-immagini`)
 - `src/styles/` — token del design system (`tokens/`), `global.css`, `movimento.css`, `hub.css`
 - `src/scripts/` — `movimento.js` (reveal), `mailform.ts` (moduli)
 - `public/` — foto (interim, poi Media Manager), loghi, media kit, documenti, immagini social
