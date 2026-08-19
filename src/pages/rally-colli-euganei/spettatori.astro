@@ -5,7 +5,9 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CTABlock from '../../components/CTABlock.astro';
-import { rally, subnav, programma, consentito, vietato } from '../../data/rally';
+import { subnav, consentito, vietato } from '../../data/rally';
+import { caricaRally } from '../../lib/contenuti';
+const { rally, programma } = await caricaRally();
 const url = '/rally-colli-euganei/spettatori/';
 ---
 <Base

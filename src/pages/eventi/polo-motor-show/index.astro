@@ -2,8 +2,10 @@
 import '../../../styles/hub.css';
 import Base from '../../../layouts/Base.astro';
 import EventHub from '../../../components/EventHub.astro';
-import { hubs, eventLd } from '../../../data/hub';
+import { eventLd } from '../../../data/hub';
+import { caricaHub, caricaGallerie, caricaSponsor } from '../../../lib/contenuti';
+const [hub, gallerie, sponsor] = await Promise.all([caricaHub('polo'), caricaGallerie(), caricaSponsor()]);
 ---
-<Base title="Polo Motor Show 2026 — 13–14 giugno | Inversione A U" description="Polo Motor Show a Selve di Teolo: due giorni di drift, rally show ed esposizione sul circuito cittadino dei Colli Euganei. Programma, mappa, foto, sponsor e contatti." active="eventi" bodyClass="ctx-polo" image="/img/social/polo-motor-show.jpg" imageAlt="Polo Motor Show 2026, Selve di Teolo" jsonld={eventLd(hubs.polo)}>
-  <EventHub h={hubs.polo} />
+<Base title="Polo Motor Show 2026 — 13–14 giugno | Inversione A U" description="Polo Motor Show a Selve di Teolo: due giorni di drift, rally show ed esposizione sul circuito cittadino dei Colli Euganei. Programma, mappa, foto, sponsor e contatti." active="eventi" bodyClass="ctx-polo" image="/img/social/polo-motor-show.jpg" imageAlt="Polo Motor Show 2026, Selve di Teolo" jsonld={eventLd(hub)}>
+  <EventHub h={hub} gallerie={gallerie} sponsor={sponsor} />
 </Base>

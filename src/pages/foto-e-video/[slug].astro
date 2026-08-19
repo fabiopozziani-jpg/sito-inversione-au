@@ -3,8 +3,9 @@
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import PhotoGrid from '../../components/PhotoGrid.astro';
-import { gallerie, galleriaPerSlug } from '../../data/gallerie';
-const g = galleriaPerSlug(Astro.params.slug ?? '');
+import { caricaGallerie } from '../../lib/contenuti';
+const gallerie = await caricaGallerie();
+const g = gallerie.find(x => x.slug === Astro.params.slug) ?? null;
 if (!g) return new Response(null, { status: 404 });
 const altre = gallerie.filter(x => x.slug !== g.slug);
 const hubHref: Record<string, string> = { polo: '/eventi/polo-motor-show/', legnaro: '/eventi/legnaro-motori/', rally: '/rally-colli-euganei/' };

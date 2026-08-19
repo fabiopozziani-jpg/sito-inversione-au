@@ -1,7 +1,8 @@
 ---
 /** Foto e video — una card per galleria; video in arrivo; rimando all'area stampa. */
 import Base from '../../layouts/Base.astro';
-import { gallerie } from '../../data/gallerie';
+import { caricaGallerie } from '../../lib/contenuti';
+const gallerie = await caricaGallerie();
 const ordine = ['rally', 'polo', 'legnaro'];
 const gal = [...gallerie].sort((a, b) => ordine.indexOf(a.evento) - ordine.indexOf(b.evento));
 const testo: Record<string, string> = { rally: 'Online entro il 24 novembre 2026, dopo la gara.', polo: 'Due giorni di drift, rally show e raduno.', legnaro: 'La prima edizione, marzo 2026.' };

@@ -8,8 +8,11 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import NewsCard from '../../components/NewsCard.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
-import { rally, subnav, statoRally } from '../../data/rally';
-import { annuali, sponsorEvento } from '../../data/sponsor';
+import { subnav, statoRally } from '../../data/rally';
+import { caricaRally, caricaSponsor, senzaAnnuali, caricaPosts, ordinaPerData } from '../../lib/contenuti';
+const [{ rally }, sponsor, tuttiIPost] = await Promise.all([caricaRally(), caricaSponsor(), caricaPosts()]);
+const annuali = sponsor.annuali;
+const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali);
 
 const { stato, giorni } = statoRally();
 const eventLd = {
@@ -21,10 +24,9 @@ const eventLd = {
   isAccessibleForFree: true, url: 'https://www.inversioneau.com/rally-colli-euganei/',
 };
 const sponsorRally = [...annuali, ...sponsorEvento('rally')];
-const news = [
-  { image: '/foto/fabia_skoda_bosco.jpg', category: 'Concorrenti', date: '12 LUG 2026', title: 'Il 1° Rally Colli Euganei è ufficiale', excerpt: 'Iscrizioni: apertura in autunno. Date e modulistica in arrivo.', href: '/news/rally-colli-euganei-ufficiale/' },
-  { image: '/foto/polo_pubblico_sera.jpg', category: 'Spettatori', date: '03 LUG 2026', title: 'Zone pubblico: dove vedere il rally', excerpt: 'Le aree consigliate lungo le tre prove speciali, con parcheggi e orari.', href: '/news/rally-zone-pubblico/' },
-];
+// Ultime due notizie del rally (CMS News, riserva statica): la categoria mostra a chi si rivolge.
+const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euganei').slice(0, 2)
+  .map(p => ({ image: p.image, category: p.chi === 'Per i concorrenti' ? 'Concorrenti' : 'Spettatori', date: p.date, title: p.title, excerpt: p.excerpt, href: `/news/${p.slug}/` }));
 ---
 <Base
   title="Rally Colli Euganei 2026 · 21–22 novembre | Inversione A U"

@@ -2,6 +2,7 @@
 /** Associazione — chi siamo, come lavoriamo, numeri, storia, direttivo, trasparenza, tesseramento. */
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
+import { caricaTeam } from '../../lib/contenuti';
 import StatBlock from '../../components/StatBlock.astro';
 import Timeline from '../../components/Timeline.astro';
 import CTABlock from '../../components/CTABlock.astro';
@@ -18,13 +19,14 @@ const storia = [
   { time: '2024–2025', title: 'Il Polo Motor Show cresce', text: 'Il circuito cittadino di Selve di Teolo arriva a oltre 15.000 spettatori e 300 auto esposte.' },
   { time: '2026', title: 'Tre eventi in un anno', text: 'Legnaro Motori a marzo, Polo Motor Show a giugno e, a novembre, il 1° Rally Colli Euganei: un rally torna sui Colli dopo più di trent’anni.' },
 ];
-const direttivo = [
+const direttivoStatico = [
   { nome: 'Matteo Pescante', ruolo: 'Presidente', nota: 'Rappresenta l’associazione e firma i rapporti con enti e federazione.' },
   { nome: 'Andrea D’Alberto', ruolo: 'Vicepresidente', nota: 'Coordina l’organizzazione degli eventi e i rapporti con i Comuni.' },
   { nome: 'Matteo Casarin', ruolo: 'Tesoriere', nota: 'Tiene la contabilità e i rapporti con sponsor e fornitori.' },
   { nome: 'Fabio Pozziani', ruolo: 'Segretario', nota: 'Cura verbali, libro dei soci e comunicazioni dell’associazione.' },
   { nome: 'Thomas Scapocchin', ruolo: 'Consigliere', nota: 'Segue il percorso e la sicurezza in gara insieme allo staff.' },
 ];
+const direttivo = (await caricaTeam()) ?? direttivoStatico;
 const dati: [string, string][] = [
   ['Denominazione', 'Associazione Sportiva Dilettantistica Inversione A U'], ['Sigla', 'A.S.D. Inversione A U'], ['Sede legale', 'Via Selve 46/B · Saccolongo (PD)'],
   ['Codice fiscale', '92324000287'], ['Partita IVA', '05585020281'], ['Costituita il', '20 novembre 2023'], ['Codice attività', '931910 · Enti e organizzazioni sportive'],

@@ -5,7 +5,8 @@ export type Blocco =
   | { t: 'p'; html: string }
   | { t: 'h2'; testo: string }
   | { t: 'quote'; testo: string; cite: string }
-  | { t: 'dl'; righe: [string, string][] };
+  | { t: 'dl'; righe: [string, string][] }
+  | { t: 'html'; html: string }; // corpo intero in HTML (dal CMS)
 export type Post = {
   slug: string; title: string; excerpt: string; date: string; iso: string;
   category: string; event: EventoNews; chi: Chi; image: string; imageAlt: string;

@@ -2,8 +2,8 @@
 /** News — elenco con filtri (evento / a chi interessa), lato client su data-attributes. */
 import Base from '../../layouts/Base.astro';
 import NewsCard from '../../components/NewsCard.astro';
-import { postsOrdinati } from '../../data/news';
-const posts = postsOrdinati();
+import { caricaPosts, ordinaPerEvento } from '../../lib/contenuti';
+const posts = ordinaPerEvento(await caricaPosts());
 const eventi = ['Tutte le news', 'Rally Colli Euganei', 'Polo Motor Show', 'Legnaro Motori', 'Associazione'];
 const chi = ['Tutti', 'Per il pubblico', 'Per i concorrenti'];
 const aggiornato = posts.map(p => p.iso).sort().reverse()[0];

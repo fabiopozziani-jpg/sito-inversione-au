@@ -10,15 +10,17 @@ import Timeline from './Timeline.astro';
 import PhotoGrid from './PhotoGrid.astro';
 import SponsorBlock from './SponsorBlock.astro';
 import { testiStato, type Hub } from '../data/hub';
-import { getGalleria } from '../data/gallerie';
-import { annuali, sponsorEvento } from '../data/sponsor';
+import type { Galleria } from '../data/gallerie';
+import type { Sponsor } from '../data/sponsor';
+import { senzaAnnuali } from '../lib/contenuti';
 
-interface Props { h: Hub }
-const { h } = Astro.props;
-const gal = getGalleria(h.key);
+interface Props { h: Hub; gallerie: Galleria[]; sponsor: { annuali: Sponsor[]; perEvento: (k: string) => Sponsor[] } }
+const { h, gallerie, sponsor } = Astro.props;
+const gal = gallerie.find(g => g.evento === h.key) ?? null;
 const galleryUrl = gal ? `/foto-e-video/${gal.slug}/` : '/foto-e-video/';
 const t = testiStato(h, galleryUrl);
-const spEvento = sponsorEvento(h.key);
+const annuali = sponsor.annuali;
+const spEvento = senzaAnnuali(sponsor.perEvento(h.key), annuali);
 const email = 'inversione.au3@gmail.com';
 const nav = [
   { label: 'L’evento', href: `${h.href}#evento` },

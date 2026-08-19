@@ -2,8 +2,10 @@
 /** Eventi — calendario della stagione + rimando all'archivio. */
 import Base from '../../layouts/Base.astro';
 import EventCard from '../../components/EventCard.astro';
-import { eventi } from '../../data/eventi';
-const [rally, polo, legnaro] = eventi;
+import { caricaEventi } from '../../lib/contenuti';
+const eventi = await caricaEventi();
+const trova = (k: string) => eventi.find(e => e.key === k)!;
+const [rally, polo, legnaro] = [trova('rally'), trova('polo'), trova('legnaro')];
 ---
 <Base title="Calendario eventi motorsport 2026 | Inversione A U" description="Il calendario 2026 di Inversione A U: Legnaro Motori (15 marzo), Polo Motor Show (13–14 giugno) e 1° Rally Colli Euganei ACI Sport (21–22 novembre). Date, luoghi e stato di ogni evento." active="eventi">
   <header class="wrap pg-head">

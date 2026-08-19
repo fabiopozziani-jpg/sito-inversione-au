@@ -4,7 +4,9 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { rally, subnav, scadenze, requisiti, iscritti, classi, iscrittiAggiornatoAl, iscrittiPdf } from '../../data/rally';
+import { subnav, requisiti, classi } from '../../data/rally';
+import { caricaRally } from '../../lib/contenuti';
+const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
 const stato = rally.statoIscrizioni;
 const isc = {

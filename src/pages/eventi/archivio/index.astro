@@ -2,7 +2,8 @@
 /** Archivio edizioni — elenco cronologico con accento colore per evento. */
 import Base from '../../../layouts/Base.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
-import { edizioni } from '../../../data/archivio';
+import { caricaEdizioni } from '../../../lib/contenuti';
+const edizioni = await caricaEdizioni();
 ---
 <Base title="Archivio edizioni e foto degli eventi | Inversione A U" description="Tutte le edizioni degli eventi Inversione A U dal 2017 a oggi: Polo Motor Show, Legnaro Motori, Rally Colli Euganei. Date, luoghi, numeri e foto ufficiali." active="eventi">
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Eventi', href: '/eventi/' }, { label: 'Archivio edizioni' }]} />

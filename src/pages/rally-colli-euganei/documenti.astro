@@ -4,7 +4,9 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { rally, subnav, documenti, gruppiAlbo, fmtData } from '../../data/rally';
+import { subnav, gruppiAlbo, fmtData } from '../../data/rally';
+import { caricaRally } from '../../lib/contenuti';
+const { rally, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/documenti/';
 
 const list = documenti.map(d => ({ ...d, t: new Date(d.iso).getTime() })).sort((a, b) => b.t - a.t);

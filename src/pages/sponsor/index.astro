@@ -4,7 +4,10 @@ import Base from '../../layouts/Base.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
 import StatBlock from '../../components/StatBlock.astro';
 import CTABlock from '../../components/CTABlock.astro';
-import { annuali, sponsorEvento } from '../../data/sponsor';
+import { caricaSponsor, senzaAnnuali } from '../../lib/contenuti';
+const sponsor = await caricaSponsor();
+const annuali = sponsor.annuali;
+const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali);
 const spPolo = sponsorEvento('polo'), spLegnaro = sponsorEvento('legnaro');
 const patrocini = ['Comune di Teolo', 'Comune di Galzignano Terme', 'Comune di Cinto Euganeo', 'Comune di Legnaro', 'ACI Padova'];
 const numeri = [
