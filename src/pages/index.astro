@@ -25,10 +25,10 @@ const [rally, polo, legnaro] = eventi;
 const inizio = new Date('2026-11-21T08:00:00+01:00'), fine = new Date('2026-11-22T20:00:00+01:00');
 const now = Date.now();
 const giorni = Math.ceil((inizio.getTime() - now) / 864e5);
-const countdown = now > fine.getTime() ? 'Edizione conclusa · 21–22 novembre 2026'
-  : now >= inizio.getTime() ? 'Gara in corso · 21–22 novembre 2026'
-  : giorni === 1 ? 'T−1 giorno al via · domani, 21 novembre'
-  : `T−${giorni} giorni al via · 21 novembre 2026`;
+const countdown = now > fine.getTime() ? 'Edizione conclusa'
+  : now >= inizio.getTime() ? 'Gara in corso'
+  : giorni === 1 ? 'T−1 giorno al via · domani'
+  : `T−${giorni} giorni al via`;
 
 // Ultime tre notizie per data (CMS News, riserva statica).
 const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, category: p.category, date: p.date, title: p.title, excerpt: p.excerpt, href: `/news/${p.slug}/` }));
