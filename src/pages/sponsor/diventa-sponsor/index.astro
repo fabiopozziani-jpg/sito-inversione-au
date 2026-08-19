@@ -119,15 +119,15 @@ const budget = ['Da definire', 'Fino a 1.000 €', '1.000 – 3.000 €', '3.000
   .mb{margin-bottom:var(--sp-4)}
   .row-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
   .p{color:#DDD;max-width:70ch;margin-top:16px}
-  .pk{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter);margin-bottom:var(--sp-5)}
-  @media(min-width:768px){.pk{grid-template-columns:1fr 1fr}}
+  .pk{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);margin-bottom:var(--sp-5)}
+  @media(min-width:768px){.pk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   .pk--top{border-top:3px solid #fff}
   .pk__k{display:flex;justify-content:space-between;align-items:center;gap:12px}
   .pk .pill--pieno{background:#fff;color:#000;border-color:#fff}
   .pk__l{color:#fff;align-self:flex-start;margin-top:auto}
   .cmp{margin-bottom:12px}
   .tec{margin-top:var(--sp-5);max-width:80ch}
-  .fs{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  .fs{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.fs{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}}
   .fs__t{display:flex;flex-direction:column;gap:16px}
   .fs__t p{max-width:56ch}

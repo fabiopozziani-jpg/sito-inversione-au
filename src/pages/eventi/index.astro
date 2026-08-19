@@ -49,8 +49,8 @@ const [rally, polo, legnaro] = eventi;
   .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
   .cal h2{color:#fff;margin-bottom:8px}
   .cal__intro{max-width:56ch;margin-bottom:var(--sp-4)}
-  .cal__grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter);align-items:stretch}
-  @media(min-width:768px){.cal__grid{grid-template-columns:repeat(4,1fr)}.cal__rally,.cal__polo{grid-column:span 2}.cal__legnaro{grid-column:span 2}.cal__next{grid-column:span 2}}
+  .cal__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);align-items:stretch}
+  @media(min-width:768px){.cal__grid{grid-template-columns:repeat(4,minmax(0,1fr))}.cal__rally,.cal__polo{grid-column:span 2}.cal__legnaro{grid-column:span 2}.cal__next{grid-column:span 2}}
   @media(min-width:1024px){.cal__legnaro{grid-column:span 1}.cal__next{grid-column:span 3}}
   .cal__grid>div>*{height:100%}
   .cal__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px}

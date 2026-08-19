@@ -4,9 +4,9 @@
 --font-mono:'JetBrains Mono',monospace;
 --stretch-expanded:125%;
 /* Scala fluida */
---text-display:clamp(64px,8vw,96px);
---text-h1:clamp(44px,5vw,56px);
---text-h2:clamp(30px,3.2vw,36px);
+--text-display:clamp(40px,8vw,96px);
+--text-h1:clamp(32px,5vw,56px);
+--text-h2:clamp(26px,3.2vw,36px);
 --text-h3:clamp(22px,2vw,24px);
 --text-body:17px;
 --text-small:14px;

@@ -142,7 +142,7 @@ const url = '/rally-colli-euganei/spettatori/';
   .prog__intro{max-width:60ch;margin-bottom:var(--sp-5)}
   .prog__giorno{margin-bottom:var(--sp-5)}
   .prog__g{color:#fff;display:inline-block;padding-bottom:8px;border-bottom:var(--border-accent) solid var(--ev);margin-bottom:12px}
-  .prog__riga{display:grid;grid-template-columns:1fr;gap:6px;padding:14px 0;border-top:1px solid var(--border-on-dark)}
+  .prog__riga{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:14px 0;border-top:1px solid var(--border-on-dark)}
   @media(min-width:640px){.prog__riga{grid-template-columns:190px 1fr;gap:24px}}
   .prog__ora,.prog__t{display:flex;flex-direction:column;gap:4px;min-width:0}
   .prog__titolo{font-weight:600;color:#fff}
@@ -156,8 +156,8 @@ const url = '/rally-colli-euganei/spettatori/';
   .sic{border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);background:#0A0A0A}
   .sic h2{color:#fff;margin-bottom:8px}
   .sic__intro{max-width:70ch;margin-bottom:var(--sp-5)}
-  .sic__grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
-  @media(min-width:900px){.sic__grid{grid-template-columns:1fr 1fr}}
+  .sic__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
+  @media(min-width:900px){.sic__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   .sic__no{border-top:var(--border-accent) solid var(--alert-rosso)}
   .sic__head{display:flex;align-items:center;gap:12px}
   .sic__ico{flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center}
@@ -171,7 +171,7 @@ const url = '/rally-colli-euganei/spettatori/';
   .sic__prima{margin-top:var(--sp-5);max-width:70ch;display:flex;flex-direction:column;gap:12px}
   .sic__prima h3{color:#fff}
   /* mappa zone */
-  .mz{display:grid;grid-template-columns:1fr;background:var(--carbone);border:1px solid var(--border-on-dark)}
+  .mz{display:grid;grid-template-columns:minmax(0,1fr);background:var(--carbone);border:1px solid var(--border-on-dark)}
   @media(min-width:900px){.mz{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
   .mz__media{aspect-ratio:16/8;background:#1A1A1A;overflow:hidden}
   .mz__btn{display:block;width:100%;height:100%}

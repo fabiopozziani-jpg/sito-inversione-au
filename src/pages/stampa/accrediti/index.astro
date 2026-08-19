@@ -111,7 +111,7 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
   .p{max-width:70ch}
   .sc dd{display:flex;flex-direction:column;gap:6px;font-size:18px}
   .pet{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
-  .pet div{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
+  .pet div{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
   @media(min-width:520px){.pet div{grid-template-columns:160px 1fr;gap:16px}}
   .pet dt{color:var(--grigio-450)} .pet dd{margin:0;color:#fff}
   .card--rosso h3{color:#fff}

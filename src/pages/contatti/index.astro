@@ -70,16 +70,16 @@ const canali = [
   .pg-head h1{color:#fff}
   .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
   h2{color:#fff}
-  .ct{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  .ct{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:1024px){.ct{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
   .ct__l{display:flex;flex-direction:column;gap:var(--sp-8)}
   .blk{display:flex;flex-direction:column;gap:14px}
   .dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
-  .dl div{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
+  .dl div{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
   @media(min-width:520px){.dl div{grid-template-columns:160px 1fr;gap:16px}}
   .dl dt{color:var(--grigio-450)} .dl dd{margin:0;color:#fff} .dl a{color:#fff;text-decoration:none;border-bottom:1px solid var(--grigio-500)} .dl a:hover{border-bottom-color:#fff}
-  .can{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
-  @media(min-width:640px){.can{grid-template-columns:1fr 1fr}}
+  .can{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
+  @media(min-width:640px){.can{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   .can__l{color:#fff;align-self:flex-start;margin-top:auto}
   .ct__f{position:sticky;top:calc(var(--header-h) + 16px)}
 </style>

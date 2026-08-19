@@ -159,9 +159,9 @@ const news = [
   .hero__note{color:var(--grigio-200)}
   /* accesso rapido */
   .accesso{padding-left:0;padding-right:0}
-  .accesso__grid{display:grid;grid-template-columns:1fr;border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
-  @media(min-width:640px){.accesso__grid{grid-template-columns:1fr 1fr}}
-  @media(min-width:1180px){.accesso__grid{grid-template-columns:repeat(4,1fr)}}
+  .accesso__grid{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:640px){.accesso__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  @media(min-width:1180px){.accesso__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
   .accesso__grid a{display:flex;flex-direction:column;gap:8px;padding:24px clamp(16px,3vw,28px);text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out);height:100%}
   @media(min-width:1180px){.accesso__grid a{border-bottom:0}.accesso__grid li:last-child a{border-right:0}}
   .accesso__grid a:hover,.accesso__grid a:focus-visible{background:var(--carbone)}
@@ -169,8 +169,8 @@ const news = [
   .accesso__t{color:#fff}
   .accesso__d{font-size:15px;color:var(--text-body-on-dark)}
   /* stagione */
-  .stagione{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter);align-items:stretch}
-  @media(min-width:768px){.stagione{grid-template-columns:repeat(4,1fr)}.stagione__rally{grid-column:span 4}.stagione__polo,.stagione__legnaro{grid-column:span 2}.stagione__next{grid-column:span 4}}
+  .stagione{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);align-items:stretch}
+  @media(min-width:768px){.stagione{grid-template-columns:repeat(4,minmax(0,1fr))}.stagione__rally{grid-column:span 4}.stagione__polo,.stagione__legnaro{grid-column:span 2}.stagione__next{grid-column:span 4}}
   @media(min-width:1024px){.stagione__rally{grid-column:span 2;grid-row:span 2}.stagione__polo{grid-column:span 2}.stagione__legnaro{grid-column:span 1}.stagione__next{grid-column:span 1}}
   .stagione__rally>*,.stagione__polo>*,.stagione__legnaro>*{height:100%}
   .stagione__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px}

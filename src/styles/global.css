@@ -10,6 +10,10 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--nero)}
 body{margin:0;background:var(--surface-page);color:var(--text-on-dark);font-family:var(--font-body);font-size:var(--text-body);line-height:var(--leading-body);-webkit-font-smoothing:antialiased}
 img,svg,video{display:block;max-width:100%;height:auto}
+input,select,textarea{min-width:0;max-width:100%}
+h1,h2,h3{overflow-wrap:break-word}
+.type-display,.type-h1{hyphens:auto;-webkit-hyphens:auto}
+.wrap{min-width:0}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 h1,h2,h3,h4,p,ul,ol,figure{margin:0}

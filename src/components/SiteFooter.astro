@@ -59,8 +59,8 @@ const anno = new Date().getFullYear();
 
 <style>
   .ft{background:var(--nero);border-top:1px solid var(--border-on-dark);color:#fff}
-  .ft__grid{padding-top:var(--sp-8);padding-bottom:var(--sp-4);display:grid;grid-template-columns:1fr;gap:var(--sp-4)}
-  @media(min-width:720px){.ft__grid{grid-template-columns:1fr 1fr}}
+  .ft__grid{padding-top:var(--sp-8);padding-bottom:var(--sp-4);display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-4)}
+  @media(min-width:720px){.ft__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   @media(min-width:1024px){.ft__grid{grid-template-columns:2fr 1fr 1fr 1fr}}
   .ft__brand{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
   .ft__brand img{height:88px;width:auto}

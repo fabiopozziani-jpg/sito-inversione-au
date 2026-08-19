@@ -14,7 +14,7 @@ const { items } = Astro.props;
 </ol>
 <style>
   .tl{display:flex;flex-direction:column}
-  .tl__i{display:grid;grid-template-columns:1fr;gap:6px;padding:16px 0;border-top:1px solid var(--border-on-dark)}
+  .tl__i{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:16px 0;border-top:1px solid var(--border-on-dark)}
   .tl__i:last-child{border-bottom:1px solid var(--border-on-dark)}
   @media(min-width:640px){.tl__i{grid-template-columns:200px 1fr;gap:24px}}
   .tl__t{color:var(--ev,#fff)}

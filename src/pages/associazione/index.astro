@@ -165,31 +165,31 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
   h2{color:#fff}
   .on-light h2{color:var(--nero)}
   .sec-intro{max-width:56ch;margin:8px 0 var(--sp-4)}
-  .chi{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:center}
+  .chi{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:center}
   @media(min-width:900px){.chi{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
   .chi__t{display:flex;flex-direction:column;gap:14px}
   .chi__t p:not(.type-mono){color:#DDD;max-width:56ch}
   .chi__img{aspect-ratio:4/3;overflow:hidden;background:#1A1A1A}
   .chi__img img{width:100%;height:100%;object-fit:cover}
-  .reg{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
-  @media(min-width:768px){.reg{grid-template-columns:repeat(3,1fr)}}
+  .reg{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
+  @media(min-width:768px){.reg{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .reg__c h3{color:#fff}
-  .num{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  .num{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.num{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
   .num__t{display:flex;flex-direction:column;gap:12px}
   .dir__intro{color:var(--text-secondary)}
-  .dir{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
-  @media(min-width:640px){.dir{grid-template-columns:repeat(2,1fr)}}
-  @media(min-width:1024px){.dir{grid-template-columns:repeat(5,1fr)}}
+  .dir{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
+  @media(min-width:640px){.dir{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(min-width:1024px){.dir{grid-template-columns:repeat(5,minmax(0,1fr))}}
   .dir__c{border-top:2px solid var(--nero);padding-top:16px;display:flex;flex-direction:column;gap:8px}
   .dir__c h3{font-size:18px}
   .dir__r{color:#6B6B6B}
   .dir__c p{color:var(--text-secondary);font-size:15px}
-  .tra{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  .tra{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.tra{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
   .tra__t{display:flex;flex-direction:column;gap:12px}
   .tra__dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark);margin-top:8px}
-  .tra__dl div{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
+  .tra__dl div{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
   @media(min-width:520px){.tra__dl div{grid-template-columns:180px 1fr;gap:16px}}
   .tra__dl dt{color:var(--grigio-450)}
   .tra__dl dd{margin:0;color:#fff}
@@ -198,7 +198,7 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
   .tra__doc{display:flex;flex-direction:column;gap:6px;padding:20px 24px;background:var(--carbone);border:1px solid var(--border-on-dark);text-decoration:none;color:#fff;transition:border-color var(--dur-fast) var(--ease-out)}
   .tra__doc:hover,.tra__doc:focus-visible{border-color:#fff}
   .tra__doc-t{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
-  .tes{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  .tes{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.tes{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
   .tes__t{display:flex;flex-direction:column;gap:12px}
   .tes__p{color:#DDD;max-width:56ch}

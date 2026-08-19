@@ -73,8 +73,8 @@
 .form-msg:empty{display:none}
 
 /* moduli estesi */
-.f-grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:640px){.f-grid{grid-template-columns:1fr 1fr}.f-full{grid-column:1/-1}}
+.f-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media(min-width:640px){.f-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.f-full{grid-column:1/-1}}
 .chk{display:flex;gap:10px;align-items:flex-start;color:#DDD;font-size:15px;line-height:1.5}
 .chk input[type=checkbox]{width:18px;height:18px;margin-top:2px;accent-color:#fff;flex:none}
 .chk a{color:#fff}

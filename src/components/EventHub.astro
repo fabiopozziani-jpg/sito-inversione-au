@@ -190,7 +190,7 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   .band__in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
   .band__p{color:#DDD;flex:1 1 320px;max-width:70ch}
   /* intro */
-  .intro{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:start}
+  .intro{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.intro{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   .intro__t{display:flex;flex-direction:column;gap:14px}
   .intro__t h2{color:#fff}
@@ -200,8 +200,8 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   .sec-head--row{flex-direction:row;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px}
   .gal__link{color:var(--grigio-450)}.gal__link:hover{color:#fff}
   /* mappa */
-  .mappa__grid{display:grid;grid-template-columns:1fr;gap:var(--sp-5);align-items:start}
-  @media(min-width:900px){.mappa__grid{grid-template-columns:1fr 1fr;gap:var(--sp-6)}}
+  .mappa__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5);align-items:start}
+  @media(min-width:900px){.mappa__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--sp-6)}}
   .mappa__media{background:var(--carbone);border:1px solid var(--border-on-dark);aspect-ratio:1/1;overflow:hidden}
   .mappa__btn{position:relative;display:block;width:100%;height:100%}
   .mappa__btn img{width:100%;height:100%;object-fit:cover}
@@ -216,7 +216,7 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   .mappa__nome{color:#fff}
   .mappa__link{display:flex;flex-direction:column;gap:6px;margin-top:8px}
   /* piloti */
-  .pil{display:grid;grid-template-columns:1fr;gap:var(--sp-6);align-items:center}
+  .pil{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:center}
   @media(min-width:900px){.pil{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
   .pil__t{display:flex;flex-direction:column;gap:14px}
   .pil__k{color:var(--ev-scuro)}
@@ -235,8 +235,8 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   .spons__p{max-width:60ch;margin-top:-12px}
   .spons__cta{color:#fff;align-self:flex-start}
   /* contatti */
-  .ct{display:grid;grid-template-columns:1fr;gap:var(--sp-6)}
-  @media(min-width:900px){.ct{grid-template-columns:1fr 1fr}}
+  .ct{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6)}
+  @media(min-width:900px){.ct{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   .ct__t{display:flex;flex-direction:column;gap:12px}
   .ct__t h2{color:#fff}
   .ct__list{display:flex;flex-direction:column;gap:10px;margin-top:8px}

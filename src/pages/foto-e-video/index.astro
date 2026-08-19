@@ -61,8 +61,8 @@ const video: { titolo: string; url: string; cover: string }[] = []; // FASE 4: c
   .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
   h2{color:#fff}
   .sec-intro{max-width:56ch;margin:8px 0 var(--sp-4)}
-  .gcards{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
-  @media(min-width:768px){.gcards{grid-template-columns:repeat(3,1fr)}}
+  .gcards{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
+  @media(min-width:768px){.gcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .gcard{display:flex;flex-direction:column;text-decoration:none;color:#fff;background:var(--carbone);border:1px solid var(--border-on-dark);border-top:3px solid var(--acc);transition:border-color var(--dur-fast) var(--ease-out)}
   .gcard:hover,.gcard:focus-visible{border-color:var(--acc)}
   .gcard__img{aspect-ratio:3/2;background:#1A1A1A;overflow:hidden;display:flex;align-items:center;justify-content:center}
@@ -74,8 +74,8 @@ const video: { titolo: string; url: string; cover: string }[] = []; // FASE 4: c
   .card--left{border-left:3px solid #fff}
   .vid__attesa{margin-top:var(--sp-3);max-width:70ch}
   .vid__attesa p{color:#DDD}
-  .vgrid{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter);margin-top:var(--sp-3)}
-  @media(min-width:768px){.vgrid{grid-template-columns:1fr 1fr}}
+  .vgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);margin-top:var(--sp-3)}
+  @media(min-width:768px){.vgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
   .vcard{display:flex;flex-direction:column;gap:10px;color:#fff;text-decoration:none}
   .vcard img{aspect-ratio:16/9;object-fit:cover;width:100%}
   .st{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}

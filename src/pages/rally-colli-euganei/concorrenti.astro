@@ -176,7 +176,7 @@ const haIscritti = iscritti.length > 0;
   .avviso__p{color:#fff;max-width:80ch}
   .isc h2{color:#fff;margin-bottom:8px}
   .isc__intro{max-width:56ch;margin-bottom:var(--sp-5)}
-  .isc__grid{display:grid;grid-template-columns:1fr;gap:var(--sp-6)}
+  .isc__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6)}
   @media(min-width:900px){.isc__grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
   .isc__col{display:flex;flex-direction:column;gap:var(--sp-4);min-width:0}
   .isc__col h3{color:#fff}
@@ -199,7 +199,7 @@ const haIscritti = iscritti.length > 0;
   .el__head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
   .el__pdf{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
   .el__body{display:flex;flex-direction:column;gap:16px}
-  .el__filtri{display:grid;grid-template-columns:1fr;gap:16px;align-items:end}
+  .el__filtri{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:end}
   @media(min-width:768px){.el__filtri{grid-template-columns:220px 1fr auto}}
   .el__eq{font-weight:600;color:#fff}
   .el__vuoto{display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:var(--sp-4);border:1px solid var(--border-on-dark)}

@@ -42,9 +42,9 @@ const { foto, credito = 'Foto: Inversione A U', perPagina = 24, strip = false, i
   });
 </script>
 <style>
-  .pg{display:grid;grid-template-columns:1fr;gap:var(--grid-gutter)}
-  @media(min-width:600px){.pg{grid-template-columns:repeat(2,1fr)}}
-  @media(min-width:1024px){.pg{grid-template-columns:repeat(3,1fr)}}
+  .pg{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
+  @media(min-width:600px){.pg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(min-width:1024px){.pg{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .pg__btn{display:block;width:100%;background:#1A1A1A;aspect-ratio:3/2;overflow:hidden}
   .pg__btn img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-base) var(--ease-out)}
   .pg__btn:hover img,.pg__btn:focus-visible img{transform:scale(1.03);opacity:.88}
