@@ -32,3 +32,6 @@ _to_delete/
 
 # ponte cloud<->mac (file di servizio)
 .trigger/
+
+# gallerie complete (interim: restano sul Mac e vanno nel Media Manager, non in git)
+public/foto/*-20[0-9][0-9]/
