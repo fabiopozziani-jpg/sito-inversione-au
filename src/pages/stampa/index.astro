@@ -3,21 +3,22 @@
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import { caricaPosts } from '../../lib/contenuti';
+import { mk } from '../../data/filesWix';
 const posts = await caricaPosts();
 const email = 'inversione.au3@gmail.com';
 const comunicati = posts.filter(p => p.tipo === 'comunicato stampa').sort((a, b) => (a.iso < b.iso ? 1 : -1));
 const BOILER = 'Inversione A U A.S.D. è un’associazione sportiva dilettantistica di Padova che organizza eventi motorsport sui Colli Euganei. Nasce come team drift nel 2017, organizza eventi dinamici dal 2022 e si costituisce in associazione nel 2023. Nel 2026 firma tre manifestazioni: Legnaro Motori il 15 marzo, il Polo Motor Show il 13 e 14 giugno e il 1° Rally Colli Euganei ACI Sport il 21 e 22 novembre, il primo rally sui Colli dopo più di trent’anni. Le ultime edizioni hanno superato i 15.000 spettatori, con circa 100 equipaggi in due giorni e oltre 300 auto esposte.';
 const loghi = [
-  { file: '/mediakit/logo-inversione-bianco.png', web: '/mediakit/web/logo-inversione-bianco.png', t: 'Logo Inversione A U', s: 'Versione per fondo scuro · PNG ↓', n: 'Vettoriale: PDF', dark: true },
-  { file: '/mediakit/logo-inversione-nero.png', web: '/mediakit/web/logo-inversione-nero.png', t: 'Logo Inversione A U', s: 'Versione per fondo chiaro · PNG ↓', n: 'Vettoriale: PDF', dark: false },
-  { file: '/mediakit/targa-rally-colli-euganei.svg', web: '/mediakit/web/targa-rally-colli-euganei.png', t: 'Targa 1° Rally Colli Euganei', s: 'Edizione 2026 · SVG ↓', n: 'Anche in PNG', dark: true },
-  { file: '/mediakit/logo-polo-2026-bianco.svg', web: '/mediakit/web/logo-polo-2026-bianco.png', t: 'Logo Polo Motor Show 2026', s: 'Versione per fondo scuro · SVG ↓', n: 'Anche in PNG', dark: true },
-  { file: '/mediakit/logo-polo-2026-nero.svg', web: '/mediakit/web/logo-polo-2026-nero.png', t: 'Logo Polo Motor Show 2026', s: 'Versione per fondo chiaro · SVG ↓', n: 'Anche in PNG', dark: false },
-  { file: '/mediakit/logo-legnaro-2026-2.png', web: '/mediakit/web/logo-legnaro-2026-2.png', t: 'Logo Legnaro Motori 2026', s: 'Versione con la data · PNG ↓', n: 'Vettoriale: PDF', dark: true },
+  { file: mk('logo-inversione-bianco.png'), web: '/mediakit/web/logo-inversione-bianco.png', t: 'Logo Inversione A U', s: 'Versione per fondo scuro · PNG ↓', n: 'Vettoriale: PDF', dark: true },
+  { file: mk('logo-inversione-nero.png'), web: '/mediakit/web/logo-inversione-nero.png', t: 'Logo Inversione A U', s: 'Versione per fondo chiaro · PNG ↓', n: 'Vettoriale: PDF', dark: false },
+  { file: mk('targa-rally-colli-euganei.svg'), web: '/mediakit/web/targa-rally-colli-euganei.png', t: 'Targa 1° Rally Colli Euganei', s: 'Edizione 2026 · SVG ↓', n: 'Anche in PNG', dark: true },
+  { file: mk('logo-polo-2026-bianco.svg'), web: '/mediakit/web/logo-polo-2026-bianco.png', t: 'Logo Polo Motor Show 2026', s: 'Versione per fondo scuro · SVG ↓', n: 'Anche in PNG', dark: true },
+  { file: mk('logo-polo-2026-nero.svg'), web: '/mediakit/web/logo-polo-2026-nero.png', t: 'Logo Polo Motor Show 2026', s: 'Versione per fondo chiaro · SVG ↓', n: 'Anche in PNG', dark: false },
+  { file: mk('logo-legnaro-2026-2.png'), web: '/mediakit/web/logo-legnaro-2026-2.png', t: 'Logo Legnaro Motori 2026', s: 'Versione con la data · PNG ↓', n: 'Vettoriale: PDF', dark: true },
 ];
 const altri = [
-  ['Inversione A U · PDF', '/mediakit/logo-inversione-vettoriale.pdf'], ['Legnaro Motori · PDF', '/mediakit/logo-legnaro-2026-vettoriale.pdf'], ['Legnaro Motori · variante', '/mediakit/logo-legnaro-2026-1.png'],
-  ['Targa rally · PNG', '/mediakit/targa-rally-colli-euganei.png'], ['Polo bianco · PNG', '/mediakit/logo-polo-2026-bianco.png'], ['Polo nero · PNG', '/mediakit/logo-polo-2026-nero.png'],
+  ['Inversione A U · PDF', mk('logo-inversione-vettoriale.pdf')], ['Legnaro Motori · PDF', mk('logo-legnaro-2026-vettoriale.pdf')], ['Legnaro Motori · variante', mk('logo-legnaro-2026-1.png')],
+  ['Targa rally · PNG', mk('targa-rally-colli-euganei.png')], ['Polo bianco · PNG', mk('logo-polo-2026-bianco.png')], ['Polo nero · PNG', mk('logo-polo-2026-nero.png')],
 ];
 ---
 <Base title="Area stampa e accrediti | Inversione A U" description="Area stampa Inversione A U: comunicati, foto in alta risoluzione, testo di presentazione, loghi e brand book. Come richiedere l'accredito per il Rally Colli Euganei e gli altri eventi." active="" image="/img/social/stampa.jpg" imageAlt="Area stampa Inversione A U">
@@ -80,7 +81,7 @@ const altri = [
     <h2 id="mk-h" class="type-h2 mb">Loghi, targhe e cartella completa</h2>
     <div class="bb card card--left">
       <div><h3 class="type-h3">Brand book</h3><p>Il brand book contiene l'uso corretto del marchio: versioni, spazi di rispetto, colori e tipografia.</p><span class="hint">PDF · brand book Inversione A U</span></div>
-      <a class="btn btn--primary" href="/mediakit/brand-book-inversione-a-u.pdf" download>Scarica il brand book ↓</a>
+      <a class="btn btn--primary" href={mk('brand-book-inversione-a-u.pdf')} download>Scarica il brand book ↓</a>
     </div>
     <ul class="mk stagger">
       {loghi.map(l => (
