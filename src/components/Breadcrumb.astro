@@ -16,9 +16,9 @@ const { items, light = false } = Astro.props;
 </nav>
 <style>
   .bc{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450)}
-  .bc__ol{display:flex;flex-wrap:wrap;gap:8px;padding-top:var(--sp-3);padding-bottom:0}
+  .bc__ol{display:flex;flex-wrap:wrap;gap:0 8px;padding-top:var(--sp-2);padding-bottom:0;align-items:center}
   .bc__li{display:inline-flex;gap:8px;align-items:center}
-  .bc a{color:var(--grigio-450);text-decoration:none;transition:color var(--dur-fast) var(--ease-out)}
+  .bc a{color:var(--grigio-450);text-decoration:none;display:inline-block;padding:8px 0;transition:color var(--dur-fast) var(--ease-out)}
   .bc a:hover,.bc a:focus-visible{color:#fff}
   .bc [aria-current]{color:#fff}
   .bc__sep{color:var(--grigio-500)}

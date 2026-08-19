@@ -58,3 +58,6 @@ ul,ol{padding:0;list-style:none}
 /* ── linee e divisori ─────────────────────────────────────── */
 .hair{border-top:1px solid var(--border-on-dark)}
 .on-light .hair{border-top-color:var(--border-divider)}
+
+/* target tocco su telefono/tablet: link testuali con area ≥ 40px */
+@media(max-width:1179px){.link-line{display:inline-block;padding:9px 0}.link-line::after{bottom:4px}}
