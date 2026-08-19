@@ -178,8 +178,9 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   /* card rally larga 2 colonne: la foto non ha proporzione fissa, riempie lo spazio che resta
      così la card è alta esattamente come quella del Polo a fianco (scelta di Fabio, 19/8) */
   @media(min-width:1024px){.stagione__rally :global(.ec__media){aspect-ratio:auto}}
-  .stagione__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px}
-  @media(min-width:768px) and (max-width:1023px){.stagione__next{flex-direction:row;align-items:center;flex-wrap:wrap}}
+  /* testo e CTA entrambi in basso (scelta di Fabio, 19/8) */
+  .stagione__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:flex-end;gap:20px;padding:24px}
+  @media(min-width:768px) and (max-width:1023px){.stagione__next{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap}}
   .stagione__next-t{display:flex;flex-direction:column;gap:10px;min-width:0;max-width:60ch}
   .stagione__next>.btn{align-self:flex-start}
   .stagione__next-t h3{color:#fff}
