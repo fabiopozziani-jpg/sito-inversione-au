@@ -3,6 +3,7 @@
  * Il Rally ha pagine proprie (src/pages/rally-colli-euganei/).
  */
 import type { Stato } from './eventi';
+import { IMMAGINI, imgFit } from './rallyImmagini';
 
 export type Hub = {
   key: 'polo' | 'legnaro';
@@ -31,29 +32,33 @@ export const hubs: Record<'polo' | 'legnaro', Hub> = {
     stato: 'conclusa', ticketUrl: '',
     introTitolo: "Che cos'è il Polo Motor Show",
     introTesto1: 'Due giorni di esibizioni drift, rally show ed esposizione di auto. Le strade di Selve di Teolo diventano circuito e paddock, con il pubblico a pochi metri dalla pista.',
-    introTesto2: "L'edizione 2026 si è chiusa domenica 14 giugno con oltre 15.000 spettatori. La prossima è in preparazione.",
-    stats: [{ value: '15.000+', label: 'spettatori' }, { value: '100', label: 'equipaggi in pista' }, { value: '300+', label: 'auto esposte' }, { value: '23', label: 'sponsor' }],
+    introTesto2: "L'edizione 2026 si è chiusa domenica 14 giugno con oltre 10.000 spettatori. La prossima è in preparazione.",
+    stats: [{ value: '10.000+', label: 'spettatori' }, { value: '100', label: 'equipaggi in pista' }, { value: '400+', label: 'auto esposte' }, { value: '23', label: 'sponsor' }],
     programma: [
-      { time: 'SAB 13 GIU · 09:00', title: 'Apertura esposizione e paddock', text: 'Raduno statico nel centro di Selve' },
-      { time: 'SAB 13 GIU · 11:00', title: 'Sessioni drift', text: 'Turni fino alle 19:00 sul circuito cittadino' },
-      { time: 'DOM 14 GIU · 10:00', title: 'Rally show', text: 'Passaggi dimostrativi con equipaggi ospiti' },
-      { time: 'DOM 14 GIU · 18:00', title: 'Premiazioni e chiusura', text: 'Palco centrale, piazza di Selve' },
+      { time: 'SAB 13 GIU · 14:00', title: 'Apertura evento e circuito aperto', text: 'Rally + Drift' },
+      { time: 'SAB 13 GIU · 18:00', title: 'Inizio raduno statico', text: 'by OFFSET MOVEMENT' },
+      { time: 'SAB 13 GIU · 20:00', title: 'Chiusura circuito', text: 'Rally + Drift' },
+      { time: 'SAB 13 GIU · 21:00', title: 'Apertura evento e circuito aperto', text: 'Rally + Drift' },
+      { time: 'SAB 13 GIU · 23:00', title: 'Chiusura circuito', text: 'Rally + Drift' },
+      { time: 'DOM 14 GIU · 10:00–12:00', title: 'Apertura evento e circuito aperto', text: 'Rally + Drift' },
+      { time: 'DOM 14 GIU · 13:00–18:00', title: 'Circuito aperto', text: 'Rally + Drift' },
+      { time: 'DOM 14 GIU · 14:00–18:00', title: 'Raduno statico', text: 'by Fullgas Crew' },
     ],
-    mappa: '', mappaTitolo: 'Il circuito cittadino di Selve di Teolo',
+    mappa: imgFit(IMMAGINI.mappaPolo, 1600), mappaTitolo: 'Il circuito cittadino di Selve di Teolo',
     mappaTesto: "Per due giorni le strade del paese diventano circuito. Il pubblico si muove a piedi tra le aree; l'accesso alla pista è riservato a piloti e commissari.",
     mappaAree: [
       { nome: 'Pista', testo: 'il circuito cittadino. Accesso vietato al pubblico, si guarda dalle aree recintate.' },
-      { nome: 'Area espositori', testo: 'oltre 300 auto in mostra e gli stand dei partner.' },
+      { nome: 'Area espositori', testo: 'gli stand delle aziende di settore e i simulatori di guida.' },
       { nome: 'Area food', testo: 'due punti ristoro, aperti per tutta la durata dell’evento.' },
-      { nome: 'Raduni', testo: 'dove arrivano e sostano le auto dei visitatori.' },
+      { nome: 'Raduni', testo: 'i raduni delle auto sportive, oltre 400 in mostra nei due giorni.' },
       { nome: 'Parcheggi', testo: 'parcheggio pubblico gratuito nelle vicinanze del centro.' },
     ],
     comeArrivare: 'https://www.google.com/maps/search/?api=1&query=Selve+di+Teolo',
-    pilotiTesto: "Le iscrizioni piloti per il 2027 non sono ancora aperte. Gli espositori possono già candidarsi per il raduno e per l'area espositiva.",
-    pilotiVoci: ['Drift — sessioni su iscrizione, briefing obbligatorio', 'Rally show — passaggi dimostrativi su invito', 'Esposizione — raduno statico, tutte le epoche'],
+    pilotiTesto: "Le iscrizioni piloti per il 2027 non sono ancora aperte. Le aziende di settore possono già candidarsi per l'area espositori.",
+    pilotiVoci: ['Drift — sessioni su iscrizione, briefing obbligatorio', 'Rally show — sessioni su iscrizione, briefing obbligatorio', 'Esposizione — stand aziende di settore', 'Raduni — raduni statici, tutte le epoche, in collaborazione con gruppi locali'],
     pilotiNota: 'Iscrizioni piloti 2027: non ancora aperte',
     pilotiImage: '/foto/polo_e30_turchese_drift.jpg', pilotiCaption: 'Polo Motor Show · rally show sul tracciato cittadino',
-    sponsorIntro: 'Le 23 aziende che hanno sostenuto l’edizione 2026.',
+    sponsorIntro: 'Le aziende che hanno sostenuto l’edizione 2026.',
     motivi: motiviBase,
   },
   legnaro: {
@@ -64,25 +69,25 @@ export const hubs: Record<'polo' | 'legnaro', Hub> = {
     stato: 'conclusa', ticketUrl: '',
     introTitolo: "Che cos'è Legnaro Motori",
     introTesto1: "Una giornata di esibizioni drift e raduno di auto. È la versione compatta del format: un solo giorno, un'unica area, tutto raggiungibile a piedi.",
-    introTesto2: 'La prima edizione si è svolta domenica 15 marzo 2026. La seconda è in preparazione.',
-    stats: [{ value: '1ª', label: 'edizione' }, { value: '1', label: 'giorno di evento' }, { value: '15 MAR', label: 'data 2026' }, { value: '2027', label: 'in preparazione' }],
+    introTesto2: 'La prima edizione si è svolta domenica 15 marzo 2026, con il tracciato drift, il raduno e gli stand delle aziende di settore in un’unica area.',
+    stats: [{ value: '1ª', label: 'edizione' }, { value: '1', label: 'giorno di evento' }, { value: '15 MAR', label: 'data 2026' }, { value: '2027', label: 'prossima edizione' }],
     programma: [
       { time: 'DOM 15 MAR · 09:00', title: 'Apertura raduno', text: 'Esposizione statica e paddock' },
       { time: 'DOM 15 MAR · 11:00', title: 'Sessioni drift', text: 'Turni per tutta la giornata' },
       { time: 'DOM 15 MAR · 18:00', title: 'Chiusura', text: 'Saluti e arrivederci al 2027' },
     ],
-    mappa: '', mappaTitolo: "L'area evento di Legnaro",
+    mappa: imgFit(IMMAGINI.mappaLegnaro, 1600), mappaTitolo: "L'area evento di Legnaro",
     mappaTesto: "Tutto si svolge in un'unica area, in una sola giornata. Il tracciato drift è recintato; raduno, stand e ristoro sono intorno, raggiungibili a piedi.",
     mappaAree: [
       { nome: 'Pista', testo: 'il tracciato drift, recintato. Si guarda dalle aree per il pubblico.' },
-      { nome: 'Raduno', testo: 'dove arrivano e sostano le auto dei visitatori.' },
-      { nome: 'Area espositori', testo: 'gli stand dei partner e le auto in mostra.' },
+      { nome: 'Raduno', testo: 'l’area dove vengono esposte le auto sportive.' },
+      { nome: 'Area espositori', testo: 'la zona dove espongono le aziende del settore.' },
       { nome: 'Ristoro', testo: 'un punto ristoro, aperto per tutta la giornata.' },
       { nome: 'Parcheggi', testo: 'parcheggio pubblico gratuito accanto all’area evento.' },
     ],
     comeArrivare: 'https://www.google.com/maps/search/?api=1&query=Legnaro+Padova',
-    pilotiTesto: "Le iscrizioni piloti per il 2027 non sono ancora aperte. Gli espositori possono già candidarsi per il raduno e per l'area espositiva.",
-    pilotiVoci: ['Drift — sessioni su iscrizione, briefing obbligatorio', 'Esposizione — raduno statico, tutte le epoche'],
+    pilotiTesto: "Le iscrizioni piloti per il 2027 non sono ancora aperte. Le aziende di settore possono già candidarsi per l'area espositori.",
+    pilotiVoci: ['Drift — sessioni su iscrizione, briefing obbligatorio', 'Raduno — raduni statici, tutte le epoche, in collaborazione con gruppi locali. Candidature non ancora aperte', 'Espositori — stand aziende di settore'],
     pilotiNota: 'Iscrizioni piloti 2027: non ancora aperte',
     pilotiImage: '/foto/raduno_expo.jpg', pilotiCaption: 'Legnaro Motori 2026 · raduno ed esposizione',
     sponsorIntro: 'Le aziende che hanno sostenuto Legnaro Motori 2026.',
@@ -108,7 +113,7 @@ export function testiStato(h: Hub, galleryUrl: string) {
     'iscrizioni-aperte': ['Iscrizioni aperte', 'Iscrizioni aperte. Regolamento e modulo nella sezione piloti ed espositori.', 'Guarda il programma', '#programma'],
     imminente: [mancano, 'Programma, aree del pubblico e parcheggi sono già online. Conviene comprare il biglietto prima di arrivare: alle casse si fa fila.', 'Guarda come arrivare', '#mappa'],
     'in-corso': ['Oggi in pista', 'Evento in corso. Su questa pagina aggiorniamo orari, aree aperte e comunicazioni durante la giornata.', 'Guarda gli orari di oggi', '#programma'],
-    conclusa: ['Edizione conclusa', `Le foto ufficiali della giornata sono online. L’edizione ${h.annoProx} è in preparazione: le date arrivano su questa pagina.`, `Guarda le foto ${h.anno}`, galleryUrl],
+    conclusa: ['Edizione conclusa', `Le foto ufficiali della giornata sono online. L’edizione ${h.annoProx} è in preparazione.`, `Guarda le foto ${h.anno}`, galleryUrl],
   };
   const programmaTit: Record<Stato, string> = { annuncio: 'Programma in definizione', 'iscrizioni-aperte': 'Il programma', imminente: 'Il programma delle giornate', 'in-corso': 'Gli orari di oggi', conclusa: `Com’è andata: il programma ${h.anno}` };
   const partecipaTit: Record<Stato, string> = { annuncio: 'Correre o esporre', 'iscrizioni-aperte': 'Iscriviti come pilota o espositore', imminente: 'Piloti ed espositori', 'in-corso': 'Piloti ed espositori', conclusa: `Correre o esporre nel ${h.annoProx}` };
@@ -120,7 +125,7 @@ export function testiStato(h: Hub, galleryUrl: string) {
     showMappa: s !== 'annuncio',
     showPiloti: s !== 'annuncio' && s !== 'in-corso',
     pilotiKicker: conclusa ? `Edizione ${h.annoProx}` : `Edizione ${h.anno}`,
-    pilotiCta: conclusa ? 'Candidati come espositore' : 'Iscriviti come pilota',
+    pilotiCta: conclusa ? 'Candidati come sponsor o espositore di settore' : 'Iscriviti come pilota',
     periodo: h.dataFine && h.dataFine !== h.dataInizio ? `${h.dataInizio}–${h.dataFine}` : h.dataInizio,
   };
 }

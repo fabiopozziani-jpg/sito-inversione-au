@@ -5,7 +5,7 @@ import { caricaGallerie } from '../../lib/contenuti';
 const gallerie = await caricaGallerie();
 const ordine = ['rally', 'polo', 'legnaro'];
 const gal = [...gallerie].sort((a, b) => ordine.indexOf(a.evento) - ordine.indexOf(b.evento));
-const testo: Record<string, string> = { rally: 'Online entro il 24 novembre 2026, dopo la gara.', polo: 'Due giorni di drift, rally show e raduno.', legnaro: 'La prima edizione, marzo 2026.' };
+const testo: Record<string, string> = { rally: 'Online nei giorni dopo la gara.', polo: 'Due giorni di drift, rally show e raduno.', legnaro: 'La prima edizione, marzo 2026.' };
 const video: { titolo: string; url: string; cover: string }[] = []; // FASE 4: collection Media (video)
 ---
 <Base title="Foto e video eventi motorsport | Inversione A U" description="Le gallerie fotografiche ufficiali degli eventi Inversione A U: Polo Motor Show, Legnaro Motori e Rally Colli Euganei. Foto libere per la stampa con credit." active="media">
@@ -29,7 +29,7 @@ const video: { titolo: string; url: string; cover: string }[] = []; // FASE 4: c
           <div class="gcard__b">
             <span class="type-mono gcard__k">{g.nomeEvento} · {g.anno}</span>
             <h3 class="type-h3">Foto {g.evento === 'legnaro' ? 'di' : 'del'} {g.nomeEvento.replace('1° ', '')}</h3>
-            <span class="type-mono text-meta">{g.stato === 'pubblicata' ? `${g.foto.length} foto` : 'Online dal 24 novembre'}</span>
+            <span class="type-mono text-meta">{g.stato === 'pubblicata' ? `${g.foto.length} foto` : 'Online dopo la gara'}</span>
             <span class="type-body-dark">{testo[g.evento]}</span>
           </div>
         </a>

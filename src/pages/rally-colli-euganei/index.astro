@@ -128,7 +128,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
       <dl class="storia__dl reveal">
         <div><dt class="type-mono">Ultimo rally sui Colli</dt><dd>Anni '80 · Rally del Santo</dd></div>
         <div><dt class="type-mono">Prima edizione</dt><dd>21–22 novembre 2026</dd></div>
-        <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport · <a href={rally.aciUrl} target="_blank" rel="noopener" class="link-line">scheda nel calendario ACI Sport</a></dd></div>
+        <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport · <a href={rally.aciUrl} target="_blank" rel="noopener" class="storia__link">scheda nel calendario ACI Sport ↗</a></dd></div>
         <div><dt class="type-mono">Organizzazione</dt><dd>Inversione A U A.S.D.</dd></div>
       </dl>
     </div>
@@ -259,4 +259,6 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .contatti__list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
   .contatti__list a{color:#fff}
   .contatti__form{display:flex;flex-direction:column;gap:18px;background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4)}
+  .storia__link{color:var(--ev);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+  .storia__link:hover{color:#fff}
 </style>

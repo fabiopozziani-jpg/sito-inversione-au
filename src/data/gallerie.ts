@@ -30,7 +30,7 @@ export const gallerie: Galleria[] = [
     stato: 'pubblicata', notaVuota: '', credito: 'Foto: Garage Hub, GR Visuals / Inversione A U',
     copertina: { src: wixFill(legnaroMedia.foto[35].id, legnaroMedia.foto[35].name, 800, 533), alt: 'BMW E36 del team Kebek in drift a Legnaro Motori 2026' }, foto: fotoWix(legnaroMedia.foto as WixFoto[]) },
   { evento: 'rally', nomeEvento: '1° Rally Colli Euganei', anno: '2026', accent: '#00BA89', slug: 'rally-colli-euganei-2026',
-    stato: 'in-attesa', notaVuota: 'Le foto ufficiali saranno online entro il 24 novembre 2026, dopo la gara.',
+    stato: 'in-attesa', notaVuota: 'Le foto ufficiali saranno online nei giorni dopo la gara.',
     credito: 'Foto: [NOME] / Inversione A U', copertina: { src: '', alt: '' }, foto: [] },
 ];
 

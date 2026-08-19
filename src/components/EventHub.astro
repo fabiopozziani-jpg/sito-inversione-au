@@ -46,7 +46,6 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
     <h1 id="hero-h1" class="type-display hero__h1">{h.nome}</h1>
     <p class="hero__intro">{h.claim}</p>
     <div class="hero__cta">
-      <span class="pill pill--pieno">{t.statoLabel}</span>
       <a href={t.cta[0][1]} class="btn btn--ev">{t.cta[0][0]}</a>
       <a href={t.cta[1][1]} class="btn btn--secondary">{t.cta[1][0]}</a>
     </div>
@@ -55,7 +54,7 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
 
 <section class="band" aria-label="Stato dell'edizione">
   <div class="wrap band__in">
-    <span class="type-mono tabellone k-ev">{t.band[0]}</span>
+    <span class="pill pill--pieno band__tag">{t.band[0]}</span>
     <p role="status" class="band__p">{t.band[1]}</p>
     {t.band[2] && <a href={t.band[3]} class="btn btn--secondary">{t.band[2]}</a>}
   </div>
@@ -180,6 +179,7 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
   /* fascia stato */
   .band{border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);background:var(--carbone)}
   .band__in{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+  .band__tag{flex:none}
   .band__p{color:#DDD;flex:1 1 320px;max-width:70ch}
   /* intro */
   .intro{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
