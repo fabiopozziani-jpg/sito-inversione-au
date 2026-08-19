@@ -151,31 +151,21 @@ const accent = h.key === 'polo' ? '#6FC7DB' : '#A8D8B4';
         <li><a class="type-mono link-line" href="tel:+393489049212">Organizzazione · +39 348 904 9212</a></li>
       </ul>
     </div>
-    <form class="ct__form" data-mailform data-to={email} data-subject={`Richiesta · ${h.nome}`} novalidate>
+    <form class="ct__form" data-mailform data-modulo="richieste" data-to={email} data-subject={`Richiesta · ${h.nome}`} novalidate>
+      <input type="hidden" name="contesto" value={h.key} />
       <label class="field"><span>Nome e cognome</span><input type="text" name="nome" autocomplete="name" required /></label>
       <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
       <label class="field"><span>Motivo</span><select name="motivo">{h.motivi.map(m => <option value={m}>{m}</option>)}</select></label>
       <p class="hint">Sei un giornalista? Per gli accrediti usa il <a href="/stampa/accrediti/">modulo dedicato →</a></p>
       <label class="field"><span>Messaggio</span><textarea name="messaggio" rows="4" required></textarea></label>
+      <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
       <div><button type="submit" class="btn btn--ev">Invia richiesta</button></div>
       <p class="form-msg" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
 
-<script>
-  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
-    f.addEventListener('submit', e => {
-      e.preventDefault();
-      const msg = f.querySelector<HTMLElement>('.form-msg');
-      if (!f.checkValidity()) { msg && (msg.textContent = 'Controlla i campi evidenziati: nome, email e messaggio sono obbligatori.'); f.reportValidity(); return; }
-      const d = new FormData(f);
-      const body = [...d.entries()].filter(([k]) => k !== 'messaggio').map(([k, v]) => `${k}: ${v}`).join('\n') + '\n\n' + (d.get('messaggio') ?? '');
-      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
-      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
-    });
-  });
-</script>
+<script>import '../scripts/mailform';</script>
 
 <style>
   .hero{position:relative;height:78vh;min-height:560px;background:var(--nero);overflow:hidden;display:flex}

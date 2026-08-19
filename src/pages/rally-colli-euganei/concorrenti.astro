@@ -48,12 +48,13 @@ const haIscritti = iscritti.length > 0;
           <h3 class="type-h3">{isc.titolo}</h3>
           <p>{isc.testo}</p>
           {stato === 'non-aperte' && (
-            <form class="avviso-form" data-mailform data-to={rally.email} data-subject="Avvisami all'apertura delle iscrizioni · Rally Colli Euganei" novalidate>
+            <form class="avviso-form" data-mailform data-modulo="avvisami" data-to={rally.email} data-subject="Avvisami all'apertura delle iscrizioni · Rally Colli Euganei" novalidate>
+              <input type="hidden" name="evento" value="Rally Colli Euganei 2026" />
               <div class="avviso-form__row">
                 <label class="field"><span>La tua email</span><input type="email" name="email" placeholder="nome@email.it" autocomplete="email" required /></label>
                 <button type="submit" class="btn btn--ev">Avvisami all'apertura</button>
               </div>
-              <span class="hint">Usiamo l'indirizzo solo per questo avviso</span>
+              <span class="hint">Usiamo l'indirizzo solo per questo avviso · <a href="/privacy/">informativa privacy</a></span>
               <p class="form-msg" role="status" aria-live="polite"></p>
             </form>
           )}
@@ -141,6 +142,7 @@ const haIscritti = iscritti.length > 0;
 </Base>
 
 <script>
+  import '../../scripts/mailform';
   // filtro elenco iscritti (classe + ricerca), tutto lato client, senza dipendenze
   const box = document.querySelector<HTMLElement>('[data-iscritti]');
   if (box) {
@@ -160,17 +162,6 @@ const haIscritti = iscritti.length > 0;
     sel.addEventListener('change', run); q.addEventListener('input', run);
     box.querySelector('[data-reset]')?.addEventListener('click', () => { sel.value = ''; q.value = ''; run(); q.focus(); });
   }
-  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
-    f.addEventListener('submit', e => {
-      e.preventDefault();
-      const msg = f.querySelector<HTMLElement>('.form-msg');
-      if (!f.checkValidity()) { msg && (msg.textContent = 'Inserisci un indirizzo email valido.'); f.reportValidity(); return; }
-      const d = new FormData(f);
-      const body = [...d.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
-      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
-      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
-    });
-  });
 </script>
 
 <style>

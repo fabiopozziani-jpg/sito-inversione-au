@@ -168,10 +168,12 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         </ul>
       </div>
       <!-- FASE 5: Wix Forms. Per ora apre il client di posta con i campi compilati. -->
-      <form class="contatti__form" data-mailform data-to={rally.email} data-subject="Richiesta · Rally Colli Euganei" novalidate>
+      <form class="contatti__form" data-mailform data-modulo="richieste" data-to={rally.email} data-subject="Richiesta · Rally Colli Euganei" novalidate>
+        <input type="hidden" name="contesto" value="rally" />
         <label class="field"><span>Nome e cognome</span><input type="text" name="nome" autocomplete="name" required /></label>
         <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
         <label class="field"><span>Messaggio</span><textarea name="messaggio" rows="4" required></textarea></label>
+        <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
         <div><button type="submit" class="btn btn--ev">Invia richiesta</button></div>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
@@ -179,20 +181,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   </section>
 </Base>
 
-<script>
-  // Modulo "mailto": apre il programma di posta con oggetto e testo già compilati (FASE 5 → Wix Forms)
-  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
-    f.addEventListener('submit', e => {
-      e.preventDefault();
-      const msg = f.querySelector<HTMLElement>('.form-msg');
-      if (!f.checkValidity()) { msg && (msg.textContent = 'Controlla i campi evidenziati: nome, email e messaggio sono obbligatori.'); f.reportValidity(); return; }
-      const d = new FormData(f);
-      const body = [...d.entries()].filter(([k]) => k !== 'messaggio').map(([k, v]) => `${k}: ${v}`).join('\n') + '\n\n' + (d.get('messaggio') ?? '');
-      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
-      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
-    });
-  });
-</script>
+<script>import '../../scripts/mailform';</script>
 
 <style>
   .hero{position:relative;height:78vh;min-height:560px;background:var(--nero);overflow:hidden;display:flex}

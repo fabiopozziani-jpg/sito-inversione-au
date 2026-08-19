@@ -126,11 +126,13 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
           <li>La tessera vale per l'anno solare. Il rinnovo si apre a gennaio.</li>
         </ul>
       </div>
-      <form class="tes__form" data-mailform data-to={email} data-subject="Richiesta tessera · Inversione A U" novalidate>
+      <form class="tes__form" data-mailform data-modulo="richieste" data-to={email} data-subject="Richiesta tessera · Inversione A U" novalidate>
+        <input type="hidden" name="contesto" value="tessera" />
         <h3 class="type-h3">Richiedi la tessera</h3>
         <label class="field"><span>Nome e cognome</span><input type="text" name="nome" placeholder="Es. Marco Franceschetti" autocomplete="name" required /></label>
         <label class="field"><span>Email</span><input type="email" name="email" placeholder="nome@email.it" autocomplete="email" required /></label>
         <label class="field"><span>Tipo di tessera</span><select name="tessera">{tessere.map(t => <option value={t}>{t}</option>)}</select></label>
+        <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
         <button type="submit" class="btn btn--primary tes__btn">Invia la richiesta</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
@@ -142,19 +144,7 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
     <a href="/eventi/archivio/" class="btn btn--secondary">Apri l'archivio</a>
   </CTABlock>
 </Base>
-<script>
-  document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
-    f.addEventListener('submit', e => {
-      e.preventDefault();
-      const msg = f.querySelector<HTMLElement>('.form-msg');
-      if (!f.checkValidity()) { msg && (msg.textContent = 'Controlla i campi: nome ed email sono obbligatori.'); f.reportValidity(); return; }
-      const d = new FormData(f);
-      const body = [...d.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
-      location.href = `mailto:${f.dataset.to}?subject=${encodeURIComponent(f.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
-      msg && (msg.textContent = 'Si apre il tuo programma di posta con la richiesta già scritta. Se non succede, scrivi a ' + f.dataset.to + '.');
-    });
-  });
-</script>
+<script>import '../../scripts/mailform';</script>
 <style>
   .hero{position:relative;height:64vh;min-height:460px;background:var(--nero);overflow:hidden;display:flex}
   .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}

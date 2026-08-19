@@ -48,7 +48,8 @@ const canali = [
         <a class="type-mono link-line can__l" href="/associazione/#trasparenza">Leggi l'atto costitutivo e lo statuto <span class="arrow-x" aria-hidden="true">→</span></a>
       </div>
     </div>
-    <form id="scrivici" class="form-box ct__f" data-mailform data-to={email} data-subject="Messaggio dal sito · Inversione A U" novalidate>
+    <form id="scrivici" class="form-box ct__f" data-mailform data-modulo="richieste" data-to={email} data-subject="Messaggio dal sito · Inversione A U" novalidate>
+      <input type="hidden" name="contesto" value="sito" />
       <h2 class="type-h2">Scrivici un messaggio</h2>
       <div class="errbox" role="alert" tabindex="-1" hidden data-errors></div>
       <div class="f-grid">
