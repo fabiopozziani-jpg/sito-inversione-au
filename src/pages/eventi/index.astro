@@ -54,7 +54,7 @@ const [rally, polo, legnaro] = [trova('rally'), trova('polo'), trova('legnaro')]
   .cal__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);align-items:stretch}
   @media(min-width:768px){.cal__grid{grid-template-columns:repeat(4,minmax(0,1fr))}.cal__rally,.cal__polo{grid-column:span 2}.cal__legnaro{grid-column:span 2}.cal__next{grid-column:span 2}}
   @media(min-width:1024px){.cal__legnaro{grid-column:span 1}.cal__next{grid-column:span 3}}
-  .cal__grid>div>*{height:100%}
+  .cal__grid>div>:global(*){height:100%}
   .cal__next{background:var(--carbone);border:1px solid var(--border-on-dark);display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px}
   @media(min-width:1024px){.cal__next{flex-direction:row;align-items:center;flex-wrap:wrap}}
   .cal__next-t{display:flex;flex-direction:column;gap:10px;min-width:0;max-width:60ch;flex:1 1 320px}
