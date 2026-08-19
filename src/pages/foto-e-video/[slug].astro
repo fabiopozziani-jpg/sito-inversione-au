@@ -62,7 +62,7 @@ const titolo = `Foto ${g.evento === 'legnaro' ? 'di' : 'del'} ${g.nomeEvento.rep
   .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
   .gh{color:#fff;margin-bottom:var(--sp-3)}
   .tabs{display:flex;gap:8px 24px;flex-wrap:wrap;padding-bottom:8px;border-bottom:1px solid var(--border-on-dark)}
-  @media(max-width:639px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs a{white-space:nowrap}}
+  @media(max-width:639px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs a{white-space:nowrap}.tabs--inline{flex-wrap:wrap;overflow:visible}.tabs--inline a{white-space:normal}}
   .tabs a{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:color var(--dur-fast) var(--ease-out)}
   .tabs a:hover,.tabs a:focus-visible{color:#fff}
   .tabs a[aria-current]{color:#fff;border-bottom-color:var(--ev)}
@@ -71,5 +71,6 @@ const titolo = `Foto ${g.evento === 'legnaro' ? 'di' : 'del'} ${g.nomeEvento.rep
   .uso a{color:#fff}
   .uso__cr{color:#fff}
   .alt{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+  .alt>div{min-width:0;max-width:100%}
   .alt__btns{display:flex;gap:16px;flex-wrap:wrap}
 </style>
