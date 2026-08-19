@@ -63,7 +63,7 @@ document.querySelectorAll<HTMLFormElement>('form[data-mailform]').forEach(f => {
         // conferma: nascondo i campi, mostro il messaggio (resta leggibile anche da screen reader)
         const ok = document.createElement('div'); ok.className = 'form-ok'; ok.setAttribute('role', 'status'); ok.setAttribute('tabindex', '-1');
         ok.innerHTML = `<strong>Richiesta inviata.</strong> ${j.messaggio ?? 'Grazie.'}`;
-        Array.from(f.children).forEach(c => { if (c !== ok) (c as HTMLElement).hidden = true; });
+        Array.from(f.children).forEach(c => { if (c !== ok) (c as HTMLElement).style.display = 'none'; }); // style inline: [hidden] verrebbe battuto dalle regole display della griglia
         f.appendChild(ok); ok.focus();
         return;
       }
