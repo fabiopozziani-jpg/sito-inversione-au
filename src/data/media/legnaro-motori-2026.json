@@ -1,0 +1,366 @@
+{
+ "galleria": "legnaro-motori-2026",
+ "folderId": "bb0b6e7e82f8448382a6fcf3128e4200",
+ "foto": [
+  {
+   "n": 1,
+   "id": "2be2d6_6d6e8119db154fc399ca2e082c7ec65f~mv2.jpg",
+   "name": "legnaro-motori-2026-01.jpg",
+   "alt": "BMW E36 nera con grafica a stelle in traverso accanto alle balle di fieno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 2,
+   "id": "2be2d6_1c226e0e26ab44fca0ab7cd587c746e6~mv2.jpg",
+   "name": "legnaro-motori-2026-02.jpg",
+   "alt": "Muso di una BMW E36 rossa ribassata parcheggiata sul piazzale del raduno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 3,
+   "id": "2be2d6_7750db295fe7497a9dcbab91af1914c1~mv2.jpg",
+   "name": "legnaro-motori-2026-03.jpg",
+   "alt": "BMW E36 bordeaux e altre auto allineate nell’area raduno di Legnaro Motori",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 4,
+   "id": "2be2d6_5d9433ed75fd4b4f94ab14529411d539~mv2.jpg",
+   "name": "legnaro-motori-2026-04.jpg",
+   "alt": "BMW E36 nera in drift tra le balle di fieno del tracciato di Legnaro",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 5,
+   "id": "2be2d6_f8ccd5ae59134a7e80533cc3a1995191~mv2.jpg",
+   "name": "legnaro-motori-2026-05.jpg",
+   "alt": "BMW E36 viola in traverso lungo le protezioni di fieno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 6,
+   "id": "2be2d6_f4f264a8b31b4a7dbff54bf7a1a94da6~mv2.jpg",
+   "name": "legnaro-motori-2026-06.jpg",
+   "alt": "Auto in drift sul piazzale con i segni di gomma sull’asfalto",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 7,
+   "id": "2be2d6_6570aeef43874669871cbfb80dcd7783~mv2.jpg",
+   "name": "legnaro-motori-2026-07.jpg",
+   "alt": "Dettaglio del cerchio e del parafango di una BMW E36 rossa nell’area raduno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 8,
+   "id": "2be2d6_e90b5de597cd45938ed8d151b9e1a57e~mv2.jpg",
+   "name": "legnaro-motori-2026-08.jpg",
+   "alt": "BMW E36 nera in drift con il posteriore in scivolata davanti alle balle",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 9,
+   "id": "2be2d6_94e24cf4cfc041d6a0d2d5b55d8fafb2~mv2.jpg",
+   "name": "legnaro-motori-2026-09.jpg",
+   "alt": "BMW E36 bordeaux ribassata vista dall’alto nell’area raduno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 10,
+   "id": "2be2d6_8a5d28f1efca446a95abf376943473bd~mv2.jpg",
+   "name": "legnaro-motori-2026-10.jpg",
+   "alt": "BMW E36 nera in derapata tra i cordoli e le balle di fieno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 11,
+   "id": "2be2d6_b9b68ca655e44c46b6c088592a72c82f~mv2.jpg",
+   "name": "legnaro-motori-2026-11.jpg",
+   "alt": "BMW E36 nera in traverso ripresa in panning sul rettilineo del tracciato",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 12,
+   "id": "2be2d6_d64ce59cee3c45d1bc557ad56d9fad5d~mv2.jpg",
+   "name": "legnaro-motori-2026-12.jpg",
+   "alt": "Coupé giallo e auto viola in pista viste dall’abitacolo di un’altra vettura",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 13,
+   "id": "2be2d6_bdebe03777814a6786472fcfb7a7c1f6~mv2.jpg",
+   "name": "legnaro-motori-2026-13.jpg",
+   "alt": "BMW E36 viola in drift con il posteriore verso le balle di fieno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 14,
+   "id": "2be2d6_77de48e06a404f54a652c159e35bd819~mv2.jpg",
+   "name": "legnaro-motori-2026-14.jpg",
+   "alt": "BMW E36 nera in drift avvolta dal fumo delle gomme davanti al capannone",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 15,
+   "id": "2be2d6_28348d5793d54b78bef81ee0b10326fd~mv2.jpg",
+   "name": "legnaro-motori-2026-15.jpg",
+   "alt": "Due auto in drift ravvicinato con i segni delle gomme sull’asfalto",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 16,
+   "id": "2be2d6_8bc747527a634f2095023ccbcaea3769~mv2.jpg",
+   "name": "legnaro-motori-2026-16.jpg",
+   "alt": "Auto allineate al raduno e dettaglio del cerchio di una BMW rossa",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 17,
+   "id": "2be2d6_86f92aa51d994b75824a7d2518dd0161~mv2.jpg",
+   "name": "legnaro-motori-2026-17.jpg",
+   "alt": "BMW E36 viola in traverso ripresa in panning",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 18,
+   "id": "2be2d6_7c9116f9d18c4ddeb4c79a01e903f211~mv2.jpg",
+   "name": "legnaro-motori-2026-18.jpg",
+   "alt": "BMW E36 con livrea da gara in traverso tra le balle di fieno del tracciato",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 19,
+   "id": "2be2d6_cae0268199a545549a929d53553587c3~mv2.jpg",
+   "name": "legnaro-motori-2026-19.jpg",
+   "alt": "Pilota nell’abitacolo con roll-bar prima della sessione drift",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 20,
+   "id": "2be2d6_56b6e3a937fe46c6ba0109dd170aba17~mv2.jpg",
+   "name": "legnaro-motori-2026-20.jpg",
+   "alt": "Dettaglio del frontale di una BMW nera con adesivi Zero Grip Drift Team",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 21,
+   "id": "2be2d6_2b6da5e7378c44148777776de38bef6f~mv2.jpg",
+   "name": "legnaro-motori-2026-21.jpg",
+   "alt": "Dettaglio del cofano di una BMW nera del team Zero Grip",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 22,
+   "id": "2be2d6_2eaa1dd6bbf54990b9e7372d55975b26~mv2.jpg",
+   "name": "legnaro-motori-2026-22.jpg",
+   "alt": "Auto in drift avvolta da fumo colorato davanti alle balle di fieno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 23,
+   "id": "2be2d6_5d58a9056e8940ee87a73664b7e02300~mv2.jpg",
+   "name": "legnaro-motori-2026-23.jpg",
+   "alt": "BMW E36 con livrea da gara in drift sul tracciato di Legnaro",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 24,
+   "id": "2be2d6_40aa6336e4bc48baa8a7b58c43f6cb66~mv2.jpg",
+   "name": "legnaro-motori-2026-24.jpg",
+   "alt": "BMW nera con adesivi degli sponsor in traverso tra le protezioni",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 25,
+   "id": "2be2d6_03572f952d5349f6bc87c7ba0264bc60~mv2.jpg",
+   "name": "legnaro-motori-2026-25.jpg",
+   "alt": "BMW E46 nera del team Kebek in sosta nel paddock del raduno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 26,
+   "id": "2be2d6_66cad2c80bff4a15abfa7ccc929a6014~mv2.jpg",
+   "name": "legnaro-motori-2026-26.jpg",
+   "alt": "Due auto in drift ravvicinato con la nuvola di fumo delle gomme",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 27,
+   "id": "2be2d6_a5f02b596a5f4c8f9c5ca6b993fb626f~mv2.jpg",
+   "name": "legnaro-motori-2026-27.jpg",
+   "alt": "BMW nera in traverso davanti alle barriere rosse e bianche",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 28,
+   "id": "2be2d6_2a3d384b8f624267a37e935a1b090a97~mv2.jpg",
+   "name": "legnaro-motori-2026-28.jpg",
+   "alt": "Cassetta degli attrezzi e ruota di scorta nel paddock di Legnaro Motori",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 29,
+   "id": "2be2d6_84a5d3ae076a4af3bb0cd09bae0eef3b~mv2.jpg",
+   "name": "legnaro-motori-2026-29.jpg",
+   "alt": "BMW E36 bianca e verde in drift sul piazzale",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 30,
+   "id": "2be2d6_d0c9b089b4c047a7b8aff1dec0871ee3~mv2.jpg",
+   "name": "legnaro-motori-2026-30.jpg",
+   "alt": "BMW nera in drift con il fumo delle gomme davanti al muro",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 31,
+   "id": "2be2d6_838d2f02a1794258a9dc3db7e730671d~mv2.jpg",
+   "name": "legnaro-motori-2026-31.jpg",
+   "alt": "BMW E36 con livrea multicolore in drift davanti al pubblico",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 32,
+   "id": "2be2d6_1064680cb27047ae95c6ae57ac3440e8~mv2.jpg",
+   "name": "legnaro-motori-2026-32.jpg",
+   "alt": "Abitacolo da gara con volante sportivo e paddock con gazebo del team",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 33,
+   "id": "2be2d6_57593f8cf30c4389a38a281c37e78584~mv2.jpg",
+   "name": "legnaro-motori-2026-33.jpg",
+   "alt": "BMW E36 nera e verde in traverso ripresa in panning",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 34,
+   "id": "2be2d6_5863363761bb4e1fbf37256e9cb0b722~mv2.jpg",
+   "name": "legnaro-motori-2026-34.jpg",
+   "alt": "BMW E36 gialla con numero 06 in drift lungo le balle di fieno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 35,
+   "id": "2be2d6_15eee0e9f3a24eafada1d6f0e8d48058~mv2.jpg",
+   "name": "legnaro-motori-2026-35.jpg",
+   "alt": "BMW E36 rossa in traverso davanti alle protezioni",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 36,
+   "id": "2be2d6_6ea9e5c7dea0478696207a7f482d15c2~mv2.jpg",
+   "name": "legnaro-motori-2026-36.jpg",
+   "alt": "BMW E36 del team Kebek in drift con il fumo delle gomme",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 37,
+   "id": "2be2d6_7db6db1bbcc14f94a64792f01bf59e5c~mv2.jpg",
+   "name": "legnaro-motori-2026-37.jpg",
+   "alt": "Mazda MX-5 bianca in traverso sul piazzale di Legnaro",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 38,
+   "id": "2be2d6_7d3e212f3e184443840f0eae177a6860~mv2.jpg",
+   "name": "legnaro-motori-2026-38.jpg",
+   "alt": "BMW E30 verde in derapata ravvicinata con un’altra vettura",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 39,
+   "id": "2be2d6_08e2a2f620c34278beb089af9a5bf3ce~mv2.jpg",
+   "name": "legnaro-motori-2026-39.jpg",
+   "alt": "BMW E30 verde numero 27 in traverso lungo le barriere",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 40,
+   "id": "2be2d6_e171693bae6b4f70b148e4522ff48994~mv2.jpg",
+   "name": "legnaro-motori-2026-40.jpg",
+   "alt": "Auto in drift dentro la nuvola di fumo, ripresa dietro le balle di fieno",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 41,
+   "id": "2be2d6_bdbe5c88c1ec4c789cb9df28a9eb01f1~mv2.jpg",
+   "name": "legnaro-motori-2026-41.jpg",
+   "alt": "BMW E30 verde in drift con il posteriore in scivolata",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 42,
+   "id": "2be2d6_5ad70df3e79e4faaa3d5bf987d7af381~mv2.jpg",
+   "name": "legnaro-motori-2026-42.jpg",
+   "alt": "BMW E30 verde in traverso ripresa in panning tra le protezioni",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 43,
+   "id": "2be2d6_5e1f4042398c4ad2be23ee4c61ec771c~mv2.jpg",
+   "name": "legnaro-motori-2026-43.jpg",
+   "alt": "BMW E30 verde numero 27 in derapata sul piazzale",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 44,
+   "id": "2be2d6_b6d15d452ab34dadaf9ea34b5eae7e4c~mv2.jpg",
+   "name": "legnaro-motori-2026-44.jpg",
+   "alt": "BMW E30 verde in drift con il fumo delle gomme davanti alle balle",
+   "w": 1440,
+   "h": 1800
+  },
+  {
+   "n": 45,
+   "id": "2be2d6_9db5720b60b44224bdcb003497424be4~mv2.jpg",
+   "name": "legnaro-motori-2026-45.jpg",
+   "alt": "BMW E30 verde in traverso ripresa da dietro le balle di fieno",
+   "w": 1440,
+   "h": 1800
+  }
+ ]
+}
