@@ -2,6 +2,7 @@
  * 1° Rally Colli Euganei ACI Sport — dati dell'evento (FASE 2: statici; FASE 4: collection CMS).
  * Regola: quello che non è confermato resta "da definire" — nessun dato inventato.
  */
+import { rallyImg, rallyAlt, RALLY_IMG } from './rallyImmagini';
 export type Stato = 'pre' | 'in' | 'post';
 
 export const rally = {
@@ -21,6 +22,8 @@ export const rally = {
   /** Iscrizioni: 'non-aperte' | 'aperte' | 'chiuse' */
   statoIscrizioni: 'non-aperte' as 'non-aperte' | 'aperte' | 'chiuse',
   moduloUrl: 'https://www.acisport.it',
+  /** Scheda dell'evento nel calendario ufficiale ACI Sport */
+  aciUrl: 'https://www.acisport.it/it/acisport/dettaglio-calendari/7506131/1%C2%B0-rally-colli-euganei',
   chiusuraIscrizioni: '6 novembre 2026',
   aperturaPrevista: 'settembre 2026',
   pubblicazionePercorso: '30 settembre 2026',
@@ -35,7 +38,7 @@ export const rally = {
   /** Mappe: percorso e zone pubblico (vuote = in pubblicazione) */
   mappaPercorso: '',
   mappaZone: '',
-  hero: '/foto/fabia_skoda_bosco_02.jpg', // TODO diritti da verificare (vedi passaggio_a_wix)
+  hero: rallyImg(RALLY_IMG.heroRally, 1920, 1080), heroAlt: rallyAlt(RALLY_IMG.heroRally),
   targa: '/img/rally/targa_2026.png',
 };
 

@@ -1,4 +1,5 @@
 /** News — FASE 4: collection CMS "News". Ordine: per evento (rally, polo, legnaro, associazione) e data decrescente. */
+import { rallyImg, rallyAlt, RALLY_IMG } from './rallyImmagini';
 export type Chi = 'Per il pubblico' | 'Per i concorrenti';
 export type EventoNews = 'Rally Colli Euganei' | 'Polo Motor Show' | 'Legnaro Motori' | 'Associazione';
 export type Blocco =
@@ -17,7 +18,7 @@ export type Post = {
 
 export const posts: Post[] = [
   { slug: 'iscrizioni-aperte-rally-colli-euganei', title: 'Aperte le iscrizioni al 1° Rally Colli Euganei', excerpt: 'Regolamento e modulistica nell’albo di gara. Chiusura delle iscrizioni da confermare.',
-    date: '25 SET 2026', iso: '2026-09-25', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per i concorrenti', image: '/foto/fabia_skoda_bosco_02.jpg', imageAlt: '', tipo: 'comunicato stampa',
+    date: '25 SET 2026', iso: '2026-09-25', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per i concorrenti', image: rallyImg(RALLY_IMG.newsIscrizioni, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsIscrizioni), tipo: 'comunicato stampa',
     lead: 'Da oggi i concorrenti possono iscriversi alla prima edizione, in programma il 21 e 22 novembre 2026. Le iscrizioni chiudono in una data ancora da confermare.', credito: 'Foto: archivio Inversione A U',
     corpo: [
       { t: 'p', html: "Il 1° Rally Colli Euganei apre le iscrizioni. La gara si corre il 21 e 22 novembre 2026, con partenza e arrivo a Teolo e tre prove speciali tra Castelnuovo, Galzignano Terme e Teolo. È il ritorno di un rally su queste strade dopo più di trent'anni." },
@@ -34,19 +35,19 @@ export const posts: Post[] = [
     ],
     cta: { label: 'Vai alla pagina concorrenti', href: '/rally-colli-euganei/concorrenti/' }, cta2: { label: 'Scarica i documenti di gara', href: '/rally-colli-euganei/documenti/' } },
   { slug: 'rally-zone-pubblico', title: 'Zone pubblico: dove vedere il rally', excerpt: 'Le aree consigliate lungo le tre prove speciali, con parcheggi e orari.',
-    date: '03 LUG 2026', iso: '2026-07-03', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per il pubblico', image: '/foto/polo_pubblico_sera.jpg', imageAlt: '', tipo: 'aggiornamento',
+    date: '03 LUG 2026', iso: '2026-07-03', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per il pubblico', image: rallyImg(RALLY_IMG.newsZonePubblico, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsZonePubblico), tipo: 'aggiornamento',
     lead: 'Le zone pubblico del 1° Rally Colli Euganei saranno pubblicate dopo l’omologazione del percorso, entro il 30 settembre 2026. Intanto, come funzionano.', credito: 'Foto: Inversione A U',
     corpo: [
       { t: 'p', html: 'Le zone pubblico sono aree scelte dall’organizzazione, delimitate e presidiate dai commissari. Hanno buona visuale, un percorso di accesso a piedi e un parcheggio indicato.' },
       { t: 'p', html: 'Tutte le informazioni per chi viene a vedere la gara — programma, regole di sicurezza, come arrivare — sono nella <a href="/rally-colli-euganei/spettatori/">pagina spettatori</a>.' },
     ], cta: { label: 'Apri le informazioni per il pubblico', href: '/rally-colli-euganei/spettatori/' } },
   { slug: 'rally-ricognizioni-date-regole', title: 'Ricognizioni: date e regole', excerpt: 'Due passaggi per prova speciale, velocità da codice della strada.',
-    date: '28 GIU 2026', iso: '2026-06-28', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per i concorrenti', image: '/foto/fabia_skoda_bosco.jpg', imageAlt: '', tipo: 'aggiornamento',
+    date: '28 GIU 2026', iso: '2026-06-28', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per i concorrenti', image: rallyImg(RALLY_IMG.newsRicognizioni, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsRicognizioni), tipo: 'aggiornamento',
     lead: 'Le ricognizioni del percorso si svolgono nelle date indicate nel programma di gara, con due passaggi per prova speciale e velocità da codice della strada.', credito: 'Foto: archivio Inversione A U',
     corpo: [ { t: 'p', html: 'Le date confermate vengono pubblicate nell’<a href="/rally-colli-euganei/documenti/">albo di gara</a> insieme al regolamento particolare.' } ],
     cta: { label: 'Apri l’albo di gara', href: '/rally-colli-euganei/documenti/' } },
   { slug: 'rally-colli-euganei-ufficiale', title: 'Il 1° Rally Colli Euganei è ufficiale: 21–22 novembre', excerpt: 'Titolazione ACI Sport confermata. Percorso in fase di approvazione e omologazione.',
-    date: '12 LUG 2026', iso: '2026-07-12', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per il pubblico', image: '/foto/fabia_skoda_bosco_02.jpg', imageAlt: '', tipo: 'comunicato stampa',
+    date: '12 LUG 2026', iso: '2026-07-12', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per il pubblico', image: rallyImg(RALLY_IMG.newsUfficiale, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsUfficiale), tipo: 'comunicato stampa',
     lead: 'Il 1° Rally Colli Euganei ACI Sport si correrà il 21 e 22 novembre 2026. Percorso in fase di approvazione; iscrizioni in apertura in autunno.', credito: 'Foto: archivio Inversione A U',
     corpo: [ { t: 'p', html: 'Tutte le informazioni sono nella <a href="/rally-colli-euganei/">pagina del rally</a>: concorrenti, spettatori, percorso e documenti di gara.' } ],
     cta: { label: 'Apri la pagina del rally', href: '/rally-colli-euganei/' } },

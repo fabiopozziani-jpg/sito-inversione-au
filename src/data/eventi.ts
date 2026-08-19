@@ -1,4 +1,5 @@
 /** Eventi della stagione — la fonte per card, calendario e hub. FASE 4: collection CMS "Eventi". */
+import { rallyImg, rallyAlt, RALLY_IMG } from './rallyImmagini';
 export type Stato = 'annuncio' | 'iscrizioni-aperte' | 'imminente' | 'in-corso' | 'conclusa';
 export type Evento = {
   key: 'rally' | 'polo' | 'legnaro';
@@ -13,7 +14,7 @@ export const eventi: Evento[] = [
     accent: '#00BA89', accentDark: '#006C7C', dataLabel: '21–22 NOV 2026', luogo: 'Colli Euganei', dataIso: '2026-11-21',
     stato: 'annuncio', ordine: 0,
     testoCard: 'Per piloti con licenza e per chi vuole guardare la gara lungo le prove speciali.',
-    ctaCard: 'Apri la pagina del rally', cover: '/foto/fabia_skoda_bosco_02.jpg', coverAlt: '' },
+    ctaCard: 'Apri la pagina del rally', cover: rallyImg(RALLY_IMG.heroRally, 1200, 750), coverAlt: rallyAlt(RALLY_IMG.heroRally) },
   { key: 'polo', nome: 'Polo Motor Show', slug: 'polo-motor-show', href: '/eventi/polo-motor-show/',
     accent: '#6FC7DB', accentDark: '#1E7A91', dataLabel: '13–14 GIU 2026', luogo: 'Selve di Teolo', dataIso: '2026-06-13',
     stato: 'conclusa', ordine: 1,

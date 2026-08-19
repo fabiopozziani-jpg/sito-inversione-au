@@ -21,7 +21,7 @@ const eventLd = {
   location: { '@type': 'Place', name: 'Colli Euganei', address: { '@type': 'PostalAddress', addressLocality: 'Teolo', addressRegion: 'PD', addressCountry: 'IT' } },
   organizer: { '@id': 'https://www.inversioneau.com/#org' }, image: 'https://www.inversioneau.com/img/social/rally-colli-euganei.jpg',
   description: 'Prima edizione del rally sui Colli Euganei con titolazione ACI Sport. Due giorni di gara, ingresso libero per il pubblico.',
-  isAccessibleForFree: true, url: 'https://www.inversioneau.com/rally-colli-euganei/',
+  isAccessibleForFree: true, url: 'https://www.inversioneau.com/rally-colli-euganei/', sameAs: [rally.aciUrl],
 };
 const sponsorRally = [...annuali, ...sponsorEvento('rally')];
 // Ultime due notizie del rally (CMS News, riserva statica): la categoria mostra a chi si rivolge.
@@ -124,7 +124,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
       <dl class="storia__dl reveal">
         <div><dt class="type-mono">Ultimo rally sui Colli</dt><dd>Anni '80 · Rally del Santo</dd></div>
         <div><dt class="type-mono">Prima edizione</dt><dd>21–22 novembre 2026</dd></div>
-        <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport</dd></div>
+        <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport · <a href={rally.aciUrl} target="_blank" rel="noopener" class="link-line">scheda nel calendario ACI Sport</a></dd></div>
         <div><dt class="type-mono">Organizzazione</dt><dd>Inversione A U A.S.D.</dd></div>
       </dl>
     </div>
