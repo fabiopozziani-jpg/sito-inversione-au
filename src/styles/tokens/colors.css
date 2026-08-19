@@ -3,7 +3,7 @@
 --nero:#000000;
 --carbone:#111111;
 --grigio-800:#333333;
---grigio-500:#777777;
+--grigio-500:#757575; /* 4.61 su bianco: AA anche per il testo piccolo */
 --grigio-450:#8C8C8C; /* metadati su fondo scuro, AA */
 --grigio-200:#ECECEC;
 --bianco:#FFFFFF;
@@ -27,6 +27,7 @@
 --border-on-dark:#2A2A2A;
 --scrim-hero:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 100%); /* @kind other */
 --focus-ring:2px solid var(--bianco);
---alert-rosso:#E01E37;
+--alert-rosso:#E01E37; /* AA su bianco */
+--alert-rosso-chiaro:#FF4D5F; /* AA su nero e carbone: usare per il testo su fondo scuro */
 --text-body-on-dark:#BBBBBB;
 }
