@@ -1,3 +1,7 @@
+/* Font auto-ospitati (OFL) — variabili, subset latino */
+@font-face{font-family:'Archivo';src:url('/fonts/archivo-var.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url('/fonts/inter-var.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('/fonts/jetbrains-mono-var.woff2') format('woff2');font-weight:100 800;font-style:normal;font-display:swap}
 :root{
 --font-display:'Archivo',sans-serif; /* usare con font-stretch:125% (Expanded) */
 --font-body:'Inter',sans-serif;
