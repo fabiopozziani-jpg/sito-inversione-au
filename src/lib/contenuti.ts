@@ -186,7 +186,7 @@ export async function caricaHub(key: 'polo' | 'legnaro'): Promise<Hub> {
   return {
     ...base,
     nome: s(x.nome, base.nome), anno: s(x.anno, base.anno), annoProx: String(Number(s(x.anno, base.anno)) + 1),
-    logo: imgFit(x.logo, 600, base.logo), hero: imgFill(x.hero, 1920, 1080, base.hero), claim: s(x.claim, base.claim),
+    logo: imgFit(x.logo, 900, base.logo), hero: imgFill(x.hero, 1920, 1080, base.hero), claim: s(x.claim, base.claim),
     dataInizio, dataFine, dataIso: s(x.dataInizio, base.dataIso).slice(0, 10), luogo: s(x.luogo, base.luogo),
     stato: (s(x.stato, base.stato)) as Stato, ticketUrl: s(x.ticketUrl, base.ticketUrl),
     introTitolo: s(x.introTitolo, base.introTitolo), introTesto1: s(x.introTesto1, base.introTesto1), introTesto2: s(x.introTesto2, base.introTesto2),
