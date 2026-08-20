@@ -4,6 +4,7 @@
  * Regola: se la collection non risponde o è vuota, si usa la versione statica (il sito non resta mai senza contenuti).
  */
 import { query } from './cms';
+import { postSocial as postSocialStatici, type PostSocial } from '../data/social';
 import { wixFill, wixFit } from '../data/media';
 import { posts as postsStatici, type Post, type EventoNews, type Chi } from '../data/news';
 import { gallerie as gallerieStatiche, type Galleria, type Foto } from '../data/gallerie';
@@ -256,4 +257,23 @@ type TeamCms = { nome: string; ruolo?: string; nota?: string; ordine?: number };
 export async function caricaTeam(): Promise<{ nome: string; ruolo: string; nota: string }[] | null> {
   const cms = await query<TeamCms>('Team', { sort: [{ fieldName: 'ordine' }], limit: 50 });
   return cms && cms.length ? cms.map(t => ({ nome: t.nome, ruolo: s(t.ruolo), nota: s(t.nota) })) : null;
+}
+
+/* ---------- Social (post scelti a mano) ---------- */
+
+type SocialCms = { didascalia: string; immagine?: string; immagineAlt?: string; url: string; rete?: string; ordine?: number; attivo?: boolean };
+/** Post scelti dallo staff dal pannello. Vuoto = la striscia non compare. */
+export async function caricaSocial(): Promise<PostSocial[]> {
+  const cms = await query<SocialCms>('Social', { sort: [{ fieldName: 'ordine' }], limit: 12 });
+  if (!cms || !cms.length) return postSocialStatici;
+  return cms
+    .filter(x => x.attivo !== false && x.url && x.immagine)
+    .map(x => ({
+      didascalia: x.didascalia,
+      img: imgFill(x.immagine, 800, 800, ''),
+      alt: s(x.immagineAlt, x.didascalia),
+      url: x.url,
+      rete: s(x.rete) || undefined,
+    }))
+    .filter(x => !!x.img);
 }

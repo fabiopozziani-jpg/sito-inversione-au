@@ -1,0 +1,65 @@
+---
+/**
+ * Striscia social — post scelti a mano dalla collection "Social" del CMS.
+ * Non è un feed automatico: nessuno script di terze parti, nessun cookie, nessun
+ * contenuto che entra in home senza che qualcuno l'abbia deciso.
+ * Se la collection è vuota o disattivata, il componente non rende nulla.
+ */
+import type { PostSocial } from '../data/social';
+import { CANALI_PRINCIPALI } from '../data/social';
+interface Props { post: PostSocial[]; title?: string; intro?: string; id?: string }
+const { post, title = 'Seguici', intro, id = 'social' } = Astro.props;
+---
+{post.length > 0 && (
+  <section class="soc" aria-labelledby={`${id}-h`}>
+    <div class="wrap section">
+      <div class="soc__head">
+        <div>
+          <p class="type-mono text-meta">Dai nostri canali</p>
+          <h2 id={`${id}-h`} class="type-h2">{title}</h2>
+          {intro && <p class="type-body-dark soc__intro">{intro}</p>}
+        </div>
+        <ul class="soc__reti">
+          {CANALI_PRINCIPALI.map(c => (
+            <li><a class="type-mono link-line" href={c.url} target="_blank" rel="noopener">{c.rete} ↗</a></li>
+          ))}
+        </ul>
+      </div>
+      <ul class="soc__grid stagger">
+        {post.map((p, i) => (
+          <li class="soc__c reveal">
+            <a href={p.url} target="_blank" rel="noopener">
+              <span class="soc__img img-zoom">
+                <img src={p.img} alt={p.alt} width="600" height="600" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
+              </span>
+              <span class="soc__t">
+                {p.rete && <span class="type-mono soc__rete">{p.rete}</span>}
+                <span class="soc__d">{p.didascalia}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .soc{border-top:1px solid var(--border-on-dark)}
+  .soc__head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--sp-4);flex-wrap:wrap;margin-bottom:var(--sp-4)}
+  .soc__head h2{color:#fff;margin-top:4px}
+  .soc__intro{max-width:56ch;margin-top:8px}
+  .soc__reti{display:flex;gap:20px;flex-wrap:wrap}
+  .soc__reti a{color:var(--grigio-450);font-size:12px}
+  .soc__reti a:hover,.soc__reti a:focus-visible{color:#fff}
+  .soc__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--grid-gutter)}
+  @media(min-width:760px){.soc__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(min-width:1100px){.soc__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .soc__c a{display:flex;flex-direction:column;gap:12px;text-decoration:none;height:100%}
+  .soc__img{display:block;aspect-ratio:1/1;overflow:hidden;background:#1A1A1A;border:1px solid var(--border-on-dark)}
+  .soc__img img{width:100%;height:100%;object-fit:cover}
+  .soc__t{display:flex;flex-direction:column;gap:4px}
+  .soc__rete{color:var(--grigio-450);font-size:11px}
+  .soc__d{color:var(--text-body-on-dark);font-size:15px;line-height:1.4}
+  .soc__c a:hover .soc__d,.soc__c a:focus-visible .soc__d{color:#fff}
+</style>

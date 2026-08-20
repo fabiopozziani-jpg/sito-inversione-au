@@ -11,13 +11,14 @@ import StatBlock from '../components/StatBlock.astro';
 import NewsCard from '../components/NewsCard.astro';
 import PhotoStrip from '../components/PhotoStrip.astro';
 import SponsorBlock from '../components/SponsorBlock.astro';
+import SocialStrip from '../components/SocialStrip.astro';
 import CTABlock from '../components/CTABlock.astro';
 import { numeri } from '../data/eventi';
 import { rallyImg, RALLY_IMG, IMMAGINI, imgFit } from '../data/rallyImmagini';
 import { srcsetFill } from '../data/media';
 const heroHome = rallyImg(RALLY_IMG.heroHome, 1920, 1080);
-import { caricaEventi, caricaPosts, ordinaPerData, caricaGallerie, fotoRecentiDa, caricaSponsor } from '../lib/contenuti';
-const [eventiTutti, tuttiIPost, gallerie, sponsor] = await Promise.all([caricaEventi(), caricaPosts(), caricaGallerie(), caricaSponsor()]);
+import { caricaEventi, caricaPosts, ordinaPerData, caricaGallerie, fotoRecentiDa, caricaSponsor, caricaSocial } from '../lib/contenuti';
+const [eventiTutti, tuttiIPost, gallerie, sponsor, social] = await Promise.all([caricaEventi(), caricaPosts(), caricaGallerie(), caricaSponsor(), caricaSocial()]);
 const trova = (k: string) => eventiTutti.find(e => e.key === k)!;
 const eventi = [trova('rally'), trova('polo'), trova('legnaro')];
 const annuali = sponsor.annuali;
@@ -137,6 +138,9 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
       <p class="type-body-dark partner__p">Nel 2026 al Polo Motor Show ci hanno affiancato 23 sponsor ufficiali e 4 espositori, davanti a oltre 10.000 spettatori nelle due giornate di evento e al nostro pubblico online.</p>
     </div>
   </section>
+
+  <!-- SOCIAL -->
+  <SocialStrip post={social} title="Seguici sui nostri canali" intro="Una selezione dei post che raccontano gli eventi e il dietro le quinte. Li scegliamo noi, uno per uno." id="social-home" />
 
   <!-- CHIUSURA -->
   <CTABlock kicker="Inversione A U" title="Fai parte di Inversione A U" text="Piloti, volontari e sponsor, una grande famiglia in crescita, unita dal motorsport." image="/foto/polo_pubblico_sera.jpg">
