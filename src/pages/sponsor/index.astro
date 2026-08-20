@@ -5,6 +5,8 @@ import SponsorBlock from '../../components/SponsorBlock.astro';
 import StatBlock from '../../components/StatBlock.astro';
 import CTABlock from '../../components/CTABlock.astro';
 import { caricaSponsor, senzaAnnuali } from '../../lib/contenuti';
+import { canali, seguitoTotale } from '../../data/sponsor';
+import { presentazione, presentazionePeso } from '../../data/filesWix';
 import { IMMAGINI, imgFit } from '../../data/rallyImmagini';
 const sponsor = await caricaSponsor();
 const annuali = sponsor.annuali;
@@ -73,6 +75,39 @@ const numeri = [
     <StatBlock stats={numeri} columns={4} />
   </section>
 
+  <section id="audience" class="hair" aria-labelledby="au-h">
+    <div class="wrap section au">
+      <div class="au__t">
+        <p class="type-mono text-meta">Oltre i giorni di gara</p>
+        <h2 id="au-h" class="type-h2">Il pubblico che ci segue tutto l'anno</h2>
+        <p class="type-body-dark au__p">Un evento dura due giorni. I canali dell'associazione lavorano per dodici mesi: annunci, dietro le quinte, foto e video delle gare, storie dei piloti. Un marchio che entra in una nostra stagione compare lì, non solo sul percorso.</p>
+        <p class="au__tot"><span class="type-mono tabellone au__cifra">{seguitoTotale}</span><span class="au__lab">persone raggiunte sui nostri canali</span></p>
+      </div>
+      <ul class="au__grid">
+        {canali.map(c => (
+          <li class="au__c">
+            <a href={c.url} target="_blank" rel="noopener">
+              <span class="type-mono au__rete">{c.rete}</span>
+              <span class="type-mono tabellone au__n">{c.valore}</span>
+              <span class="au__nota">{c.nota}</span>
+              <span class="type-mono au__h">{c.handle} ↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="au__pres">
+        <div>
+          <h3 class="type-h3">Presentazione eventi 2026</h3>
+          <p class="type-body-dark">Numeri, foto, mappe e formati di visibilità dei tre eventi, in un documento solo. È quello che mandiamo alle aziende che ci chiedono una proposta.</p>
+        </div>
+        <div class="au__dl">
+          <a class="btn btn--primary" href={presentazione} target="_blank" rel="noopener">Scarica la presentazione</a>
+          <span class="hint">PDF · {presentazionePeso} · si apre in una nuova pagina</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <CTABlock kicker="Stagione 2027" title="Porta il tuo marchio sui Colli Euganei" text="Costruiamo ogni proposta sull'azienda che abbiamo davanti. Ti mostriamo dove finisce il tuo marchio e cosa ricevi a fine stagione." image="/foto/polo_esposizione_auto.jpg">
     <a href="/sponsor/diventa-sponsor/#form-sponsor" class="btn btn--primary">Richiedi il progetto sponsor</a>
     <a href="/sponsor/diventa-sponsor/#espositori" class="btn btn--secondary">Chiedi uno spazio espositivo</a>
@@ -94,6 +129,28 @@ const numeri = [
   .ev__k{color:var(--acc)}
   .ev__b h3{color:#fff}
   .ev__small{max-width:600px}
+  /* audience */
+  .au{display:flex;flex-direction:column;gap:var(--sp-5)}
+  .au__t{display:flex;flex-direction:column;gap:12px}
+  .au__p{max-width:64ch}
+  .au__tot{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:8px}
+  .au__cifra{font-size:clamp(40px,7vw,72px);color:#fff;line-height:1}
+  .au__lab{color:var(--grigio-450);font-size:15px}
+  .au__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark)}
+  @media(min-width:700px){.au__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(min-width:1100px){.au__grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+  .au__c{background:var(--nero)}
+  .au__c a{display:flex;flex-direction:column;gap:6px;padding:20px 18px;height:100%;text-decoration:none;transition:background-color var(--dur-fast) var(--ease-out)}
+  .au__c a:hover,.au__c a:focus-visible{background:var(--carbone)}
+  .au__rete{color:var(--grigio-450);font-size:11px}
+  .au__n{color:#fff;font-size:26px;line-height:1.1}
+  .au__nota{color:var(--text-body-on-dark);font-size:13px}
+  .au__h{color:var(--grigio-450);font-size:11px;margin-top:auto;padding-top:8px;overflow-wrap:anywhere}
+  .au__pres{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-4);align-items:center;background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4)}
+  @media(min-width:900px){.au__pres{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}}
+  .au__pres h3{color:#fff;margin-bottom:8px}
+  .au__dl{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+  @media(min-width:900px){.au__dl{align-items:flex-end}}
   .ev__l{color:#fff;align-self:flex-start}
   .ev__row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
   .pill{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--grigio-500);color:var(--grigio-200);padding:3px 8px}

@@ -25,6 +25,10 @@ export const mediakit = {
 } as const;
 export const mk = (nome: keyof typeof mediakit) => mediakit[nome];
 
+/** Presentazione commerciale per sponsor ed espositori (aggiornata a febbraio 2026). */
+export const presentazione = pdf('2be2d6_9bd576f53b674070bdc241aceadffa09', 'presentazione-eventi-inversione-a-u-2026.pdf');
+export const presentazionePeso = '8 MB';
+
 export const documenti = {
   statuto: pdf('2be2d6_c5f6450bccd149b59725d618cf7bc712', 'atto-costitutivo-e-statuto-inversione-a-u-asd.pdf'),
   codiceFiscale: pdf('2be2d6_a7367f4067cd4c4496203ecea37d902a', 'certificato-codice-fiscale-inversione-a-u-asd.pdf'),

@@ -31,3 +31,20 @@ export const sponsorEvento = (evento: string) => {
   const ann = new Set(annuali.map(a => a.logo));
   return (perEvento[evento] ?? []).filter(x => !ann.has(x.logo));
 };
+
+/**
+ * Seguito sui canali dell'associazione — fonte: presentazione eventi 2026.
+ * Quasi nessun organizzatore di rally pubblica questi numeri: per uno sponsor sono
+ * la parte che pesa di più, perché misurano la visibilità fuori dai due giorni di evento.
+ */
+export type Canale = { rete: string; handle: string; url: string; valore: string; nota?: string };
+export const canali: Canale[] = [
+  { rete: 'Instagram', handle: '@inversione.au', url: 'https://www.instagram.com/inversione.au/', valore: '13.800', nota: 'follower' },
+  { rete: 'Facebook', handle: 'inversione.au', url: 'https://www.facebook.com/inversione.au', valore: '4.800', nota: 'follower' },
+  { rete: 'TikTok', handle: '@inversione.au', url: 'https://www.tiktok.com/@inversione.au', valore: '3.300', nota: 'follower · 70.000 “mi piace”' },
+  { rete: 'Threads', handle: '@inversione.au', url: 'https://www.threads.net/@inversione.au', valore: '2.250', nota: 'iscritti' },
+  { rete: 'YouTube', handle: '@InversioneAU', url: 'https://www.youtube.com/@InversioneAU', valore: '1.300', nota: 'iscritti' },
+  { rete: 'Facebook', handle: 'polomotorshow.teolo', url: 'https://www.facebook.com/polomotorshow.teolo', valore: '3.800', nota: 'follower del Polo Motor Show' },
+];
+/** Somma dei canali sopra, arrotondata per difetto. */
+export const seguitoTotale = '29.000+';

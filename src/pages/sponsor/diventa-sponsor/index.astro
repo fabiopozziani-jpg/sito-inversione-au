@@ -1,6 +1,7 @@
 ---
 /** Diventa sponsor — numeri, due pacchetti, confronto, partner tecnico, espositori, modulo. */
 import '../../../styles/hub.css';
+import { presentazione, presentazionePeso } from '../../../data/filesWix';
 import Base from '../../../layouts/Base.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import StatBlock from '../../../components/StatBlock.astro';
@@ -79,7 +80,7 @@ const budget = ['Da definire', 'Fino a 1.000 €', '1.000 – 3.000 €', '3.000
     <div class="fs__t">
       <h2 id="fs-h" class="type-h2">Richiedi il progetto sponsor</h2>
       <p class="type-body-dark">Raccontaci l'azienda e l'evento che ti interessa: prepariamo una proposta con visibilità, materiali e report finale.</p>
-      <div class="card card--left"><span class="type-mono text-meta">Presentazione per gli sponsor</span><p>Presentazione eventi 2026 con numeri, foto e formati di visibilità: la inviamo per email a chi compila il modulo.</p><span class="hint">PDF · presentazione eventi 2026</span></div>
+      <div class="card card--left"><span class="type-mono text-meta">Presentazione per gli sponsor</span><p>Presentazione eventi 2026 con numeri, foto, mappe e formati di visibilità. Puoi scaricarla subito, oppure spuntare la casella nel modulo e te la mandiamo per email.</p><a class="link-box" href={presentazione} target="_blank" rel="noopener">Scarica la presentazione ↗</a><span class="hint">PDF · {presentazionePeso} · si apre in una nuova pagina</span></div>
       <div class="card card--left"><span class="type-mono text-meta">Sei un espositore?</span><p>Lo spazio esposizione è un canale a sé: scegli «Spazio espositivo» come interesse nel modulo e ti mandiamo misure, costi e planimetria.</p></div>
     </div>
     <form class="form-box" data-mailform data-modulo="sponsor" data-to={email} data-subject="Richiesta progetto sponsor · Inversione A U" novalidate>
