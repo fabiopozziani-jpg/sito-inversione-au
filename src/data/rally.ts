@@ -51,6 +51,7 @@ export const subnav = [
   { label: 'Percorso e prove speciali', href: '/rally-colli-euganei/percorso/' },
   { label: 'Concorrenti', href: '/rally-colli-euganei/concorrenti/' },
   { label: 'Spettatori', href: '/rally-colli-euganei/spettatori/' },
+  { label: 'Residenti', href: '/rally-colli-euganei/residenti/' },
   { label: 'Documenti di gara', href: '/rally-colli-euganei/documenti/' },
   { label: 'Stampa e accrediti', href: '/stampa/accrediti/' },
   { label: 'Foto e video', href: '/foto-e-video/rally-colli-euganei-2026/' },
@@ -68,6 +69,14 @@ export const prove = [
   { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: 'Coming soon', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
   { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: 'Coming soon', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
 ];
+
+/**
+ * Chiusure strade per i residenti. Si popola quando l'ordinanza comunale è firmata:
+ * finché è vuoto la pagina mostra lo stato "in pubblicazione".
+ * comune, tratto = descrizione leggibile della strada; chiude/riapre = orari indicativi.
+ */
+export type Chiusura = { comune: string; tratto: string; giorno: string; chiude: string; riapre: string; prova: string };
+export const chiusure: Chiusura[] = [];
 
 export const scadenze = [
   { fase: 'Apertura iscrizioni', data: 'Da definire', ora: '—' },

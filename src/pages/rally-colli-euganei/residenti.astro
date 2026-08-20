@@ -1,0 +1,212 @@
+---
+/** Rally — Residenti: chi abita o lavora lungo il percorso. Chiusure, cosa succede, chi chiamare. */
+import '../../styles/hub.css';
+import Base from '../../layouts/Base.astro';
+import EventSubnav from '../../components/EventSubnav.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CTABlock from '../../components/CTABlock.astro';
+import { subnav, chiusure } from '../../data/rally';
+import { caricaRally } from '../../lib/contenuti';
+const { rally } = await caricaRally();
+const url = '/rally-colli-euganei/residenti/';
+const email = 'inversione.au3@gmail.com';
+---
+<Base
+  title="Residenti — Rally Colli Euganei 2026 | Inversione A U"
+  description="Abiti o lavori lungo il percorso del 1° Rally Colli Euganei? Chiusure delle strade, cosa succede il giorno di gara, come muoverti e chi contattare."
+  active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
+>
+  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Residenti' }]} />
+
+  <header class="wrap pg-head">
+    <p class="type-mono k-ev">Chi abita e lavora lungo il percorso</p>
+    <h1 class="type-h1">Il rally passa da casa tua</h1>
+    <p class="lead">Per qualche ora la strada davanti a casa diventa una prova speciale. Qui trovi cosa succede, quanto dura, come muoverti e chi chiamare se qualcosa non torna.</p>
+  </header>
+
+  <!-- IN BREVE -->
+  <section class="wrap section breve" aria-labelledby="br-h">
+    <h2 id="br-h" class="type-h2">In breve</h2>
+    <ul class="breve__l">
+      <li><strong>Le strade non chiudono tutto il giorno.</strong> Ogni tratto chiude circa un'ora prima del passaggio della prima vettura e riapre appena passa l'ultima, la vettura scopa.</li>
+      <li><strong>Se devi uscire, sposta l'auto prima.</strong> A strada chiusa non si entra e non si esce, nemmeno a piedi sulla sede stradale.</li>
+      <li><strong>I mezzi di soccorso passano sempre.</strong> Ogni tratto è presidiato da commissari in contatto radio con la direzione di gara, che può fermare la prova in qualsiasi momento.</li>
+      <li><strong>Non sei solo su questa pagina.</strong> Prima della gara ricevi anche un avviso cartaceo con gli orari del tuo tratto.</li>
+    </ul>
+  </section>
+
+  <!-- CHIUSURE -->
+  <section id="chiusure" class="wrap section chi" aria-labelledby="chi-h">
+    <div class="sec-head">
+      <h2 id="chi-h" class="type-h2">Quando chiude la tua strada</h2>
+      <p class="type-body-dark">Gli orari arrivano con l'ordinanza dei Comuni, dopo l'approvazione del percorso. Appena firmata, questa tabella si riempie e resta l'unico riferimento aggiornato.</p>
+    </div>
+
+    {chiusure.length ? (
+      <>
+        <div class="chi__cerca">
+          <label class="field chi__campo">
+            <span>Cerca il tuo comune o la tua strada</span>
+            <input type="search" id="q-chiusure" placeholder="Es. Teolo, via Roma" autocomplete="off" />
+          </label>
+          <p class="type-mono hint" role="status" aria-live="polite" data-conta></p>
+        </div>
+        <table class="tbl tbl--cards" data-tab-chiusure>
+          <caption class="sr-only">Chiusure delle strade per comune, con orario di chiusura e riapertura</caption>
+          <thead><tr><th scope="col">Comune</th><th scope="col">Tratto</th><th scope="col">Giorno</th><th scope="col">Chiude</th><th scope="col">Riapre</th><th scope="col">Prova</th></tr></thead>
+          <tbody>
+            {chiusure.map(c => (
+              <tr>
+                <td data-label="Comune">{c.comune}</td>
+                <td data-label="Tratto">{c.tratto}</td>
+                <td data-label="Giorno">{c.giorno}</td>
+                <td data-label="Chiude" class="tabular">{c.chiude}</td>
+                <td data-label="Riapre" class="tabular">{c.riapre}</td>
+                <td data-label="Prova">{c.prova}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    ) : (
+      <div class="card card--left chi__attesa">
+        <span class="type-mono k-ev">In pubblicazione</span>
+        <p>La tabella con comune, tratto e orari di chiusura sarà pubblicata qui appena i Comuni firmano l'ordinanza. Se vuoi essere avvisato, scrivici: ti mandiamo gli orari del tuo tratto appena escono.</p>
+        <a class="link-box" href={`mailto:${email}?subject=${encodeURIComponent('Residenti · Rally Colli Euganei')}`}>Chiedi gli orari della tua strada</a>
+      </div>
+    )}
+  </section>
+
+  <!-- DOMANDE -->
+  <section id="domande" class="hair" aria-labelledby="dom-h">
+    <div class="wrap section dom">
+      <h2 id="dom-h" class="type-h2">Le domande che ci fanno tutti</h2>
+      <div class="dom__grid stagger">
+        <div class="card card--left reveal">
+          <h3 class="type-h3">Posso entrare o uscire di casa?</h3>
+          <p>A piedi, dentro la tua proprietà, sempre. Sulla sede stradale no: da quando la strada chiude a quando riapre non si transita, né in auto né a piedi né in bicicletta. È la regola che rende possibile correre.</p>
+        </div>
+        <div class="card card--left reveal">
+          <h3 class="type-h3">E se devo andare al lavoro?</h3>
+          <p>Sposta l'auto fuori dal tratto chiuso <strong>prima</strong> dell'orario di chiusura. I commissari possono indicarti il parcheggio utile più vicino. Se hai un turno o un impegno che cade dentro la finestra di chiusura, scrivici in anticipo: cerchiamo la soluzione insieme.</p>
+        </div>
+        <div class="card card--left reveal">
+          <h3 class="type-h3">E se serve un'ambulanza?</h3>
+          <p>La prova si ferma. Ogni tratto ha commissari in contatto radio permanente con la direzione di gara, un'ambulanza dedicata e un piano di evacuazione concordato con le autorità. La sicurezza delle persone viene prima della gara, sempre.</p>
+        </div>
+        <div class="card card--left reveal">
+          <h3 class="type-h3">Quanto rumore fa?</h3>
+          <p>Le vetture passano a distanza di un minuto l'una dall'altra, per la durata della prova. Non è rumore continuo: sono passaggi. Fuori dagli orari di gara non ci sono attività rumorose sul percorso.</p>
+        </div>
+        <div class="card card--left reveal">
+          <h3 class="type-h3">Ho animali</h3>
+          <p>Tieni cani e gatti in casa o nel recinto per tutta la finestra di chiusura, e allontana il bestiame dalla sede stradale. È la raccomandazione che ci sentiamo di fare con più insistenza: un animale sulla strada è un rischio per lui e per gli equipaggi.</p>
+        </div>
+        <div class="card card--left reveal">
+          <h3 class="type-h3">Ho un'attività lungo il percorso</h3>
+          <p>Bar, ristoranti e negozi restano aperti e in quelle ore hanno molte più persone del solito davanti alla porta. Se vuoi comparire fra i punti di ristoro che segnaliamo al pubblico, scrivici: è gratis.</p>
+        </div>
+        <div class="card card--left reveal">
+          <h3 class="type-h3">Chi paga se qualcosa si rovina?</h3>
+          <p>La manifestazione è coperta da polizza assicurativa come previsto dalla normativa sportiva. Se rilevi un danno riconducibile alla gara, segnalacelo <strong>subito</strong>, con foto: apriamo la pratica noi.</p>
+        </div>
+        <div class="card card--left reveal">
+          <h3 class="type-h3">Posso guardare la gara da casa mia?</h3>
+          <p>Dal tuo terreno o dal tuo balcone sì, purché tu resti fuori dalla sede stradale e lontano dalle vie di fuga. Se vuoi invitare gente, guarda prima la <a href="/rally-colli-euganei/spettatori/">pagina spettatori</a>: valgono le stesse regole di sicurezza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COME TI AVVISIAMO -->
+  <section id="avvisi" class="wrap section avv" aria-labelledby="avv-h">
+    <h2 id="avv-h" class="type-h2">Come ti avvisiamo</h2>
+    <ol class="avv__l">
+      <li><span class="type-mono k-ev">1</span><div><strong>Ordinanza dei Comuni</strong><p>Il provvedimento ufficiale di chiusura viene pubblicato all'albo pretorio del tuo Comune e segnalato con i cartelli stradali nei giorni precedenti.</p></div></li>
+      <li><span class="type-mono k-ev">2</span><div><strong>Avviso cartaceo</strong><p>Nelle settimane prima della gara distribuiamo un avviso alle abitazioni e alle attività sui tratti interessati, con la data e gli orari del tuo tratto.</p></div></li>
+      <li><span class="type-mono k-ev">3</span><div><strong>Questa pagina</strong><p>È il riferimento sempre aggiornato: se un orario cambia, cambia qui per primo.</p></div></li>
+    </ol>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti-residenti" class="hair" aria-labelledby="cr-h">
+    <div class="wrap section cr">
+      <div class="cr__t">
+        <h2 id="cr-h" class="type-h2">Parla con una persona</h2>
+        <p class="type-body-dark">Se hai una necessità particolare — un familiare non autosufficiente, un mezzo di lavoro da spostare, un accesso indispensabile — dillo prima, non il giorno della gara. Quasi tutto si risolve con una telefonata fatta per tempo.</p>
+      </div>
+      <ul class="cr__list">
+        <li><span class="type-mono text-meta">Email</span><a class="type-mono link-line" href={`mailto:${email}?subject=${encodeURIComponent('Residenti · Rally Colli Euganei')}`}>{email}</a></li>
+        {rally.telefoni.map(t => (
+          <li><span class="type-mono text-meta">{t.label}</span><a class="type-mono link-line" href={`tel:${t.tel}`}>{t.num}</a></li>
+        ))}
+        <li><span class="type-mono text-meta">Nei giorni di gara</span><span class="cr__nota">I commissari lungo il percorso sono il riferimento immediato: sono in contatto radio con la direzione di gara.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <CTABlock kicker={rally.dataLabel} title="Il rally torna sui Colli dopo più di trent'anni" text="Passa da queste strade perché sono belle e perché ci vive gente che ha accettato di ospitarlo. Se il weekend ti crea un problema, scrivici: ci teniamo a risolverlo.">
+    <a href="/rally-colli-euganei/spettatori/" class="btn btn--ev">Guarda la gara da spettatore</a>
+    <a href="/rally-colli-euganei/percorso/" class="btn btn--secondary">Vedi il percorso</a>
+  </CTABlock>
+</Base>
+
+<script>
+  // filtro della tabella chiusure: ricerca per comune o per via
+  const q = document.querySelector<HTMLInputElement>('#q-chiusure');
+  const tab = document.querySelector<HTMLTableElement>('[data-tab-chiusure]');
+  const conta = document.querySelector<HTMLElement>('[data-conta]');
+  if (q && tab) {
+    const righe = Array.from(tab.tBodies[0].rows);
+    const aggiorna = () => {
+      const v = q.value.trim().toLowerCase();
+      let n = 0;
+      righe.forEach(r => {
+        const ok = !v || r.textContent!.toLowerCase().includes(v);
+        r.hidden = !ok;
+        if (ok) n++;
+      });
+      if (conta) conta.textContent = v ? `${n} ${n === 1 ? 'tratto trovato' : 'tratti trovati'}` : '';
+    };
+    q.addEventListener('input', aggiorna);
+  }
+</script>
+
+<style>
+  .pg-head{padding-top:var(--sp-4);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
+  .pg-head h1{color:#fff;max-width:20ch;text-wrap:balance}
+  .lead{color:var(--text-body-on-dark);max-width:62ch;font-size:17px}
+  h2{color:#fff}
+  .sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--sp-4)}
+  .sec-head p{max-width:70ch}
+  /* in breve */
+  .breve__l{display:flex;flex-direction:column;gap:14px;margin-top:12px;max-width:80ch}
+  .breve__l li{color:var(--text-body-on-dark);border-left:2px solid var(--ev);padding-left:16px}
+  .breve__l strong{color:#fff}
+  /* chiusure */
+  .chi__cerca{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--sp-4);max-width:460px}
+  .chi__attesa{max-width:70ch;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  /* domande */
+  .dom__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
+  @media(min-width:700px){.dom__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(min-width:1100px){.dom__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .dom__grid h3{color:#fff;margin-bottom:8px}
+  .dom__grid p{color:var(--text-body-on-dark)}
+  .dom__grid strong{color:#fff}
+  .dom__grid a{color:var(--ev);text-decoration:underline;text-underline-offset:3px}
+  /* avvisi */
+  .avv__l{display:flex;flex-direction:column;gap:var(--sp-3);margin-top:var(--sp-3);counter-reset:none}
+  .avv__l li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:16px;align-items:start;max-width:74ch}
+  .avv__l strong{color:#fff;display:block;margin-bottom:4px}
+  .avv__l p{color:var(--text-body-on-dark)}
+  /* contatti */
+  .cr{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5)}
+  @media(min-width:900px){.cr{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+  .cr__t{display:flex;flex-direction:column;gap:12px}
+  .cr__t p{max-width:60ch}
+  .cr__list{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
+  .cr__list li{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-bottom:1px solid var(--border-on-dark)}
+  .cr__list a{color:#fff}
+  .cr__nota{color:var(--text-body-on-dark);font-size:15px}
+</style>
