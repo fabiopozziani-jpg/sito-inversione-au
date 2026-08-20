@@ -78,6 +78,50 @@ export const prove = [
 export type Chiusura = { comune: string; tratto: string; giorno: string; chiude: string; riapre: string; prova: string };
 export const chiusure: Chiusura[] = [];
 
+/**
+ * Scheda gara — le voci che un concorrente cerca prima di iscriversi, nell'ordine
+ * standard usato dai rally italiani (riferimento: Rally Città di Pistoia).
+ * `valore` vuoto = "Da definire": la riga resta, così si vede che è prevista.
+ */
+export type VoceScheda = { voce: string; valore: string; nota?: string };
+export const schedaGara: VoceScheda[] = [
+  { voce: 'Apertura iscrizioni', valore: '', nota: 'Prevista a breve' },
+  { voce: 'Chiusura iscrizioni', valore: '6 novembre 2026', nota: 'Da confermare con il regolamento particolare' },
+  { voce: 'Consegna road book', valore: '' },
+  { voce: 'Ricognizioni con vetture di serie', valore: '' },
+  { voce: 'Targhe e numeri di gara', valore: '' },
+  { voce: 'Verifiche sportive ante gara', valore: '' },
+  { voce: 'Verifiche tecniche ante gara', valore: '' },
+  { voce: 'Shakedown', valore: '' },
+  { voce: 'Caratteristiche del percorso', valore: '2 prove speciali ripetute 3 volte', nota: '30–40 km cronometrati, da confermare' },
+  { voce: 'Parco assistenza', valore: '' },
+  { voce: 'Albo di gara e classifiche', valore: '', nota: 'App Sportity · password in pubblicazione' },
+  { voce: 'Parco partenza', valore: '' },
+  { voce: 'Partenza prima vettura', valore: '' },
+  { voce: 'Arrivo prima vettura', valore: '' },
+  { voce: 'Premiazione', valore: '' },
+  { voce: 'Pubblicazione classifiche', valore: '' },
+  { voce: 'Direzione gara e segreteria', valore: '' },
+  { voce: 'Sala stampa e accrediti', valore: '' },
+  { voce: 'Parco chiuso', valore: '' },
+];
+
+/**
+ * Link rapidi ai documenti che i concorrenti cercano per primi.
+ * `href` vuoto = non ancora pubblicato: la scheda resta, con lo stato "coming soon".
+ */
+export type LinkDoc = { nome: string; nota?: string; href: string };
+export const documentiRapidi: LinkDoc[] = [
+  { nome: 'Regolamento particolare di gara', nota: 'RPG', href: '' },
+  { nome: 'Programma', href: '' },
+  { nome: 'Cartina generale', href: '' },
+  { nome: 'Tabella distanze e tempi', nota: 'TDT', href: '' },
+  { nome: 'Dettaglio PS 1 · 3 · 5', href: '' },
+  { nome: 'Dettaglio PS 2 · 4 · 6', href: '' },
+  { nome: 'Dettaglio shakedown', href: '' },
+  { nome: 'Modulo di iscrizione', href: '' },
+];
+
 export const scadenze = [
   { fase: 'Apertura iscrizioni', data: 'Da definire', ora: '—' },
   { fase: 'Chiusura iscrizioni', data: 'Da definire', ora: '—' },

@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, requisiti, classi } from '../../data/rally';
+import { subnav, requisiti, classi, schedaGara, documentiRapidi } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
@@ -84,6 +84,52 @@ const haIscritti = iscritti.length > 0;
           </table>
         </div>
         <p class="hint">Le date confermate vengono pubblicate anche nell'albo di gara</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDA GARA + DOCUMENTI RAPIDI -->
+  <section id="scheda" class="wrap section sg" aria-labelledby="sg-h">
+    <div class="sec-head">
+      <h2 id="sg-h" class="type-h2">Tutto quello che serve, in una schermata</h2>
+      <p class="type-body-dark">Le voci ci sono già tutte: si riempiono man mano che il regolamento particolare e l'albo di gara vengono pubblicati. Quello che vedi «da definire» non è dimenticato, è in lavorazione.</p>
+    </div>
+    <div class="sg__grid">
+      <div class="sg__tab">
+        <h3 class="type-h3 sg__t">Scheda della gara</h3>
+        <dl class="sg__dl">
+          {schedaGara.map(v => (
+            <div class:list={['sg__r', { 'sg__r--vuota': !v.valore }]}>
+              <dt>{v.voce}</dt>
+              <dd>
+                {v.valore ? <span class="sg__val">{v.valore}</span> : <span class="type-mono sg__soon">Da definire</span>}
+                {v.nota && <span class="hint sg__nota">{v.nota}</span>}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div class="sg__doc">
+        <h3 class="type-h3 sg__t">Documenti in evidenza</h3>
+        <p class="type-body-dark sg__p">I file che si cercano per primi. Quando escono compaiono qui e nell'albo di gara.</p>
+        <ul class="sg__l">
+          {documentiRapidi.map(d => (
+            <li>
+              {d.href ? (
+                <a class="sg__d sg__d--on" href={d.href} target="_blank" rel="noopener">
+                  <span class="sg__dn">{d.nome}{d.nota && <span class="type-mono sg__dk">{d.nota}</span>}</span>
+                  <span class="type-mono sg__da">Scarica ↓</span>
+                </a>
+              ) : (
+                <span class="sg__d sg__d--off">
+                  <span class="sg__dn">{d.nome}{d.nota && <span class="type-mono sg__dk">{d.nota}</span>}</span>
+                  <span class="type-mono sg__da">Coming soon</span>
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+        <a class="type-mono link-line sg__all" href="/rally-colli-euganei/documenti/">Vai all'albo di gara completo <span class="arrow-x" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -199,4 +245,31 @@ const haIscritti = iscritti.length > 0;
   .el__vuoto{display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:var(--sp-4);border:1px solid var(--border-on-dark)}
   .el__vuoto p{color:#DDD}
   .el__attesa{color:#DDD !important;max-width:70ch}
+  /* scheda gara + documenti rapidi */
+  .sg .sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--sp-4)}
+  .sg .sec-head p{max-width:70ch}
+  .sg__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5)}
+  @media(min-width:900px){.sg__grid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--sp-6);align-items:start}}
+  .sg__t{color:#fff;margin-bottom:12px}
+  .sg__p{margin-bottom:16px;max-width:44ch}
+  .sg__dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
+  .sg__r{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
+  @media(min-width:560px){.sg__r{grid-template-columns:minmax(0,15em) minmax(0,1fr);gap:20px;align-items:baseline}}
+  .sg__r dt{color:var(--grigio-450);font-size:14px}
+  .sg__r dd{margin:0;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .sg__val{color:#fff}
+  .sg__soon{color:var(--grigio-450);font-size:12px}
+  .sg__r--vuota dt{color:#6B6B6B}
+  .sg__nota{color:var(--grigio-450)}
+  .sg__l{display:flex;flex-direction:column;gap:8px}
+  .sg__d{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px;border:1px solid var(--border-on-dark);background:var(--carbone)}
+  .sg__d--on{text-decoration:none;transition:border-color var(--dur-fast) var(--ease-out)}
+  .sg__d--on:hover,.sg__d--on:focus-visible{border-color:var(--ev)}
+  .sg__dn{color:#fff;font-size:15px;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .sg__dk{color:var(--grigio-450);font-size:11px}
+  .sg__da{flex:none;font-size:11px}
+  .sg__d--on .sg__da{color:var(--ev)}
+  .sg__d--off{opacity:.62}
+  .sg__d--off .sg__da{color:var(--grigio-450)}
+  .sg__all{display:inline-flex;margin-top:16px;color:#fff}
 </style>
