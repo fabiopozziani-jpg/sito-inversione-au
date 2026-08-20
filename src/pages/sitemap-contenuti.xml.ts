@@ -7,7 +7,7 @@ import type { APIRoute } from 'astro';
 import { caricaPosts, caricaGallerie } from '../lib/contenuti';
 
 const FISSE = ['/', '/eventi/', '/eventi/polo-motor-show/', '/eventi/legnaro-motori/', '/eventi/archivio/',
-  '/rally-colli-euganei/', '/rally-colli-euganei/percorso/', '/rally-colli-euganei/concorrenti/', '/rally-colli-euganei/spettatori/', '/rally-colli-euganei/documenti/',
+  '/rally-colli-euganei/', '/rally-colli-euganei/percorso/', '/rally-colli-euganei/concorrenti/', '/rally-colli-euganei/spettatori/', '/rally-colli-euganei/residenti/', '/rally-colli-euganei/documenti/',
   '/news/', '/foto-e-video/', '/sponsor/', '/sponsor/diventa-sponsor/', '/stampa/', '/stampa/accrediti/', '/associazione/', '/contatti/', '/privacy/'];
 
 export const GET: APIRoute = async ({ site, url }) => {
