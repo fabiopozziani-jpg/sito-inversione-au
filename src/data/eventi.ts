@@ -27,8 +27,8 @@ export const eventi: Evento[] = [
     ctaCard: 'Apri la pagina di Legnaro Motori', cover: '/foto/inversione_au_e36_drift.jpg', coverAlt: '' },
 ];
 export const numeri = [
-  { value: '15.000+', label: 'spettatori nelle ultime edizioni' },
+  { value: '10.000+', label: 'spettatori nelle ultime edizioni' },
   { value: 'circa 100', label: 'equipaggi in due giorni' },
-  { value: '300+', label: 'auto esposte' },
+  { value: '400+', label: 'auto esposte' },
   { value: '30+', label: 'persone nello staff' },
 ];

@@ -53,7 +53,7 @@ export const posts: Post[] = [
     cta: { label: 'Apri la pagina del rally', href: '/rally-colli-euganei/' } },
   { slug: 'polo-motor-show-2026-numeri', title: 'Polo Motor Show 2026: i numeri dell’edizione', excerpt: 'Due giorni di drift, rally show e raduno a Selve di Teolo. Il resoconto.',
     date: '18 GIU 2026', iso: '2026-06-18', category: 'Polo Motor Show', event: 'Polo Motor Show', chi: 'Per il pubblico', image: '/foto/polo_sierra_fina_drift.jpg', imageAlt: '', tipo: 'comunicato stampa',
-    lead: 'Oltre 15.000 spettatori, circa 100 equipaggi in pista, più di 300 auto esposte: i numeri dell’edizione 2026 del Polo Motor Show.', credito: 'Foto: Inversione A U',
+    lead: 'Oltre 10.000 spettatori, circa 100 equipaggi in pista, più di 400 auto esposte: i numeri dell’edizione 2026 del Polo Motor Show.', credito: 'Foto: Inversione A U',
     corpo: [ { t: 'p', html: 'Le foto ufficiali sono nella <a href="/foto-e-video/polo-motor-show-2026/">galleria dell’edizione</a>. L’edizione 2027 è in preparazione.' } ],
     cta: { label: 'Guarda le foto', href: '/foto-e-video/polo-motor-show-2026/' } },
   { slug: 'foto-ufficiali-polo-motor-show-2026', title: 'Le foto ufficiali del Polo Motor Show', excerpt: 'Gli scatti dei fotografi accreditati, liberi per la stampa con credit.',

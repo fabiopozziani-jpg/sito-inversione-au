@@ -1,41 +1,97 @@
 ---
-/** Archivio edizioni — elenco cronologico con accento colore per evento. */
+/**
+ * Archivio edizioni — una scheda per edizione, raggruppate per anno.
+ * Le voci vuote non compaiono: la scheda è il contenitore che si riempie nel tempo.
+ */
 import Base from '../../../layouts/Base.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import { caricaEdizioni } from '../../../lib/contenuti';
+import { numero, STATO_LABEL, type Edizione } from '../../../data/archivio';
+
 const edizioni = await caricaEdizioni();
+
+/** Raggruppa per anno mantenendo l'ordine di arrivo (dal più recente). */
+const gruppi: { anno: string; lista: Edizione[] }[] = [];
+for (const e of edizioni) {
+  const g = gruppi.find(x => x.anno === e.anno);
+  if (g) g.lista.push(e); else gruppi.push({ anno: e.anno, lista: [e] });
+}
+const idAnno = (a: string) => `anno-${a.replace(/[^0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+const conclusi = edizioni.filter(e => e.stato === 'conclusa').length;
 ---
 <Base title="Archivio edizioni e foto degli eventi | Inversione A U" description="Tutte le edizioni degli eventi Inversione A U dal 2017 a oggi: Polo Motor Show, Legnaro Motori, Rally Colli Euganei. Date, luoghi, numeri e foto ufficiali." active="eventi">
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Eventi', href: '/eventi/' }, { label: 'Archivio edizioni' }]} />
   <header class="wrap pg-head">
-    <p class="type-mono text-meta">Dal 2017 a oggi</p>
+    <p class="type-mono text-meta">Dal 2017 a oggi · {conclusi} edizioni concluse</p>
     <h1 class="type-h1">Archivio delle edizioni</h1>
-    <p class="lead">Ogni edizione dei nostri eventi con data, luogo, numeri e foto ufficiali. Dove ci sono, trovi anche i risultati.</p>
+    <p class="lead">Ogni edizione con data, luogo, numeri e materiali ufficiali. Le voci ancora vuote non sono dimenticate: si riempiono a evento concluso, quando escono foto, classifiche e comunicato finale.</p>
   </header>
 
-  <section class="wrap section" aria-labelledby="ed-h">
-    <h2 id="ed-h" class="type-h2">Tutte le edizioni, dal 2017 a oggi</h2>
-    <p class="type-body-dark ed__intro">In ordine dalla più recente. Le edizioni ancora in programma sono segnalate.</p>
-    <ul class="ed stagger">
-      {edizioni.map(e => (
-        <li class="ed__i reveal" style={`--acc:${e.accent}`}>
-          <div class="ed__meta"><span class="type-mono ed__data">{e.data}</span><span class="type-mono text-meta">{e.luogo}</span></div>
-          <div class="ed__b">
-            <h3 class="type-h3">{e.nome}</h3>
-            <p class="type-body-dark">{e.testo}</p>
-            <span class="type-mono text-meta">{e.numeri}</span>
-          </div>
-          <div class="ed__cta"><a class="type-mono link-line" href={e.href}>{e.cta} <span class="arrow-x" aria-hidden="true">→</span></a></div>
-        </li>
-      ))}
-    </ul>
-  </section>
+  <div class="wrap arc">
+    {gruppi.map(g => (
+      <section class="arc__g" aria-labelledby={idAnno(g.anno)}>
+        <div class="arc__y">
+          <h2 id={idAnno(g.anno)} class="type-h2">{g.anno}</h2>
+          <span class="type-mono text-meta">{g.lista.length} {g.lista.length === 1 ? 'edizione' : 'edizioni'}</span>
+        </div>
+        <ul class="arc__l stagger">
+          {g.lista.map(e => (
+            <li class="arc__i reveal" style={`--acc:${e.accent}`}>
+              <div class="arc__meta">
+                {e.locandina && <img class="arc__loc" src={e.locandina.src} alt={e.locandina.alt} width="120" height="160" loading="lazy" decoding="async" />}
+                <span class="type-mono arc__data">{e.data}</span>
+                <span class="type-mono text-meta">{e.luogo}</span>
+                <span class:list={['type-mono', 'arc__stato', e.stato === 'in-programma' && 'arc__stato--prog']}>{STATO_LABEL[e.stato]}</span>
+              </div>
+
+              <div class="arc__b">
+                <h3 class="type-h3">{e.nome}</h3>
+                <p class="type-body-dark">{e.testo}</p>
+                {e.albo && (
+                  <p class="arc__albo">
+                    <span class="type-mono arc__albo-k">{e.albo.voce}</span>
+                    <span class="arc__albo-n">{e.albo.nome}</span>
+                  </p>
+                )}
+                {e.numeri.length > 0 && (
+                  <ul class="arc__n">
+                    {e.numeri.map(n => {
+                      const { valore, etichetta } = numero(n);
+                      return (
+                        <li>
+                          {valore && <span class="arc__nv">{valore}</span>}
+                          <span class="type-mono arc__ne">{etichetta}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+
+              <div class="arc__m">
+                {e.materiali.length > 0 && (
+                  <ul class="arc__ml">
+                    {e.materiali.map(m => (
+                      <li>
+                        <a class="type-mono link-line" href={m.href}>{m.etichetta} <span class="arrow-x" aria-hidden="true">{m.href.endsWith('.pdf') ? '↓' : '→'}</span></a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {e.nota && <p class="type-mono arc__nota">{e.nota}</p>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
 
   <section class="hair" aria-labelledby="ft-h">
     <div class="wrap section ft">
       <div>
         <h2 id="ft-h" class="type-h2">Manda le tue foto</h2>
-        <p class="type-body-dark">Hai fotografato una delle nostre edizioni? Mandacele: le pubblichiamo con il tuo nome accanto.</p>
+        <p class="type-body-dark">Hai fotografato una delle nostre edizioni? Mandacele: le pubblichiamo con il tuo nome accanto e completiamo l'archivio delle edizioni più vecchie.</p>
       </div>
       <div class="ft__btns">
         <a href="/contatti/" class="btn btn--primary">Scrivi all'associazione</a>
@@ -44,20 +100,45 @@ const edizioni = await caricaEdizioni();
     </div>
   </section>
 </Base>
+
 <style>
   .pg-head{padding-top:var(--sp-4);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
   .pg-head h1{color:#fff}
-  .lead{color:var(--text-body-on-dark);max-width:60ch;font-size:17px}
-  h2{color:#fff;margin-bottom:8px}
-  .ed__intro{max-width:56ch;margin-bottom:var(--sp-4)}
-  .ed{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
-  .ed__i{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:24px 0 24px 20px;border-bottom:1px solid var(--border-on-dark);border-left:3px solid var(--acc)}
-  @media(min-width:900px){.ed__i{grid-template-columns:200px 1fr auto;gap:32px;align-items:start}}
-  .ed__meta{display:flex;flex-direction:column;gap:6px}
-  .ed__data{color:#fff}
-  .ed__b{display:flex;flex-direction:column;gap:8px;min-width:0}
-  .ed__b h3{color:#fff}
-  .ed__cta a{color:#fff;white-space:nowrap}
+  .lead{color:var(--text-body-on-dark);max-width:64ch;font-size:17px}
+  h2{color:#fff}
+
+  .arc{padding-top:var(--sp-5);padding-bottom:var(--sp-8)}
+  .arc__g+.arc__g{margin-top:var(--sp-8)}
+  .arc__y{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-3);padding-bottom:12px;border-bottom:2px solid #fff}
+  .arc__l{display:flex;flex-direction:column}
+
+  .arc__i{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:24px 0 28px 20px;border-bottom:1px solid var(--border-on-dark);border-left:var(--border-accent) solid var(--acc)}
+  @media(min-width:900px){.arc__i{grid-template-columns:190px minmax(0,1fr) 232px;gap:32px;align-items:start;padding-top:28px}}
+
+  /* colonna sinistra */
+  .arc__meta{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+  .arc__loc{width:110px;height:auto;aspect-ratio:3/4;object-fit:cover;border:1px solid var(--border-on-dark);margin-bottom:6px}
+  .arc__data{color:#fff}
+  .arc__stato{margin-top:4px;padding:3px 8px;border:1px solid var(--border-on-dark);color:var(--grigio-450);font-size:11px;letter-spacing:.06em}
+  .arc__stato--prog{border-color:var(--acc);color:var(--acc)}
+
+  /* colonna centrale */
+  .arc__b{display:flex;flex-direction:column;gap:10px;min-width:0}
+  .arc__b h3{color:#fff}
+  .arc__albo{display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--acc);padding-left:12px;margin-top:2px}
+  .arc__albo-k{color:var(--acc);font-size:11px}
+  .arc__albo-n{color:#fff;font-size:15px}
+  .arc__n{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:6px}
+  .arc__n li{display:flex;flex-direction:column;gap:2px}
+  .arc__nv{color:#fff;font-size:21px;line-height:1.1;font-weight:600}
+  .arc__ne{color:var(--grigio-450);font-size:11px}
+
+  /* colonna destra */
+  .arc__m{display:flex;flex-direction:column;gap:12px}
+  .arc__ml{display:flex;flex-direction:column;gap:10px}
+  .arc__ml a{color:#fff;font-size:12px}
+  .arc__nota{color:var(--grigio-450);font-size:11px;line-height:1.6;max-width:34ch}
+
   .ft{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
   .ft__btns{display:flex;gap:16px;flex-wrap:wrap}
 </style>

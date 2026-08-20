@@ -103,8 +103,33 @@ const url = '/rally-colli-euganei/spettatori/';
       <h2 id="arr-h" class="type-h2">Come arrivare</h2>
       <div class="arr__grid stagger">
         <div class="arr__col reveal"><span class="type-mono arr__k">In auto</span><p>Autostrada A13, uscita Terme Euganee, poi direzione Colli Euganei.</p></div>
+        <div class="arr__col reveal"><span class="type-mono arr__k">In treno</span><p>Stazione di Terme Euganee — Abano Montegrotto, oppure Padova. Dalla stazione ai punti di gara serve un'auto: il trasporto pubblico non arriva alle prove speciali.</p></div>
         <div class="arr__col reveal"><span class="type-mono arr__k">Coordinate delle prove</span><p>I punti da cui si raggiungono le prove speciali vengono pubblicati sulla <a href="/rally-colli-euganei/percorso/">pagina del percorso</a>, insieme al tracciato.</p></div>
-        <div class="arr__col reveal"><span class="type-mono arr__k">Ristoro e paesi</span><p>Il rally attraversa i centri dei Colli Euganei. Bar, ristoranti e punti di ristoro dei paesi restano aperti per tutta la durata della gara.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DOVE DORMIRE E MANGIARE (bianco) -->
+  <section id="dormire" class="on-light dorm" aria-labelledby="dorm-h">
+    <div class="wrap section">
+      <h2 id="dorm-h" class="type-h2">Dove dormire e mangiare</h2>
+      <p class="dorm__p">Il rally si corre a fine novembre sui Colli Euganei, a venti minuti da Padova. Se arrivi da fuori regione, queste sono le zone più comode. Non segnaliamo strutture singole: qui sotto trovi i canali ufficiali del territorio, sempre aggiornati.</p>
+      <div class="arr__grid stagger">
+        <div class="arr__col reveal">
+          <span class="type-mono arr__k">Terme di Abano e Montegrotto</span>
+          <p>La zona con più posti letto, a pochi chilometri dai Colli. Gli alberghi termali restano aperti anche fuori stagione.</p>
+          <a class="type-mono dorm__l" href="https://www.visitabanomontegrotto.com/" target="_blank" rel="noopener">Sito ufficiale del territorio termale ↗</a>
+        </div>
+        <div class="arr__col reveal">
+          <span class="type-mono arr__k">Nei paesi dei Colli</span>
+          <p>Agriturismi, B&amp;B e cantine con ospitalità nei comuni attraversati dalla gara. Sono strutture piccole: a novembre conviene prenotare con qualche settimana di anticipo.</p>
+          <a class="type-mono dorm__l" href="https://www.stradadelvinocollieuganei.it/" target="_blank" rel="noopener">Strada del Vino Colli Euganei ↗</a>
+        </div>
+        <div class="arr__col reveal">
+          <span class="type-mono arr__k">Mangiare il giorno della gara</span>
+          <p>Il rally attraversa i centri dei Colli: bar, trattorie e ristoranti dei paesi restano aperti per tutta la durata della gara. Nelle zone pubblico non c'è ristoro organizzato: porta acqua e qualcosa da mangiare, soprattutto per le prove del mattino.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -161,4 +186,10 @@ const url = '/rally-colli-euganei/spettatori/';
   .arr__k{color:var(--rally-teal-scuro);display:block;margin-bottom:8px}
   .arr__col p{color:var(--text-secondary)}
   .arr__col p a{color:var(--nero);text-decoration:underline;text-underline-offset:3px}
+  /* dormire e mangiare */
+  .dorm{border-top:1px solid var(--border-divider)}
+  .dorm h2{margin-bottom:16px}
+  .dorm__p{color:var(--text-secondary);max-width:72ch;margin-bottom:var(--sp-4)}
+  .dorm__l{display:inline-block;margin-top:12px;color:var(--nero);border-bottom:1px solid rgba(0,0,0,.25);padding-bottom:2px;transition:border-color var(--dur-fast) var(--ease-out)}
+  .dorm__l:hover,.dorm__l:focus-visible{border-color:var(--nero)}
 </style>

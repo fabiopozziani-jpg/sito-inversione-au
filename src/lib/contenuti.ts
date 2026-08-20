@@ -248,10 +248,51 @@ export async function caricaRally() {
 
 /* ---------- Edizioni e direttivo ---------- */
 
-type EdizioneCms = { nome: string; data?: string; luogo?: string; accent?: string; testo?: string; numeri?: string; url?: string; cta?: string; ordine?: number };
+type EdizioneCms = {
+  nome: string; slug?: string; evento?: string; anno?: string; data?: string; luogo?: string; accent?: string;
+  stato?: string; testo?: string; numeri?: string; alboVoce?: string; alboNome?: string;
+  locandina?: string; locandinaAlt?: string;
+  foto?: string; video?: string; classifica?: string; comunicato?: string; regolamento?: string;
+  url?: string; cta?: string; url2?: string; cta2?: string; nota?: string; ordine?: number;
+};
+/** `wix:document://v1/<id>.<est>/<nome>` → URL scaricabile. Le URL normali passano invariate. */
+const doc = (v: unknown): string => {
+  if (typeof v !== 'string' || !v.trim()) return '';
+  const m = v.match(/^wix:document:\/\/v1\/([^/]+)\/(.+)$/);
+  return m ? `https://0fa841cd-37c1-4afa-98a8-07cd3feb9f54.usrfiles.com/ugd/${m[1]}?dn=${encodeURIComponent(decodeURIComponent(m[2]))}` : rel(v);
+};
+const EVENTI_ARCHIVIO = ['rally', 'polo', 'legnaro', 'team'] as const;
+const slugDa = (t: string) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 export async function caricaEdizioni(): Promise<Edizione[]> {
   const cms = await query<EdizioneCms>('Edizioni', { sort: [{ fieldName: 'ordine' }], limit: 100 });
-  return pieno(cms?.filter(e => e.nome).map(e => ({ nome: e.nome, data: s(e.data), luogo: s(e.luogo), accent: s(e.accent, '#8C8C8C'), testo: s(e.testo), numeri: s(e.numeri), href: rel(e.url) || '/eventi/', cta: s(e.cta, 'Apri') })) ?? null, edizioniStatiche);
+  const righe = cms?.filter(e => e.nome).map((e): Edizione => {
+    const materiali = [
+      { etichetta: 'Guarda le foto', href: doc(e.foto) },
+      { etichetta: 'Guarda i video', href: doc(e.video) },
+      { etichetta: 'Classifica finale', href: doc(e.classifica) },
+      { etichetta: 'Comunicato finale', href: doc(e.comunicato) },
+      { etichetta: 'Regolamento', href: doc(e.regolamento) },
+      { etichetta: s(e.cta, 'Apri la pagina'), href: rel(e.url) },
+      { etichetta: s(e.cta2, 'Apri'), href: rel(e.url2) },
+    ].filter(m => !!m.href);
+    const ev = s(e.evento).toLowerCase();
+    const evento = ((EVENTI_ARCHIVIO as readonly string[]).includes(ev) ? ev : 'team') as Edizione['evento'];
+    const loc = imgFill(e.locandina, 300, 400, '');
+    return {
+      slug: s(e.slug) || slugDa(e.nome),
+      nome: e.nome, evento,
+      anno: s(e.anno) || (s(e.data).match(/\d{4}/)?.[0] ?? ''),
+      data: s(e.data), luogo: s(e.luogo), accent: s(e.accent, '#8C8C8C'),
+      stato: /programma|prossim/i.test(s(e.stato)) ? 'in-programma' : 'conclusa',
+      testo: s(e.testo),
+      numeri: s(e.numeri).split('·').map(x => x.trim()).filter(Boolean),
+      albo: s(e.alboNome) ? { voce: s(e.alboVoce, 'Albo'), nome: s(e.alboNome) } : undefined,
+      locandina: loc ? { src: loc, alt: s(e.locandinaAlt, `Locandina ufficiale — ${e.nome}`) } : undefined,
+      materiali, nota: s(e.nota) || undefined,
+    };
+  }) ?? null;
+  return pieno(righe, edizioniStatiche);
 }
 type TeamCms = { nome: string; ruolo?: string; nota?: string; ordine?: number };
 export async function caricaTeam(): Promise<{ nome: string; ruolo: string; nota: string }[] | null> {
