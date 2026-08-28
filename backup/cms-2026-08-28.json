@@ -1,0 +1,3909 @@
+{
+  "generato": "2026-08-28T13:48:41.913Z",
+  "sito": "http://dti1ez-inversione-93983583-fabiopozziani5.wix-site-host.com",
+  "conteggio": {
+    "Eventi": 3,
+    "Programma": 16,
+    "ProveSpeciali": 2,
+    "Scadenze": 5,
+    "Iscritti": 0,
+    "Documenti": 0,
+    "News": 9,
+    "Gallerie": 3,
+    "Foto": 169,
+    "Sponsor": 34,
+    "Edizioni": 6,
+    "Team": 5,
+    "Social": 0
+  },
+  "collezioni": {
+    "Eventi": [
+      {
+        "stato": "annuncio",
+        "anno": "2026",
+        "claim": "Torna il rally sui Colli Euganei",
+        "chiave": "rally",
+        "ordine": 0,
+        "_id": "f19b0122-f527-4bc3-8d4d-0887bd9d7458",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.731Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:49:58.052Z"
+        },
+        "slug": "rally-colli-euganei",
+        "ctaCard": "Apri la pagina del rally",
+        "moduloIscrizione": "https://www.acisport.it",
+        "hero": "wix:image://v1/2be2d6_9856a1cb5e3b474eb7b962c6f6ec7d5a~mv2.jpg/inversione-au-rally-colli-euganei-17.jpg#originWidth=2309&originHeight=1119",
+        "dataLabel": "21–22 NOV 2026",
+        "luogo": "Colli Euganei, Padova",
+        "dataFine": "2026-11-22",
+        "nome": "1° Rally Colli Euganei ACI Sport",
+        "statoIscrizioni": "non-aperte",
+        "dataInizio": "2026-11-21",
+        "comeArrivare": "https://www.google.com/maps/search/?api=1&query=Teolo",
+        "testoCard": "Dopo più di 35 anni torna un rally nel Padovano. Scopri tutte le informazioni."
+      },
+      {
+        "introTitolo": "Che cos'è il Polo Motor Show",
+        "stato": "conclusa",
+        "anno": "2026",
+        "claim": "Drift, rally show ed esposizione sul circuito cittadino dei Colli",
+        "chiave": "polo",
+        "pilotiDidascalia": "Polo Motor Show · rally show sul tracciato cittadino",
+        "mappaAree": "Pista — il circuito cittadino. Accesso vietato al pubblico, si guarda dalle aree recintate.\nArea espositori — gli stand delle aziende di settore e i simulatori di guida.\nArea food — due punti ristoro, aperti per tutta la durata dell’evento.\nRaduni — i raduni delle auto sportive, oltre 400 in mostra nei due giorni.\nParcheggi — parcheggio pubblico gratuito nelle vicinanze del centro.",
+        "ordine": 1,
+        "_id": "9ccc6b71-8af2-43e0-8367-e9dc774d9488",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.730Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T12:10:57.034Z"
+        },
+        "introTesto2": "L'edizione 2026 si è chiusa domenica 14 giugno con oltre 10.000 spettatori. La prossima è in preparazione.",
+        "slug": "polo-motor-show",
+        "pilotiTesto": "Le iscrizioni piloti per il 2027 non sono ancora aperte. Le aziende di settore possono già candidarsi per l'area espositori.",
+        "ctaCard": "Apri la pagina del Polo Motor Show",
+        "logo": "wix:image://v1/2be2d6_d9e4cec922ae4d0e891cb6a490ca0ba0~mv2.png/logo_polo_2026.png#originWidth=600&originHeight=185",
+        "hero": "wix:image://v1/2be2d6_fb3c2aae20944f52a4c8fc374aad4043~mv2.jpg/bmw_m3_e30_ricambi.jpg#originWidth=1920&originHeight=1238",
+        "pilotiVoci": "Drift — sessioni su iscrizione, briefing obbligatorio\nRally show — sessioni su iscrizione, briefing obbligatorio\nEsposizione — stand aziende di settore\nRaduni — raduni statici, tutte le epoche, in collaborazione con gruppi locali",
+        "dataLabel": "13–14 GIU 2026",
+        "mappaTesto": "Per due giorni le strade del paese diventano circuito. Il pubblico si muove a piedi tra le aree; l'accesso alla pista è riservato a piloti e commissari.",
+        "luogo": "Selve di Teolo",
+        "sponsorIntro": "Le aziende che hanno sostenuto l’edizione 2026.",
+        "mappaTitolo": "Il circuito cittadino di Selve di Teolo",
+        "introTesto1": "Due giorni di esibizioni drift, rally show ed esposizione di auto. Le strade di Selve di Teolo diventano circuito e paddock, con il pubblico a pochi metri dalla pista.",
+        "pilotiImmagine": "wix:image://v1/2be2d6_31c38d6597834765b184726c1674eca0~mv2.jpg/polo_e30_turchese_drift.jpg#originWidth=1536&originHeight=1920",
+        "dataFine": "2026-06-14",
+        "nome": "Polo Motor Show",
+        "pilotiNota": "Iscrizioni piloti 2027: non ancora aperte",
+        "mappa": "wix:image://v1/2be2d6_e1959ebe25174b298e63189695bc01cc~mv2.jpg/mappa-polo-motor-show.jpg#originWidth=1600&originHeight=1584",
+        "dataInizio": "2026-06-13",
+        "comeArrivare": "https://www.google.com/maps/search/?api=1&query=Selve+di+Teolo",
+        "testoCard": "Il nostro evento più grande: due giorni di gare, auto in esposizione e area food."
+      },
+      {
+        "introTitolo": "Che cos'è Legnaro Motori",
+        "stato": "conclusa",
+        "anno": "2026",
+        "claim": "Drift e raduno — la prima edizione",
+        "chiave": "legnaro",
+        "pilotiDidascalia": "Legnaro Motori 2026 · raduno ed esposizione",
+        "mappaAree": "Pista — il tracciato drift, recintato. Si guarda dalle aree per il pubblico.\nRaduno — l’area dove vengono esposte le auto sportive.\nArea espositori — la zona dove espongono le aziende del settore.\nRistoro — un punto ristoro, aperto per tutta la giornata.\nParcheggi — parcheggio pubblico gratuito accanto all’area evento.",
+        "ordine": 2,
+        "_id": "bbe7d873-9561-49fb-8d82-f89a31aad28a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.729Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T12:11:17.531Z"
+        },
+        "introTesto2": "La prima edizione si è svolta domenica 15 marzo 2026, con il tracciato drift, il raduno e gli stand delle aziende di settore in un’unica area.",
+        "slug": "legnaro-motori",
+        "pilotiTesto": "Le iscrizioni piloti per il 2027 non sono ancora aperte. Le aziende di settore possono già candidarsi per l'area espositori.",
+        "ctaCard": "Apri la pagina di Legnaro Motori",
+        "logo": "wix:image://v1/2be2d6_d88001401c9643fe86da520c43a71af2~mv2.png/logo_legnaro_2026.png#originWidth=800&originHeight=659",
+        "hero": "wix:image://v1/2be2d6_0790b8e07f5a4c30b32e48896e12e0ed~mv2.jpg/inversione_au_e36_pan.jpg#originWidth=1440&originHeight=1800",
+        "pilotiVoci": "Drift — sessioni su iscrizione, briefing obbligatorio\nRaduno — raduni statici, tutte le epoche, in collaborazione con gruppi locali. Candidature non ancora aperte\nEspositori — stand aziende di settore",
+        "dataLabel": "15 MAR 2026",
+        "mappaTesto": "Tutto si svolge in un'unica area, in una sola giornata. Il tracciato drift è recintato; raduno, stand e ristoro sono intorno, raggiungibili a piedi.",
+        "luogo": "Legnaro",
+        "sponsorIntro": "Le aziende che hanno sostenuto Legnaro Motori 2026.",
+        "mappaTitolo": "L'area evento di Legnaro",
+        "introTesto1": "Una giornata di esibizioni drift e raduno di auto. È la versione compatta del format: un solo giorno, un'unica area, tutto raggiungibile a piedi.",
+        "pilotiImmagine": "wix:image://v1/2be2d6_2a741771847b4fdc8f8df48b4752e692~mv2.jpg/raduno_expo.jpg#originWidth=1440&originHeight=1800",
+        "dataFine": "2026-03-15",
+        "nome": "Legnaro Motori",
+        "pilotiNota": "Iscrizioni piloti 2027: non ancora aperte",
+        "mappa": "wix:image://v1/2be2d6_ad567159f3e24fee9c10c999e070ac8a~mv2.jpg/mappa-legnaro-motori.jpg#originWidth=1000&originHeight=1000",
+        "dataInizio": "2026-03-15",
+        "comeArrivare": "https://www.google.com/maps/search/?api=1&query=Legnaro+Padova",
+        "testoCard": "Una giornata di drifting e raduni di auto sportive."
+      }
+    ],
+    "Programma": [
+      {
+        "ordine": 8,
+        "_id": "a6f605fa-c898-4f64-a4da-12aa70a4705d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T12:12:15.461Z"
+        },
+        "titolo": "Raduno statico",
+        "nota": "by Fullgas Crew",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:12:15.461Z"
+        },
+        "ora": "DOM 14 GIU · 14:00–18:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 7,
+        "_id": "dbc674ba-c52b-4519-b16b-43600be95023",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T12:12:10.487Z"
+        },
+        "titolo": "Circuito aperto",
+        "nota": "Rally + Drift",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:12:10.487Z"
+        },
+        "ora": "DOM 14 GIU · 13:00–18:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 6,
+        "_id": "a95f7f1d-4560-4528-bcb3-8d380a2c80bd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T12:12:05.683Z"
+        },
+        "titolo": "Apertura evento e circuito aperto",
+        "nota": "Rally + Drift",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:12:05.683Z"
+        },
+        "ora": "DOM 14 GIU · 10:00–12:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 5,
+        "_id": "dc99a497-8217-46a4-822b-65b6e175d81c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T12:12:00.854Z"
+        },
+        "titolo": "Chiusura circuito",
+        "nota": "Rally + Drift",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:12:00.854Z"
+        },
+        "ora": "SAB 13 GIU · 23:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 1,
+        "_id": "1b310737-bea7-403f-b3ee-fbccdf100757",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.816Z"
+        },
+        "titolo": "Verifiche sportive e tecniche",
+        "nota": "Le vetture passano al controllo prima della partenza. Si possono vedere da vicino, a piedi.",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.816Z"
+        },
+        "ora": "Da definire",
+        "giorno": "Sabato 21 novembre",
+        "evento": "rally"
+      },
+      {
+        "ordine": 2,
+        "_id": "2e28fc07-74a7-41f5-9c9b-e8c6660da702",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.815Z"
+        },
+        "titolo": "Shakedown",
+        "nota": "Prova di messa a punto su un tratto breve. È la prima occasione per vedere le auto in azione.",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.815Z"
+        },
+        "ora": "Da definire",
+        "giorno": "Sabato 21 novembre",
+        "evento": "rally"
+      },
+      {
+        "ordine": 3,
+        "_id": "cfc175f5-9614-4757-90b8-920c19975d67",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.814Z"
+        },
+        "titolo": "Partenza",
+        "nota": "Cerimoniale di partenza · luogo da definire",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:06:23.237Z"
+        },
+        "ora": "Da definire",
+        "giorno": "Domenica 22 novembre",
+        "evento": "rally"
+      },
+      {
+        "ordine": 4,
+        "_id": "37862da8-0e5f-43a2-81af-bbc45334de70",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.813Z"
+        },
+        "titolo": "PS 01",
+        "primaVettura": "Prima vettura: Da definire",
+        "nota": "Primo passaggio sulla prima prova speciale",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:06:29.592Z"
+        },
+        "ora": "Da definire",
+        "giorno": "Domenica 22 novembre",
+        "evento": "rally"
+      },
+      {
+        "ordine": 9,
+        "_id": "ad4ecd76-87e7-4508-bb78-fdce726929c1",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.808Z"
+        },
+        "titolo": "Arrivo e premiazioni",
+        "nota": "Palco arrivo · ingresso libero",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.808Z"
+        },
+        "ora": "Da definire",
+        "giorno": "Domenica 22 novembre",
+        "evento": "rally"
+      },
+      {
+        "ordine": 1,
+        "_id": "2bc6598d-3429-4f90-8819-a5eea23e24e7",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.807Z"
+        },
+        "titolo": "Apertura evento e circuito aperto",
+        "nota": "Rally + Drift",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:11:37.991Z"
+        },
+        "ora": "SAB 13 GIU · 14:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 2,
+        "_id": "97676b79-4696-49d2-8d22-e9a867a9897d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.806Z"
+        },
+        "titolo": "Inizio raduno statico",
+        "nota": "by OFFSET MOVEMENT",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:11:43.795Z"
+        },
+        "ora": "SAB 13 GIU · 18:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 3,
+        "_id": "5d48c6a5-483e-430e-9d4b-ad21e5187797",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.805Z"
+        },
+        "titolo": "Chiusura circuito",
+        "nota": "Rally + Drift",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:11:49.672Z"
+        },
+        "ora": "SAB 13 GIU · 20:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 4,
+        "_id": "b6bf685e-e977-4fbb-b192-58e5e98464f0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.804Z"
+        },
+        "titolo": "Apertura evento e circuito aperto",
+        "nota": "Rally + Drift",
+        "_updatedDate": {
+          "$date": "2026-08-19T12:11:55.481Z"
+        },
+        "ora": "SAB 13 GIU · 21:00",
+        "evento": "polo"
+      },
+      {
+        "ordine": 1,
+        "_id": "9c4131d3-4290-40c2-910f-471565660916",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.803Z"
+        },
+        "titolo": "Apertura raduno",
+        "nota": "Esposizione statica e paddock",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.803Z"
+        },
+        "ora": "DOM 15 MAR · 09:00",
+        "evento": "legnaro"
+      },
+      {
+        "ordine": 2,
+        "_id": "cd2b3792-5f27-4654-8705-85f4d4891396",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.802Z"
+        },
+        "titolo": "Sessioni drift",
+        "nota": "Turni per tutta la giornata",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.802Z"
+        },
+        "ora": "DOM 15 MAR · 11:00",
+        "evento": "legnaro"
+      },
+      {
+        "ordine": 3,
+        "_id": "5d75f1a9-4459-4a72-82fd-3230730fbe9f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.801Z"
+        },
+        "titolo": "Chiusura",
+        "nota": "Saluti e arrivederci al 2027",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.801Z"
+        },
+        "ora": "DOM 15 MAR · 18:00",
+        "evento": "legnaro"
+      }
+    ],
+    "ProveSpeciali": [
+      {
+        "ordine": 1,
+        "_id": "5a1165db-768b-4d92-aa4e-3e9bd21fa082",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.898Z"
+        },
+        "zonaPubblico": "— · da definire",
+        "primaVettura": "— · da definire",
+        "chiusura": "— · da definire",
+        "_updatedDate": {
+          "$date": "2026-08-28T12:49:58.994Z"
+        },
+        "mapsUrl": "",
+        "evento": "rally",
+        "sigla": "Passaggi 1 · 3 · 5",
+        "nome": "Prova speciale 1",
+        "km": "— · un mese prima della gara"
+      },
+      {
+        "ordine": 2,
+        "_id": "3a96d9e2-7215-40fe-91ea-9959dba70aac",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.897Z"
+        },
+        "zonaPubblico": "— · da definire",
+        "primaVettura": "— · da definire",
+        "chiusura": "— · da definire",
+        "_updatedDate": {
+          "$date": "2026-08-28T12:49:59.308Z"
+        },
+        "mapsUrl": "",
+        "evento": "rally",
+        "sigla": "Passaggi 2 · 4 · 6",
+        "nome": "Prova speciale 2",
+        "km": "— · un mese prima della gara"
+      }
+    ],
+    "Scadenze": [
+      {
+        "ordine": 1,
+        "_id": "46511f5e-435a-402a-a7cf-17fe5d5e9a47",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.979Z"
+        },
+        "data": "Da definire",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.979Z"
+        },
+        "ora": "—",
+        "evento": "rally",
+        "fase": "Apertura iscrizioni"
+      },
+      {
+        "ordine": 2,
+        "_id": "60968fbe-14bd-4a14-8738-5cd7ad253aab",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.978Z"
+        },
+        "data": "Da definire",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.978Z"
+        },
+        "ora": "—",
+        "evento": "rally",
+        "fase": "Chiusura iscrizioni"
+      },
+      {
+        "ordine": 3,
+        "_id": "bc619f78-1404-4d1f-90a0-b658030d2a1e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.977Z"
+        },
+        "data": "Da definire",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.977Z"
+        },
+        "ora": "—",
+        "evento": "rally",
+        "fase": "Ricognizioni del percorso"
+      },
+      {
+        "ordine": 4,
+        "_id": "97e10433-c7f8-424a-bb1b-7a8764bab2d7",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.976Z"
+        },
+        "data": "Da definire",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.976Z"
+        },
+        "ora": "—",
+        "evento": "rally",
+        "fase": "Verifiche sportive e tecniche"
+      },
+      {
+        "ordine": 5,
+        "_id": "2c35a2a5-51e3-4b2f-ba98-944cecebecdd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.975Z"
+        },
+        "data": "Da definire",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:32.975Z"
+        },
+        "ora": "—",
+        "evento": "rally",
+        "fase": "Shakedown"
+      }
+    ],
+    "Iscritti": [],
+    "Documenti": [],
+    "News": [
+      {
+        "pubblicato": true,
+        "lead": "Da oggi i concorrenti possono iscriversi alla prima edizione, in programma il 21 e 22 novembre 2026. Le iscrizioni chiudono in una data ancora da confermare.",
+        "credito": "Foto: archivio Inversione A U",
+        "cta2Label": "Scarica i documenti di gara",
+        "_id": "64ca5799-253f-4a31-80d4-b8b9a13b0eea",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.638Z"
+        },
+        "sommario": "Regolamento e modulistica nell’albo di gara. Chiusura delle iscrizioni da confermare.",
+        "data": "2026-09-25",
+        "titolo": "Aperte le iscrizioni al 1° Rally Colli Euganei",
+        "ctaLabel": "Vai alla pagina concorrenti",
+        "cta2Url": "https://www.inversioneau.com/rally-colli-euganei/documenti/",
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:00.215Z"
+        },
+        "slug": "iscrizioni-aperte-rally-colli-euganei",
+        "tipo": "comunicato stampa",
+        "corpo": "<p>Il 1° Rally Colli Euganei apre le iscrizioni. La gara si corre il 21 e 22 novembre 2026 sulle strade dei Colli Euganei, su due prove speciali con tre passaggi ciascuna. È il ritorno di un rally nel Padovano dopo più di 35 anni.</p>\n<h2>Come iscriversi</h2>\n<p>Il modulo d'iscrizione, il regolamento particolare di gara e il programma sono pubblicati nell'<a href=\"/rally-colli-euganei/documenti/\">albo di gara digitale</a>. Le domande vanno inviate complete di tutti gli allegati.</p>\n<p>Il numero massimo di vetture ammesse è ancora da confermare. Fa fede l'ordine di ricezione delle domande complete.</p>\n<h2>Chi può partecipare</h2>\n<p>La gara ha titolazione ACI Sport ed è aperta alle vetture moderne dalle Rally2 alle Rally5 e alle vetture storiche in regolarità sport.</p>\n<p>Servono licenza e tessera in corso di validità per il pilota e per il navigatore. I requisiti completi sono nel regolamento particolare di gara.</p>\n<blockquote><p>«Riportare un rally nel Padovano dopo più di 35 anni è il motivo per cui è nata l'associazione. Ora tocca ai concorrenti.»</p><cite>Il direttivo di Inversione A U</cite></blockquote>\n<h2>Le date da segnare</h2>\n<dl><dt>Apertura iscrizioni</dt><dd>25 SET 2026</dd><dt>Chiusura iscrizioni</dt><dd>Da confermare</dd><dt>Ricognizioni</dt><dd>Da confermare</dd><dt>Gara</dt><dd>21–22 NOV 2026</dd></dl>\n<p>Per informazioni: <a href=\"mailto:inversione.au3@gmail.com\">inversione.au3@gmail.com</a>.</p>",
+        "evento": "Rally Colli Euganei",
+        "immagine": "wix:image://v1/2be2d6_d88f184fc478406ea81eba41477d778a~mv2.jpg/inversione-au-rally-colli-euganei-07.jpg#originWidth=1737&originHeight=906",
+        "chi": "Per i concorrenti",
+        "ctaUrl": "https://www.inversioneau.com/rally-colli-euganei/concorrenti/",
+        "immagineAlt": ""
+      },
+      {
+        "pubblicato": true,
+        "lead": "Le zone pubblico del 1° Rally Colli Euganei saranno pubblicate dopo l’omologazione del percorso, entro il 30 settembre 2026. Intanto, come funzionano.",
+        "credito": "Foto: Inversione A U",
+        "_id": "6abd7103-0551-42fe-8125-0293faa13553",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.637Z"
+        },
+        "sommario": "Le aree consigliate lungo le tre prove speciali, con parcheggi e orari.",
+        "data": "2026-07-03",
+        "titolo": "Zone pubblico: dove vedere il rally",
+        "ctaLabel": "Apri le informazioni per il pubblico",
+        "_updatedDate": {
+          "$date": "2026-08-19T08:38:19.243Z"
+        },
+        "slug": "rally-zone-pubblico",
+        "tipo": "aggiornamento",
+        "corpo": "<p>Le zone pubblico sono aree scelte dall’organizzazione, delimitate e presidiate dai commissari. Hanno buona visuale, un percorso di accesso a piedi e un parcheggio indicato.</p>\n<p>Tutte le informazioni per chi viene a vedere la gara — programma, regole di sicurezza, come arrivare — sono nella <a href=\"/rally-colli-euganei/spettatori/\">pagina spettatori</a>.</p>",
+        "evento": "Rally Colli Euganei",
+        "immagine": "wix:image://v1/2be2d6_7ddf9bb7d2564e4a98e2d3d9914a4618~mv2.jpg/inversione-au-rally-colli-euganei-10.jpg#originWidth=1920&originHeight=1266",
+        "chi": "Per il pubblico",
+        "ctaUrl": "https://www.inversioneau.com/rally-colli-euganei/spettatori/",
+        "immagineAlt": ""
+      },
+      {
+        "pubblicato": true,
+        "lead": "Le ricognizioni del percorso si svolgono nelle date indicate nel programma di gara, con due passaggi per prova speciale e velocità da codice della strada.",
+        "credito": "Foto: archivio Inversione A U",
+        "_id": "c0a4d09d-e84c-4a70-95c1-048ad68cb9db",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.636Z"
+        },
+        "sommario": "Due passaggi per prova speciale, velocità da codice della strada.",
+        "data": "2026-06-28",
+        "titolo": "Ricognizioni: date e regole",
+        "ctaLabel": "Apri l’albo di gara",
+        "_updatedDate": {
+          "$date": "2026-08-19T08:30:03.175Z"
+        },
+        "slug": "rally-ricognizioni-date-regole",
+        "tipo": "aggiornamento",
+        "corpo": "<p>Le date confermate vengono pubblicate nell’<a href=\"/rally-colli-euganei/documenti/\">albo di gara</a> insieme al regolamento particolare.</p>",
+        "evento": "Rally Colli Euganei",
+        "immagine": "wix:image://v1/2be2d6_c9546f3b500e4e0cb3ec51f101138f3b~mv2.jpg/inversione-au-rally-colli-euganei-04.jpg#originWidth=1920&originHeight=1119",
+        "chi": "Per i concorrenti",
+        "ctaUrl": "https://www.inversioneau.com/rally-colli-euganei/documenti/",
+        "immagineAlt": ""
+      },
+      {
+        "pubblicato": true,
+        "lead": "Il 1° Rally Colli Euganei ACI Sport si correrà il 21 e 22 novembre 2026. Percorso in fase di approvazione; iscrizioni in apertura in autunno.",
+        "credito": "Foto: archivio Inversione A U",
+        "_id": "67b3bb09-1fa3-45ee-9ba3-8d5897a745ea",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.635Z"
+        },
+        "sommario": "Titolazione ACI Sport confermata. Percorso in fase di approvazione e omologazione.",
+        "data": "2026-07-12",
+        "titolo": "Il 1° Rally Colli Euganei è ufficiale: 21–22 novembre",
+        "ctaLabel": "Apri la pagina del rally",
+        "_updatedDate": {
+          "$date": "2026-08-19T08:30:03.254Z"
+        },
+        "slug": "rally-colli-euganei-ufficiale",
+        "tipo": "comunicato stampa",
+        "corpo": "<p>Tutte le informazioni sono nella <a href=\"/rally-colli-euganei/\">pagina del rally</a>: concorrenti, spettatori, percorso e documenti di gara.</p>",
+        "evento": "Rally Colli Euganei",
+        "immagine": "wix:image://v1/2be2d6_8dd80d426e6041f091aa0e610e7361c8~mv2.jpg/inversione-au-rally-colli-euganei-12.jpg#originWidth=1448&originHeight=1086",
+        "chi": "Per il pubblico",
+        "ctaUrl": "https://www.inversioneau.com/rally-colli-euganei/",
+        "immagineAlt": ""
+      },
+      {
+        "pubblicato": true,
+        "lead": "Oltre 10.000 spettatori, circa 100 equipaggi in pista, più di 400 auto esposte: i numeri dell’edizione 2026 del Polo Motor Show.",
+        "credito": "Foto: Inversione A U",
+        "_id": "1e0097fb-432f-4267-b312-4598d7a74064",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.634Z"
+        },
+        "sommario": "Due giorni di drift, rally show e raduno a Selve di Teolo. Il resoconto.",
+        "data": "2026-06-18",
+        "titolo": "Polo Motor Show 2026: i numeri dell’edizione",
+        "ctaLabel": "Guarda le foto",
+        "_updatedDate": {
+          "$date": "2026-08-20T07:40:21.515Z"
+        },
+        "slug": "polo-motor-show-2026-numeri",
+        "tipo": "comunicato stampa",
+        "corpo": "<p>Le foto ufficiali sono nella <a href=\"/foto-e-video/polo-motor-show-2026/\">galleria dell’edizione</a>. L’edizione 2027 è in preparazione.</p>",
+        "evento": "Polo Motor Show",
+        "immagine": "wix:image://v1/2be2d6_ec2e4223a0a543338f55f74c1b31c114~mv2.jpg/polo_sierra_fina_drift.jpg#originWidth=1920&originHeight=1079",
+        "chi": "Per il pubblico",
+        "ctaUrl": "https://www.inversioneau.com/foto-e-video/polo-motor-show-2026/"
+      },
+      {
+        "pubblicato": true,
+        "lead": "La galleria ufficiale dell’edizione 2026 è online. Le foto sono libere per la stampa con il credit indicato.",
+        "credito": "Foto: Inversione A U",
+        "_id": "1a489235-2fa8-4e3c-ad46-44d9e91b0d28",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.633Z"
+        },
+        "sommario": "Gli scatti dei fotografi accreditati, liberi per la stampa con credit.",
+        "data": "2026-06-15",
+        "titolo": "Le foto ufficiali del Polo Motor Show",
+        "ctaLabel": "Apri la galleria",
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:19.617Z"
+        },
+        "slug": "foto-ufficiali-polo-motor-show-2026",
+        "tipo": "aggiornamento",
+        "corpo": "<p>Per il materiale in alta risoluzione: <a href=\"/stampa/\">area stampa</a>.</p>",
+        "evento": "Polo Motor Show",
+        "immagine": "wix:image://v1/2be2d6_53e873896cbc4ba2922c115fb0626052~mv2.jpg/polo_e30_verde_rally.jpg#originWidth=1920&originHeight=1248",
+        "chi": "Per il pubblico",
+        "ctaUrl": "https://www.inversioneau.com/foto-e-video/polo-motor-show-2026/"
+      },
+      {
+        "pubblicato": true,
+        "lead": "Domenica 15 marzo 2026 si è svolta la prima edizione di Legnaro Motori: una giornata di drift e raduno in un’unica area.",
+        "credito": "Foto: Inversione A U",
+        "_id": "1091e9d1-44ef-47f4-8bbc-a8b846326571",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.632Z"
+        },
+        "sommario": "Drift e raduno per la prima edizione. Le foto ufficiali della giornata.",
+        "data": "2026-03-20",
+        "titolo": "Legnaro Motori, la prima volta",
+        "ctaLabel": "Guarda le foto",
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:19.707Z"
+        },
+        "slug": "legnaro-motori-prima-edizione",
+        "tipo": "comunicato stampa",
+        "corpo": "<p>Le foto ufficiali sono nella <a href=\"/foto-e-video/legnaro-motori-2026/\">galleria della giornata</a>. La seconda edizione è in preparazione.</p>",
+        "evento": "Legnaro Motori",
+        "immagine": "wix:image://v1/2be2d6_353fc579999f41d48c3652dea09bec4c~mv2.jpg/legnaro_verde_traverso.jpg#originWidth=1440&originHeight=1800",
+        "chi": "Per il pubblico",
+        "ctaUrl": "https://www.inversioneau.com/foto-e-video/legnaro-motori-2026/"
+      },
+      {
+        "pubblicato": true,
+        "lead": "Tre eventi in provincia di Padova: Legnaro Motori il 15 marzo, Polo Motor Show il 13 e 14 giugno, 1° Rally Colli Euganei il 21 e 22 novembre.",
+        "credito": "Foto: Inversione A U",
+        "_id": "9d506c12-ad24-46c4-9706-7a65ee75c726",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.631Z"
+        },
+        "sommario": "Tre eventi: Legnaro Motori, Polo Motor Show e il ritorno del rally.",
+        "data": "2026-01-10",
+        "titolo": "Il calendario 2026 di Inversione A U",
+        "ctaLabel": "Vedi il calendario",
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:19.780Z"
+        },
+        "slug": "calendario-2026",
+        "tipo": "comunicato stampa",
+        "corpo": "<p>Il calendario completo è nella <a href=\"/eventi/\">pagina eventi</a>.</p>",
+        "evento": "Associazione",
+        "immagine": "wix:image://v1/2be2d6_4dd5a26326204cad83954a06632e9eff~mv2.jpg/bmw_m3_e30_fumo.jpg#originWidth=1920&originHeight=1138",
+        "chi": "Per il pubblico",
+        "ctaUrl": "https://www.inversioneau.com/eventi/"
+      },
+      {
+        "pubblicato": true,
+        "lead": "Il tesseramento 2026 è aperto: nuovo tesseramento o rinnovo. La tessera vale per l’anno solare.",
+        "credito": "Foto: Inversione A U",
+        "_id": "3ef590af-fcf9-46ad-9919-cf5afd6146e4",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:32.630Z"
+        },
+        "sommario": "Come tesserarsi e sostenere l’attività dell’associazione.",
+        "data": "2026-01-02",
+        "titolo": "Tesseramento 2026 aperto",
+        "ctaLabel": "Richiedi la tessera",
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:00.686Z"
+        },
+        "slug": "tesseramento-2026",
+        "tipo": "aggiornamento",
+        "corpo": "<p>Come si richiede la tessera e cosa comprende: <a href=\"/associazione/#tesseramento\">pagina dell’associazione</a>.</p>",
+        "evento": "Associazione",
+        "immagine": "wix:image://v1/2be2d6_0998c89bd838492882fe36072f5dbe12~mv2.jpg/inversione_au_e36_hay.jpg#originWidth=1440&originHeight=1800",
+        "chi": "Per il pubblico",
+        "ctaUrl": "https://www.inversioneau.com/associazione/#tesseramento"
+      }
+    ],
+    "Gallerie": [
+      {
+        "copertina": "wix:image://v1/2be2d6_0b057e6b80444e80beb0c275a6257626~mv2.jpg/polo-motor-show-2026-080.jpg#originWidth=1600&originHeight=899",
+        "stato": "pubblicata",
+        "anno": "2026",
+        "credito": "Foto: Inversione A U",
+        "_id": "f5963790-ab09-465c-9547-a2bd84b5c03c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.162Z"
+        },
+        "copertinaAlt": "BMW M3 E92 arancione in derapata davanti al pubblico sugli spalti",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:54:15.359Z"
+        },
+        "slug": "polo-motor-show-2026",
+        "evento": "polo",
+        "nome": "Polo Motor Show"
+      },
+      {
+        "copertina": "wix:image://v1/2be2d6_6ea9e5c7dea0478696207a7f482d15c2~mv2.jpg/legnaro-motori-2026-36.jpg#originWidth=1440&originHeight=1800",
+        "stato": "pubblicata",
+        "anno": "2026",
+        "credito": "Foto: Garage Hub, GR Visuals / Inversione A U",
+        "_id": "3edcfd93-0fb9-4b5d-a80b-377baa681990",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.161Z"
+        },
+        "copertinaAlt": "BMW E36 del team Kebek in drift a Legnaro Motori 2026",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.278Z"
+        },
+        "slug": "legnaro-motori-2026",
+        "evento": "legnaro",
+        "nome": "Legnaro Motori"
+      },
+      {
+        "stato": "in-attesa",
+        "anno": "2026",
+        "credito": "Foto: [NOME] / Inversione A U",
+        "_id": "7eba0f6e-d164-404e-9a93-a8f6d1d509b2",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.160Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T12:12:41.963Z"
+        },
+        "slug": "rally-colli-euganei-2026",
+        "notaVuota": "Le foto ufficiali saranno online nei giorni dopo la gara.",
+        "evento": "rally",
+        "nome": "1° Rally Colli Euganei"
+      }
+    ],
+    "Foto": [
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 1,
+        "_id": "9fea8671-99fb-4e0a-b0c5-e97d4fc5b6a6",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.780Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.780Z"
+        },
+        "alt": "Peugeot 205 in traverso sul percorso del Polo Motor Show a Selve di Teolo",
+        "immagine": "wix:image://v1/2be2d6_4eab5f24a8ad40f2b217bc387e05f0c2~mv2.jpg/polo-motor-show-2026-001.jpg#originWidth=1600&originHeight=861"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 2,
+        "_id": "a2acb024-021a-4ec0-9bdb-22cbf002cca2",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.779Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.779Z"
+        },
+        "alt": "Porsche 911 gialla da corsa in derapata davanti al pubblico",
+        "immagine": "wix:image://v1/2be2d6_ea4245b1911e42938cf4ce682566295a~mv2.jpg/polo-motor-show-2026-002.jpg#originWidth=1600&originHeight=936"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 3,
+        "_id": "bf2bd14b-e455-4d10-9e90-005e4b81e731",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.778Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.778Z"
+        },
+        "alt": "BMW E30 verde menta con livrea Inversione A U in uscita di curva",
+        "immagine": "wix:image://v1/2be2d6_68154a436714468a995984ca112ff4a3~mv2.jpg/polo-motor-show-2026-003.jpg#originWidth=1600&originHeight=1040"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 4,
+        "_id": "2a2551dd-5730-417a-b13b-8fa0c044e349",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.777Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.777Z"
+        },
+        "alt": "BMW E30 bianca da rally con livrea Sportsolio Racing tra le barriere",
+        "immagine": "wix:image://v1/2be2d6_1cff24ee9dc246f5ac8829b28d9b602c~mv2.jpg/polo-motor-show-2026-004.jpg#originWidth=1600&originHeight=862"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 5,
+        "_id": "ffad2c9d-df0e-41a0-8a91-85a01094cd38",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.776Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.776Z"
+        },
+        "alt": "BMW E36 nera in traverso lungo il tratto recintato del percorso",
+        "immagine": "wix:image://v1/2be2d6_3198d505df5e4ef397e7644ff56ddf34~mv2.jpg/polo-motor-show-2026-005.jpg#originWidth=1600&originHeight=1231"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 6,
+        "_id": "0fe2d8ac-dee1-4e8f-a75c-b7b8a9db9c0e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.775Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.775Z"
+        },
+        "alt": "Ford Sierra RS Cosworth con livrea storica FINA in piena azione",
+        "immagine": "wix:image://v1/2be2d6_9c427d0bb7ed45d289f3a9af191dff06~mv2.jpg/polo-motor-show-2026-006.jpg#originWidth=1600&originHeight=1571"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 7,
+        "_id": "07d88c07-ca4b-4be7-a7ee-c1fb1d73d6a2",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.774Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.774Z"
+        },
+        "alt": "BMW E36 nera con adesivi Inversione A U in derapata tra i cordoli rossi",
+        "immagine": "wix:image://v1/2be2d6_1e503015b6924231a306b76af07c3975~mv2.jpg/polo-motor-show-2026-007.jpg#originWidth=1600&originHeight=1186"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 8,
+        "_id": "1eb78912-6753-486e-93b7-7738ee1cca21",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.773Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.773Z"
+        },
+        "alt": "BMW M3 E92 arancione in traverso sul percorso cittadino",
+        "immagine": "wix:image://v1/2be2d6_522361f7ee704a63a5c79f53a7a866bc~mv2.jpg/polo-motor-show-2026-008.jpg#originWidth=1600&originHeight=1138"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 9,
+        "_id": "7ff5a159-f21b-40c8-b929-f4861716cb1c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.772Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.772Z"
+        },
+        "alt": "BMW E36 bianca alleggerita in derapata sul tratto veloce",
+        "immagine": "wix:image://v1/2be2d6_bd766debeb1044a487be461cabe0619b~mv2.jpg/polo-motor-show-2026-009.jpg#originWidth=1600&originHeight=1088"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 10,
+        "_id": "32028aac-53d1-480a-b466-e7fd1fb109d9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.771Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.771Z"
+        },
+        "alt": "Lancia Delta Integrale scura con cerchi arancioni in azione",
+        "immagine": "wix:image://v1/2be2d6_b894dc1ccadc482399837a90cb11aaa8~mv2.jpg/polo-motor-show-2026-010.jpg#originWidth=1600&originHeight=963"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 11,
+        "_id": "b8c16e20-2aff-4d3d-8538-e40650760a95",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.770Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.770Z"
+        },
+        "alt": "Porsche 911 gialla in traverso con lo sfondo dei capannoni di Teolo",
+        "immagine": "wix:image://v1/2be2d6_b63f2b88c1e94bc1b304e661e5a808c4~mv2.jpg/polo-motor-show-2026-011.jpg#originWidth=1600&originHeight=1066"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 12,
+        "_id": "a1a5710e-9189-4da1-8e10-80f57a07f24f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.769Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.769Z"
+        },
+        "alt": "Peugeot 205 numero 92 in derapata al tramonto",
+        "immagine": "wix:image://v1/2be2d6_d6a543d9747f46bd8a0b3f3c205ecf41~mv2.jpg/polo-motor-show-2026-012.jpg#originWidth=1600&originHeight=1118"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 13,
+        "_id": "bf4c9a22-75b3-48eb-8cb6-73bb82421fbc",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.768Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.768Z"
+        },
+        "alt": "Renault Clio bianca da rally in curva sul percorso",
+        "immagine": "wix:image://v1/2be2d6_c2ccdcdc46534251b777e8cd865b6df2~mv2.jpg/polo-motor-show-2026-013.jpg#originWidth=1600&originHeight=1023"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 14,
+        "_id": "faa7454d-ab7d-4ccb-a688-6dea6b4b54f6",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.767Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.767Z"
+        },
+        "alt": "BMW E36 blu Motorsport in traverso davanti alle barriere",
+        "immagine": "wix:image://v1/2be2d6_792fc51974fe4449aacff65668b39844~mv2.jpg/polo-motor-show-2026-014.jpg#originWidth=1600&originHeight=982"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 15,
+        "_id": "eff4facb-5a4b-4ba5-a950-b1516bf44153",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.766Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.766Z"
+        },
+        "alt": "Ford Escort RS bianca con livrea da rally storico in azione",
+        "immagine": "wix:image://v1/2be2d6_90d9988540f142fca49dbc99edaf93ba~mv2.jpg/polo-motor-show-2026-015.jpg#originWidth=1600&originHeight=1032"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 16,
+        "_id": "09899ab7-edfa-4d0d-95e8-4b81e21ab4a8",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.765Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.765Z"
+        },
+        "alt": "BMW E30 bianca e rossa Ricambi Americani in derapata con fumo",
+        "immagine": "wix:image://v1/2be2d6_11b821ed5a0c4c6fad1badcace7e4e3e~mv2.jpg/polo-motor-show-2026-016.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 17,
+        "_id": "77e3c52b-8dbf-49df-96ac-50bd3e13db7a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.764Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.764Z"
+        },
+        "alt": "Porsche 911 verde Hot Wheels Legends esposta nell'area espositiva",
+        "immagine": "wix:image://v1/2be2d6_7a1c413ef238455ca96a3cb00462ee41~mv2.jpg/polo-motor-show-2026-017.jpg#originWidth=1514&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 18,
+        "_id": "006ad5ec-f30b-488e-94bb-64a55576dcfc",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.763Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.763Z"
+        },
+        "alt": "Dettaglio del frontale della Porsche 911 verde allo stand Hot Wheels",
+        "immagine": "wix:image://v1/2be2d6_bca3ef9e180b40dda25ae4817e3393a8~mv2.jpg/polo-motor-show-2026-018.jpg#originWidth=1114&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 19,
+        "_id": "54677555-e978-4f24-9fec-66fd12eab6c0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.762Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.762Z"
+        },
+        "alt": "Sedile Sparco e interni in pelle della Porsche 911 verde",
+        "immagine": "wix:image://v1/2be2d6_648647a6aff3444e8a1e9b4dc932975d~mv2.jpg/polo-motor-show-2026-019.jpg#originWidth=1557&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 20,
+        "_id": "42e60377-6663-4057-8754-ff727fe9333e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.761Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.761Z"
+        },
+        "alt": "Toyota GR Supra bianca vista da dietro nel paddock del raduno",
+        "immagine": "wix:image://v1/2be2d6_189ac5b6826445139f58fbf2eec40bc5~mv2.jpg/polo-motor-show-2026-020.jpg#originWidth=1600&originHeight=1572"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 21,
+        "_id": "53c8756a-1147-4ba3-909d-d192724e4ec5",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.760Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.760Z"
+        },
+        "alt": "BMW Serie 6 E24 nera con cerchi BBS esposta al raduno",
+        "immagine": "wix:image://v1/2be2d6_4b79d08d808c4f93a6ed80efc2577413~mv2.jpg/polo-motor-show-2026-021.jpg#originWidth=1600&originHeight=1578"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 22,
+        "_id": "a7092d9b-06fe-4580-b29e-0fb4dff0bd5b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.759Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.759Z"
+        },
+        "alt": "Lexus IS200 bianca ribassata sotto il gazebo nell'area paddock",
+        "immagine": "wix:image://v1/2be2d6_e2f3174ee6eb49d38ad8399c5bba74ff~mv2.jpg/polo-motor-show-2026-022.jpg#originWidth=1553&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 23,
+        "_id": "efca9ad6-ae42-4b63-8b7b-4d644a2ebdc9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.758Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.758Z"
+        },
+        "alt": "Pubblico che passeggia tra le auto esposte all'ombra degli alberi",
+        "immagine": "wix:image://v1/2be2d6_2ffab84094c14b719a52a90c761cb8c2~mv2.jpg/polo-motor-show-2026-023.jpg#originWidth=1066&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 24,
+        "_id": "32723eb6-5a2c-4ca6-a2fa-5e5abedbf580",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.757Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.757Z"
+        },
+        "alt": "Folla di visitatori nell'area espositiva del Polo Motor Show",
+        "immagine": "wix:image://v1/2be2d6_7694da2ae9674205a8e595058bc39258~mv2.jpg/polo-motor-show-2026-024.jpg#originWidth=1066&originHeight=1599"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 25,
+        "_id": "f2dfe558-d0e4-4773-a2c3-21340b10fab3",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.756Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.756Z"
+        },
+        "alt": "Dettaglio della ruota e del passaruota di una Mercedes-AMG GT rossa",
+        "immagine": "wix:image://v1/2be2d6_af195d1143864e89ae05e5ae6c662112~mv2.jpg/polo-motor-show-2026-025.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 26,
+        "_id": "2b444f71-d71e-44d4-8289-cab2e7eeeb79",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.755Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.755Z"
+        },
+        "alt": "Mercedes-AMG GT numero 7 rossa davanti al camion di assistenza",
+        "immagine": "wix:image://v1/2be2d6_b5dbf7dfcb1b46618c58104d56bb138e~mv2.jpg/polo-motor-show-2026-026.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 27,
+        "_id": "0d9adfdc-2b1b-4a9e-b5b5-6a91ff60baf9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.754Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.754Z"
+        },
+        "alt": "Porsche 911 gialla ferma nel paddock in controluce",
+        "immagine": "wix:image://v1/2be2d6_d115ba05a0e94f1ebc24b056d6b544d5~mv2.jpg/polo-motor-show-2026-027.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 28,
+        "_id": "a4973246-8853-41eb-8f8c-4ce763a2d3e2",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.753Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.753Z"
+        },
+        "alt": "Opel Kadett GT/E gialla da rally storico nel paddock",
+        "immagine": "wix:image://v1/2be2d6_93d8c61a9a1e4852900471744555c429~mv2.jpg/polo-motor-show-2026-028.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 29,
+        "_id": "c68ae163-baa2-4cda-9586-496d993c243d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.752Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.752Z"
+        },
+        "alt": "Opel Kadett gialla vista da dietro in fase di partenza",
+        "immagine": "wix:image://v1/2be2d6_fd06474c2f04445a9b14c7f7d10e19f1~mv2.jpg/polo-motor-show-2026-029.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 30,
+        "_id": "f46b4f38-b3b5-421e-8141-bbb20c476dbc",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.751Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.751Z"
+        },
+        "alt": "Ford Sierra Cosworth FINA in derapata con i Colli Euganei sullo sfondo",
+        "immagine": "wix:image://v1/2be2d6_97d5035d070b4bda86fca64dbf5b9994~mv2.jpg/polo-motor-show-2026-030.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 31,
+        "_id": "7e49f0dc-907e-4deb-a561-849708e8bfd6",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.750Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.750Z"
+        },
+        "alt": "Mercedes 190 verde e bianca in traverso con i colli alle spalle",
+        "immagine": "wix:image://v1/2be2d6_a40d1136253e4693b81b1672a38dc458~mv2.jpg/polo-motor-show-2026-031.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 32,
+        "_id": "f20ab4cc-a01a-4f64-b7f7-47f0399b32cd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.749Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.749Z"
+        },
+        "alt": "Lancia Delta bordeaux in azione con vista sui Colli Euganei",
+        "immagine": "wix:image://v1/2be2d6_f05e07b0293c419f98fdd209a8bc4ea2~mv2.jpg/polo-motor-show-2026-032.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 33,
+        "_id": "7d6f441f-7655-47a8-9f68-3c0e180fb2b9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.748Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.748Z"
+        },
+        "alt": "Ford Sierra Cosworth FINA con fumo dagli pneumatici in curva",
+        "immagine": "wix:image://v1/2be2d6_1a785a70696c4263888745dab4da27f8~mv2.jpg/polo-motor-show-2026-033.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 34,
+        "_id": "b437e4be-7d43-4ae0-abfe-45639a318ce0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.747Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.747Z"
+        },
+        "alt": "Dettaglio della pinza freno gialla e del cerchio della Porsche 911 verde",
+        "immagine": "wix:image://v1/2be2d6_40f2ba8eb1dc437a8c69ed62f6db78cf~mv2.jpg/polo-motor-show-2026-034.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 35,
+        "_id": "b53e15e5-1af4-4143-b576-d2bc9a9d96b7",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.746Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.746Z"
+        },
+        "alt": "Volante e cruscotto in pelle color cuoio della Porsche 911 verde",
+        "immagine": "wix:image://v1/2be2d6_5f2ef7f4c8fc416289c6a1530cd5036b~mv2.jpg/polo-motor-show-2026-035.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 36,
+        "_id": "33c2f6f6-1d83-4550-9790-2f051aa165eb",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.745Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.745Z"
+        },
+        "alt": "Cerchio a tre razze e passaruota verde della Porsche 911 in esposizione",
+        "immagine": "wix:image://v1/2be2d6_ca727c9ce98549fb86c44fc354859691~mv2.jpg/polo-motor-show-2026-036.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 37,
+        "_id": "ff11164a-29ee-4630-9413-81054d23c4cb",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.744Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.744Z"
+        },
+        "alt": "Auto rossa in derapata avvolta dal fumo degli pneumatici",
+        "immagine": "wix:image://v1/2be2d6_091db6662823466294d7803bce998715~mv2.jpg/polo-motor-show-2026-037.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 38,
+        "_id": "33dbc6d9-3263-43c6-be47-3a8fda4f4e2d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.743Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.743Z"
+        },
+        "alt": "Berlina blu in traverso tra le nuvole di fumo sul percorso",
+        "immagine": "wix:image://v1/2be2d6_79ebc16da935418db95707dc92d6ec24~mv2.jpg/polo-motor-show-2026-038.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 39,
+        "_id": "e7492dac-23ad-4612-b617-914e3acb011e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.742Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.742Z"
+        },
+        "alt": "BMW E36 nera e arancione con livrea a fiamme in azione",
+        "immagine": "wix:image://v1/2be2d6_3922fb34d5fa4c8eabef575f5bef7717~mv2.jpg/polo-motor-show-2026-039.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 40,
+        "_id": "bcde96b8-4b78-46be-bd78-72937edf3256",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.741Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.741Z"
+        },
+        "alt": "BMW E30 bianca in uscita di curva davanti ai capannoni",
+        "immagine": "wix:image://v1/2be2d6_66cfd5cd5f58441cb532c5fee6cb2691~mv2.jpg/polo-motor-show-2026-040.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 41,
+        "_id": "410ccd04-ff41-44a7-8bc1-9332f413f17d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.740Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.740Z"
+        },
+        "alt": "Opel Kadett gialla da rally storico in derapata sul percorso",
+        "immagine": "wix:image://v1/2be2d6_db7f8cd025fe4620b2d80597fbd338de~mv2.jpg/polo-motor-show-2026-041.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 42,
+        "_id": "07f910b4-9b19-4787-ae26-0c4e40733334",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.739Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.739Z"
+        },
+        "alt": "Ford Escort blu da rally in traverso davanti alle strutture di Teolo",
+        "immagine": "wix:image://v1/2be2d6_db5615ee18894cb6835ab3728f7be3f4~mv2.jpg/polo-motor-show-2026-042.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 43,
+        "_id": "1043184d-f3a8-4e12-a989-65599b97ad6f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.738Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.738Z"
+        },
+        "alt": "Piaggio Ape rossa da drift in azione con i Colli Euganei sullo sfondo",
+        "immagine": "wix:image://v1/2be2d6_cd9319d358aa46d0ac2b7c4f484a419a~mv2.jpg/polo-motor-show-2026-043.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 44,
+        "_id": "cf510a28-8e1e-4013-89c1-97dc5d9cea37",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.737Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.737Z"
+        },
+        "alt": "BMW E36 azzurra in derapata con fumo dagli pneumatici",
+        "immagine": "wix:image://v1/2be2d6_42096639b68f4b4d8875dd1cd062f410~mv2.jpg/polo-motor-show-2026-044.jpg#originWidth=1280&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 45,
+        "_id": "3568c586-b7bb-431f-b38d-0ac447811fd1",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.736Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.736Z"
+        },
+        "alt": "BMW E30 bianca in traverso davanti alle balle di paglia",
+        "immagine": "wix:image://v1/2be2d6_eec6c0e777b14ee9bc6c602e32295dd9~mv2.jpg/polo-motor-show-2026-045.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 46,
+        "_id": "f7a7e6c6-9d5f-4e8c-b18c-e54ee9fde75d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.735Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.735Z"
+        },
+        "alt": "Frontale della Mercedes-AMG GT rossa nel paddock",
+        "immagine": "wix:image://v1/2be2d6_736f055c7dd9415aa42edab580ff931e~mv2.jpg/polo-motor-show-2026-046.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 47,
+        "_id": "acdd315f-5172-402e-9136-34bc3646bd3f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.734Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.734Z"
+        },
+        "alt": "BMW E36 nera in azione tra le balle di paglia del percorso",
+        "immagine": "wix:image://v1/2be2d6_f4a75626d2714c33bdfc9d57918d4130~mv2.jpg/polo-motor-show-2026-047.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 48,
+        "_id": "d49a90bc-5022-490a-8b21-63e266e410e3",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.733Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.733Z"
+        },
+        "alt": "BMW E36 grigia in derapata sotto la struttura del circuito",
+        "immagine": "wix:image://v1/2be2d6_cade9a7f4eb2468d805b9874a7689332~mv2.jpg/polo-motor-show-2026-048.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 49,
+        "_id": "371bb950-41f2-4427-a3b2-148ba095bd79",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.732Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.732Z"
+        },
+        "alt": "BMW M3 E92 arancione in traverso lungo le protezioni",
+        "immagine": "wix:image://v1/2be2d6_3040c9901efd464d9a2bc7a5c065d919~mv2.jpg/polo-motor-show-2026-049.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 50,
+        "_id": "3ecb4a25-a48b-4058-b65a-0185de71aabe",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.731Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.731Z"
+        },
+        "alt": "BMW E36 bianca da drift in azione vicino alle balle di paglia",
+        "immagine": "wix:image://v1/2be2d6_59d7c7b385704490bb7bde69522d3dd6~mv2.jpg/polo-motor-show-2026-050.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 51,
+        "_id": "1c5b7a05-4711-4e23-b9a8-4625bf75162a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.730Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.730Z"
+        },
+        "alt": "Fiancata di un'auto bianca da drift con fumo dalle gomme posteriori",
+        "immagine": "wix:image://v1/2be2d6_b934d3646ae348489531724e8f810f18~mv2.jpg/polo-motor-show-2026-051.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 52,
+        "_id": "8e6254a3-c605-4155-89df-b085c670510c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.729Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.729Z"
+        },
+        "alt": "Berlina argento in derapata con il drone che riprende dall'alto",
+        "immagine": "wix:image://v1/2be2d6_b037078d41694c0d98fa1583e0415f96~mv2.jpg/polo-motor-show-2026-052.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 53,
+        "_id": "808adb4b-6dba-419d-be5a-63b7fce01d1d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.728Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.728Z"
+        },
+        "alt": "Peugeot 205 azzurra e bianca sul rettilineo davanti al pubblico",
+        "immagine": "wix:image://v1/2be2d6_75abeca4942048f69969438d0274f4cb~mv2.jpg/polo-motor-show-2026-053.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 54,
+        "_id": "3ab7273b-18b8-4401-b97b-6482d55d90fd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.727Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.727Z"
+        },
+        "alt": "Piccola auto blu numero 12 sul percorso con il pubblico ai lati",
+        "immagine": "wix:image://v1/2be2d6_0c7299e2275e4fc9b7a7597adf198df7~mv2.jpg/polo-motor-show-2026-054.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 55,
+        "_id": "a73242e5-b36c-44ba-a47d-cf945e6f6ffd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.726Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.726Z"
+        },
+        "alt": "Berlina rossa in traverso davanti ai banner degli sponsor",
+        "immagine": "wix:image://v1/2be2d6_d32ef329abb54aa7a5c65528b669ca04~mv2.jpg/polo-motor-show-2026-055.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 56,
+        "_id": "3f6ac35a-e408-4d76-b71a-b6923c26d665",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.725Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.725Z"
+        },
+        "alt": "Ford Fiesta gialla e Toyota verde in azione lungo il muro sponsor",
+        "immagine": "wix:image://v1/2be2d6_580bfcc29f7e404fac99535291f53b4c~mv2.jpg/polo-motor-show-2026-056.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 57,
+        "_id": "93e5d74f-9c16-4dc5-a1b9-bd3d9b8c2798",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.724Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.724Z"
+        },
+        "alt": "Ford Escort blu da rally in curva davanti alle strutture di Teolo",
+        "immagine": "wix:image://v1/2be2d6_f3d32d0f5d414c50bcee1a6fa888d7c2~mv2.jpg/polo-motor-show-2026-057.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 58,
+        "_id": "a7371019-e326-4d9a-b2bd-2791c5197c9e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.723Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.723Z"
+        },
+        "alt": "Bambino con cuffie antirumore rosse guarda le auto in pista",
+        "immagine": "wix:image://v1/2be2d6_f8df49d0dd8b492cbfd81ec9abd8970e~mv2.jpg/polo-motor-show-2026-058.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 59,
+        "_id": "61e6bf52-e77e-4246-92c9-3f74f66e4b26",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.722Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.722Z"
+        },
+        "alt": "Suzuki Swift bianca da rally in fase di ripartenza",
+        "immagine": "wix:image://v1/2be2d6_4d5e0ea6e2774798b4260197a72252f4~mv2.jpg/polo-motor-show-2026-059.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 60,
+        "_id": "27729b36-4f63-44a7-a2d9-136414addddc",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.721Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.721Z"
+        },
+        "alt": "Mitsubishi Lancer Evo bianca con livrea Europlast vista da dietro",
+        "immagine": "wix:image://v1/2be2d6_5f8ab40025e94c3e9d9b017fe8fa1110~mv2.jpg/polo-motor-show-2026-060.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 61,
+        "_id": "8a9d095a-23ee-4f45-bc41-9b02114d0d0d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.720Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.720Z"
+        },
+        "alt": "Mitsubishi Lancer Evo bianca in azione sul percorso",
+        "immagine": "wix:image://v1/2be2d6_5a36fc7624ba4b54bf494af12c8bffab~mv2.jpg/polo-motor-show-2026-061.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 62,
+        "_id": "e613352e-e38e-456f-a6ed-46bf699ce15e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.719Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.719Z"
+        },
+        "alt": "BMW E36 blu e gialla in traverso davanti ai banner",
+        "immagine": "wix:image://v1/2be2d6_7664fa3a6bb14427a83c0b315ef513df~mv2.jpg/polo-motor-show-2026-062.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 63,
+        "_id": "7004d24f-84a6-4524-b6e2-d3b1d3bae4ae",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.718Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.718Z"
+        },
+        "alt": "BMW E36 scura in derapata avvolta dal fumo",
+        "immagine": "wix:image://v1/2be2d6_623a2d38cc1c424ea4c2bba540986358~mv2.jpg/polo-motor-show-2026-063.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 64,
+        "_id": "929e688f-bbe4-4653-b985-b8f3aca50e2c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.717Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.717Z"
+        },
+        "alt": "BMW E36 grigia in traverso vicino alle protezioni",
+        "immagine": "wix:image://v1/2be2d6_90d114727e204b1d882d02c9d574bb9b~mv2.jpg/polo-motor-show-2026-064.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 65,
+        "_id": "8d94c9f5-0e7d-4ffa-b372-b1f3a36d4656",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.716Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.716Z"
+        },
+        "alt": "Berlina blu con fumo dalle gomme sul tratto veloce",
+        "immagine": "wix:image://v1/2be2d6_65feca6973c34cabb9ab9626054d3c8b~mv2.jpg/polo-motor-show-2026-065.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 66,
+        "_id": "651f3c30-ecb8-43ee-8bce-7775f0b907fc",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.715Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.715Z"
+        },
+        "alt": "BMW M3 E92 arancione vista da dietro in fase di derapata",
+        "immagine": "wix:image://v1/2be2d6_b9194d58328c4cbd9bcb6a95bf66a47a~mv2.jpg/polo-motor-show-2026-066.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 67,
+        "_id": "599b1a72-4955-4d10-a746-9a10f0d9f941",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.714Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.714Z"
+        },
+        "alt": "Foto di gruppo dello staff Inversione A U davanti al Polo",
+        "immagine": "wix:image://v1/2be2d6_0cfd15ca3d16414f9e8ead2527f86c3c~mv2.jpg/polo-motor-show-2026-067.jpg#originWidth=1600&originHeight=1068"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 68,
+        "_id": "504d3e3a-82ee-42d1-ad5a-ce614db91c4a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.713Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.713Z"
+        },
+        "alt": "Porsche 911 verde sotto la struttura Hot Wheels Legends",
+        "immagine": "wix:image://v1/2be2d6_0e1269b0914146fa81cf9ddcdcadacbf~mv2.jpg/polo-motor-show-2026-068.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 69,
+        "_id": "514ab1fb-6fd0-4e73-966f-04d6779705a9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.712Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.712Z"
+        },
+        "alt": "Mercedes-AMG GT rosa nel paddock accanto al camion di assistenza",
+        "immagine": "wix:image://v1/2be2d6_bb128a5384e248b7864bc713ad804036~mv2.jpg/polo-motor-show-2026-069.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 70,
+        "_id": "403a9389-2c70-490a-a849-38c000e4405e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.711Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.711Z"
+        },
+        "alt": "BMW M2 CS Racing bianca e blu nel paddock",
+        "immagine": "wix:image://v1/2be2d6_673a2b22d61f46819badd27f46c9a648~mv2.jpg/polo-motor-show-2026-070.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 71,
+        "_id": "62cd5cc4-54c5-42da-942d-09cd430359b7",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.710Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.710Z"
+        },
+        "alt": "BMW E30 verde menta con il pilota a bordo prima della partenza",
+        "immagine": "wix:image://v1/2be2d6_d7b18ab6ba094b73b8cc29feb36ab668~mv2.jpg/polo-motor-show-2026-071.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 72,
+        "_id": "b0e2bd54-9cf2-476d-bedd-fa8d763605c1",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.709Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.709Z"
+        },
+        "alt": "BMW E30 verde menta parcheggiata sotto il gazebo del paddock",
+        "immagine": "wix:image://v1/2be2d6_4d8b79ee7d5d440ca35dffc4a00b39e2~mv2.jpg/polo-motor-show-2026-072.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 73,
+        "_id": "25b1b525-b864-4727-85dd-3565528057dd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.708Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.708Z"
+        },
+        "alt": "BMW E36 bordeaux in traverso tra i cordoli rossi",
+        "immagine": "wix:image://v1/2be2d6_5e003582ea314a0e838868d32d6617bd~mv2.jpg/polo-motor-show-2026-073.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 74,
+        "_id": "7f86e2e4-368a-4112-808e-58b81a6e5816",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.707Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.707Z"
+        },
+        "alt": "BMW E30 verde menta e Suzuki Swift bianca in azione insieme",
+        "immagine": "wix:image://v1/2be2d6_15ef54b710dc40b789c46c1b4a1d8deb~mv2.jpg/polo-motor-show-2026-074.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 75,
+        "_id": "9a87ad7c-b2cd-4371-89b4-6518298e5f32",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.706Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.706Z"
+        },
+        "alt": "BMW E36 azzurra in traverso davanti alla tribuna del pubblico",
+        "immagine": "wix:image://v1/2be2d6_f5203043d7cd4195afe038cc84d7e04d~mv2.jpg/polo-motor-show-2026-075.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 76,
+        "_id": "d8e19264-dcb9-46f4-9af1-db977f1d467d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.705Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.705Z"
+        },
+        "alt": "Ford Sierra Cosworth FINA in derapata davanti ai banner degli sponsor",
+        "immagine": "wix:image://v1/2be2d6_865002dc1714440fa64aefe7e0d911b0~mv2.jpg/polo-motor-show-2026-076.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 77,
+        "_id": "1f3e393e-2d42-46cf-8971-b6fe6ee359cf",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.704Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.704Z"
+        },
+        "alt": "Ford Sierra Cosworth FINA lungo il muro degli sponsor",
+        "immagine": "wix:image://v1/2be2d6_35878585490d41d58fa52012d40346bc~mv2.jpg/polo-motor-show-2026-077.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 78,
+        "_id": "7a4bf6f0-d48d-4563-a1e9-7e5162e485cc",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.703Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.703Z"
+        },
+        "alt": "BMW M2 CS Racing numero 96 nel paddock",
+        "immagine": "wix:image://v1/2be2d6_96bf3480dd024bfb91e0494ec8f635b8~mv2.jpg/polo-motor-show-2026-078.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 79,
+        "_id": "4ce2f669-20fa-493e-b42a-03657f0e191f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.702Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.702Z"
+        },
+        "alt": "BMW E36 grigia in traverso sul tratto veloce",
+        "immagine": "wix:image://v1/2be2d6_8c745379781a4665b355d09ccaa6dbbf~mv2.jpg/polo-motor-show-2026-079.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 80,
+        "_id": "df3b9c84-de50-4079-8a3d-3ccf891abb25",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.701Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.701Z"
+        },
+        "alt": "BMW M3 E92 arancione in derapata davanti al pubblico sugli spalti",
+        "immagine": "wix:image://v1/2be2d6_0b057e6b80444e80beb0c275a6257626~mv2.jpg/polo-motor-show-2026-080.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 81,
+        "_id": "5b7a431f-3136-4267-973b-11b191a93298",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.700Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.700Z"
+        },
+        "alt": "BMW E36 nera in traverso con fumo davanti agli spettatori",
+        "immagine": "wix:image://v1/2be2d6_730340eb0b274bcfbc37e0e4687702b0~mv2.jpg/polo-motor-show-2026-081.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 82,
+        "_id": "39e91112-b81a-4b13-b643-3dda3fd716a4",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.699Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.699Z"
+        },
+        "alt": "BMW E36 bianca da drift in azione vista dal bordo pista",
+        "immagine": "wix:image://v1/2be2d6_d8b24e48186a484b89609fd32fdacbe2~mv2.jpg/polo-motor-show-2026-082.jpg#originWidth=899&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 83,
+        "_id": "c4d8ccf4-1e57-426e-ac89-df93aba410a0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.698Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.698Z"
+        },
+        "alt": "BMW E36 bordeaux in derapata davanti alle strutture del Polo",
+        "immagine": "wix:image://v1/2be2d6_7a552b9153024a0ab3e67b026a2b1549~mv2.jpg/polo-motor-show-2026-083.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 84,
+        "_id": "bd4d3bee-794c-4d7f-9bb9-7114dac21a87",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.697Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.697Z"
+        },
+        "alt": "Peugeot 106 bianca in traverso davanti alla folla",
+        "immagine": "wix:image://v1/2be2d6_10fbc76bdf9741fa9846475ea7ea1700~mv2.jpg/polo-motor-show-2026-084.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 85,
+        "_id": "e205ae7a-bbb3-440d-b24a-337d32a5065a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.696Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.696Z"
+        },
+        "alt": "Ford Sierra RS Cosworth FINA con la Nissan GT-R sullo sfondo",
+        "immagine": "wix:image://v1/2be2d6_2af49fc23e874bf7a0e92adf05b7573b~mv2.jpg/polo-motor-show-2026-085.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 86,
+        "_id": "f4b99a0b-cfb4-4a4b-886f-6837910f9c18",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.695Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.695Z"
+        },
+        "alt": "Mercedes 190 verde in azione lungo il muro degli sponsor",
+        "immagine": "wix:image://v1/2be2d6_7df879cd5f8440828c9f234cb142d302~mv2.jpg/polo-motor-show-2026-086.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 87,
+        "_id": "4425a433-320a-45af-b7a9-780a5dfdcd0e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.694Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.694Z"
+        },
+        "alt": "BMW M3 E92 arancione in derapata con fumo dagli pneumatici",
+        "immagine": "wix:image://v1/2be2d6_3242017a121b4c49b79b901c4ebc1042~mv2.jpg/polo-motor-show-2026-087.jpg#originWidth=899&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 88,
+        "_id": "fea14e69-6bb1-4304-bea8-b62c57550d4c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.693Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.693Z"
+        },
+        "alt": "Auto da drift gialla e nera in traverso con i Colli Euganei alle spalle",
+        "immagine": "wix:image://v1/2be2d6_03d13590ac244ce49e7b438a9a33f919~mv2.jpg/polo-motor-show-2026-088.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 89,
+        "_id": "cd183b5d-fca7-4d36-8029-d2e18f03be3b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.692Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.692Z"
+        },
+        "alt": "BMW E36 nera Ciao Papà in derapata",
+        "immagine": "wix:image://v1/2be2d6_c1590b98ec9a4c2a84f3d5fac17d3b72~mv2.jpg/polo-motor-show-2026-089.jpg#originWidth=1600&originHeight=899"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 90,
+        "_id": "50818848-4fda-4916-9189-fbb29194c9c0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.691Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.691Z"
+        },
+        "alt": "Piaggio Ape rossa da drift numero 95 in azione",
+        "immagine": "wix:image://v1/2be2d6_8ffcc4aba4454bedab4e269f853cdc16~mv2.jpg/polo-motor-show-2026-090.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 91,
+        "_id": "49cb42c4-4e61-470c-a07c-134b5b82a508",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.690Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.690Z"
+        },
+        "alt": "Ford Sierra Cosworth FINA in traverso davanti alle protezioni gialle",
+        "immagine": "wix:image://v1/2be2d6_43839859df44427b9d937120f060cc82~mv2.jpg/polo-motor-show-2026-091.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 92,
+        "_id": "dec144a2-b421-44d8-aba6-ccbd579d6c94",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.689Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.689Z"
+        },
+        "alt": "BMW M3 E92 arancione in derapata davanti al pubblico",
+        "immagine": "wix:image://v1/2be2d6_41c918adae7146288e305d7cc1f91672~mv2.jpg/polo-motor-show-2026-092.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 93,
+        "_id": "b90c83e5-22a4-4b7c-93a4-943e3e713829",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.688Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.688Z"
+        },
+        "alt": "BMW M3 E92 arancione in traverso lungo le barriere new jersey",
+        "immagine": "wix:image://v1/2be2d6_9d5b6f2428334a9a9e3c18940234688e~mv2.jpg/polo-motor-show-2026-093.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 94,
+        "_id": "acc57483-dd1a-432d-9353-2909241f59a1",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.687Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.687Z"
+        },
+        "alt": "BMW M3 E92 arancione con il commissario di percorso sullo sfondo",
+        "immagine": "wix:image://v1/2be2d6_fac2860018544739831524936ea837c1~mv2.jpg/polo-motor-show-2026-094.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 95,
+        "_id": "df0a6c1a-f009-4e45-843d-72b51477a842",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.686Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.686Z"
+        },
+        "alt": "BMW M3 E92 arancione vista da dietro con fumo dagli pneumatici",
+        "immagine": "wix:image://v1/2be2d6_3eb2650009c34d9197bfb3238f776fb1~mv2.jpg/polo-motor-show-2026-095.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 96,
+        "_id": "31ff11d2-158d-4ef6-aed2-751168cea39b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.685Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.685Z"
+        },
+        "alt": "Lexus IS200 bianca in derapata davanti al pubblico",
+        "immagine": "wix:image://v1/2be2d6_2439c1659a924883869c7748fae25991~mv2.jpg/polo-motor-show-2026-096.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 97,
+        "_id": "392259fa-eb0d-4791-941b-512ac559a1c3",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.684Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.684Z"
+        },
+        "alt": "BMW E36 nera e Toyota bianca in azione insieme sul percorso",
+        "immagine": "wix:image://v1/2be2d6_ad7c804119b0484ba39efbb8b84b7463~mv2.jpg/polo-motor-show-2026-097.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 98,
+        "_id": "a05d0e61-075e-41d6-8e0e-e04cc63729d0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.683Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.683Z"
+        },
+        "alt": "BMW E36 grigia in traverso lungo le barriere new jersey",
+        "immagine": "wix:image://v1/2be2d6_b127250e24194ed194ba8579e25f2772~mv2.jpg/polo-motor-show-2026-098.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 99,
+        "_id": "89496452-25e3-49f6-b926-7203537c8a05",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.682Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.682Z"
+        },
+        "alt": "Mazda MX-5 rossa da drift con alettone in derapata",
+        "immagine": "wix:image://v1/2be2d6_c55c3177466640188db4ab6687a41ad0~mv2.jpg/polo-motor-show-2026-099.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 100,
+        "_id": "6cbc2e3e-8e11-4948-94cb-2c8f074cfce3",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.681Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.681Z"
+        },
+        "alt": "BMW E36 bianca con grafiche viola in traverso",
+        "immagine": "wix:image://v1/2be2d6_f4f4a98dccbf4fb89164677f0262cc78~mv2.jpg/polo-motor-show-2026-100.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 101,
+        "_id": "a0215cd7-669f-4c2b-a888-4781ac3dce12",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.680Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.680Z"
+        },
+        "alt": "Lexus IS200 bianca in derapata sul percorso",
+        "immagine": "wix:image://v1/2be2d6_f8762a7afbb347e2a19c577367949109~mv2.jpg/polo-motor-show-2026-101.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 102,
+        "_id": "27907075-4ee3-47f9-aa43-042ffc97e19a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.679Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.679Z"
+        },
+        "alt": "Le auto del raduno allineate lungo la strada davanti al Polo",
+        "immagine": "wix:image://v1/2be2d6_00a70710e0d3484b8910fe2106cadc64~mv2.jpg/polo-motor-show-2026-102.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 103,
+        "_id": "f420b700-d15f-490c-a0f1-fcad4cbc97ab",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.678Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.678Z"
+        },
+        "alt": "Alfa Romeo, BMW E46 e Mercedes allineate al raduno",
+        "immagine": "wix:image://v1/2be2d6_e8a48db0ba704f7fb16e39c911173a21~mv2.jpg/polo-motor-show-2026-103.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 104,
+        "_id": "cd4cb634-4256-47e8-a449-3f375b53efb0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.677Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.677Z"
+        },
+        "alt": "BMW E36 blu esposta al raduno con il cofano aperto",
+        "immagine": "wix:image://v1/2be2d6_35f604d312ee457c8fbf88ef9359a9cd~mv2.jpg/polo-motor-show-2026-104.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 105,
+        "_id": "d0b69b0a-5f19-4eeb-9c2e-b4cd61da9fc0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.676Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.676Z"
+        },
+        "alt": "Dettaglio del cerchio nero a raggi incrociati di una BMW blu",
+        "immagine": "wix:image://v1/2be2d6_4ddf6e4854564b559bd87ba19f2875de~mv2.jpg/polo-motor-show-2026-105.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 106,
+        "_id": "4f79fb3a-fa65-4c20-9e57-bde8ffb7b24e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.675Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.675Z"
+        },
+        "alt": "Dettaglio dello stemma BMW sul cofano grigio opaco",
+        "immagine": "wix:image://v1/2be2d6_9156e6d0b5a4416f9fd38b4a37849ddb~mv2.jpg/polo-motor-show-2026-106.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 107,
+        "_id": "962aefb1-81cc-4cd2-8bef-7880fcab8db1",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.674Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.674Z"
+        },
+        "alt": "Cerchio bianco a razze e pinza gialla di una BMW scura",
+        "immagine": "wix:image://v1/2be2d6_378b9cfd47124bb897292fcf8bac00a0~mv2.jpg/polo-motor-show-2026-107.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 108,
+        "_id": "7a36e1f7-5bea-49c3-9bab-22e43599382d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.673Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.673Z"
+        },
+        "alt": "Scritta GT-FOUR sulla coda di una Toyota Celica nera",
+        "immagine": "wix:image://v1/2be2d6_871bcb29e0e44359a281179c28f80a22~mv2.jpg/polo-motor-show-2026-108.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 109,
+        "_id": "6db4e465-facc-4068-8826-8ebf05cd28c9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.672Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.672Z"
+        },
+        "alt": "Fila di auto in esposizione al raduno del Polo Motor Show",
+        "immagine": "wix:image://v1/2be2d6_55c69b73cc8f416085d665feb65f3766~mv2.jpg/polo-motor-show-2026-109.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 110,
+        "_id": "d2908f7d-00e0-49ef-926a-69f11d7b5b6f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.671Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.671Z"
+        },
+        "alt": "BMW grigia e blu con cofano in carbonio nel paddock",
+        "immagine": "wix:image://v1/2be2d6_9c468df366dc405f9d2c270d909e68d8~mv2.jpg/polo-motor-show-2026-110.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 111,
+        "_id": "9dc8a32f-e513-479b-b804-2ac3213a987d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.670Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.670Z"
+        },
+        "alt": "BMW E46 grigia e blu con livrea Wanted Drivers al raduno",
+        "immagine": "wix:image://v1/2be2d6_d613b02e3d2245468ad4e0f6067cb8e0~mv2.jpg/polo-motor-show-2026-111.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 112,
+        "_id": "12286781-2824-4fe3-a86f-9a834e6ed5b9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.669Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.669Z"
+        },
+        "alt": "Volante BMW e interni di un'auto esposta al raduno",
+        "immagine": "wix:image://v1/2be2d6_7e9c0bfb0beb42a7bba49650ee2659ed~mv2.jpg/polo-motor-show-2026-112.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 113,
+        "_id": "900db32f-bc2f-4bd2-8964-5e945c592e68",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.668Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.668Z"
+        },
+        "alt": "BMW M3 E92 arancione ferma nell'area di partenza",
+        "immagine": "wix:image://v1/2be2d6_339bbcbbe701478dabc6a9b5e902a0ed~mv2.jpg/polo-motor-show-2026-113.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 114,
+        "_id": "1f6fc03e-289a-431b-95e5-7716a922558c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.667Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.667Z"
+        },
+        "alt": "Stella Mercedes sul cofano di un'auto esposta",
+        "immagine": "wix:image://v1/2be2d6_de9da974bafc4a51b923bfed6f5de713~mv2.jpg/polo-motor-show-2026-114.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 115,
+        "_id": "5b1553dd-3969-478d-8b6b-47d890542297",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.666Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.666Z"
+        },
+        "alt": "Scritta Mamacita sul lunotto di un'auto da drift",
+        "immagine": "wix:image://v1/2be2d6_7ae57c5710174efea1f840e9eaefd9d3~mv2.jpg/polo-motor-show-2026-115.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 116,
+        "_id": "987e731e-34e6-47a3-bbc9-55974dcc3568",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.665Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.665Z"
+        },
+        "alt": "Fiancata bianca di una Mercedes 190 con lo specchietto retrovisore",
+        "immagine": "wix:image://v1/2be2d6_248874fe48244fa4a79499027889728d~mv2.jpg/polo-motor-show-2026-116.jpg#originWidth=1067&originHeight=1600"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 117,
+        "_id": "ce689b32-fb96-4e93-a0c0-8a9a1ca15866",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.664Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.664Z"
+        },
+        "alt": "Coda della Mercedes 190 bianca e rosa con alettone",
+        "immagine": "wix:image://v1/2be2d6_5b7e7a9d0deb4a0b981deec940d078f7~mv2.jpg/polo-motor-show-2026-117.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 118,
+        "_id": "a3379729-8099-4557-b654-7899ce31db0c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.663Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.663Z"
+        },
+        "alt": "Dettaglio dello spoiler posteriore della Mercedes 190 bianca e rosa",
+        "immagine": "wix:image://v1/2be2d6_520922c5b9aa4b0ebb277dd2df29529e~mv2.jpg/polo-motor-show-2026-118.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 119,
+        "_id": "72cbbe1e-6aa8-43e7-843e-0a2e00e122c9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.662Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.662Z"
+        },
+        "alt": "Terminale di scarico di un'auto blu da drift",
+        "immagine": "wix:image://v1/2be2d6_a249dc4b744a4936a74e1e017e5e4c32~mv2.jpg/polo-motor-show-2026-119.jpg#originWidth=1600&originHeight=1067"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 120,
+        "_id": "98808bb7-a3e6-4cb6-b379-55db49909aef",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.661Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.661Z"
+        },
+        "alt": "Pubblico all'ingresso dell'area espositiva del Polo Motor Show",
+        "immagine": "wix:image://v1/2be2d6_5f156e64a8b04adcb6265b377a4b80b9~mv2.jpg/polo-motor-show-2026-120.jpg#originWidth=1066&originHeight=1599"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 121,
+        "_id": "02563d24-ef68-41ac-993f-d5a5dc96faa7",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.660Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.660Z"
+        },
+        "alt": "Folla di visitatori nell'area del raduno",
+        "immagine": "wix:image://v1/2be2d6_876002be766a49ed9f16fff764366036~mv2.jpg/polo-motor-show-2026-121.jpg#originWidth=1599&originHeight=1066"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 122,
+        "_id": "0a07ab56-1d99-45a9-a357-a15f27dd928d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.659Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.659Z"
+        },
+        "alt": "Lexus IS200 bianca da drift ferma nel paddock",
+        "immagine": "wix:image://v1/2be2d6_ffad6daee3164a00b6767dd0d8e4eaf8~mv2.jpg/polo-motor-show-2026-122.jpg#originWidth=1600&originHeight=900"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 123,
+        "_id": "9b596d5c-1a87-4655-af2c-5d7533631011",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.658Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.658Z"
+        },
+        "alt": "Lexus IS200 bianca con cerchi bianchi nel paddock",
+        "immagine": "wix:image://v1/2be2d6_739f820f29584fa1bc36c44c9403bd7f~mv2.jpg/polo-motor-show-2026-123.jpg#originWidth=1600&originHeight=900"
+      },
+      {
+        "galleria": "polo-motor-show-2026",
+        "ordine": 124,
+        "_id": "d2661c3b-7a08-4fee-9005-e3151342eabb",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:53:52.657Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:53:52.657Z"
+        },
+        "alt": "Contagiri Lexus con fondo argento e lancette rosse",
+        "immagine": "wix:image://v1/2be2d6_e70ed271c02a424599742c19ebac4efe~mv2.jpg/polo-motor-show-2026-124.jpg#originWidth=1600&originHeight=900"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 1,
+        "_id": "04ab4c21-48d2-4830-8ff2-ad8c3bb7636a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.072Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.072Z"
+        },
+        "alt": "BMW E36 nera con grafica a stelle in traverso accanto alle balle di fieno",
+        "immagine": "wix:image://v1/2be2d6_6d6e8119db154fc399ca2e082c7ec65f~mv2.jpg/legnaro-motori-2026-01.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 2,
+        "_id": "7dbe520b-2aad-4480-b4bf-568e2782ad78",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.071Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.071Z"
+        },
+        "alt": "Muso di una BMW E36 rossa ribassata parcheggiata sul piazzale del raduno",
+        "immagine": "wix:image://v1/2be2d6_1c226e0e26ab44fca0ab7cd587c746e6~mv2.jpg/legnaro-motori-2026-02.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 3,
+        "_id": "f79f7840-aa27-4b67-a08e-5ad120b0c284",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.070Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.070Z"
+        },
+        "alt": "BMW E36 bordeaux e altre auto allineate nell’area raduno di Legnaro Motori",
+        "immagine": "wix:image://v1/2be2d6_7750db295fe7497a9dcbab91af1914c1~mv2.jpg/legnaro-motori-2026-03.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 4,
+        "_id": "d73c4122-e87e-4d1c-acc9-eb1d984cde94",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.069Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.069Z"
+        },
+        "alt": "BMW E36 nera in drift tra le balle di fieno del tracciato di Legnaro",
+        "immagine": "wix:image://v1/2be2d6_5d9433ed75fd4b4f94ab14529411d539~mv2.jpg/legnaro-motori-2026-04.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 5,
+        "_id": "16e65653-3224-4d61-b48a-1ba04618cbb0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.068Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.068Z"
+        },
+        "alt": "BMW E36 viola in traverso lungo le protezioni di fieno",
+        "immagine": "wix:image://v1/2be2d6_f8ccd5ae59134a7e80533cc3a1995191~mv2.jpg/legnaro-motori-2026-05.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 6,
+        "_id": "a395aafd-eae4-439a-bafe-6edd599965e4",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.067Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.067Z"
+        },
+        "alt": "Auto in drift sul piazzale con i segni di gomma sull’asfalto",
+        "immagine": "wix:image://v1/2be2d6_f4f264a8b31b4a7dbff54bf7a1a94da6~mv2.jpg/legnaro-motori-2026-06.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 7,
+        "_id": "a895f6ea-031e-413f-b99e-ccf7c8a2c2c0",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.066Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.066Z"
+        },
+        "alt": "Dettaglio del cerchio e del parafango di una BMW E36 rossa nell’area raduno",
+        "immagine": "wix:image://v1/2be2d6_6570aeef43874669871cbfb80dcd7783~mv2.jpg/legnaro-motori-2026-07.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 8,
+        "_id": "44f6a4db-449f-4e02-805d-3c84808b35c5",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.065Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.065Z"
+        },
+        "alt": "BMW E36 nera in drift con il posteriore in scivolata davanti alle balle",
+        "immagine": "wix:image://v1/2be2d6_e90b5de597cd45938ed8d151b9e1a57e~mv2.jpg/legnaro-motori-2026-08.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 9,
+        "_id": "e49b51b7-a4ae-4053-8bd0-7f5757e20f6b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.064Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.064Z"
+        },
+        "alt": "BMW E36 bordeaux ribassata vista dall’alto nell’area raduno",
+        "immagine": "wix:image://v1/2be2d6_94e24cf4cfc041d6a0d2d5b55d8fafb2~mv2.jpg/legnaro-motori-2026-09.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 10,
+        "_id": "45ec64a5-c0ac-4a0b-b745-2df937506075",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.063Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.063Z"
+        },
+        "alt": "BMW E36 nera in derapata tra i cordoli e le balle di fieno",
+        "immagine": "wix:image://v1/2be2d6_8a5d28f1efca446a95abf376943473bd~mv2.jpg/legnaro-motori-2026-10.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 11,
+        "_id": "1566b9fe-993f-46a3-b15f-8ebb4923a126",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.062Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.062Z"
+        },
+        "alt": "BMW E36 nera in traverso ripresa in panning sul rettilineo del tracciato",
+        "immagine": "wix:image://v1/2be2d6_b9b68ca655e44c46b6c088592a72c82f~mv2.jpg/legnaro-motori-2026-11.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 12,
+        "_id": "74083fde-c7a8-4505-a7b1-39f1872a9a8f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.061Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.061Z"
+        },
+        "alt": "Coupé giallo e auto viola in pista viste dall’abitacolo di un’altra vettura",
+        "immagine": "wix:image://v1/2be2d6_d64ce59cee3c45d1bc557ad56d9fad5d~mv2.jpg/legnaro-motori-2026-12.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 13,
+        "_id": "2442bd88-5565-474a-a5e4-08af76dfb652",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.060Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.060Z"
+        },
+        "alt": "BMW E36 viola in drift con il posteriore verso le balle di fieno",
+        "immagine": "wix:image://v1/2be2d6_bdebe03777814a6786472fcfb7a7c1f6~mv2.jpg/legnaro-motori-2026-13.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 14,
+        "_id": "e66db3cc-871a-4612-97cc-d5f59cd63804",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.059Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.059Z"
+        },
+        "alt": "BMW E36 nera in drift avvolta dal fumo delle gomme davanti al capannone",
+        "immagine": "wix:image://v1/2be2d6_77de48e06a404f54a652c159e35bd819~mv2.jpg/legnaro-motori-2026-14.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 15,
+        "_id": "873f7816-04c1-4d23-8f87-a744d2a38e47",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.058Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.058Z"
+        },
+        "alt": "Due auto in drift ravvicinato con i segni delle gomme sull’asfalto",
+        "immagine": "wix:image://v1/2be2d6_28348d5793d54b78bef81ee0b10326fd~mv2.jpg/legnaro-motori-2026-15.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 16,
+        "_id": "41f03875-868c-4faf-b0e3-914317c7acb9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.057Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.057Z"
+        },
+        "alt": "Auto allineate al raduno e dettaglio del cerchio di una BMW rossa",
+        "immagine": "wix:image://v1/2be2d6_8bc747527a634f2095023ccbcaea3769~mv2.jpg/legnaro-motori-2026-16.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 17,
+        "_id": "280ca73b-bb94-4add-9d60-fa65bd221383",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.056Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.056Z"
+        },
+        "alt": "BMW E36 viola in traverso ripresa in panning",
+        "immagine": "wix:image://v1/2be2d6_86f92aa51d994b75824a7d2518dd0161~mv2.jpg/legnaro-motori-2026-17.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 18,
+        "_id": "95cbbc65-75d9-4795-9288-d4c6837dd506",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.055Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.055Z"
+        },
+        "alt": "BMW E36 con livrea da gara in traverso tra le balle di fieno del tracciato",
+        "immagine": "wix:image://v1/2be2d6_7c9116f9d18c4ddeb4c79a01e903f211~mv2.jpg/legnaro-motori-2026-18.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 19,
+        "_id": "e1309db2-4345-4c2b-a541-963512f30592",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.054Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.054Z"
+        },
+        "alt": "Pilota nell’abitacolo con roll-bar prima della sessione drift",
+        "immagine": "wix:image://v1/2be2d6_cae0268199a545549a929d53553587c3~mv2.jpg/legnaro-motori-2026-19.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 20,
+        "_id": "e42c6403-45cc-435f-a057-42fa68c25678",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.053Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.053Z"
+        },
+        "alt": "Dettaglio del frontale di una BMW nera con adesivi Zero Grip Drift Team",
+        "immagine": "wix:image://v1/2be2d6_56b6e3a937fe46c6ba0109dd170aba17~mv2.jpg/legnaro-motori-2026-20.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 21,
+        "_id": "e94549b1-ab8e-47a2-abef-d48298e8ae3c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.052Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.052Z"
+        },
+        "alt": "Dettaglio del cofano di una BMW nera del team Zero Grip",
+        "immagine": "wix:image://v1/2be2d6_2b6da5e7378c44148777776de38bef6f~mv2.jpg/legnaro-motori-2026-21.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 22,
+        "_id": "f7372bc8-0215-4fc2-a5fa-69b09a014c79",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.051Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.051Z"
+        },
+        "alt": "Auto in drift avvolta da fumo colorato davanti alle balle di fieno",
+        "immagine": "wix:image://v1/2be2d6_2eaa1dd6bbf54990b9e7372d55975b26~mv2.jpg/legnaro-motori-2026-22.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 23,
+        "_id": "317b8ea3-c782-44e3-86db-56b9878fcd5c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.050Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.050Z"
+        },
+        "alt": "BMW E36 con livrea da gara in drift sul tracciato di Legnaro",
+        "immagine": "wix:image://v1/2be2d6_5d58a9056e8940ee87a73664b7e02300~mv2.jpg/legnaro-motori-2026-23.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 24,
+        "_id": "b2b760e5-1821-43b5-bb88-b9d608f6369b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.049Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.049Z"
+        },
+        "alt": "BMW nera con adesivi degli sponsor in traverso tra le protezioni",
+        "immagine": "wix:image://v1/2be2d6_40aa6336e4bc48baa8a7b58c43f6cb66~mv2.jpg/legnaro-motori-2026-24.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 25,
+        "_id": "e7960d1d-8a39-48c3-9fce-03e4efc4069d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.048Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.048Z"
+        },
+        "alt": "BMW E46 nera del team Kebek in sosta nel paddock del raduno",
+        "immagine": "wix:image://v1/2be2d6_03572f952d5349f6bc87c7ba0264bc60~mv2.jpg/legnaro-motori-2026-25.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 26,
+        "_id": "14ef76a4-30e1-45e9-af65-a6b4f1012955",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.047Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.047Z"
+        },
+        "alt": "Due auto in drift ravvicinato con la nuvola di fumo delle gomme",
+        "immagine": "wix:image://v1/2be2d6_66cad2c80bff4a15abfa7ccc929a6014~mv2.jpg/legnaro-motori-2026-26.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 27,
+        "_id": "ab3b608e-3de6-456e-9de0-e1f3acc24994",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.046Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.046Z"
+        },
+        "alt": "BMW nera in traverso davanti alle barriere rosse e bianche",
+        "immagine": "wix:image://v1/2be2d6_a5f02b596a5f4c8f9c5ca6b993fb626f~mv2.jpg/legnaro-motori-2026-27.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 28,
+        "_id": "588f9d7e-8451-4d64-bd59-35af08986877",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.045Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.045Z"
+        },
+        "alt": "Cassetta degli attrezzi e ruota di scorta nel paddock di Legnaro Motori",
+        "immagine": "wix:image://v1/2be2d6_2a3d384b8f624267a37e935a1b090a97~mv2.jpg/legnaro-motori-2026-28.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 29,
+        "_id": "f2a00f66-5a85-4aa8-8cc0-57e5768259e6",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.044Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.044Z"
+        },
+        "alt": "BMW E36 bianca e verde in drift sul piazzale",
+        "immagine": "wix:image://v1/2be2d6_84a5d3ae076a4af3bb0cd09bae0eef3b~mv2.jpg/legnaro-motori-2026-29.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 30,
+        "_id": "ab9a5b49-85ae-4424-9d8a-25c48ecda077",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.043Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.043Z"
+        },
+        "alt": "BMW nera in drift con il fumo delle gomme davanti al muro",
+        "immagine": "wix:image://v1/2be2d6_d0c9b089b4c047a7b8aff1dec0871ee3~mv2.jpg/legnaro-motori-2026-30.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 31,
+        "_id": "72e2580e-c647-4a54-b410-190bc45bd3ce",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.042Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.042Z"
+        },
+        "alt": "BMW E36 con livrea multicolore in drift davanti al pubblico",
+        "immagine": "wix:image://v1/2be2d6_838d2f02a1794258a9dc3db7e730671d~mv2.jpg/legnaro-motori-2026-31.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 32,
+        "_id": "8d1526c1-57f5-4038-8add-2442cbd8c34e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.041Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.041Z"
+        },
+        "alt": "Abitacolo da gara con volante sportivo e paddock con gazebo del team",
+        "immagine": "wix:image://v1/2be2d6_1064680cb27047ae95c6ae57ac3440e8~mv2.jpg/legnaro-motori-2026-32.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 33,
+        "_id": "706406c4-6b20-4772-b315-4e85d36d91c8",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.040Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.040Z"
+        },
+        "alt": "BMW E36 nera e verde in traverso ripresa in panning",
+        "immagine": "wix:image://v1/2be2d6_57593f8cf30c4389a38a281c37e78584~mv2.jpg/legnaro-motori-2026-33.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 34,
+        "_id": "c7d342d3-b625-4de7-abfc-4af761203de6",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.039Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.039Z"
+        },
+        "alt": "BMW E36 gialla con numero 06 in drift lungo le balle di fieno",
+        "immagine": "wix:image://v1/2be2d6_5863363761bb4e1fbf37256e9cb0b722~mv2.jpg/legnaro-motori-2026-34.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 35,
+        "_id": "d46bc716-dd03-4b5a-8cfb-e746ee65be67",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.038Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.038Z"
+        },
+        "alt": "BMW E36 rossa in traverso davanti alle protezioni",
+        "immagine": "wix:image://v1/2be2d6_15eee0e9f3a24eafada1d6f0e8d48058~mv2.jpg/legnaro-motori-2026-35.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 36,
+        "_id": "dc2f57e7-bdb6-4656-83c7-224ba831a470",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.037Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.037Z"
+        },
+        "alt": "BMW E36 del team Kebek in drift con il fumo delle gomme",
+        "immagine": "wix:image://v1/2be2d6_6ea9e5c7dea0478696207a7f482d15c2~mv2.jpg/legnaro-motori-2026-36.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 37,
+        "_id": "8361f034-2d94-4c4b-9164-c6e48605009a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.036Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.036Z"
+        },
+        "alt": "Mazda MX-5 bianca in traverso sul piazzale di Legnaro",
+        "immagine": "wix:image://v1/2be2d6_7db6db1bbcc14f94a64792f01bf59e5c~mv2.jpg/legnaro-motori-2026-37.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 38,
+        "_id": "4eb44f27-a4f6-41c9-8f5b-3fe3e92ea61a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.035Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.035Z"
+        },
+        "alt": "BMW E30 verde in derapata ravvicinata con un’altra vettura",
+        "immagine": "wix:image://v1/2be2d6_7d3e212f3e184443840f0eae177a6860~mv2.jpg/legnaro-motori-2026-38.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 39,
+        "_id": "4ba0e0ee-1579-406e-8161-e1cc30792131",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.034Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.034Z"
+        },
+        "alt": "BMW E30 verde numero 27 in traverso lungo le barriere",
+        "immagine": "wix:image://v1/2be2d6_08e2a2f620c34278beb089af9a5bf3ce~mv2.jpg/legnaro-motori-2026-39.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 40,
+        "_id": "35b08073-b868-4571-a1a8-718993789d8e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.033Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.033Z"
+        },
+        "alt": "Auto in drift dentro la nuvola di fumo, ripresa dietro le balle di fieno",
+        "immagine": "wix:image://v1/2be2d6_e171693bae6b4f70b148e4522ff48994~mv2.jpg/legnaro-motori-2026-40.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 41,
+        "_id": "9093adec-3ae6-4cb3-846b-09b5b314482c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.032Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.032Z"
+        },
+        "alt": "BMW E30 verde in drift con il posteriore in scivolata",
+        "immagine": "wix:image://v1/2be2d6_bdbe5c88c1ec4c789cb9df28a9eb01f1~mv2.jpg/legnaro-motori-2026-41.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 42,
+        "_id": "2c0a2abd-8ae9-4077-bba7-cb71b3ad4a24",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.031Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.031Z"
+        },
+        "alt": "BMW E30 verde in traverso ripresa in panning tra le protezioni",
+        "immagine": "wix:image://v1/2be2d6_5ad70df3e79e4faaa3d5bf987d7af381~mv2.jpg/legnaro-motori-2026-42.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 43,
+        "_id": "40354fa3-5709-41ff-be22-f6b89bc1814c",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.030Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.030Z"
+        },
+        "alt": "BMW E30 verde numero 27 in derapata sul piazzale",
+        "immagine": "wix:image://v1/2be2d6_5e1f4042398c4ad2be23ee4c61ec771c~mv2.jpg/legnaro-motori-2026-43.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 44,
+        "_id": "4a1d0e78-fafa-4a8d-bc94-9701f4845bfa",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.029Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.029Z"
+        },
+        "alt": "BMW E30 verde in drift con il fumo delle gomme davanti alle balle",
+        "immagine": "wix:image://v1/2be2d6_b6d15d452ab34dadaf9ea34b5eae7e4c~mv2.jpg/legnaro-motori-2026-44.jpg#originWidth=1440&originHeight=1800"
+      },
+      {
+        "galleria": "legnaro-motori-2026",
+        "ordine": 45,
+        "_id": "aac845f0-db34-46c8-b136-1839cffe7fbe",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:34:59.028Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T07:34:59.028Z"
+        },
+        "alt": "BMW E30 verde in traverso ripresa da dietro le balle di fieno",
+        "immagine": "wix:image://v1/2be2d6_9db5720b60b44224bdcb003497424be4~mv2.jpg/legnaro-motori-2026-45.jpg#originWidth=1440&originHeight=1800"
+      }
+    ],
+    "Sponsor": [
+      {
+        "livello": "stagione",
+        "url": "https://www.ctrlg.it/",
+        "ordine": 6,
+        "_id": "81882a06-4426-442f-83ed-9d4bbcb37c52",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T14:33:59.089Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T15:17:07.538Z"
+        },
+        "logo": "wix:image://v1/2be2d6_c05738aab2f342d6a9f30c0e44f8789c~mv2.png/ctrlg-annuale.png#originWidth=600&originHeight=439",
+        "attivo": true,
+        "nome": "Ctrl+G"
+      },
+      {
+        "livello": "evento",
+        "ordine": 33,
+        "_id": "9eb6c9aa-806c-4754-a777-ea3b7c3b922f",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T13:43:47.276Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T13:43:47.276Z"
+        },
+        "logo": "wix:image://v1/2be2d6_75df3a4be21e4439bfc32048b4430c21~mv2.png/belluco-farm.png#originWidth=279&originHeight=280",
+        "evento": "legnaro",
+        "attivo": true,
+        "nome": "Belluco Farm"
+      },
+      {
+        "livello": "evento",
+        "ordine": 32,
+        "_id": "dd4a217f-c7be-4d86-ad23-1b41bbfa8078",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T13:43:31.104Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T13:43:31.104Z"
+        },
+        "logo": "wix:image://v1/2be2d6_cb87b4f6ef934048bcb586801adcadd9~mv2.png/pit-stop-centro-revisioni.png#originWidth=390&originHeight=190",
+        "evento": "legnaro",
+        "attivo": true,
+        "nome": "Pit Stop Centro Revisioni"
+      },
+      {
+        "livello": "evento",
+        "ordine": 31,
+        "_id": "5b4d1b2b-6f88-4869-8872-7f921542edb1",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T13:43:16.429Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T13:43:16.429Z"
+        },
+        "logo": "wix:image://v1/2be2d6_89035647916745a98be7f23d4b2f4aff~mv2.png/duo.png#originWidth=391&originHeight=143",
+        "evento": "legnaro",
+        "attivo": true,
+        "nome": "Duo"
+      },
+      {
+        "livello": "evento",
+        "ordine": 1,
+        "_id": "901fb141-f7dc-4554-9795-c1e4197b2009",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.064Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:01.555Z"
+        },
+        "logo": "wix:image://v1/2be2d6_4c807d840af34692af2cd3d7c17a62d2~mv2.png/polo-cucine.png#originWidth=440&originHeight=114",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "POLO · insieme a te in cucina"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 2,
+        "_id": "127edfb8-a188-4ae5-91ff-121655abcc24",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.063Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:16.472Z"
+        },
+        "logo": "wix:image://v1/2be2d6_889c936e9e564ea9b05f8040d5d117c3~mv2.png/ricambi-americani.png#originWidth=440&originHeight=132",
+        "attivo": true,
+        "nome": "Ricambi Americani"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 3,
+        "_id": "19ca625a-a564-41b1-b48f-da832f0f9d46",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.062Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T13:41:39.543Z"
+        },
+        "logo": "wix:image://v1/2be2d6_d4e140598ae54c8e8fdfc0b7822a3d7c~mv2.png/baap-bergamaschi-colore.png#originWidth=600&originHeight=237",
+        "attivo": true,
+        "nome": "BAAP Bergamaschi"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 4,
+        "_id": "51a6e645-9e82-47df-84d9-9b5f7dff6806",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.061Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:16.624Z"
+        },
+        "logo": "wix:image://v1/2be2d6_67f1f49f0e794610a9b995a2ab801a50~mv2.png/cesaro-group.png#originWidth=440&originHeight=89",
+        "attivo": true,
+        "nome": "Cesaro Group"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 5,
+        "_id": "672da810-71b2-435a-a812-a18f660082dc",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.060Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:16.714Z"
+        },
+        "logo": "wix:image://v1/2be2d6_a01adbf21f18401086f20dfb99071ac5~mv2.png/rally-team.png#originWidth=440&originHeight=179",
+        "attivo": true,
+        "nome": "Rally Team"
+      },
+      {
+        "livello": "evento",
+        "ordine": 6,
+        "_id": "23dd8275-9768-4967-bf58-7d545e9e8fb9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.059Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:16.788Z"
+        },
+        "logo": "wix:image://v1/2be2d6_ae4d3499f29344be8357d71ee935dfc7~mv2.png/bull-barber.png#originWidth=331&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Bull Barber"
+      },
+      {
+        "livello": "evento",
+        "ordine": 7,
+        "_id": "411bd60d-2813-4b50-9979-c6a50bbf0ab5",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.058Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:16.865Z"
+        },
+        "logo": "wix:image://v1/2be2d6_3aaf52dfabb34bb486154f77b20f9ecf~mv2.png/caneva-car.png#originWidth=440&originHeight=62",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Caneva Car"
+      },
+      {
+        "livello": "evento",
+        "ordine": 8,
+        "_id": "29659ed2-296b-44a5-9d5d-2faa0522a4a8",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.057Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:16.937Z"
+        },
+        "logo": "wix:image://v1/2be2d6_3b8ffaa0e5ef440bb117b035e8610364~mv2.png/abano-ghiaccio.png#originWidth=383&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Abano Ghiaccio"
+      },
+      {
+        "livello": "evento",
+        "ordine": 9,
+        "_id": "32568751-0b67-4f67-a6b0-4bbac2868d9b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.056Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.020Z"
+        },
+        "logo": "wix:image://v1/2be2d6_9331f4f94e654f93923d7e4fccb72202~mv2.png/bellavista.png#originWidth=259&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Bellavista"
+      },
+      {
+        "livello": "evento",
+        "ordine": 10,
+        "_id": "854d914c-ae65-43c2-960f-54e7ffbbfa0e",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.055Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.102Z"
+        },
+        "logo": "wix:image://v1/2be2d6_11639a4a596e492b91f76ccc61af9eb4~mv2.png/gemini.png#originWidth=440&originHeight=73",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Gemini Carrozzeria"
+      },
+      {
+        "livello": "evento",
+        "ordine": 11,
+        "_id": "9e4ed256-5976-435d-8375-398fb6f76ebb",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.054Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.171Z"
+        },
+        "logo": "wix:image://v1/2be2d6_dc8f868162714129bfd8a35c8ca85a21~mv2.png/race-shop.png#originWidth=440&originHeight=69",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Race-Shop"
+      },
+      {
+        "livello": "evento",
+        "ordine": 12,
+        "_id": "17881dc3-4e87-4436-9aa6-9a71c87eb214",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.053Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.254Z"
+        },
+        "logo": "wix:image://v1/2be2d6_37803beec5b745cdb58c6b7d357125ab~mv2.png/auto-landi.png#originWidth=303&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Auto Landi"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 13,
+        "_id": "67a3faf6-13f3-427c-bc34-540425884888",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.052Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:01.750Z"
+        },
+        "logo": "wix:image://v1/2be2d6_463d2c3b32a44ea7adabcbc8e83ac181~mv2.png/metal-nord.png#originWidth=440&originHeight=98",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Metal Nord Rottami"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 14,
+        "_id": "4a4ea427-f95f-443f-aaa8-dd4b6ac83e38",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.051Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:01.949Z"
+        },
+        "logo": "wix:image://v1/2be2d6_d6159f82255f46d78aaed09d1b10e8d4~mv2.png/ecosider.png#originWidth=402&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Ecosider"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 15,
+        "_id": "a8d2afd3-586c-4d16-808c-4eaeebe71ba8",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.050Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:02.232Z"
+        },
+        "logo": "wix:image://v1/2be2d6_f2be1268d04e4cce8952aa497665bc55~mv2.png/siderurgica-veneta.png#originWidth=327&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Siderurgica Veneta"
+      },
+      {
+        "livello": "evento",
+        "ordine": 16,
+        "_id": "2298a0e4-8260-49ba-97c5-b1c22cb26765",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.049Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.605Z"
+        },
+        "logo": "wix:image://v1/2be2d6_95a4baf9f163424893660a7ba967c99d~mv2.png/autoservizi-cavinato.png#originWidth=440&originHeight=79",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Autoservizi Cavinato"
+      },
+      {
+        "livello": "evento",
+        "ordine": 17,
+        "_id": "d62c60b5-ad0a-4b81-97e9-56bcf74922a9",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.048Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.673Z"
+        },
+        "logo": "wix:image://v1/2be2d6_a034e844991e4b2b8536761eabb93e76~mv2.png/gruppo-s2.png#originWidth=440&originHeight=59",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Gruppo S2 Automobili"
+      },
+      {
+        "livello": "evento",
+        "ordine": 18,
+        "_id": "ec683c7a-4e02-4400-bb69-6d170a1dd913",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.047Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.741Z"
+        },
+        "logo": "wix:image://v1/2be2d6_efedc357af8f466ca805bbe1a5079172~mv2.png/locanda-al-colle.png#originWidth=440&originHeight=101",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Locanda al Colle"
+      },
+      {
+        "livello": "evento",
+        "ordine": 19,
+        "_id": "2b2ad422-1edc-4d8e-8c17-4938d5361b8a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.046Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:17.813Z"
+        },
+        "logo": "wix:image://v1/2be2d6_a41893024dee4481a72e785f29f9496f~mv2.png/carrozzeria-angela.png#originWidth=440&originHeight=110",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Autocarrozzeria Angela"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 20,
+        "_id": "7786dcd6-e9ca-4d69-bcbf-b6f73e15bfd3",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.045Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:02.587Z"
+        },
+        "logo": "wix:image://v1/2be2d6_f32cfa47345d4476be1120e0c6e1120b~mv2.png/sky-motors.png#originWidth=440&originHeight=94",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Sky Motors"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 21,
+        "_id": "5115d33c-8ff2-43db-8832-3b57325327fd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.044Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:02.893Z"
+        },
+        "logo": "wix:image://v1/2be2d6_e2bf7dac51e94a569b64b300a8a35396~mv2.png/marchioro.png#originWidth=440&originHeight=155",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Marchioro Scavi e Demolizioni"
+      },
+      {
+        "livello": "evento",
+        "ordine": 22,
+        "_id": "0253bf14-e188-42a4-97e0-08ca93841c2d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.043Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:18.072Z"
+        },
+        "logo": "wix:image://v1/2be2d6_9cd9eb43c797453cb320167dc831a434~mv2.png/cattelan.png#originWidth=184&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Cattelan Auto"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 23,
+        "_id": "170023ed-ef56-4bcb-b8a4-d5a04bd4120d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.042Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:03.141Z"
+        },
+        "logo": "wix:image://v1/2be2d6_44ecbf3a53ac472d9359ed9893c330c4~mv2.png/dealernet-colore.png#originWidth=600&originHeight=503",
+        "evento": "polo legnaro",
+        "attivo": true,
+        "nome": "Dealernet"
+      },
+      {
+        "livello": "stagione",
+        "ordine": 24,
+        "_id": "02799519-47b7-49ea-a0fa-44988760ac18",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.041Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:03.456Z"
+        },
+        "logo": "wix:image://v1/2be2d6_076cefc340bd41ba90ddee3c111d5869~mv2.png/labor.png#originWidth=321&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Labor F.lli Corazzari"
+      },
+      {
+        "livello": "evento",
+        "ordine": 25,
+        "_id": "d6708052-2b3a-4f9a-990f-6c4c10922871",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.040Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:18.319Z"
+        },
+        "logo": "wix:image://v1/2be2d6_4d162a2a71a5469a880a632c503bd9f6~mv2.png/rally-bar.png#originWidth=440&originHeight=147",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Rally Bar"
+      },
+      {
+        "livello": "evento",
+        "ordine": 26,
+        "_id": "1f380661-717d-48a7-8369-9dc4b4e13a6b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.039Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:18.388Z"
+        },
+        "logo": "wix:image://v1/2be2d6_b593d6a1e2a342d7a5095da603092a8f~mv2.png/auto31.png#originWidth=440&originHeight=90",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Auto 31 Service"
+      },
+      {
+        "livello": "evento",
+        "ordine": 27,
+        "_id": "3e129d0f-29f5-4bbd-b91b-67d42b14ad4b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.038Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:18.458Z"
+        },
+        "logo": "wix:image://v1/2be2d6_1ebd26445925405e84ac71f6cc564375~mv2.png/datex.png#originWidth=440&originHeight=174",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Datex"
+      },
+      {
+        "livello": "evento",
+        "ordine": 28,
+        "_id": "e9f5030f-7b3e-405f-8050-497625e4d5e4",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.037Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:18.527Z"
+        },
+        "logo": "wix:image://v1/2be2d6_c81c87bed57f476a9994530a5fbf1d00~mv2.png/centro-del-piede.png#originWidth=388&originHeight=180",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Centrodelpiede.it"
+      },
+      {
+        "livello": "evento",
+        "ordine": 29,
+        "_id": "32f889d0-5d96-44ef-b20b-d988a189b004",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.036Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T08:09:18.594Z"
+        },
+        "logo": "wix:image://v1/2be2d6_81ecd61c328049c285c8217c1db06a4b~mv2.png/lovato.png#originWidth=440&originHeight=168",
+        "evento": "polo",
+        "attivo": true,
+        "nome": "Costruzioni Lovato"
+      },
+      {
+        "livello": "evento",
+        "ordine": 30,
+        "_id": "ac144c21-8182-430b-b1fc-10e9db99dfb5",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.035Z"
+        },
+        "_updatedDate": {
+          "$date": "2026-08-19T13:43:01.033Z"
+        },
+        "logo": "wix:image://v1/2be2d6_3bd90e3c67fb45de8d239f173f121075~mv2.png/centro-del-piede-colore.png#originWidth=600&originHeight=278",
+        "evento": "legnaro",
+        "attivo": true,
+        "nome": "Centrodelpiede.it"
+      }
+    ],
+    "Edizioni": [
+      {
+        "cta2": "Albo di gara",
+        "stato": "in programma",
+        "anno": "2026",
+        "url": "https://www.inversioneau.com/rally-colli-euganei/",
+        "ordine": 1,
+        "_id": "a7f1370d-8cb9-4baf-92a3-041f039ce5e1",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.237Z"
+        },
+        "data": "21–22 NOV 2026",
+        "nota": "Iscrizioni in autunno. Classifiche, foto e comunicato finale compaiono qui dopo la gara.",
+        "_updatedDate": {
+          "$date": "2026-08-28T12:50:03.895Z"
+        },
+        "accent": "#00BA89",
+        "slug": "rally-colli-euganei-2026",
+        "testo": "Prima edizione: dopo più di 35 anni torna un rally nel Padovano, con titolazione ACI Sport.",
+        "url2": "https://www.inversioneau.com/rally-colli-euganei/documenti/",
+        "evento": "rally",
+        "cta": "Pagina del rally",
+        "luogo": "Colli Euganei",
+        "nome": "1° Rally Colli Euganei ACI Sport",
+        "numeri": "1ª edizione · 2 giorni di gara"
+      },
+      {
+        "stato": "conclusa",
+        "anno": "2026",
+        "url": "https://www.inversioneau.com/eventi/polo-motor-show/",
+        "ordine": 2,
+        "_id": "d63f7eeb-3297-4ec0-a39d-4fec43acd33b",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.236Z"
+        },
+        "data": "13–14 GIU 2026",
+        "_updatedDate": {
+          "$date": "2026-08-20T07:39:07.794Z"
+        },
+        "accent": "#6FC7DB",
+        "slug": "polo-motor-show-2026",
+        "testo": "Due giorni di drift, rally show e raduno sul circuito cittadino delle Selve.",
+        "evento": "polo",
+        "cta": "Pagina dell’evento",
+        "luogo": "Selve di Teolo",
+        "foto": "https://www.inversioneau.com/foto-e-video/polo-motor-show-2026/",
+        "nome": "Polo Motor Show 2026",
+        "alboVoce": "Special guest",
+        "alboNome": "Danny Lazzarin — Shark Garage",
+        "numeri": "10.000+ spettatori · circa 100 equipaggi · 400+ auto esposte · 23 sponsor"
+      },
+      {
+        "stato": "conclusa",
+        "anno": "2026",
+        "url": "https://www.inversioneau.com/eventi/legnaro-motori/",
+        "ordine": 3,
+        "_id": "5ed0ffaa-3542-4017-843a-495d406a36fd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.235Z"
+        },
+        "data": "15 MAR 2026",
+        "_updatedDate": {
+          "$date": "2026-08-20T07:39:07.865Z"
+        },
+        "accent": "#A8D8B4",
+        "slug": "legnaro-motori-2026",
+        "testo": "Prima edizione del format fuori dai Colli: drift e raduno in una sola giornata.",
+        "evento": "legnaro",
+        "cta": "Pagina dell’evento",
+        "luogo": "Legnaro",
+        "foto": "https://www.inversioneau.com/foto-e-video/legnaro-motori-2026/",
+        "nome": "Legnaro Motori 2026",
+        "numeri": "1ª edizione · 1 giorno di evento"
+      },
+      {
+        "stato": "conclusa",
+        "anno": "2025",
+        "url": "https://www.inversioneau.com/contatti/",
+        "ordine": 4,
+        "_id": "1f7df33c-d6ea-43aa-a638-568a2809ed8d",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.234Z"
+        },
+        "data": "2025",
+        "nota": "Numeri e galleria in verifica.",
+        "_updatedDate": {
+          "$date": "2026-08-20T07:39:08.018Z"
+        },
+        "accent": "#6FC7DB",
+        "slug": "polo-motor-show-2025",
+        "testo": "L’edizione che ha ospitato la finale italiana dell’Hot Wheels Legends Tour e ha portato il circuito cittadino ai numeri attuali.",
+        "evento": "polo",
+        "cta": "Chiedi le foto",
+        "luogo": "Selve di Teolo",
+        "nome": "Polo Motor Show 2025",
+        "alboVoce": "Special guest",
+        "alboNome": "Hot Wheels Legends Tour — finale italiana, con i Carmagheddon",
+        "numeri": ""
+      },
+      {
+        "stato": "conclusa",
+        "anno": "2024",
+        "url": "https://www.inversioneau.com/contatti/",
+        "ordine": 5,
+        "_id": "b2dd16ec-6fc5-480c-be41-9bef5f6840f2",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.233Z"
+        },
+        "data": "2024",
+        "nota": "Numeri e galleria in verifica.",
+        "_updatedDate": {
+          "$date": "2026-08-20T07:39:08.086Z"
+        },
+        "accent": "#6FC7DB",
+        "slug": "polo-motor-show-2024",
+        "testo": "Prima edizione del Polo Motor Show organizzata dall’associazione.",
+        "evento": "polo",
+        "cta": "Chiedi le foto",
+        "luogo": "Selve di Teolo",
+        "nome": "Polo Motor Show 2024",
+        "numeri": ""
+      },
+      {
+        "stato": "conclusa",
+        "anno": "2017–2023",
+        "url": "https://www.inversioneau.com/associazione/",
+        "ordine": 6,
+        "_id": "ca9c5c45-648a-4d35-84cc-15281532c1c4",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.232Z"
+        },
+        "data": "2017–2023",
+        "nota": "Archivio fotografico in ricostruzione.",
+        "_updatedDate": {
+          "$date": "2026-08-20T07:39:08.161Z"
+        },
+        "accent": "#8C8C8C",
+        "slug": "team-drift-2017-2023",
+        "testo": "Gli anni delle prime esibizioni e dei primi eventi statici, prima della costituzione dell’associazione.",
+        "evento": "team",
+        "cta": "La nostra storia",
+        "luogo": "Veneto",
+        "nome": "Le stagioni del team drift",
+        "numeri": ""
+      }
+    ],
+    "Team": [
+      {
+        "ruolo": "Presidente",
+        "ordine": 1,
+        "_id": "f2a06b2d-d823-463f-9d63-d75e880295b2",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.323Z"
+        },
+        "nota": "Rappresenta l’associazione e firma i rapporti con enti e federazione.",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:33.323Z"
+        },
+        "nome": "Matteo Pescante"
+      },
+      {
+        "ruolo": "Vicepresidente",
+        "ordine": 2,
+        "_id": "4bbce091-941b-4086-9ac9-9045a9860d5a",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.322Z"
+        },
+        "nota": "Coordina l’organizzazione degli eventi e i rapporti con i Comuni.",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:33.322Z"
+        },
+        "nome": "Andrea D’Alberto"
+      },
+      {
+        "ruolo": "Tesoriere",
+        "ordine": 3,
+        "_id": "5868294b-cbc5-42a7-b7ec-afc2ad0498e2",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.321Z"
+        },
+        "nota": "Tiene la contabilità e i rapporti con sponsor e fornitori.",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:33.321Z"
+        },
+        "nome": "Matteo Casarin"
+      },
+      {
+        "ruolo": "Segretario",
+        "ordine": 4,
+        "_id": "4a8ccae4-1c64-4ebd-833a-1b344eb1d4bd",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.320Z"
+        },
+        "nota": "Cura verbali, libro dei soci e comunicazioni dell’associazione.",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:33.320Z"
+        },
+        "nome": "Fabio Pozziani"
+      },
+      {
+        "ruolo": "Consigliere",
+        "ordine": 5,
+        "_id": "7b2657a8-83f0-4a9a-b3ba-d913e179d094",
+        "_owner": "2be2d641-ef8b-489a-b5b2-30bf0deec484",
+        "_createdDate": {
+          "$date": "2026-08-19T07:31:33.319Z"
+        },
+        "nota": "Segue il percorso e la sicurezza in gara insieme allo staff.",
+        "_updatedDate": {
+          "$date": "2026-08-19T07:31:33.319Z"
+        },
+        "nome": "Thomas Scapocchin"
+      }
+    ],
+    "Social": []
+  }
+}

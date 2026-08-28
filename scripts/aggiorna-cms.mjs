@@ -148,6 +148,12 @@ for (const coll of COLLEZIONI) {
         campi.push('livello→evento · evento→polo');
       }
     }
+    if (coll === 'Sponsor' && String(item.data.nome ?? '').trim().toLowerCase() === 'duo') {
+      // il file duo.png non esiste più nel Media Manager: si passa al logo statico del repository
+      item.data.nome = 'Donolauto';
+      item.data.logo = '';
+      campi.push('nome→Donolauto · logo→statico');
+    }
     if (coll === 'ProveSpeciali' && String(item.data.km ?? '').trim().toLowerCase() === 'coming soon') {
       item.data.km = '— · un mese prima della gara'; campi.push('km');
     }
