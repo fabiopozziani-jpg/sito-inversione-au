@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, gruppiAlbo, fmtData, documentiDal } from '../../data/rally';
+import { subnav, gruppiAlbo, fmtData } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/documenti/';
@@ -37,7 +37,7 @@ const hasDocs = docs.length > 0;
       <div>
         <h1 class="type-h1">Documenti di gara e comunicazioni ufficiali</h1>
         <p class="lead" style="margin-top:12px">Tutti i documenti ufficiali del 1° Rally Colli Euganei, dal più recente. Vale sempre l'ultima versione.</p>
-        <p class="type-mono pg-head__reg">Pubblicazione un mese prima della gara · entro il {documentiDal}</p>
+        <p class="type-mono pg-head__reg">Tutti i documenti di gara sono pubblicati un mese prima della gara</p>
       </div>
       {hasDocs && <p class="type-mono k-meta">Aggiornato al <time datetime={list[0].iso.slice(0, 10)}>{fmtData(list[0].iso, true)}</time></p>}
     </div>
@@ -59,7 +59,7 @@ const hasDocs = docs.length > 0;
           <li>Apri l'app. Tocca il segno + in alto a destra.</li>
           <li>Scrivi la password del canale, in maiuscolo, senza spazi:
             <span class:list={['type-mono', 'sp__pw', { 'sp__pw--attesa': !rally.sportity.password }]}>{rally.sportity.password || 'Coming soon'}</span>
-            {!rally.sportity.password && <span class="hint">La password del canale viene pubblicata qui con i documenti di gara, entro il {documentiDal}.</span>}
+            {!rally.sportity.password && <span class="hint">La password del canale viene pubblicata qui con i documenti di gara, un mese prima della gara.</span>}
           </li>
           <li>Tocca Aggiungi. Il canale del 1° Rally Colli Euganei compare nell'elenco.</li>
           <li>Lascia attive le notifiche. Ogni nuova comunicazione del direttore di gara ti arriva sul telefono.</li>
@@ -136,7 +136,7 @@ const hasDocs = docs.length > 0;
       <div class="card card--left vuoto reveal">
         <span class="type-mono k-ev">Albo di gara</span>
         <p class="type-h3 vuoto__t" role="status">Nessun documento pubblicato</p>
-        <p>Il regolamento particolare di gara, il programma, la tabella tempi e i moduli di iscrizione vengono pubblicati un mese prima della gara, entro il {documentiDal}, con data, ora e numero di revisione. Le comunicazioni del direttore di gara arrivano anche su Sportity.</p>
+        <p>Il regolamento particolare di gara, il programma, la tabella tempi e i moduli di iscrizione vengono pubblicati un mese prima della gara, con data, ora e numero di revisione. Le comunicazioni del direttore di gara arrivano anche su Sportity.</p>
         <a class="type-mono link-line vuoto__a" href="#sportity">Attiva le notifiche su Sportity <span class="arrow-x" aria-hidden="true">→</span></a>
       </div>
     </section>

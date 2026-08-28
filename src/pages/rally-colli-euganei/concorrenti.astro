@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, classi, schedaGara, documentiRapidi, documentiDal } from '../../data/rally';
+import { subnav, classi, schedaGara, documentiRapidi } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
@@ -112,7 +112,7 @@ const haIscritti = iscritti.length > 0;
       </div>
       <div class="sg__doc">
         <h3 class="type-h3 sg__t">Documenti in evidenza</h3>
-        <p class="type-body-dark sg__p">I file che si cercano per primi. Vengono pubblicati un mese prima della gara, entro il {documentiDal}, qui e nell'albo di gara.</p>
+        <p class="type-body-dark sg__p">I file che si cercano per primi. Vengono pubblicati un mese prima della gara, qui e nell'albo di gara.</p>
         <ul class="sg__l">
           {documentiRapidi.map(d => (
             <li>
@@ -124,7 +124,7 @@ const haIscritti = iscritti.length > 0;
               ) : (
                 <span class="sg__d sg__d--off">
                   <span class="sg__dn">{d.nome}{d.nota && <span class="type-mono sg__dk">{d.nota}</span>}</span>
-                  <span class="type-mono sg__da">Dal 21 ottobre</span>
+                  <span class="type-mono sg__da">Un mese prima</span>
                 </span>
               )}
             </li>

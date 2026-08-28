@@ -17,7 +17,7 @@ export const rally = {
   dataIso: '2026-11-21',
   luogo: 'Colli Euganei, Padova',
   email: 'inversione.au3@gmail.com',
-  /** Casella dedicata alle informazioni sulla gara (in attivazione). */
+  /** Casella dedicata alle informazioni sulla gara. */
   emailInfo: 'rallycollieuganei@gmail.com',
   telefoni: [
     { label: 'Segreteria', num: '+39 348 570 1233', tel: '+393485701233' },
@@ -52,9 +52,8 @@ export const rally = {
 
 /**
  * Regola dell'organizzazione: tutti i documenti di gara escono un mese prima della gara.
- * Data unica, usata in tutte le pagine del rally al posto dei generici "coming soon".
+ * È la formula che sostituisce i generici "coming soon" nelle pagine del rally.
  */
-export const documentiDal = '21 ottobre 2026';
 
 export const subnav = [
   { label: 'Il rally', href: '/rally-colli-euganei/' },
@@ -75,8 +74,8 @@ export function statoRally(now = Date.now()): { stato: Stato; giorni: number } {
 
 const TBD = '— · da definire';
 export const prove = [
-  { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: '— · dal 21 ottobre', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
-  { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: '— · dal 21 ottobre', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
+  { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: '— · un mese prima della gara', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
+  { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: '— · un mese prima della gara', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
 ];
 
 /**
@@ -104,7 +103,7 @@ export const schedaGara: VoceScheda[] = [
   { voce: 'Shakedown', valore: '' },
   { voce: 'Caratteristiche del percorso', valore: '2 prove speciali, 3 passaggi ciascuna', nota: '20–35 km cronometrati' },
   { voce: 'Parco assistenza', valore: '' },
-  { voce: 'Albo di gara e classifiche', valore: '', nota: 'App Sportity · password dal 21 ottobre 2026' },
+  { voce: 'Albo di gara e classifiche', valore: '', nota: 'App Sportity · password un mese prima della gara' },
   { voce: 'Parco partenza', valore: '' },
   { voce: 'Partenza prima vettura', valore: '' },
   { voce: 'Arrivo prima vettura', valore: '' },
