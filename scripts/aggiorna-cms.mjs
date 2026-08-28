@@ -149,7 +149,7 @@ for (const coll of COLLEZIONI) {
       }
     }
     if (coll === 'ProveSpeciali' && String(item.data.km ?? '').trim().toLowerCase() === 'coming soon') {
-      item.data.km = '— · dal 21 ottobre'; campi.push('km');
+      item.data.km = '— · un mese prima della gara'; campi.push('km');
     }
 
     const note = segnala(coll, item);
