@@ -7,9 +7,10 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CTABlock from '../../components/CTABlock.astro';
 import { subnav, consentito, vietato } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
-import { rallyImg, RALLY_IMG } from '../../data/rallyImmagini';
+import { rallyImg, rallyAlt, RALLY_IMG } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
 const heroSpett = rallyImg(RALLY_IMG.heroSpettatori, 1920, 1080);
+const territorio = rallyImg(5, 1200, 800);
 const { rally, programma } = await caricaRally();
 const url = '/rally-colli-euganei/spettatori/';
 ---
@@ -85,6 +86,21 @@ const url = '/rally-colli-euganei/spettatori/';
         <p>La presenza lungo il percorso avviene a proprio rischio. Chi assiste alla gara è tenuto a rispettare le indicazioni dei commissari di percorso e delle forze dell'ordine, e le prescrizioni dell'ordinanza comunale di chiusura delle strade. Chi non rispetta queste indicazioni viene allontanato dalla zona.</p>
         <p>Le strade chiudono un'ora prima del passaggio della prima vettura e riaprono solo dopo il passaggio della vettura scopa, l'ultima del rally. Prima di quel momento non si attraversa e non si sposta l'auto.</p>
       </div>
+      <div class="card card--rosso fuoco" role="note">
+        <div class="sic__head">
+          <span class="sic__ico sic__ico--no" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <h3 class="type-h3">Niente fuochi, fumogeni e artifici</h3>
+        </div>
+        <p class="fuoco__p">Lungo il percorso e nelle zone pubblico non si accendono fuochi, fumogeni, torce, bengala, petardi o inneschi di alcun tipo. Non è una questione di scenografia: è la condizione che ci permette di correre su queste strade.</p>
+        <ul class="lista-ev fuoco__l">
+          <li>Il fumo toglie la visibilità a un equipaggio che arriva a oltre cento all'ora. Una prova speciale invasa dal fumo viene fermata, e quando si ferma una prova si ferma la gara per tutti.</li>
+          <li>Si corre dentro un parco regionale, tra boschi, castagneti e prati secchi. Una scintilla, in una giornata di vento, è un incendio.</li>
+          <li>Fumogeni e artifici sono materiale pirotecnico: chi li accende risponde in prima persona dei danni a persone, mezzi e vegetazione, e dell'interruzione della gara.</li>
+          <li>Chi viene trovato con questo materiale è allontanato dalla zona pubblico dai commissari e dalle forze dell'ordine.</li>
+        </ul>
+        <p class="fuoco__p">Vale lo stesso per i rifiuti: quello che porti in prova speciale torna a casa con te.</p>
+      </div>
+
       <div class="sic__prima">
         <h3 class="type-h3">Prima di partire</h3>
         <ul class="lista-ev">
@@ -94,6 +110,29 @@ const url = '/rally-colli-euganei/spettatori/';
           <li>Il rally si corre con qualsiasi tempo, anche con la pioggia.</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- IL TERRITORIO (bianco) -->
+  <section id="territorio" class="on-light terr" aria-labelledby="terr-h">
+    <div class="wrap section terr__in">
+      <div class="terr__t">
+        <p class="type-mono terr__k">Il territorio</p>
+        <h2 id="terr-h" class="type-h2">Si corre dentro un parco regionale</h2>
+        <p>I Colli Euganei sono un parco regionale dal 1989: 18.694 ettari su quindici comuni della provincia di Padova, un centinaio di rilievi di origine vulcanica nati trentacinque milioni di anni fa in mezzo alla pianura. Castagneti e querceti sui versanti freschi, macchia mediterranea su quelli esposti al sole, vigne e ulivi a mezza costa. In cima al Monte Venda, 601 metri: il punto più alto della pianura padana.</p>
+        <p>Il rally passa di qui due giorni all'anno. Le strade che chiudiamo sono strade di casa: ci vivono famiglie, ci lavorano aziende agricole e cantine, ci camminano escursionisti tutto il resto dell'anno.</p>
+        <p>Quello che chiediamo a chi viene a vedere la gara è semplice: restare nelle zone segnalate, non entrare in vigne, orti e coltivi, non accendere nulla, non lasciare nulla per terra. Il rally torna qui l'anno prossimo solo se il Parco, i Comuni e chi ci abita lo rivogliono.</p>
+        <a class="type-mono dorm__l" href="https://www.parcocollieuganei.com/" target="_blank" rel="noopener">Parco Regionale dei Colli Euganei ↗</a>
+      </div>
+      <figure class="terr__foto reveal">
+        <img src={territorio} alt={rallyAlt(5)} width="1200" height="800" loading="lazy" decoding="async" />
+      </figure>
+      <dl class="terr__dl">
+        <div><dt class="type-mono">Parco regionale dal</dt><dd class="type-mono">1989</dd></div>
+        <div><dt class="type-mono">Superficie</dt><dd class="type-mono">18.694 ettari</dd></div>
+        <div><dt class="type-mono">Comuni</dt><dd class="type-mono">15</dd></div>
+        <div><dt class="type-mono">Cima più alta</dt><dd class="type-mono">Monte Venda · 601 m</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -179,6 +218,22 @@ const url = '/rally-colli-euganei/spettatori/';
   .sic__avv p{color:#fff;font-size:15px}
   .sic__prima{margin-top:var(--sp-5);max-width:70ch;display:flex;flex-direction:column;gap:12px}
   .sic__prima h3{color:#fff}
+  .fuoco{margin-top:var(--sp-5);display:flex;flex-direction:column;gap:14px;max-width:80ch}
+  .fuoco__p{color:#fff}
+  .fuoco__l li{color:#DDD}
+  /* territorio */
+  .terr{border-top:1px solid var(--border-divider)}
+  .terr__in{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5);align-items:start}
+  @media(min-width:900px){.terr__in{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}.terr__dl{grid-column:1 / -1}}
+  .terr__k{color:var(--rally-teal-scuro);margin-bottom:12px}
+  .terr h2{margin-bottom:20px;text-wrap:balance}
+  .terr__t p{color:var(--text-secondary);max-width:62ch;margin-bottom:14px}
+  .terr__foto{margin:0}
+  .terr__foto img{width:100%;height:auto}
+  .terr__dl{display:flex;flex-wrap:wrap;gap:1px;background:var(--border-divider);border:1px solid var(--border-divider)}
+  .terr__dl>div{flex:1 1 180px;background:var(--bianco);padding:18px 20px;display:flex;flex-direction:column-reverse;gap:6px}
+  .terr__dl dt{color:#6B6B6B}
+  .terr__dl dd{margin:0;color:var(--nero);font-size:18px}
   /* arrivare */
   .arr h2{margin-bottom:32px}
   .arr__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp-4)}

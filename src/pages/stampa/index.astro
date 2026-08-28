@@ -7,7 +7,6 @@ import { mk } from '../../data/filesWix';
 const posts = await caricaPosts();
 const email = 'inversione.au3@gmail.com';
 const comunicati = posts.filter(p => p.tipo === 'comunicato stampa').sort((a, b) => (a.iso < b.iso ? 1 : -1));
-const BOILER = 'Inversione A U A.S.D. è un’associazione sportiva dilettantistica di Padova che organizza eventi motorsport sui Colli Euganei. Nasce come team drift nel 2017, organizza eventi dinamici dal 2022 e si costituisce in associazione nel 2023. Nel 2026 firma tre manifestazioni: Legnaro Motori il 15 marzo, il Polo Motor Show il 13 e 14 giugno e il 1° Rally Colli Euganei ACI Sport il 21 e 22 novembre, il primo rally sui Colli dopo più di trent’anni. Le ultime edizioni hanno superato i 10.000 spettatori, con circa 100 equipaggi in due giorni e oltre 400 auto esposte.';
 const loghi = [
   { file: mk('logo-inversione-bianco.png'), web: '/mediakit/web/logo-inversione-bianco.png', t: 'Logo Inversione A U', s: 'Versione per fondo scuro · PNG ↓', n: 'Vettoriale: PDF', dark: true },
   { file: mk('logo-inversione-nero.png'), web: '/mediakit/web/logo-inversione-nero.png', t: 'Logo Inversione A U', s: 'Versione per fondo chiaro · PNG ↓', n: 'Vettoriale: PDF', dark: false },
@@ -21,7 +20,7 @@ const altri = [
   ['Targa rally · PNG', mk('targa-rally-colli-euganei.png')], ['Polo bianco · PNG', mk('logo-polo-2026-bianco.png')], ['Polo nero · PNG', mk('logo-polo-2026-nero.png')],
 ];
 ---
-<Base title="Area stampa e accrediti | Inversione A U" description="Area stampa Inversione A U: comunicati, foto in alta risoluzione, testo di presentazione, loghi e brand book. Come chiedere l'accredito per gli eventi." active="" image="/img/social/stampa.jpg" imageAlt="Area stampa Inversione A U">
+<Base title="Area stampa e accrediti | Inversione A U" description="Area stampa Inversione A U: comunicati, foto in alta risoluzione, loghi e brand book. Come chiedere l'accredito per gli eventi." active="" image="/img/social/stampa.jpg" imageAlt="Area stampa Inversione A U">
   <header class="wrap pg-head">
     <p class="type-mono text-meta">Area stampa · accesso libero, senza password</p>
     <h1 class="type-h1">Stampa: comunicati, foto e accrediti</h1>
@@ -31,7 +30,7 @@ const altri = [
   <section class="wrap section" aria-labelledby="due-h">
     <h2 id="due-h" class="type-h2 mb">Le due richieste più frequenti</h2>
     <div class="due stagger">
-      <a href="/stampa/accrediti/" class="card card--top reveal due__a"><h3 class="type-h3">Richiedi l'accredito stampa</h3><p>Requisiti, scadenze, riprese con drone e ritiro della pettorina in sala stampa.</p><span class="type-mono due__l">Compila il modulo <span class="arrow-x" aria-hidden="true">→</span></span></a>
+      <a href="/stampa/accrediti/" class="card card--top reveal due__a"><h3 class="type-h3">Richiedi l'accredito stampa</h3><p>Requisiti, scadenze, regole sulle riprese con drone e modulo di richiesta.</p><span class="type-mono due__l">Compila il modulo <span class="arrow-x" aria-hidden="true">→</span></span></a>
       <a href="#materiali" class="card card--top reveal due__a"><h3 class="type-h3">Scarica i materiali per la stampa</h3><p>Loghi vettoriali, foto selezionate, testo di presentazione e numeri chiave.</p><span class="type-mono due__l">Vai al download <span class="arrow-down" aria-hidden="true">↓</span></span></a>
     </div>
   </section>
@@ -68,15 +67,6 @@ const altri = [
     <p class="hint">Le cartelle restano online per dodici mesi · le gallerie web sono in <a href="/foto-e-video/">Foto e video</a></p>
   </section>
 
-  <section id="presentazione" class="wrap section" aria-labelledby="pr-h">
-    <h2 id="pr-h" class="type-h2">Testo di presentazione da copiare</h2>
-    <p class="type-body-dark p">Le righe da inserire in coda all'articolo. Contengono i dati corretti e aggiornati.</p>
-    <div class="card card--left boiler">
-      <p data-boiler>{BOILER}</p>
-      <div class="boiler__row"><button type="button" class="btn btn--secondary" data-copia>Copia il testo</button><span class="type-mono text-meta" aria-live="polite" data-copia-stato></span></div>
-    </div>
-  </section>
-
   <section id="materiali" class="wrap section" aria-labelledby="mk-h">
     <h2 id="mk-h" class="type-h2 mb">Loghi, targhe e cartella completa</h2>
     <div class="bb card card--left">
@@ -98,15 +88,6 @@ const altri = [
     <p class="type-body-dark p">Non modificare le proporzioni dei loghi e non cambiare i colori. I loghi non vanno colorati, distorti né ricomposti.</p>
   </section>
 </Base>
-<script>
-  const b = document.querySelector<HTMLButtonElement>('[data-copia]'), t = document.querySelector<HTMLElement>('[data-boiler]'), s = document.querySelector<HTMLElement>('[data-copia-stato]');
-  b?.addEventListener('click', async () => {
-    const txt = t?.textContent ?? '';
-    try { await navigator.clipboard.writeText(txt); } catch { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
-    b.textContent = 'Copiato'; if (s) s.textContent = 'Testo copiato negli appunti';
-    setTimeout(() => { b.textContent = 'Copia il testo'; if (s) s.textContent = ''; }, 3000);
-  });
-</script>
 <style>
   .pg-head{padding-top:var(--sp-6);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
   .pg-head h1{color:#fff}
@@ -132,9 +113,6 @@ const altri = [
   .cs__t:hover{text-decoration:underline;text-underline-offset:4px}
   .cs__l{color:#fff;white-space:nowrap}
   .hint a{color:#fff}
-  .boiler{margin-top:var(--sp-3);max-width:80ch}
-  .boiler p{color:#DDD}
-  .boiler__row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .bb{flex-direction:row;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:var(--sp-4)}
   .bb h3{color:#fff;margin-bottom:6px}
   .mk{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}

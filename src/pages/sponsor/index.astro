@@ -1,5 +1,5 @@
 ---
-/** Sponsor e patrocini — patrocini, partner di stagione, sponsor per evento, numeri, CTA. */
+/** Sponsor — partner di stagione, sponsor per evento, numeri, CTA. I patrocini restano dentro gli eventi. */
 import Base from '../../layouts/Base.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
 import StatBlock from '../../components/StatBlock.astro';
@@ -7,40 +7,26 @@ import CTABlock from '../../components/CTABlock.astro';
 import { caricaSponsor, senzaAnnuali } from '../../lib/contenuti';
 import { canali, seguitoTotale } from '../../data/sponsor';
 import { presentazione, presentazionePeso } from '../../data/filesWix';
-import { IMMAGINI, imgFit } from '../../data/rallyImmagini';
 const sponsor = await caricaSponsor();
 const annuali = sponsor.annuali;
 const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali);
 const spPolo = sponsorEvento('polo'), spLegnaro = sponsorEvento('legnaro');
-const patrocini = ['Comune di Teolo', 'Comune di Legnaro', 'ACI Padova'];
 const numeri = [
   { value: '10.000+', label: 'spettatori a evento' }, { value: 'circa 100', label: 'equipaggi in due giorni' }, { value: '400+', label: 'auto esposte' }, { value: '23', label: 'sponsor' },
   { value: '4', label: 'espositori' }, { value: '8', label: 'fotografi e videomaker' }, { value: '3', label: 'eventi nel 2026' },
 ];
 ---
-<Base title="Sponsor e patrocini | Inversione A U" description="Partner di stagione, sponsor dei singoli eventi ed enti che patrocinano Polo Motor Show, Legnaro Motori e Rally Colli Euganei. Come diventare sponsor." active="sponsor">
+<Base title="Sponsor degli eventi | Inversione A U" description="I partner di stagione di Inversione A U e gli sponsor di Polo Motor Show, Legnaro Motori e Rally Colli Euganei. Come diventare sponsor." active="sponsor">
   <header class="wrap pg-head">
     <p class="type-mono text-meta">I partner di Inversione A U</p>
-    <h1 class="type-h1">Sponsor e patrocini degli eventi</h1>
-    <p class="lead">Le aziende che sostengono l'intera stagione e gli enti che patrocinano gli eventi. Gli sponsor legati a un singolo evento sono nella pagina di quell'evento.</p>
+    <h1 class="type-h1">Gli sponsor degli eventi</h1>
+    <p class="lead">Le aziende che sostengono l'intera stagione e quelle legate a un singolo evento. Ogni evento ha poi i suoi sponsor nella pagina dedicata.</p>
   </header>
-
-  <section id="patrocini" class="wrap section" aria-labelledby="pat-h">
-    <h2 id="pat-h" class="type-h2">Enti che patrocinano i nostri eventi</h2>
-    <p class="type-body-dark p">Il patrocinio non è una sponsorizzazione. È il riconoscimento formale con cui un ente pubblico riconosce il valore sportivo e culturale di un evento e ne autorizza lo svolgimento sul proprio territorio.</p>
-    <p class="hint">I patrocini si rinnovano a ogni edizione. Questo elenco riguarda la stagione 2026.</p>
-    <div class="pat">
-      <div class="pat__logo"><img src="/img/logo_aci_sport.png" alt="ACI Sport" width="120" height="120" loading="lazy" /></div>
-      <div class="pat__logo"><img src="/img/stemma_comune.png" alt="Stemma del Comune di Teolo" width="100" height="120" loading="lazy" /></div>
-      <div class="pat__logo"><img src={imgFit(IMMAGINI.stemmaLegnaro, 400)} alt="Stemma del Comune di Legnaro" width="373" height="340" loading="lazy" /></div>
-      <ul class="pat__list">{patrocini.map(p => <li class="type-mono">{p}</li>)}</ul>
-    </div>
-  </section>
 
   <section id="partner-annuali" class="wrap section" aria-labelledby="pa-h">
     <h2 id="pa-h" class="type-h2">Partner di stagione</h2>
     <p class="type-body-dark p">Sono i partner del marchio Inversione A U. Il loro logo è presente in ogni evento della stagione, sui materiali stampati, nei comunicati e su questo sito per tutti i dodici mesi.</p>
-    <SponsorBlock sponsors={annuali} columns={6} mono={false} />
+    <SponsorBlock sponsors={annuali} columns={4} logoH={64} mono={false} />
   </section>
 
   <section class="wrap section" aria-labelledby="se-h">
@@ -120,10 +106,6 @@ const numeri = [
   h2{color:#fff;margin-bottom:8px}
   .p{max-width:70ch;margin-bottom:12px}
   .hint{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio-450);display:block;margin-bottom:var(--sp-4)}
-  .pat{display:flex;gap:var(--sp-4);align-items:center;flex-wrap:wrap}
-  .pat__logo{background:var(--carbone);border:1px solid var(--border-on-dark);padding:20px;display:flex;align-items:center;justify-content:center;min-width:140px;min-height:140px}
-  .pat__logo img{max-height:100px;width:auto}
-  .pat__list{display:flex;flex-direction:column;gap:8px;color:#fff}
   .ev{display:flex;flex-direction:column;gap:var(--sp-6);margin-top:var(--sp-4)}
   .ev__b{display:flex;flex-direction:column;gap:12px;padding-left:20px;border-left:3px solid var(--acc)}
   .ev__k{color:var(--acc)}

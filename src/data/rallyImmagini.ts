@@ -32,7 +32,7 @@ export const IMMAGINI = {
   /** Mappa delle aree di Legnaro Motori 2026. */
   mappaLegnaro: { id: '2be2d6_ad567159f3e24fee9c10c999e070ac8a~mv2.jpg', name: 'mappa-legnaro-motori.jpg', w: 1000, h: 1000,
     alt: 'Mappa di Legnaro Motori: pista drift, area pubblico, raduno auto sportive e paddock in Viale dello Sport' },
-  /** Foto d'epoca: Coppa Italia · Rally Città del Santo, Padova 1986. */
+  /** Foto d'epoca: rally in provincia di Padova, 1986. */
   guest2026: { id: '2be2d6_cc1eda643dc44c2aa3ed203f240ebecd~mv2.png', name: 'special-guest-2026-danny-lazzarin.png', w: 1200, h: 1158, alt: 'Danny Lazzarin a braccia conserte accanto al logo Shark Garage' },
   guest2025: { id: '2be2d6_9c0092e2192149d4b4f4cb579db94b8c~mv2.png', name: 'special-guest-2025-hot-wheels-carmagheddon.png', w: 961, h: 652, alt: 'I tre Carmagheddon sotto i loghi Carmagheddon e Hot Wheels Legends Tour' },
   targaRally: { id: '2be2d6_ddf434f20cce4cacbe7de9eb93254364~mv2.png', name: 'targa-rally-colli-euganei-2026.png', w: 1400, h: 643, alt: 'Targa del 1° Rally Colli Euganei 2026' },
@@ -40,8 +40,8 @@ export const IMMAGINI = {
   twinDrift: { id: '2be2d6_46a23c9227e9424cbfe135657264a986~mv2.jpg', name: 'inversione-au-twin-drift-pozziani-dalberto.jpg', w: 1580, h: 1404, alt: 'Due vetture di Inversione A U in drift affiancate sul circuito' },
   ctrlg: { id: '2be2d6_319202b4949947d2864af6ba6e8a96d6~mv2.png', name: 'ctrlg.png', w: 600, h: 440, alt: 'Ctrl+G' },
   stemmaLegnaro: { id: '2be2d6_2ed52aee8d6f42c2bf4f88af1b9f5c53~mv2.png', name: 'comune-di-legnaro.png', w: 373, h: 340, alt: 'Stemma del Comune di Legnaro' },
-  santo1986: { id: '2be2d6_ed6a4ccb07374db59c38ea97dccedb08~mv2.jpg', name: 'rally-citta-del-santo-1986.jpg', w: 735, h: 499,
-    alt: 'Lancia 037 numero 8 in gara al Rally Città del Santo, Padova 1986, con il pubblico a bordo strada' },
+  santo1986: { id: '2be2d6_ed6a4ccb07374db59c38ea97dccedb08~mv2.jpg', name: 'rally-padova-1986.jpg', w: 735, h: 499,
+    alt: 'Lancia 037 numero 8 in gara in provincia di Padova nel 1986, con il pubblico a bordo strada' },
 } as const;
 export const imgFill = (i: { id: string; name: string }, w: number, h: number) => wixFill(i.id, i.name, w, h);
 export const imgFit = (i: { id: string; name: string }, max: number) => wixFit(i.id, i.name, max);

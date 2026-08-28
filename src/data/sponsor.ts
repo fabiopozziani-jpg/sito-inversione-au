@@ -5,16 +5,22 @@ const DIM: Record<string, [number, number]> = { 'abano-ghiaccio': [383,180], 'au
 const s = (slug: string, name: string): Sponsor => ({ name, logo: `/img/sponsor/${slug}.png`, w: DIM[slug]?.[0], h: DIM[slug]?.[1] });
 
 export const annuali: Sponsor[] = [
-  s('polo-cucine', 'POLO · insieme a te in cucina'),
   s('ricambi-americani', 'Ricambi Americani'),
   s('baap-bergamaschi', 'BAAP Bergamaschi'),
   s('cesaro-group', 'Cesaro Group'),
   s('rally-team', 'Rally Team'),
+  s('sky-motors', 'Sky Motors'),
+  s('metal-nord', 'Metal Nord Rottami'),
+  s('ecosider', 'Ecosider'),
+  s('siderurgica-veneta', 'Siderurgica Veneta'),
+  s('labor', 'Labor F.lli Corazzari'),
+  s('marchioro', 'Marchioro Scavi e Demolizioni'),
+  s('dealernet', 'Dealernet'),
   { name: 'Ctrl+G', logo: '', url: 'https://www.ctrlg.it/' },
 ];
 export const rally: Sponsor[] = [];
 export const polo: Sponsor[] = [
-  s('bull-barber','Bull Barber'), s('caneva-car','Caneva Car'), s('abano-ghiaccio','Abano Ghiaccio'), s('bellavista','Bellavista'),
+  s('polo-cucine','POLO · insieme a te in cucina'), s('bull-barber','Bull Barber'), s('caneva-car','Caneva Car'), s('abano-ghiaccio','Abano Ghiaccio'), s('bellavista','Bellavista'),
   s('gemini','Gemini Carrozzeria'), s('race-shop','Race-Shop'), s('auto-landi','Auto Landi'), s('metal-nord','Metal Nord Rottami'),
   s('ecosider','Ecosider'), s('siderurgica-veneta','Siderurgica Veneta'), s('autoservizi-cavinato','Autoservizi Cavinato'),
   s('gruppo-s2','Gruppo S2 Automobili'), s('locanda-al-colle','Locanda al Colle'), s('carrozzeria-angela','Autocarrozzeria Angela'),

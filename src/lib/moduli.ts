@@ -40,17 +40,16 @@ export function prepara(modulo: ChiaveModulo, d: Record<string, unknown>): { val
     valori = { azienda: s(d.azienda), referente: s(d.referente), email: s(d.email), telefono: s(d.telefono), evento: s(d.evento), pacchetto: s(d.pacchetto), budget: s(d.budget), note, privacy: si(d.privacy) };
   } else if (modulo === 'accrediti') {
     const giorni = ['sabato', 'domenica'].filter(g => si(d[g]));
-    const mezzi = ['fotocamera', 'videocamera', 'drone'].filter(m => si(d[m]));
+    const mezzi = ['fotocamera', 'videocamera'].filter(m => si(d[m]));
     if (!giorni.length) errori.push('Giorni di presenza: seleziona almeno una voce');
-    if (!si(d.regolamento)) errori.push('Regolamento di sicurezza: è obbligatorio');
-    if (si(d.drone) && !s(d.enac)) errori.push('Registrazione ENAC del drone: è obbligatoria se porti il drone');
+    if (!si(d.regolamento)) errori.push('Impegno a rispettare le indicazioni della direzione di gara: è obbligatorio');
     const dettagli = [
       s(d.tessera) && `Tessera / documento: ${s(d.tessera)}`,
       s(d.operatori) && `Operatori: ${s(d.operatori)}${s(d.altri_operatori) ? ` (${s(d.altri_operatori)})` : ''}`,
       `Giorni: ${giorni.join(', ') || '—'}`,
-      `Mezzi: ${mezzi.join(', ') || '—'}${si(d.drone) ? ` · ENAC/d-Flight: ${s(d.enac)}` : ''}`,
+      `Mezzi: ${mezzi.join(', ') || '—'}`,
       (s(d.targa) || s(d.veicolo)) && `Veicolo: ${[s(d.veicolo), s(d.targa)].filter(Boolean).join(' · targa ')}`,
-      `Regolamento di sicurezza accettato: ${si(d.regolamento) ? 'sì' : 'no'}`,
+      `Impegno sulle regole di gara accettato: ${si(d.regolamento) ? 'sì' : 'no'}`,
       s(d.note) && `Note: ${s(d.note)}`,
     ].filter(Boolean).join('\n');
     valori = { evento: s(d.evento), ruolo: s(d.ruolo), nome: s(d.nome), testata: s(d.testata), email: s(d.email), cellulare: s(d.cellulare), dettagli, privacy: si(d.privacy) };

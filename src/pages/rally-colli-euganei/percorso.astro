@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav } from '../../data/rally';
+import { subnav, documentiDal } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, prove } = await caricaRally();
 const url = '/rally-colli-euganei/percorso/';
@@ -20,6 +20,7 @@ const url = '/rally-colli-euganei/percorso/';
   <header class="wrap pg-head">
     <h1 class="type-h1">Percorso e prove speciali</h1>
     <p class="lead">Dove si corre, quanti chilometri si cronometrano e a che ora passa la prima vettura.</p>
+    <p class="type-mono pg-head__tipo">Rally Sprint · manifestazione atipica sperimentale a calendario ACI Sport</p>
   </header>
 
   <!-- MAPPA -->
@@ -39,7 +40,7 @@ const url = '/rally-colli-euganei/percorso/';
         <img src={rally.targa} alt="" width="1400" height="643" loading="lazy" decoding="async" />
         <div>
           <p class="type-mono k-ev">In pubblicazione</p>
-          <p class="mappa__attesa-t">La mappa ufficiale del percorso viene pubblicata qui appena definita, insieme ai punti di accesso per il pubblico.</p>
+          <p class="mappa__attesa-t">La mappa ufficiale del percorso viene pubblicata qui con i documenti di gara, entro il {documentiDal}, insieme ai punti di accesso per il pubblico.</p>
         </div>
       </div>
     )}
@@ -48,9 +49,10 @@ const url = '/rally-colli-euganei/percorso/';
   <!-- DATI CHIAVE -->
   <section class="wrap dati-sec" aria-label="Dati chiave del percorso">
     <dl class="dati reveal">
-      <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">30–40 km</dd></div>
+      <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">20–35 km</dd></div>
       <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2 · 21–22 nov 2026</dd></div>
-      <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">2 · 3 passaggi</dd></div>
+      <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">2 prove · 3 passaggi ciascuna</dd></div>
+      <div><dt class="type-mono">Tipologia</dt><dd class="type-mono">Rally Sprint</dd></div>
     </dl>
   </section>
 
@@ -58,10 +60,11 @@ const url = '/rally-colli-euganei/percorso/';
   <section id="prove-speciali" class="wrap section ps" aria-labelledby="ps-h">
     <div class="ps__head">
       <h2 id="ps-h" class="type-h2">Le prove speciali</h2>
-      <span class="pill pill--ev">Provvisorio</span>
+      <span class="pill pill--ev">Rally Sprint</span>
+      <span class="pill">Provvisorio</span>
     </div>
-    <p class="type-body-dark ps__intro">Due prove speciali, ripetute tre volte ciascuna: sei passaggi cronometrati in tutto.</p>
-    <p class="ps__p">Tracciati, chilometraggi e orari vengono pubblicati qui appena definiti. Gli orari indicati saranno i passaggi della prima vettura: le vetture successive transitano a distanza di un minuto l'una dall'altra.</p>
+    <p class="type-body-dark ps__intro">Due prove speciali, tre passaggi ciascuna: sei tratti cronometrati in tutto, per 20–35 km a cronometro.</p>
+    <p class="ps__p">Tracciati, chilometraggi e orari vengono pubblicati con i documenti di gara, un mese prima della gara: entro il {documentiDal}. Gli orari indicati saranno i passaggi della prima vettura: le vetture successive transitano a distanza di un minuto l'una dall'altra.</p>
     <div class="ps__grid stagger">
       {prove.map(p => (
         <article class="ps__card reveal">
@@ -81,8 +84,8 @@ const url = '/rally-colli-euganei/percorso/';
             </dl>
             {p.maps
               ? <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>
-              : <span class="link-box link-box--off">Mappa Google Maps · coming soon</span>}
-            <span class="hint">{p.maps ? 'Si apre in una nuova pagina' : 'Il punto di accesso arriva con la pubblicazione del percorso'}</span>
+              : <span class="link-box link-box--off">Mappa Google Maps · dal 21 ottobre</span>}
+            <span class="hint">{p.maps ? 'Si apre in una nuova pagina' : `Il punto di accesso arriva con i documenti di gara, entro il ${documentiDal}`}</span>
           </div>
         </article>
       ))}
@@ -98,7 +101,7 @@ const url = '/rally-colli-euganei/percorso/';
       <div class="tt__grid">
         <div class="card card--left">
           <h3 class="type-h3">Quando viene pubblicata</h3>
-          <p>La tabella viene pubblicata nella settimana di gara, appena fornita da ACI Sport, e resta scaricabile in PDF fino alla fine del rally.</p>
+          <p>La tabella viene pubblicata con gli altri documenti di gara, entro il {documentiDal}, e resta scaricabile in PDF fino alla fine del rally.</p>
         </div>
         <div class="card tt__dl">
           <span class="type-mono tt__file"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Scarica la tabella tempi in PDF</span>
@@ -110,6 +113,7 @@ const url = '/rally-colli-euganei/percorso/';
 </Base>
 
 <style>
+  .pg-head__tipo{color:var(--ev);letter-spacing:.06em;margin-top:10px}
   .mappa{display:flex;flex-direction:column;gap:12px;padding-bottom:var(--sp-8)}
   .mappa h2{color:#fff}
   .mappa__intro{max-width:56ch}

@@ -147,7 +147,7 @@ export function testiStato(h: Hub, galleryUrl: string) {
     conclusa: ['Edizione conclusa', `Le foto ufficiali della giornata sono online. L’edizione ${h.annoProx} è in preparazione.`, `Guarda le foto ${h.anno}`, galleryUrl],
   };
   const programmaTit: Record<Stato, string> = { annuncio: 'Programma in definizione', 'iscrizioni-aperte': 'Il programma', imminente: 'Il programma delle giornate', 'in-corso': 'Gli orari di oggi', conclusa: `Com’è andata: il programma ${h.anno}` };
-  const partecipaTit: Record<Stato, string> = { annuncio: 'Correre o esporre', 'iscrizioni-aperte': 'Iscriviti come pilota o espositore', imminente: 'Piloti ed espositori', 'in-corso': 'Piloti ed espositori', conclusa: `Correre o esporre nel ${h.annoProx}` };
+  const partecipaTit: Record<Stato, string> = { annuncio: 'Correre o esporre', 'iscrizioni-aperte': 'Iscriviti come pilota o espositore', imminente: 'Piloti ed espositori', 'in-corso': 'Piloti ed espositori', conclusa: `Candidature espositori e sponsor ${h.annoProx}` };
   const conclusa = s === 'conclusa';
   return {
     statoLabel: label[s], cta: cta[s], band: band[s],

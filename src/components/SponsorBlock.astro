@@ -1,11 +1,11 @@
 ---
 import type { Sponsor } from '../data/sponsor';
 /** Griglia loghi. mono=true → monocromo (guscio del sito); mono=false → colore (hub evento). */
-interface Props { title?: string; sponsors: Sponsor[]; columns?: number; light?: boolean; mono?: boolean; headingLevel?: 2 | 3 }
-const { title, sponsors, columns = 4, light = false, mono = true, headingLevel = 2 } = Astro.props;
+interface Props { title?: string; sponsors: Sponsor[]; columns?: number; light?: boolean; mono?: boolean; headingLevel?: 2 | 3; logoH?: number }
+const { title, sponsors, columns = 4, light = false, mono = true, headingLevel = 2, logoH = 46 } = Astro.props;
 const H = `h${headingLevel}` as 'h2' | 'h3';
 ---
-<div class:list={['spb sponsor-fade', { 'spb--light': light, 'spb--mono': mono }]} style={`--c:${columns}`}>
+<div class:list={['spb sponsor-fade', { 'spb--light': light, 'spb--mono': mono }]} style={`--c:${columns};--logo-h:${logoH}px`}>
   {title && <H class="type-mono spb__h">{title}</H>}
   <ul class="spb__grid">
     {sponsors.map(s => (
@@ -21,8 +21,8 @@ const H = `h${headingLevel}` as 'h2' | 'h3';
   .spb__h{color:var(--grigio-450);letter-spacing:.08em;margin-bottom:24px}
   .spb__grid{display:grid;grid-template-columns:repeat(var(--c),minmax(0,1fr));gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark)}
   .spb__cell{background:var(--nero);aspect-ratio:2/1;display:flex;align-items:center;justify-content:center;padding:16px}
-  .spb__cell img{max-width:70%;max-height:46px;width:auto;height:auto;opacity:.8;transition:opacity var(--dur-base) var(--ease-out)}
-  @media(min-width:1180px){.spb__cell img{max-height:54px}}
+  .spb__cell img{max-width:76%;max-height:var(--logo-h,46px);width:auto;height:auto;opacity:.8;transition:opacity var(--dur-base) var(--ease-out)}
+  @media(min-width:1180px){.spb__cell img{max-height:calc(var(--logo-h,46px) + 8px)}}
   .spb__cell:hover img{opacity:1}
   .spb__nome{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-align:center;color:var(--grigio-450);line-height:1.3;overflow-wrap:anywhere}
   .spb--light .spb__nome{color:#6B6B6B}

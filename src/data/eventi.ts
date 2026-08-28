@@ -13,7 +13,7 @@ export const eventi: Evento[] = [
   { key: 'rally', nome: '1° Rally Colli Euganei', slug: 'rally-colli-euganei', href: '/rally-colli-euganei/',
     accent: '#00BA89', accentDark: '#006C7C', dataLabel: '21–22 NOV 2026', luogo: 'Colli Euganei', dataIso: '2026-11-21',
     stato: 'annuncio', ordine: 0,
-    testoCard: 'Dopo più di 30 anni torna il rally sui Colli Euganei a Padova. Scopri tutte le informazioni.',
+    testoCard: 'Dopo più di 35 anni torna un rally nel Padovano. Scopri tutte le informazioni.',
     ctaCard: 'Apri la pagina del rally', cover: rallyImg(RALLY_IMG.heroRally, 1200, 750), coverAlt: rallyAlt(RALLY_IMG.heroRally) },
   { key: 'polo', nome: 'Polo Motor Show', slug: 'polo-motor-show', href: '/eventi/polo-motor-show/',
     accent: '#6FC7DB', accentDark: '#1E7A91', dataLabel: '13–14 GIU 2026', luogo: 'Selve di Teolo', dataIso: '2026-06-13',

@@ -17,11 +17,11 @@ const numeri = [
 ];
 const storia = [
   { time: '2017', title: 'Il team drift', text: 'Inversione A U nasce come team amatoriale legato al drifting e alla cultura automobilistica, con la partecipazione agli eventi del Nord Italia.' },
-  { time: '2019', title: 'I primi eventi statici', text: 'L’attività si sposta dalla partecipazione all’organizzazione: nascono i primi raduni dedicati all’automobile.' },
+  { time: '2018', title: 'I primi raduni', text: 'L’attività si sposta dalla partecipazione all’organizzazione: nascono i primi raduni dedicati all’automobile.' },
   { time: '2022', title: 'Dagli statici agli eventi dinamici', text: 'Primo anno da organizzatori di eventi dinamici su piazzali e circuiti cittadini, con l’ingresso nell’organizzazione del Polo Motor Show.' },
   { time: '2023', title: 'Nasce l’Associazione Sportiva Dilettantistica', text: 'L’esperienza maturata negli anni diventa una struttura: atto costitutivo, statuto, consiglio direttivo e libro dei soci.' },
   { time: '2024–2025', title: 'Il Polo Motor Show cresce', text: 'Il circuito cittadino di Selve di Teolo consolida il format, con la finale italiana dell’Hot Wheels Legends Tour nel 2025.' },
-  { time: '2026', title: 'Tre format, tre discipline', text: 'Legnaro Motori a marzo, Polo Motor Show a giugno e, a novembre, il 1° Rally Colli Euganei: il rally torna sui Colli dopo più di trent’anni.' },
+  { time: '2026', title: 'Tre format, tre discipline', text: 'Legnaro Motori a marzo, Polo Motor Show a giugno e, a novembre, il 1° Rally Colli Euganei: dopo più di 35 anni torna un rally nel Padovano.' },
 ];
 const direttivoStatico = [
   { nome: 'Matteo Pescante', ruolo: 'Presidente', nota: 'Rappresenta legalmente l’associazione e coordina le attività istituzionali e organizzative.' },
@@ -37,10 +37,11 @@ const dati: [string, string][] = [
 ];
 const documenti = [
   { label: 'Atto costitutivo e statuto', href: pdfWix.statuto },
+  { label: 'Modello di Safeguarding', href: pdfWix.safeguarding, nota: 'Politiche per la tutela dei minori e dei tesserati' },
   { label: 'Certificato del codice fiscale', href: pdfWix.codiceFiscale },
   { label: 'Certificato della partita IVA', href: pdfWix.partitaIva },
 ];
-const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo'];
+const tessere = ['Nuovo tesseramento', 'Rinnovo del tesseramento'];
 ---
 <Base title="Associazione motorsport a Padova | Inversione A U" description="Inversione A U, associazione sportiva dilettantistica di Padova: team drift dal 2017, A.S.D. dal 2023. Organizza Legnaro Motori, Polo Motor Show e il rally." active="associazione">
   <section class="hero" aria-labelledby="hero-h1">
@@ -50,7 +51,7 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
       <p class="type-mono hero__kicker">Associazione sportiva dilettantistica · Padova</p>
       <h1 id="hero-h1" class="hero__h1"><span class="type-display">Inversione A U</span><span class="hero__sub">Motorsport, organizzazione e territorio</span></h1>
       <p class="type-mono hero__meta">Costituita nel 2023 · attivi dal 2017</p>
-      <div><a href="#tesseramento" class="btn btn--primary">Diventa socio</a></div>
+      <div><a href="#tesseramento" class="btn btn--primary">Diventa Tesserato</a></div>
     </div>
   </section>
 
@@ -112,7 +113,13 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
       </dl>
     </div>
     <ul class="tra__docs">
-      {documenti.map(d => <li><a class="tra__doc" href={d.href} target="_blank" rel="noopener"><span class="tra__doc-t">{d.label}</span><span class="hint">PDF · si apre in una nuova pagina ↗</span></a></li>)}
+      {documenti.map(d => (
+        <li>
+          {d.href
+            ? <a class="tra__doc" href={d.href} target="_blank" rel="noopener"><span class="tra__doc-t">{d.label}</span><span class="hint">{d.nota ? `${d.nota} · ` : ''}PDF · si apre in una nuova pagina ↗</span></a>
+            : <span class="tra__doc tra__doc--off"><span class="tra__doc-t">{d.label}</span><span class="hint">{d.nota ? `${d.nota} · ` : ''}PDF in pubblicazione</span></span>}
+        </li>
+      ))}
     </ul>
   </section>
 
@@ -120,12 +127,12 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
     <div class="wrap section tes">
       <div class="tes__t">
         <h2 id="tes-h" class="type-h2">Diventa parte di Inversione A U</h2>
-        <p class="type-body-dark">Soci, collaboratori e appassionati.</p>
-        <p class="tes__p">L'associazione è aperta a chi vuole partecipare alle sue attività e contribuire allo sviluppo dei progetti. Essere soci significa partecipare alla vita associativa e, per chi desidera impegnarsi direttamente, entrare nella squadra che lavora agli eventi.</p>
+        <p class="type-body-dark">Tesserati, collaboratori e appassionati.</p>
+        <p class="tes__p">L'associazione è aperta a chi vuole partecipare alle sue attività e contribuire allo sviluppo dei progetti. Al momento non ci sono posti disponibili come socio: ci si può tesserare per l'anno in corso oppure rinnovare il tesseramento.</p>
         <ul class="lista-ev tes__list">
-          <li>Socio ordinario — partecipa alle attività associative e alla vita dell'associazione</li>
-          <li>Socio operativo — collabora alla progettazione e alla gestione degli eventi</li>
-          <li>Socio sostenitore — supporta le attività contribuendo allo sviluppo dei progetti</li>
+          <li>Nuovo tesseramento — per chi entra per la prima volta nelle attività dell'associazione</li>
+          <li>Rinnovo — per chi era già tesserato l'anno precedente</li>
+          <li>Chi vuole dare una mano agli eventi può segnalarlo nella richiesta: la squadra si costruisce così</li>
           <li>La tessera vale per l'anno solare. Il rinnovo si apre a gennaio.</li>
         </ul>
       </div>
@@ -134,7 +141,7 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
         <h3 class="type-h3">Richiedi la tessera</h3>
         <label class="field"><span>Nome e cognome</span><input type="text" name="nome" placeholder="Es. Marco Franceschetti" autocomplete="name" required /></label>
         <label class="field"><span>Email</span><input type="email" name="email" placeholder="nome@email.it" autocomplete="email" required /></label>
-        <label class="field"><span>Tipo di tessera</span><select name="tessera">{tessere.map(t => <option value={t}>{t}</option>)}</select></label>
+        <label class="field"><span>Tipo di richiesta</span><select name="tessera">{tessere.map(t => <option value={t}>{t}</option>)}</select></label>
         <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
         <button type="submit" class="btn btn--primary tes__btn">Invia la richiesta</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
@@ -215,6 +222,8 @@ const tessere = ['Socio ordinario', 'Socio operativo', 'Sostenitore', 'Rinnovo']
   .tra__docs{display:flex;flex-direction:column;gap:12px}
   .tra__doc{display:flex;flex-direction:column;gap:6px;padding:20px 24px;background:var(--carbone);border:1px solid var(--border-on-dark);text-decoration:none;color:#fff;transition:border-color var(--dur-fast) var(--ease-out)}
   .tra__doc:hover,.tra__doc:focus-visible{border-color:#fff}
+  .tra__doc--off{color:var(--grigio-450);border-style:dashed}
+  .tra__doc--off:hover{border-color:var(--border-on-dark)}
   .tra__doc-t{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
   .tes{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.tes{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}

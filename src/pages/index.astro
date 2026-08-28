@@ -52,7 +52,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
         <span class="type-mono hero__name">Inversione A U</span>
         <span class="hero__sub">Torna il rally sui Colli Euganei</span>
       </h1>
-      <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span></p>
+      <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span><span class="hero__tag">Rally Sprint</span></p>
       <div class="hero__cta">
         <a href="/rally-colli-euganei/percorso/" class="btn btn--primary">Guarda il percorso</a>
         <a href="/rally-colli-euganei/" class="btn btn--secondary">Leggi le informazioni del rally <span class="arrow-x" aria-hidden="true">→</span></a>
@@ -99,7 +99,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <div class="chi__t">
       <p class="type-mono text-meta chi__k">L'associazione</p>
       <h2 id="chi-h" class="type-h2">Chi è Inversione A U</h2>
-      <p class="chi__p">Siamo nati nel 2017 come team di drifting. Nel 2019 abbiamo organizzato i primi raduni, dal 2022 gli eventi dinamici. Nel 2023 siamo diventati un'associazione sportiva dilettantistica.</p>
+      <p class="chi__p">Siamo nati nel 2017 come team di drifting. Nel 2018 abbiamo organizzato i primi raduni, dal 2022 gli eventi dinamici. Nel 2023 siamo diventati un'associazione sportiva dilettantistica.</p>
       <p class="chi__p">Oggi lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco. Il nostro desiderio? Fare la differenza nel campo motorsport per il nostro territorio.</p>
       <a href="/associazione/" class="type-mono link-line chi__link">Leggi la storia dell'associazione <span class="arrow-x" aria-hidden="true">→</span></a>
     </div>
@@ -128,7 +128,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   <section class="hair" aria-labelledby="partner">
     <div class="wrap section partner">
       <SectionHead id="partner" title="I nostri partner" intro="Le aziende che sostengono i nostri eventi 2026" />
-      <SponsorBlock sponsors={annuali} columns={6} mono={false} />
+      <SponsorBlock sponsors={annuali} columns={4} logoH={74} mono={false} />
       <a href="/sponsor/diventa-sponsor/" class="partner__cta">
         <span class="partner__cta-t">
           <span class="type-mono text-meta">Stagione 2027</span>
@@ -144,7 +144,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
 
   <!-- CHIUSURA -->
   <CTABlock kicker="Inversione A U" title="Fai parte di Inversione A U" text="Piloti, volontari e sponsor, una grande famiglia in crescita, unita dal motorsport." image="/foto/polo_pubblico_sera.jpg">
-    <a href="/associazione/#tesseramento" class="btn btn--primary">Diventa socio</a>
+    <a href="/associazione/#tesseramento" class="btn btn--primary">Diventa Tesserato</a>
     <a href="/contatti/" class="btn btn--secondary">Scrivi all'associazione</a>
   </CTABlock>
 </Base>
@@ -160,7 +160,8 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   .hero__h1{display:flex;flex-direction:column;gap:8px;text-wrap:balance}
   .hero__name{font-size:14px;letter-spacing:.16em;color:var(--grigio-200);text-transform:uppercase}
   .hero__sub{font-family:var(--font-display);font-stretch:125%;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(34px,7.6vw,84px);line-height:1.03}
-  .hero__count{color:var(--grigio-200);font-size:14px}
+  .hero__count{color:var(--grigio-200);font-size:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .hero__tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rally-verde);color:var(--rally-verde);padding:3px 8px;white-space:nowrap}
   .hero__intro{max-width:52ch}
   .hero__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
   .hero__note{color:var(--grigio-200)}

@@ -1,10 +1,10 @@
 ---
-/** Rally — Concorrenti: iscrizioni (3 stati), requisiti, scadenze, rimando all'albo, elenco iscritti con filtro. */
+/** Rally — Concorrenti: iscrizioni (3 stati), licenze, scadenze, albo, elenco iscritti con filtro, classifiche live. */
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, requisiti, classi, schedaGara, documentiRapidi } from '../../data/rally';
+import { subnav, classi, schedaGara, documentiRapidi, documentiDal } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
@@ -32,15 +32,15 @@ const haIscritti = iscritti.length > 0;
   <div class="wrap">
     <div class="card card--rosso avviso" role="note">
       <span class="type-mono avviso__k">Elenco provvisorio</span>
-      <p class="avviso__p">I requisiti qui sotto non sono ancora definitivi. Fanno fede il Regolamento Particolare di Gara e le disposizioni ACI Sport, che pubblichiamo nell'albo di gara. Verifica l'ultima versione prima di iscriverti.</p>
-      <span class="hint">Ultima revisione · 12 LUG 2026</span>
+      <p class="avviso__p">Le informazioni di questa pagina non sono ancora definitive. Fanno fede il Regolamento Particolare di Gara e le disposizioni ACI Sport, che pubblichiamo nell'albo di gara. Verifica l'ultima versione prima di iscriverti.</p>
+      <span class="hint">Ultima revisione · 28 AGO 2026</span>
     </div>
   </div>
 
   <!-- ISCRIZIONI -->
   <section id="iscrizioni" class="wrap section isc" aria-labelledby="isc-h">
-    <h2 id="isc-h" class="type-h2">Iscrizioni e requisiti di licenza</h2>
-    <p class="type-body-dark isc__intro">Stato delle iscrizioni, licenze richieste e date da tenere sotto controllo.</p>
+    <h2 id="isc-h" class="type-h2">Iscrizioni e licenze</h2>
+    <p class="type-body-dark isc__intro">Stato delle iscrizioni, licenza e date da tenere sotto controllo.</p>
     <div class="isc__grid">
       <div class="isc__col">
         <div class="card card--top reveal">
@@ -69,9 +69,10 @@ const haIscritti = iscritti.length > 0;
           {stato === 'chiuse' && <a href="#elenco-iscritti" class="btn btn--secondary">Vai all'elenco iscritti</a>}
         </div>
         <div class="req">
-          <div class="req__head"><h3 class="type-h3">Requisiti di licenza</h3><span class="pill pill--ev">Provvisorio</span></div>
-          <p class="type-body-dark">Sono ammessi equipaggi con licenza ACI Sport in corso di validità:</p>
-          <ul class="lista-ev">{requisiti.map(r => <li>{r}</li>)}</ul>
+          <div class="req__head"><h3 class="type-h3">Licenza</h3></div>
+          <p class="type-body-dark">Verifica la validità della propria licenza per questo evento sul sito ACI Sport.</p>
+          <a class="link-box" href="https://www.acisport.it/it/acisport" target="_blank" rel="noopener">Vai al sito ACI Sport ↗</a>
+          <span class="hint">Si apre in una nuova pagina · le licenze ammesse sono indicate nel Regolamento Particolare di Gara</span>
           <p class="hint">In caso di dubbio scrivi a <a href={`mailto:${rally.email}`}>{rally.email}</a></p>
         </div>
       </div>
@@ -92,7 +93,7 @@ const haIscritti = iscritti.length > 0;
   <section id="scheda" class="wrap section sg" aria-labelledby="sg-h">
     <div class="sec-head">
       <h2 id="sg-h" class="type-h2">Tutto quello che serve, in una schermata</h2>
-      <p class="type-body-dark">Le voci ci sono già tutte: si riempiono man mano che il regolamento particolare e l'albo di gara vengono pubblicati. Quello che vedi «da definire» non è dimenticato, è in lavorazione.</p>
+      <p class="type-body-dark">Le voci ci sono già tutte: si riempiono con la pubblicazione del regolamento particolare e dell'albo di gara, un mese prima della gara. Quello che vedi «da definire» non è dimenticato, è in lavorazione.</p>
     </div>
     <div class="sg__grid">
       <div class="sg__tab">
@@ -111,7 +112,7 @@ const haIscritti = iscritti.length > 0;
       </div>
       <div class="sg__doc">
         <h3 class="type-h3 sg__t">Documenti in evidenza</h3>
-        <p class="type-body-dark sg__p">I file che si cercano per primi. Quando escono compaiono qui e nell'albo di gara.</p>
+        <p class="type-body-dark sg__p">I file che si cercano per primi. Vengono pubblicati un mese prima della gara, entro il {documentiDal}, qui e nell'albo di gara.</p>
         <ul class="sg__l">
           {documentiRapidi.map(d => (
             <li>
@@ -123,7 +124,7 @@ const haIscritti = iscritti.length > 0;
               ) : (
                 <span class="sg__d sg__d--off">
                   <span class="sg__dn">{d.nome}{d.nota && <span class="type-mono sg__dk">{d.nota}</span>}</span>
-                  <span class="type-mono sg__da">Coming soon</span>
+                  <span class="type-mono sg__da">Dal 21 ottobre</span>
                 </span>
               )}
             </li>
@@ -185,6 +186,27 @@ const haIscritti = iscritti.length > 0;
       </div>
     )}
   </section>
+
+  <!-- CLASSIFICHE LIVE -->
+  <section id="classifiche" class="wrap section cls" aria-labelledby="cls-h">
+    <div class="cls__head">
+      <h2 id="cls-h" class="type-h2">Classifica live</h2>
+      <p class="type-body-dark cls__intro">Durante la gara i tempi delle prove speciali e la classifica generale sono pubblicati in tempo reale dal servizio di cronometraggio.</p>
+    </div>
+    <div class="card card--top cls__box reveal">
+      {rally.classificheUrl ? (
+        <>
+          <a class="btn btn--ev" href={rally.classificheUrl} target="_blank" rel="noopener">Apri la classifica live ↗</a>
+          <span class="hint">Si apre in una nuova pagina, sul sito del servizio di cronometraggio</span>
+        </>
+      ) : (
+        <>
+          <span class="link-box link-box--off">Disponibile il weekend della gara</span>
+          <span class="hint">Il collegamento al servizio di cronometraggio si attiva qui il 21 e 22 novembre. Le classifiche ufficiali restano quelle pubblicate nell'albo di gara.</span>
+        </>
+      )}
+    </div>
+  </section>
 </Base>
 
 <script>
@@ -224,6 +246,10 @@ const haIscritti = iscritti.length > 0;
   .avviso-form__row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
   .avviso-form__row .field{flex:1 1 220px}
   .isc__cta{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:8px}
+  .cls__head{margin-bottom:var(--sp-3)}
+  .cls h2{color:#fff;margin-bottom:8px}
+  .cls__intro{max-width:60ch}
+  .cls__box{display:flex;flex-direction:column;gap:10px;align-items:flex-start;max-width:80ch}
   .req{display:flex;flex-direction:column;gap:12px}
   .req__head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .req .hint a{color:#fff}

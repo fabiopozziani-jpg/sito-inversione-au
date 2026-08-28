@@ -29,7 +29,9 @@ export const mk = (nome: keyof typeof mediakit) => mediakit[nome];
 export const presentazione = pdf('2be2d6_9bd576f53b674070bdc241aceadffa09', 'presentazione-eventi-inversione-a-u-2026.pdf');
 export const presentazionePeso = '8 MB';
 
+/** `safeguarding` resta vuoto finché non arriva il PDF: la scheda compare come "in pubblicazione". */
 export const documenti = {
+  safeguarding: '',
   statuto: pdf('2be2d6_c5f6450bccd149b59725d618cf7bc712', 'atto-costitutivo-e-statuto-inversione-a-u-asd.pdf'),
   codiceFiscale: pdf('2be2d6_a7367f4067cd4c4496203ecea37d902a', 'certificato-codice-fiscale-inversione-a-u-asd.pdf'),
   partitaIva: pdf('2be2d6_deadaa4faa2340dca8c4a102fa136f32', 'certificato-partita-iva-inversione-a-u-asd.pdf'),

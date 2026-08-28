@@ -1,7 +1,7 @@
 ---
 /**
  * Hub Rally — 1° Rally Colli Euganei ACI Sport.
- * Struttura V4: hero + countdown · accesso rapido · due porte (corro / vengo a vedere) · percorso · storia · notizie · sponsor · contatti.
+ * Struttura V4: hero + countdown · accesso rapido · due porte (concorrenti / spettatori) · percorso · storia · notizie · sponsor · contatti.
  */
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
@@ -50,9 +50,12 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         <img class="hero__aci" src="/img/logo_aci_sport.png" alt="ACI Sport" width="44" height="44" decoding="async" />
       </div>
       <h1 id="hero-h1" class="type-display hero__h1">{rally.titoloHero}</h1>
-      {stato === 'pre' && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
-      {stato === 'in' && <p class="type-mono hero__count hero__count--live">Il rally è in corso</p>}
-      {stato === 'post' && <a class="type-mono link-line hero__count" href="/foto-e-video/rally-colli-euganei-2026/">Rally concluso · classifiche e foto <span class="arrow-x" aria-hidden="true">→</span></a>}
+      <div class="hero__count-row">
+        {stato === 'pre' && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
+        {stato === 'in' && <p class="type-mono hero__count hero__count--live">Il rally è in corso</p>}
+        {stato === 'post' && <a class="type-mono link-line hero__count" href="/foto-e-video/rally-colli-euganei-2026/">Rally concluso · classifiche e foto <span class="arrow-x" aria-hidden="true">→</span></a>}
+        <span class="pill pill--ev">Rally Sprint</span>
+      </div>
       <div class="hero__cta">
         <a href="/rally-colli-euganei/documenti/" class="btn btn--primary">Apri i documenti di gara</a>
         <a href="/rally-colli-euganei/percorso/" class="btn btn--secondary">Guarda il percorso</a>
@@ -80,13 +83,13 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   <section class="wrap section porte stagger" aria-label="Scegli il tuo percorso">
     <a href="/rally-colli-euganei/concorrenti/" class="porta porta--verde reveal">
       <span class="type-mono porta__k">Piloti, navigatori e team</span>
-      <h2 class="type-h2">Corro il rally</h2>
+      <h2 class="type-h2">Concorrenti</h2>
       <p>Come iscriversi, quali licenze servono, documenti di gara ed elenco degli equipaggi ammessi.</p>
       <span class="type-mono porta__l">Apri l'area concorrenti <span class="arrow-x" aria-hidden="true">→</span></span>
     </a>
     <a href="/rally-colli-euganei/spettatori/" class="porta porta--teal reveal">
       <span class="type-mono porta__k">Pubblico, famiglie e appassionati</span>
-      <h2 class="type-h2">Vengo a vedere il rally</h2>
+      <h2 class="type-h2">Spettatori</h2>
       <p>Programma e orari, dove guardare in sicurezza, parcheggi e come arrivare sui Colli.</p>
       <span class="type-mono porta__l">Apri le informazioni per il pubblico <span class="arrow-x" aria-hidden="true">→</span></span>
     </a>
@@ -108,7 +111,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         <span class="hint">Mappa e prove speciali in arrivo</span>
       </div>
       <dl class="dati reveal">
-        <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">30–40 km</dd></div>
+        <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">20–35 km</dd></div>
         <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2</dd></div>
         <div><dt class="type-mono">Al via</dt><dd class="type-mono">21–22 nov 2026</dd></div>
       </dl>
@@ -120,16 +123,14 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <div class="wrap section storia">
       <div class="storia__t">
         <p class="type-mono storia__k">La storia</p>
-        <h2 id="storia-h" class="type-h2">Dopo più di trent'anni il rally torna sui Colli Euganei</h2>
-        <p>Su queste strade si correva il rally del Santo: tornanti stretti, muretti a secco, pubblico sui prati dei Colli. Quella storia si è interrotta più di trent'anni fa.</p>
+        <h2 id="storia-h" class="type-h2">Dopo più di 35 anni torna un rally nel Padovano</h2>
+        <p>In provincia di Padova il rally ha una storia lunga: tornanti stretti, muretti a secco, pubblico a bordo strada. Quella storia si è interrotta a metà degli anni Ottanta.</p>
         <p>Il 1° Rally Colli Euganei la riprende, con titolazione ACI Sport e l'organizzazione di Inversione A U A.S.D. Non è una rievocazione: è una gara vera, a cronometro, su strade chiuse al traffico.</p>
       </div>
       <figure class="storia__foto reveal">
         <img src={imgFill(IMMAGINI.santo1986, 735, 499)} alt={IMMAGINI.santo1986.alt} width="735" height="499" loading="lazy" decoding="async" />
-        <figcaption class="hint">Coppa Italia · Rally Città del Santo, Padova 1986</figcaption>
       </figure>
       <dl class="storia__dl reveal">
-        <div><dt class="type-mono">Ultimo rally sui Colli</dt><dd>Anni '80 · Rally del Santo</dd></div>
         <div><dt class="type-mono">Prima edizione</dt><dd>21–22 novembre 2026</dd></div>
         <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport · <a href={rally.aciUrl} target="_blank" rel="noopener" class="storia__link">scheda nel calendario ACI Sport ↗</a></dd></div>
         <div><dt class="type-mono">Organizzazione</dt><dd>Inversione A U A.S.D.</dd></div>
@@ -168,10 +169,20 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         <h2 id="contatti-h" class="type-h2">Scrivi all'organizzazione</h2>
         <p class="type-body-dark">Domande su iscrizioni, percorso o accrediti: scrivi alla segreteria.</p>
         <p class="type-body-dark">Per le comunicazioni ufficiali del direttore di gara fa fede l'albo di gara. Per tutto il resto scrivici o chiamaci.</p>
-        <ul class="contatti__list">
-          <li><a class="type-mono link-line" href={`mailto:${rally.email}`}>{rally.email}</a></li>
-          {rally.telefoni.map(t => <li><a class="type-mono link-line" href={`tel:${t.tel}`}>{t.label} · {t.num}</a></li>)}
-        </ul>
+        <div class="contatti__box">
+          <p class="type-mono contatti__lab">Contatti organizzazione</p>
+          <ul class="contatti__list">
+            <li><a class="type-mono link-line" href={`mailto:${rally.email}`}>{rally.email}</a></li>
+            {rally.telefoni.map(t => <li><a class="type-mono link-line" href={`tel:${t.tel}`}>{t.label} · {t.num}</a></li>)}
+          </ul>
+        </div>
+        <div class="contatti__box">
+          <p class="type-mono contatti__lab">Contatti info rally</p>
+          <ul class="contatti__list">
+            <li><a class="type-mono link-line" href={`mailto:${rally.emailInfo}`}>{rally.emailInfo}</a></li>
+          </ul>
+          <span class="hint">Casella dedicata alle informazioni sulla gara · in attivazione</span>
+        </div>
       </div>
       <!-- FASE 5: Wix Forms. Per ora apre il client di posta con i campi compilati. -->
       <form class="contatti__form" data-mailform data-modulo="richieste" data-to={rally.email} data-subject="Richiesta · Rally Colli Euganei" novalidate>
@@ -200,6 +211,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .hero__aci{height:44px;width:auto}
   .hero__h1{color:#fff;font-size:clamp(34px,6vw,84px);text-wrap:balance;max-width:16ch}
   .hero__intro{max-width:52ch;color:#EEE}
+  .hero__count-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   .hero__count{color:var(--rally-verde);font-size:14px}
   .hero__count .cifra{color:#fff;font-size:1.3em}
   .hero__count--live{color:var(--rally-verde)}
@@ -259,6 +271,8 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .contatti__t{display:flex;flex-direction:column;gap:12px}
   .contatti__t h2{color:#fff}
   .contatti__t p{max-width:52ch}
+  .contatti__box{display:flex;flex-direction:column;gap:6px;margin-top:18px}
+  .contatti__lab{color:var(--ev);letter-spacing:.08em}
   .contatti__list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
   .contatti__list a{color:#fff}
   .contatti__form{display:flex;flex-direction:column;gap:18px;background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4)}

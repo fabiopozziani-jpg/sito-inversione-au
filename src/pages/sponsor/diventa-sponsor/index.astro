@@ -1,5 +1,5 @@
 ---
-/** Diventa sponsor — numeri, due pacchetti, confronto, partner tecnico, espositori, modulo. */
+/** Diventa sponsor — numeri, formula unica, soluzioni su misura, espositori, modulo. */
 import '../../../styles/hub.css';
 import { presentazione, presentazionePeso } from '../../../data/filesWix';
 import Base from '../../../layouts/Base.astro';
@@ -10,63 +10,59 @@ const numeri = [
   { value: '10.000+', label: 'spettatori · 2026' }, { value: '~100', label: 'equipaggi · 2026' }, { value: '400+', label: 'auto esposte · 2026' }, { value: '23', label: 'sponsor · 2026' },
   { value: '4', label: 'espositori · 2026' }, { value: '30+', label: 'staff in servizio' }, { value: '8', label: 'fotografi e videomaker' }, { value: '2', label: 'aree food' },
 ];
-const pacchetti = [
-  { id: 'Partner di stagione', kicker: 'Stagione', nome: 'Partner di stagione', testo: 'Presenza su tutti gli eventi della stagione, logo su sito e materiali stampati, ospitalità e report finale.', consigliato: true },
-  { id: 'Sponsor di un singolo evento', kicker: 'Un evento', nome: 'Sponsor di un singolo evento', testo: 'Marchio su materiali e percorso di un evento a tua scelta, citazione nei comunicati, spazio espositivo.', consigliato: false },
-];
-const confronto: [string, string, string][] = [
-  ['Eventi coperti', 'Tutti gli eventi della stagione (tre nel 2026)', 'Un evento a tua scelta'],
-  ['Logo su questo sito', 'In home e nella pagina Sponsor, tutto l’anno', 'Nella pagina del tuo evento'],
-  ['Logo sui materiali stampati', 'Su locandine, pieghevoli e cartellonistica di tutti gli eventi', 'Su locandine e cartellonistica del tuo evento'],
-  ['Citazione nei comunicati stampa', 'In tutti i comunicati della stagione', 'Nei comunicati del tuo evento'],
-  ['Spazio espositivo', 'Uno spazio in ogni evento', 'Uno spazio nel tuo evento'],
-  ['Ospitalità per i tuoi ospiti', 'Sì, in ogni evento — posti da confermare', 'Su richiesta'],
-  ['Report finale con i numeri', 'A fine stagione: presenze, foto, uscite stampa', 'Entro 30 giorni dall’evento'],
-  ['Quanto costa', 'Si definisce insieme', 'Si definisce insieme'],
+/** Una sola formula: tutto quello che offriamo a chi sostiene la stagione. */
+const comprende: [string, string][] = [
+  ['Eventi coperti', 'Tutti gli eventi della stagione — tre nel 2026, dal drift al rally'],
+  ['Logo su questo sito', 'In home e nella pagina Sponsor, tutto l’anno'],
+  ['Logo sui materiali stampati', 'Locandine, pieghevoli e cartellonistica di tutti gli eventi'],
+  ['Presenza sul percorso', 'Striscioni e allestimenti nelle aree di gara e nel paddock'],
+  ['Citazione nei comunicati stampa', 'In tutti i comunicati della stagione'],
+  ['Canali social', 'Contenuti dedicati sui nostri canali, oltre 29.000 persone raggiunte'],
+  ['Spazio espositivo', 'Uno spazio in ogni evento della stagione'],
+  ['Ospitalità per i tuoi ospiti', 'In ogni evento — posti da confermare edizione per edizione'],
+  ['Report finale con i numeri', 'A fine stagione: presenze, foto, uscite stampa'],
+  ['Quanto costa', 'Si definisce insieme, sull’azienda e sugli obiettivi'],
 ];
 const settori = ['Automotive e ricambi', 'Officine e gommisti', 'Ristorazione e food', 'Edilizia e industria', 'Servizi e professionisti', 'Turismo e ospitalità', 'Altro'];
 const eventi = ['Tutta la stagione 2027', '1° Rally Colli Euganei', 'Polo Motor Show', 'Legnaro Motori', 'Spazio espositivo'];
-const pacchettiOpz = ['Partner di stagione', 'Sponsor di un singolo evento', 'Partner tecnico', 'Solo spazio espositivo', 'Non lo so ancora, voglio capire'];
+const pacchettiOpz = ['Sponsorizzazione di stagione', 'Un singolo evento', 'Partner tecnico · forniture', 'Solo spazio espositivo', 'Non lo so ancora, voglio capire'];
 const budget = ['Da definire', 'Fino a 1.000 €', '1.000 – 3.000 €', '3.000 – 10.000 €', 'Oltre 10.000 €', 'Fornitura di beni o servizi'];
 ---
-<Base title="Diventa sponsor o espositore | Inversione A U" description="Diventare sponsor degli eventi Inversione A U: partner di stagione, sponsor di un evento, partner tecnico e spazi espositivi. Pacchetti e modulo." active="sponsor">
+<Base title="Diventa sponsor o espositore | Inversione A U" description="Diventare sponsor degli eventi Inversione A U: cosa comprende la sponsorizzazione, soluzioni su misura, spazi espositivi e modulo di richiesta." active="sponsor">
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Sponsor', href: '/sponsor/' }, { label: 'Diventa sponsor' }]} />
   <header class="wrap pg-head">
     <h1 class="type-h1">Diventa sponsor degli eventi motorsport</h1>
-    <p class="lead">Due pacchetti, dal singolo evento alla stagione intera, più il partner tecnico per chi mette mezzi e servizi. Ogni proposta viene costruita insieme.</p>
+    <p class="lead">Una sola formula, che copre tutta la stagione. Da lì costruiamo insieme la soluzione che serve alla tua azienda.</p>
   </header>
 
   <section id="numeri" class="wrap section" aria-labelledby="num-h">
     <div class="row-h"><h2 id="num-h" class="type-h2">I numeri di un nostro evento</h2><span class="hint">Stagione 2026 · dati consuntivi</span></div>
     <StatBlock stats={numeri} columns={4} />
     <p class="p">Il pubblico è locale e appassionato: arriva dai paesi del percorso e da tutto il Veneto. Nel 2026 firmiamo tre eventi: Legnaro Motori il 15 marzo, Polo Motor Show il 13 e 14 giugno, il 1° Rally Colli Euganei ACI Sport il 21 e 22 novembre.</p>
-    <p class="p">Il rally è il motivo per cui vale la pena entrare adesso. Un rally torna sui Colli Euganei dopo più di trent'anni, e l'attenzione della stampa locale si concentra su questa edizione.</p>
+    <p class="p">Il rally è il motivo per cui vale la pena entrare adesso. Un rally torna nel Padovano dopo più di 35 anni, e l'attenzione della stampa locale si concentra su questa edizione.</p>
   </section>
 
-  <section id="pacchetti" class="wrap section" aria-labelledby="pk-h">
-    <h2 id="pk-h" class="type-h2 mb">I due pacchetti a confronto</h2>
-    <div class="pk stagger">
-      {pacchetti.map(p => (
-        <div class:list={['card', 'reveal', { 'pk--top': p.consigliato }]}>
-          <div class="pk__k"><span class="type-mono text-meta">{p.kicker}</span>{p.consigliato && <span class="pill pill--pieno">Consigliato</span>}</div>
-          <h3 class="type-h3">{p.nome}</h3>
-          <p>{p.testo}</p>
-          <span class="hint">Investimento da definire insieme</span>
-          <a href="#form-sponsor" class="type-mono link-line pk__l" data-pack={p.id}>Scegli questo pacchetto <span class="arrow-x" aria-hidden="true">→</span></a>
-        </div>
-      ))}
-    </div>
+  <section id="sponsorizzazione" class="wrap section" aria-labelledby="pk-h">
+    <h2 id="pk-h" class="type-h2 mb">Cosa comprende la sponsorizzazione</h2>
+    <p class="p">Una formula sola, per tutta la stagione: il marchio entra in ogni evento che organizziamo, sui materiali, nei comunicati e sui nostri canali. Gli eventi cambiano, la presenza resta.</p>
     <div class="tbl-wrap cmp">
       <table class="tbl tbl--cards">
-        <caption class="type-mono">Cosa ricevi con ciascun pacchetto</caption>
-        <thead><tr><th scope="col">Cosa ricevi</th><th scope="col">Partner di stagione</th><th scope="col">Sponsor di un evento</th></tr></thead>
-        <tbody>{confronto.map(([v, a, e]) => <tr><th scope="row">{v}</th><td data-label="Partner di stagione">{a}</td><td data-label="Sponsor di un evento">{e}</td></tr>)}</tbody>
+        <caption class="type-mono">Cosa comprende la sponsorizzazione di stagione</caption>
+        <thead><tr><th scope="col">Cosa ricevi</th><th scope="col">Come</th></tr></thead>
+        <tbody>{comprende.map(([v, a]) => <tr><th scope="row">{v}</th><td data-label="Come">{a}</td></tr>)}</tbody>
       </table>
     </div>
-    <p class="hint">Non pubblichiamo un listino. Ogni proposta si costruisce sull'azienda, sul settore e sull'evento scelto.</p>
+    <p class="hint">Non pubblichiamo un listino. Ogni proposta si costruisce sull'azienda, sul settore e sugli obiettivi.</p>
     <div class="card card--left tec">
-      <h3 class="type-h3">Partner tecnico: forniture in cambio di visibilità</h3>
-      <p>Se la tua azienda fornisce mezzi, ristoro, stampa, materiali o servizi di sicurezza, possiamo riconoscerti una visibilità di valore equivalente senza scambio di denaro. Scrivici cosa puoi mettere a disposizione e ti diciamo cosa possiamo darti in cambio.</p>
+      <h3 class="type-h3">Soluzioni su misura</h3>
+      <p>Non tutte le aziende cercano la stessa cosa. Se la formula di stagione non è quello che ti serve, si parte da qui e si costruisce insieme:</p>
+      <ul class="lista-ev">
+        <li>Un singolo evento, quando ti interessa un pubblico o una data in particolare.</li>
+        <li>Partner tecnico: mezzi, ristoro, stampa, materiali o servizi di sicurezza in cambio di visibilità di valore equivalente, senza scambio di denaro.</li>
+        <li>Solo spazio espositivo, per portare prodotti e mezzi dentro l'evento.</li>
+        <li>Progetti dedicati: un'area, una prova speciale, un contenuto video, la premiazione.</li>
+      </ul>
+      <p>Scrivici cosa ti serve e cosa puoi mettere a disposizione: ti rispondiamo con una proposta concreta.</p>
     </div>
   </section>
 
@@ -109,8 +105,6 @@ const budget = ['Da definire', 'Fino a 1.000 €', '1.000 – 3.000 €', '3.000
 </Base>
 <script>
   import '../../../scripts/mailform';
-  const sel = document.querySelector<HTMLSelectElement>('[data-pacchetto]');
-  document.querySelectorAll<HTMLAnchorElement>('[data-pack]').forEach(a => a.addEventListener('click', () => { if (sel) sel.value = a.dataset.pack ?? ''; }));
 </script>
 <style>
   .pg-head{padding-top:var(--sp-4);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
@@ -120,13 +114,8 @@ const budget = ['Da definire', 'Fino a 1.000 €', '1.000 – 3.000 €', '3.000
   .mb{margin-bottom:var(--sp-4)}
   .row-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
   .p{color:#DDD;max-width:70ch;margin-top:16px}
-  .pk{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);margin-bottom:var(--sp-5)}
-  @media(min-width:768px){.pk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
-  .pk--top{border-top:3px solid #fff}
-  .pk__k{display:flex;justify-content:space-between;align-items:center;gap:12px}
-  .pk .pill--pieno{background:#fff;color:#000;border-color:#fff}
-  .pk__l{color:#fff;align-self:flex-start;margin-top:auto}
-  .cmp{margin-bottom:12px}
+  .cmp{margin-top:var(--sp-4);margin-bottom:12px}
+  .tec ul{margin:12px 0}
   .tec{margin-top:var(--sp-5);max-width:80ch}
   .fs{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}
   @media(min-width:900px){.fs{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}}

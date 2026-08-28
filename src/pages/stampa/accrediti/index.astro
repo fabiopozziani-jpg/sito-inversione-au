@@ -1,5 +1,5 @@
 ---
-/** Accrediti stampa — sub-nav rally (la pagina è nell'hub), requisiti, scadenze, sicurezza, drone, pettorina, modulo. */
+/** Accrediti stampa — sub-nav rally (la pagina è nell'hub), requisiti, scadenze, droni, modulo. */
 import '../../../styles/hub.css';
 import Base from '../../../layouts/Base.astro';
 import EventSubnav from '../../../components/EventSubnav.astro';
@@ -9,7 +9,7 @@ const email = 'inversione.au3@gmail.com';
 const eventi = ['1° Rally Colli Euganei ACI Sport — 21–22 novembre 2026', 'Polo Motor Show — edizione 2027', 'Legnaro Motori — edizione 2027'];
 const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social'];
 ---
-<Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description="Accredito stampa per il 1° Rally Colli Euganei: chi può chiederlo, scadenze, regole di sicurezza in prova speciale, drone, ritiro pettorina e modulo." active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="Accrediti stampa — 1° Rally Colli Euganei">
+<Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description="Accredito stampa per il 1° Rally Colli Euganei: chi può chiederlo, entro quando, regole sulle riprese con drone e modulo di richiesta." active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="Accrediti stampa — 1° Rally Colli Euganei">
   <EventSubnav items={subnav} current="/stampa/accrediti/" bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Stampa', href: '/stampa/' }, { label: 'Accrediti stampa' }]} />
   <header class="wrap pg-head">
@@ -35,25 +35,14 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
     </dl>
   </section>
 
-  <section id="sicurezza" class="wrap section s" aria-labelledby="sic-h">
-    <h2 id="sic-h" class="type-h2">Regole di sicurezza in prova speciale</h2>
-    <p class="type-body-dark p">Una prova speciale è una strada chiusa con auto in gara a velocità piena. Chi ha la pettorina può stare dove il pubblico non può, e per questo risponde in prima persona del proprio comportamento.</p>
-    <ul class="lista-ev">
-      <li>Pettorina sempre visibile.</li><li>Le indicazioni dei commissari hanno la precedenza su qualunque esigenza di ripresa.</li>
-      <li>Vietato sostare in curva esterna, in zona di frenata, oltre le reti e nelle vie di fuga.</li><li>Vietato attraversare a prova aperta.</li>
-    </ul>
-    <p class="type-body-dark p">Chi non rispetta le regole perde la pettorina sul posto e l'accredito per le edizioni successive.</p>
-    <div class="card card--rosso"><h3 class="type-h3">Riprese con drone</h3><p>Le riprese con drone richiedono l'autorizzazione ENAC, il patentino del pilota e il coordinamento con la direzione di gara. Se hai indicato il drone nel modulo, ti scriviamo per chiederti i documenti. Senza autorizzazione confermata per iscritto, il drone non vola: la sospensione della prova speciale per un drone non autorizzato ricade sull'operatore.</p></div>
-  </section>
-
-  <section id="pettorina" class="wrap section s" aria-labelledby="pet-h">
-    <h2 id="pet-h" class="type-h2">Dove e quando si ritira la pettorina</h2>
-    <dl class="pet">
-      <div><dt class="type-mono">Dove</dt><dd>Sala stampa presso il parco assistenza</dd></div>
-      <div><dt class="type-mono">Quando</dt><dd>Sabato 21 novembre dalle 08:00 alle 18:00 · domenica 22 dalle 06:30</dd></div>
-      <div><dt class="type-mono">Cosa portare</dt><dd>Documento d'identità e tessera dell'Ordine o lettera di incarico</dd></div>
-    </dl>
-    <p class="type-body-dark p">Ogni operatore ritira la propria pettorina di persona.</p>
+  <section id="droni" class="wrap section s" aria-labelledby="dr-h">
+    <h2 id="dr-h" class="type-h2">Riprese con drone</h2>
+    <div class="card card--rosso">
+      <h3 class="type-h3">Il drone non è ammesso</h3>
+      <p>Al 1° Rally Colli Euganei non autorizziamo riprese con drone, per nessun accredito.</p>
+      <p>La ragione è la sicurezza della gara. Sopra e intorno a una prova speciale ci sono equipaggi lanciati a velocità piena, commissari di percorso e pubblico: un drone che perde il collegamento o cade sulla sede stradale è un incidente, e la sola presenza di un mezzo non previsto obbliga la direzione di gara a fermare la prova. Lo spazio sopra il percorso deve inoltre restare libero per i mezzi di soccorso.</p>
+      <p>Le riprese aeree dell'evento, dove previste, sono affidate a un unico operatore incaricato dall'organizzazione e coordinato con la direzione di gara.</p>
+    </div>
   </section>
 
   <section id="modulo" class="wrap section" aria-labelledby="mod-h">
@@ -79,17 +68,12 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
           <legend>Attrezzatura</legend>
           <label class="chk"><input type="checkbox" name="fotocamera" /><span>Fotocamera e teleobiettivo</span></label>
           <label class="chk"><input type="checkbox" name="videocamera" /><span>Videocamera o attrezzatura video</span></label>
-          <label class="chk"><input type="checkbox" name="drone" data-drone /><span>Drone</span></label>
-          <div class="card card--rosso drone" hidden data-drone-box aria-live="polite">
-            <p>Con il drone servono autorizzazione ENAC, patentino del pilota, assicurazione RC e coordinamento con la direzione di gara. Nessun volo è consentito sopra il pubblico o la sede stradale durante la prova.</p>
-            <label class="field"><span>Numero di autorizzazione ENAC</span><input type="text" name="enac" /></label>
-          </div>
         </fieldset>
         <label class="field"><span>Targa del veicolo *</span><input type="text" name="targa" required /></label>
         <label class="field"><span>Marca, modello e colore *</span><input type="text" name="veicolo" required /></label>
         <label class="field f-full"><span>Cosa hai in programma di pubblicare</span><textarea name="note" rows="3"></textarea></label>
       </div>
-      <label class="chk"><input type="checkbox" name="regolamento" required /><span>Ho letto il regolamento di sicurezza e mi impegno a rispettarlo, comprese le indicazioni dei commissari di percorso.</span></label>
+      <label class="chk"><input type="checkbox" name="regolamento" required /><span>Mi impegno a rispettare le indicazioni dei commissari di percorso e della direzione di gara e a non effettuare riprese con drone.</span></label>
       <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
       <button type="submit" class="btn btn--ev">Invia richiesta</button>
       <p class="form-msg" role="status" aria-live="polite"></p>
@@ -98,8 +82,6 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
 </Base>
 <script>
   import '../../../scripts/mailform';
-  const d = document.querySelector<HTMLInputElement>('[data-drone]'), box = document.querySelector<HTMLElement>('[data-drone-box]');
-  d?.addEventListener('change', () => { if (box) box.hidden = !d.checked; });
 </script>
 <style>
   .pg-head{padding-top:var(--sp-4);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
@@ -109,11 +91,6 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
   .s{padding-top:var(--sp-6);padding-bottom:var(--sp-6);display:flex;flex-direction:column;gap:14px}
   .p{max-width:70ch}
   .sc dd{display:flex;flex-direction:column;gap:6px;font-size:18px}
-  .pet{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
-  .pet div{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:12px 0;border-bottom:1px solid var(--border-on-dark)}
-  @media(min-width:520px){.pet div{grid-template-columns:160px 1fr;gap:16px}}
-  .pet dt{color:var(--grigio-450)} .pet dd{margin:0;color:#fff}
   .card--rosso h3{color:#fff}
-  .drone{margin-top:8px}
-  .drone p{color:#DDD;font-size:15px}
+  .card--rosso p{color:#DDD}
 </style>

@@ -17,6 +17,8 @@ export const rally = {
   dataIso: '2026-11-21',
   luogo: 'Colli Euganei, Padova',
   email: 'inversione.au3@gmail.com',
+  /** Casella dedicata alle informazioni sulla gara (in attivazione). */
+  emailInfo: 'rallycollieuganei@gmail.com',
   telefoni: [
     { label: 'Segreteria', num: '+39 348 570 1233', tel: '+393485701233' },
     { label: 'Organizzazione', num: '+39 348 904 9212', tel: '+393489049212' },
@@ -44,7 +46,15 @@ export const rally = {
   targa: imgFit(IMMAGINI.targaRally, 1400),
   targaW: 1400,
   targaH: 643,
+  /** Classifiche live del servizio di cronometraggio (vuoto = pulsante non attivo). */
+  classificheUrl: '',
 };
+
+/**
+ * Regola dell'organizzazione: tutti i documenti di gara escono un mese prima della gara.
+ * Data unica, usata in tutte le pagine del rally al posto dei generici "coming soon".
+ */
+export const documentiDal = '21 ottobre 2026';
 
 export const subnav = [
   { label: 'Il rally', href: '/rally-colli-euganei/' },
@@ -55,7 +65,6 @@ export const subnav = [
   { label: 'Documenti di gara', href: '/rally-colli-euganei/documenti/' },
   { label: 'Stampa e accrediti', href: '/stampa/accrediti/' },
   { label: 'Foto e video', href: '/foto-e-video/rally-colli-euganei-2026/' },
-  { label: 'Edizioni precedenti', href: '/eventi/archivio/' },
 ];
 
 export function statoRally(now = Date.now()): { stato: Stato; giorni: number } {
@@ -66,8 +75,8 @@ export function statoRally(now = Date.now()): { stato: Stato; giorni: number } {
 
 const TBD = '— · da definire';
 export const prove = [
-  { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: 'Coming soon', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
-  { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: 'Coming soon', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
+  { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: '— · dal 21 ottobre', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
+  { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: '— · dal 21 ottobre', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
 ];
 
 /**
@@ -93,9 +102,9 @@ export const schedaGara: VoceScheda[] = [
   { voce: 'Verifiche sportive ante gara', valore: '' },
   { voce: 'Verifiche tecniche ante gara', valore: '' },
   { voce: 'Shakedown', valore: '' },
-  { voce: 'Caratteristiche del percorso', valore: '2 prove speciali ripetute 3 volte', nota: '30–40 km cronometrati, da confermare' },
+  { voce: 'Caratteristiche del percorso', valore: '2 prove speciali, 3 passaggi ciascuna', nota: '20–35 km cronometrati' },
   { voce: 'Parco assistenza', valore: '' },
-  { voce: 'Albo di gara e classifiche', valore: '', nota: 'App Sportity · password in pubblicazione' },
+  { voce: 'Albo di gara e classifiche', valore: '', nota: 'App Sportity · password dal 21 ottobre 2026' },
   { voce: 'Parco partenza', valore: '' },
   { voce: 'Partenza prima vettura', valore: '' },
   { voce: 'Arrivo prima vettura', valore: '' },
@@ -128,13 +137,6 @@ export const scadenze = [
   { fase: 'Ricognizioni del percorso', data: 'Da definire', ora: '—' },
   { fase: 'Verifiche sportive e tecniche', data: 'Da definire', ora: '—' },
   { fase: 'Shakedown', data: 'Da definire', ora: '—' },
-];
-
-export const requisiti = [
-  'Primo conduttore — licenza C Nazionale o superiore',
-  'Secondo conduttore — licenza C Nazionale, C-R o Navigatore',
-  'Certificato medico agonistico in corso di validità',
-  'Vettura conforme al Regolamento di Settore Rally, con passaporto tecnico',
 ];
 
 export type Iscritto = { num: string; equipaggio: string; vettura: string; classe: string };
@@ -177,7 +179,8 @@ export const vietato = [
   'Attraversare la strada dopo la chiusura al traffico.',
   'Scavalcare reti, nastri e transenne.',
   'Lasciare bambini e cani liberi vicino alla sede stradale.',
-  'Far volare droni sopra il percorso e accendere fuochi.',
+  'Accendere fuochi, fumogeni, torce, bengala, petardi o inneschi di qualsiasi tipo.',
+  'Far volare droni sopra il percorso e sulle zone pubblico.',
 ];
 
 const MESI = ['GEN','FEB','MAR','APR','MAG','GIU','LUG','AGO','SET','OTT','NOV','DIC'];

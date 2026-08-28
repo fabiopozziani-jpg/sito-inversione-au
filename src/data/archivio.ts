@@ -52,7 +52,7 @@ export const edizioni: Edizione[] = [
     nome: '1° Rally Colli Euganei ACI Sport',
     evento: 'rally', anno: '2026', data: '21–22 NOV 2026', luogo: 'Colli Euganei', accent: '#00BA89',
     stato: 'in-programma',
-    testo: 'Prima edizione: il rally torna sui Colli dopo più di trent’anni, con titolazione ACI Sport.',
+    testo: 'Prima edizione: dopo più di 35 anni torna un rally nel Padovano, con titolazione ACI Sport.',
     numeri: ['1ª edizione', '2 giorni di gara'],
     materiali: [
       { etichetta: 'Pagina del rally', href: '/rally-colli-euganei/' },
