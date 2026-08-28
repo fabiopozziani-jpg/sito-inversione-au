@@ -189,9 +189,9 @@ const email = 'inversione.au3@gmail.com';
   .chi__attesa{max-width:70ch;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
   /* domande */
   .dom__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
-  @media(min-width:700px){.dom__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(min-width:1100px){.dom__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-  .dom__grid h3{color:#fff;margin-bottom:8px}
+  @media(min-width:900px){.dom__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  /* la domanda non si spezza mai a metà parola e distribuisce le righe da sola */
+  .dom__grid h3{color:#fff;margin-bottom:8px;overflow-wrap:normal;text-wrap:balance;font-size:clamp(20px,1.6vw,22px)}
   .dom__grid p{color:var(--text-body-on-dark)}
   .dom__grid strong{color:#fff}
   .dom__grid a{color:var(--ev);text-decoration:underline;text-underline-offset:3px}

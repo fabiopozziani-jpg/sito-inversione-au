@@ -7,10 +7,9 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CTABlock from '../../components/CTABlock.astro';
 import { subnav, consentito, vietato } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
-import { rallyImg, rallyAlt, RALLY_IMG } from '../../data/rallyImmagini';
+import { rallyImg, RALLY_IMG } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
 const heroSpett = rallyImg(RALLY_IMG.heroSpettatori, 1920, 1080);
-const territorio = rallyImg(5, 1200, 800);
 const { rally, programma } = await caricaRally();
 const url = '/rally-colli-euganei/spettatori/';
 ---
@@ -125,7 +124,7 @@ const url = '/rally-colli-euganei/spettatori/';
         <a class="type-mono dorm__l" href="https://www.parcocollieuganei.com/" target="_blank" rel="noopener">Parco Regionale dei Colli Euganei ↗</a>
       </div>
       <figure class="terr__foto reveal">
-        <img src={territorio} alt={rallyAlt(5)} width="1200" height="800" loading="lazy" decoding="async" />
+        <img src="/img/colli-euganei.jpg" alt="I coni vulcanici dei Colli Euganei visti dall'alto, con vigne, oliveti e la pianura nella foschia" width="900" height="671" loading="lazy" decoding="async" />
       </figure>
       <dl class="terr__dl">
         <div><dt class="type-mono">Parco regionale dal</dt><dd class="type-mono">1989</dd></div>

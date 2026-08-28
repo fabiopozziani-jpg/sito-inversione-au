@@ -37,14 +37,14 @@ const numeri = [
         <span class="type-mono ev__k">Polo Motor Show · 13–14 giugno 2026</span>
         <h3 class="type-h3">Sponsor del Polo Motor Show</h3>
         <p class="type-body-dark">Le aziende del circuito cittadino di Selve di Teolo.</p>
-        <SponsorBlock sponsors={spPolo} columns={4} mono={false} />
+        <SponsorBlock sponsors={spPolo} columns={4} logoH={64} mono={false} />
         <a class="type-mono link-line ev__l" href="/eventi/polo-motor-show/#sponsor">Vai alla pagina dell'evento <span class="arrow-x" aria-hidden="true">→</span></a>
       </div>
       <div id="sponsor-legnaro" class="ev__b" style="--acc:#A8D8B4">
         <span class="type-mono ev__k">Legnaro Motori · 15 marzo 2026</span>
         <h3 class="type-h3">Sponsor di Legnaro Motori</h3>
         <p class="type-body-dark">Le aziende della prima edizione del format fuori dai Colli.</p>
-        <div class="ev__small"><SponsorBlock sponsors={spLegnaro} columns={Math.max(1, Math.min(4, spLegnaro.length))} mono={false} /></div>
+        <SponsorBlock sponsors={spLegnaro} columns={4} logoH={64} mono={false} />
         <a class="type-mono link-line ev__l" href="/eventi/legnaro-motori/#sponsor">Vai alla pagina dell'evento <span class="arrow-x" aria-hidden="true">→</span></a>
       </div>
       <div id="sponsor-rally" class="ev__b" style="--acc:#00BA89">
@@ -110,7 +110,6 @@ const numeri = [
   .ev__b{display:flex;flex-direction:column;gap:12px;padding-left:20px;border-left:3px solid var(--acc)}
   .ev__k{color:var(--acc)}
   .ev__b h3{color:#fff}
-  .ev__small{max-width:600px}
   /* audience */
   .au{display:flex;flex-direction:column;gap:var(--sp-5)}
   .au__t{display:flex;flex-direction:column;gap:12px}

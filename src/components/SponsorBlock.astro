@@ -17,6 +17,19 @@ const H = `h${headingLevel}` as 'h2' | 'h3';
     ))}
   </ul>
 </div>
+<script>
+  // Un logo che non carica (file rimosso dal Media Manager) mostra il nome,
+  // come già succede quando il logo manca del tutto. Mai l'icona di immagine rotta.
+  document.addEventListener('error', (e) => {
+    const img = e.target as HTMLImageElement;
+    if (!(img instanceof HTMLImageElement) || !img.closest('.spb__cell')) return;
+    const span = document.createElement('span');
+    span.className = 'spb__nome';
+    span.textContent = img.alt;
+    for (const a of Array.from(img.attributes)) if (a.name.startsWith('data-astro')) span.setAttribute(a.name, a.value);
+    img.replaceWith(span);
+  }, true);
+</script>
 <style>
   .spb__h{color:var(--grigio-450);letter-spacing:.08em;margin-bottom:24px}
   .spb__grid{display:grid;grid-template-columns:repeat(var(--c),minmax(0,1fr));gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark)}
