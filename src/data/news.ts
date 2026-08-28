@@ -17,40 +17,32 @@ export type Post = {
 };
 
 export const posts: Post[] = [
-  { slug: 'iscrizioni-aperte-rally-colli-euganei', title: 'Aperte le iscrizioni al 1° Rally Colli Euganei', excerpt: 'Regolamento e modulistica nell’albo di gara. Chiusura delle iscrizioni da confermare.',
-    date: '25 SET 2026', iso: '2026-09-25', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per i concorrenti', image: rallyImg(RALLY_IMG.newsIscrizioni, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsIscrizioni), tipo: 'comunicato stampa',
-    lead: 'Da oggi i concorrenti possono iscriversi alla prima edizione, in programma il 21 e 22 novembre 2026. Le iscrizioni chiudono in una data ancora da confermare.', credito: 'Foto: archivio Inversione A U',
-    corpo: [
-      { t: 'p', html: "Il 1° Rally Colli Euganei apre le iscrizioni. La gara si corre il 21 e 22 novembre 2026 sulle strade dei Colli Euganei, su due prove speciali ripetute tre volte. È il ritorno di un rally nel Padovano dopo più di 35 anni." },
-      { t: 'h2', testo: 'Come iscriversi' },
-      { t: 'p', html: "Il modulo d'iscrizione, il regolamento particolare di gara e il programma sono pubblicati nell'<a href=\"/rally-colli-euganei/documenti/\">albo di gara digitale</a>. Le domande vanno inviate complete di tutti gli allegati." },
-      { t: 'p', html: "Il numero massimo di vetture ammesse è ancora da confermare. Fa fede l'ordine di ricezione delle domande complete." },
-      { t: 'h2', testo: 'Chi può partecipare' },
-      { t: 'p', html: 'La gara ha titolazione ACI Sport ed è aperta alle vetture moderne dalle Rally2 alle Rally5 e alle vetture storiche in regolarità sport.' },
-      { t: 'p', html: 'Servono licenza e tessera in corso di validità per il pilota e per il navigatore. I requisiti completi sono nel regolamento particolare di gara.' },
-      { t: 'quote', testo: "«Riportare un rally nel Padovano dopo più di 35 anni è il motivo per cui è nata l'associazione. Ora tocca ai concorrenti.»", cite: 'Il direttivo di Inversione A U' },
-      { t: 'h2', testo: 'Le date da segnare' },
-      { t: 'dl', righe: [['Apertura iscrizioni', '25 SET 2026'], ['Chiusura iscrizioni', 'Da confermare'], ['Ricognizioni', 'Da confermare'], ['Gara', '21–22 NOV 2026']] },
-      { t: 'p', html: 'Per informazioni: <a href="mailto:inversione.au3@gmail.com">inversione.au3@gmail.com</a>.' },
-    ],
-    cta: { label: 'Vai alla pagina concorrenti', href: '/rally-colli-euganei/concorrenti/' }, cta2: { label: 'Scarica i documenti di gara', href: '/rally-colli-euganei/documenti/' } },
-  { slug: 'rally-zone-pubblico', title: 'Zone pubblico: dove vedere il rally', excerpt: 'Le aree consigliate lungo le tre prove speciali, con parcheggi e orari.',
-    date: '03 LUG 2026', iso: '2026-07-03', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per il pubblico', image: rallyImg(RALLY_IMG.newsZonePubblico, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsZonePubblico), tipo: 'aggiornamento',
-    lead: 'Le zone pubblico del 1° Rally Colli Euganei saranno pubblicate dopo l’omologazione del percorso, entro il 30 settembre 2026. Intanto, come funzionano.', credito: 'Foto: Inversione A U',
-    corpo: [
-      { t: 'p', html: 'Le zone pubblico sono aree scelte dall’organizzazione, delimitate e presidiate dai commissari. Hanno buona visuale, un percorso di accesso a piedi e un parcheggio indicato.' },
-      { t: 'p', html: 'Tutte le informazioni per chi viene a vedere la gara — programma, regole di sicurezza, come arrivare — sono nella <a href="/rally-colli-euganei/spettatori/">pagina spettatori</a>.' },
-    ], cta: { label: 'Apri le informazioni per il pubblico', href: '/rally-colli-euganei/spettatori/' } },
-  { slug: 'rally-ricognizioni-date-regole', title: 'Ricognizioni: date e regole', excerpt: 'Due passaggi per prova speciale, velocità da codice della strada.',
-    date: '28 GIU 2026', iso: '2026-06-28', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per i concorrenti', image: rallyImg(RALLY_IMG.newsRicognizioni, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsRicognizioni), tipo: 'aggiornamento',
-    lead: 'Le ricognizioni del percorso si svolgono nelle date indicate nel programma di gara, con due passaggi per prova speciale e velocità da codice della strada.', credito: 'Foto: archivio Inversione A U',
-    corpo: [ { t: 'p', html: 'Le date confermate vengono pubblicate nell’<a href="/rally-colli-euganei/documenti/">albo di gara</a> insieme al regolamento particolare.' } ],
-    cta: { label: 'Apri l’albo di gara', href: '/rally-colli-euganei/documenti/' } },
-  { slug: 'rally-colli-euganei-ufficiale', title: 'Il 1° Rally Colli Euganei è ufficiale: 21–22 novembre', excerpt: 'Titolazione ACI Sport confermata. Percorso in fase di approvazione e omologazione.',
-    date: '12 LUG 2026', iso: '2026-07-12', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per il pubblico', image: rallyImg(RALLY_IMG.newsUfficiale, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsUfficiale), tipo: 'comunicato stampa',
-    lead: 'Il 1° Rally Colli Euganei ACI Sport si correrà il 21 e 22 novembre 2026. Percorso in fase di approvazione; iscrizioni in apertura in autunno.', credito: 'Foto: archivio Inversione A U',
-    corpo: [ { t: 'p', html: 'Tutte le informazioni sono nella <a href="/rally-colli-euganei/">pagina del rally</a>: concorrenti, spettatori, percorso e documenti di gara.' } ],
-    cta: { label: 'Apri la pagina del rally', href: '/rally-colli-euganei/' } },
+  { slug: 'rally-colli-euganei-ufficiale', title: 'Il 1° Rally Colli Euganei è ufficiale: 21–22 novembre', excerpt: 'Formula Rally Sprint, due prove speciali con tre passaggi ciascuna, 20–35 km cronometrati. Dopo più di 35 anni un rally torna nel Padovano.',
+    date: '28 AGO 2026', iso: '2026-08-28', category: 'Rally', event: 'Rally Colli Euganei', chi: 'Per il pubblico', image: rallyImg(RALLY_IMG.newsUfficiale, 1600, 1067), imageAlt: rallyAlt(RALLY_IMG.newsUfficiale), tipo: 'comunicato stampa',
+    lead: 'Il 1° Rally Colli Euganei ACI Sport si corre il 21 e 22 novembre 2026 sulle strade dei Colli Euganei. Gara a cronometro su strade chiuse, ingresso libero per il pubblico.', credito: 'Foto: Inversione A U',
+    corpo: [ { t: 'html', html: `<p>Il 1° Rally Colli Euganei ACI Sport si corre <strong>sabato 21 e domenica 22 novembre 2026</strong>, sulle strade dei Colli Euganei, in provincia di Padova. Lo organizza Inversione A U A.S.D. Dopo più di trentacinque anni un rally torna a correre nel Padovano.</p>
+<p>Non è una rievocazione e non è un raduno: è una gara a cronometro su strade chiuse al traffico, con licenze, ufficiali di gara, classifica e regolamento particolare depositato.</p>
+<h2>La formula</h2>
+<p>ACI Sport ha iscritto la manifestazione a calendario come <strong>atipica sperimentale</strong> del settore rally, nella formula del <strong>Rally Sprint</strong>: poche prove speciali ripetute più volte, tutte nella stessa area, invece di una gara distesa su lunghi trasferimenti. Il sabato è dedicato alle verifiche sportive e tecniche e allo shakedown; la gara si corre la domenica.</p>
+<p>Il percorso prevede <strong>due prove speciali con tre passaggi ciascuna</strong>: sei tratti cronometrati, per 20–35 chilometri contro il tempo. Tracciato, chilometraggi esatti e orari di passaggio si pubblicano con i documenti di gara, un mese prima della gara.</p>
+<h2>Dove si corre</h2>
+<p>Si corre dentro un parco regionale: 18.694 ettari su quindici comuni, un centinaio di rilievi di origine vulcanica in mezzo alla pianura. È un contesto che impone delle regole, e le abbiamo scritte per tempo: strade chiuse solo per le ore necessarie, zone pubblico delimitate e presidiate dai commissari, nessun fuoco e nessun fumogeno lungo il percorso, rispetto di vigne, coltivi e proprietà private.</p>
+<p>Chi abita o lavora sulle strade interessate trova nella <a href="/rally-colli-euganei/residenti/">pagina dedicata ai residenti</a> gli orari di chiusura, cosa succede il giorno di gara e un contatto diretto per le necessità particolari. Chiediamo di segnalarle prima, non la mattina della gara: quasi tutto si risolve con una telefonata fatta per tempo.</p>
+<h2>Per i concorrenti</h2>
+<p>Le iscrizioni aprono a breve: la data viene annunciata su questo sito e nell'<a href="/rally-colli-euganei/documenti/">albo di gara</a>. La chiusura è prevista per il 6 novembre 2026 e sarà confermata dal regolamento particolare.</p>
+<p>Licenze ammesse, vetture e requisiti seguono le disposizioni ACI Sport per questo evento: la validità della propria licenza si verifica sul <a href="https://www.acisport.it/it/acisport" target="_blank" rel="noopener">sito ACI Sport</a>. Il resto — scheda gara, scadenze, documenti in evidenza, elenco iscritti — è nell'<a href="/rally-colli-euganei/concorrenti/">area concorrenti</a>.</p>
+<h2>Per il pubblico</h2>
+<p>L'ingresso è libero. Le zone da cui si assiste alla gara sono scelte dall'organizzazione, delimitate e presidiate, con un accesso a piedi e un punto dove lasciare l'auto: vengono pubblicate insieme alla mappa del percorso. Programma, regole di sicurezza e come arrivare sono nella <a href="/rally-colli-euganei/spettatori/">pagina spettatori</a>.</p>
+<dl>
+<dt>Data</dt><dd>21–22 novembre 2026</dd>
+<dt>Dove</dt><dd>Colli Euganei, provincia di Padova</dd>
+<dt>Formula</dt><dd>Rally Sprint · atipica sperimentale ACI Sport</dd>
+<dt>Prove speciali</dt><dd>2 prove, 3 passaggi ciascuna</dd>
+<dt>Km cronometrati</dt><dd>20–35 km</dd>
+<dt>Ingresso</dt><dd>Libero</dd>
+</dl>
+<p>Informazioni sulla gara: <a href="mailto:rallycollieuganei@gmail.com">rallycollieuganei@gmail.com</a> · organizzazione: <a href="mailto:inversione.au3@gmail.com">inversione.au3@gmail.com</a>.</p>` } ],
+    cta: { label: 'Apri la pagina del rally', href: '/rally-colli-euganei/' }, cta2: { label: 'Informazioni per il pubblico', href: '/rally-colli-euganei/spettatori/' } },
   { slug: 'polo-motor-show-2026-numeri', title: 'Polo Motor Show 2026: i numeri dell’edizione', excerpt: 'Due giorni di drift, rally show e raduno a Selve di Teolo. Il resoconto.',
     date: '18 GIU 2026', iso: '2026-06-18', category: 'Polo Motor Show', event: 'Polo Motor Show', chi: 'Per il pubblico', image: '/foto/polo_sierra_fina_drift.jpg', imageAlt: '', tipo: 'comunicato stampa',
     lead: 'Oltre 10.000 spettatori, circa 100 equipaggi in pista, più di 400 auto esposte: i numeri dell’edizione 2026 del Polo Motor Show.', credito: 'Foto: Inversione A U',
