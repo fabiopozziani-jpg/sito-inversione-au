@@ -30,15 +30,14 @@ export const presentazione = pdf('2be2d6_9bd576f53b674070bdc241aceadffa09', 'pre
 export const presentazionePeso = '8 MB';
 
 /**
- * I tre documenti safeguarding sono serviti da `public/documenti/` e non dal Media Manager:
+ * I due documenti safeguarding sono serviti da `public/documenti/` e non dal Media Manager:
  * pesano poco e devono restare raggiungibili con un indirizzo stabile.
- * `safeguardingVerbale` resta vuoto finché non si decide come pubblicare il verbale
- * (contiene dati personali: va pubblicata una versione oscurata).
+ * Il verbale di approvazione NON si pubblica: contiene codice fiscale, data di nascita e
+ * indirizzi di residenza (scelta di Fabio, 28/8). In pagina resta la data di approvazione.
  */
 export const documenti = {
   safeguardingModello: '/documenti/modello-organizzativo-safeguarding-inversione-a-u.pdf',
   safeguardingCodice: '/documenti/codice-di-condotta-inversione-a-u.pdf',
-  safeguardingVerbale: '',
   statuto: pdf('2be2d6_c5f6450bccd149b59725d618cf7bc712', 'atto-costitutivo-e-statuto-inversione-a-u-asd.pdf'),
   codiceFiscale: pdf('2be2d6_a7367f4067cd4c4496203ecea37d902a', 'certificato-codice-fiscale-inversione-a-u-asd.pdf'),
   partitaIva: pdf('2be2d6_deadaa4faa2340dca8c4a102fa136f32', 'certificato-partita-iva-inversione-a-u-asd.pdf'),
