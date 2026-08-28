@@ -37,11 +37,17 @@ const dati: [string, string][] = [
   ['Denominazione', 'Associazione Sportiva Dilettantistica Inversione A U'], ['Sigla', 'A.S.D. Inversione A U'], ['Sede legale', 'Via Selve 46/B · Saccolongo (PD)'],
   ['Codice fiscale', '92324000287'], ['Partita IVA', '05585020281'], ['Costituita il', '20 novembre 2023'], ['Codice attività', '931910 · Enti e organizzazioni sportive'],
 ];
-const documenti = [
-  { label: 'Atto costitutivo e statuto', href: pdfWix.statuto },
-  { label: 'Modello di Safeguarding', href: pdfWix.safeguarding, nota: 'Politiche per la tutela di minori e tesserati' },
-  { label: 'Certificato del codice fiscale', href: pdfWix.codiceFiscale },
-  { label: 'Certificato della partita IVA', href: pdfWix.partitaIva },
+const gruppiDoc = [
+  { titolo: 'Associazione', docs: [
+    { label: 'Atto costitutivo e statuto', href: pdfWix.statuto },
+    { label: 'Certificato del codice fiscale', href: pdfWix.codiceFiscale },
+    { label: 'Certificato della partita IVA', href: pdfWix.partitaIva },
+  ]},
+  { titolo: 'Safeguarding', docs: [
+    { label: 'Modello organizzativo e di controllo', href: pdfWix.safeguardingModello, nota: 'Approvato dal Consiglio Direttivo il 30 gennaio 2025' },
+    { label: 'Codice di condotta', href: pdfWix.safeguardingCodice, nota: 'Tutela dei minori e prevenzione delle molestie' },
+    { label: 'Verbale di approvazione', href: pdfWix.safeguardingVerbale, nota: 'Consiglio Direttivo del 30 gennaio 2025' },
+  ]},
 ];
 const tessere = ['Nuovo tesseramento', 'Rinnovo del tesseramento'];
 ---
@@ -115,15 +121,22 @@ const tessere = ['Nuovo tesseramento', 'Rinnovo del tesseramento'];
         <div><dt class="type-mono">Responsabile Safeguarding</dt><dd><a href={`mailto:${emailSafeguarding}`}>{emailSafeguarding}</a><span class="hint">Per segnalazioni e richieste in materia di tutela di minori e tesserati</span></dd></div>
       </dl>
     </div>
-    <ul class="tra__docs">
-      {documenti.map(d => (
-        <li>
-          {d.href
-            ? <a class="tra__doc" href={d.href} target="_blank" rel="noopener"><span class="tra__doc-t">{d.label}</span><span class="hint">{d.nota ? `${d.nota} · ` : ''}PDF · si apre in una nuova pagina ↗</span></a>
-            : <span class="tra__doc tra__doc--off"><span class="tra__doc-t">{d.label}</span><span class="hint">{d.nota ? `${d.nota} · ` : ''}PDF in pubblicazione</span></span>}
-        </li>
+    <div class="tra__docs">
+      {gruppiDoc.map(g => (
+        <div>
+          <p class="type-mono tra__gt">{g.titolo}</p>
+          <ul class="tra__lista">
+            {g.docs.map(d => (
+              <li>
+                {d.href
+                  ? <a class="tra__doc" href={d.href} target="_blank" rel="noopener"><span class="tra__doc-t">{d.label}</span><span class="hint">{d.nota ? `${d.nota} · ` : ''}PDF · si apre in una nuova pagina ↗</span></a>
+                  : <span class="tra__doc tra__doc--off"><span class="tra__doc-t">{d.label}</span><span class="hint">{d.nota ? `${d.nota} · ` : ''}PDF in pubblicazione</span></span>}
+              </li>
+            ))}
+          </ul>
+        </div>
       ))}
-    </ul>
+    </div>
   </section>
 
   <section id="tesseramento" class="hair" aria-labelledby="tes-h">
@@ -223,7 +236,9 @@ const tessere = ['Nuovo tesseramento', 'Rinnovo del tesseramento'];
   .tra__dl dd{margin:0;color:#fff}
   .tra__dl a{color:#fff}
   .tra__dl dd .hint{display:block;margin-top:4px}
-  .tra__docs{display:flex;flex-direction:column;gap:12px}
+  .tra__docs{display:flex;flex-direction:column;gap:var(--sp-4)}
+  .tra__gt{color:var(--grigio-450);letter-spacing:.08em;margin-bottom:12px}
+  .tra__lista{display:flex;flex-direction:column;gap:12px}
   .tra__doc{display:flex;flex-direction:column;gap:6px;padding:20px 24px;background:var(--carbone);border:1px solid var(--border-on-dark);text-decoration:none;color:#fff;transition:border-color var(--dur-fast) var(--ease-out)}
   .tra__doc:hover,.tra__doc:focus-visible{border-color:#fff}
   .tra__doc--off{color:var(--grigio-450);border-style:dashed}
