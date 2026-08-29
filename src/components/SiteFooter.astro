@@ -1,5 +1,4 @@
 ---
-import { IMMAGINI, imgFit } from '../data/rallyImmagini';
 /**
  * Footer master — monocromo. È la casa di Stampa, Privacy e delle pagine istituzionali.
  * Recapiti: solo indirizzi sul dominio e ruoli, mai nomi propri (Ondata 5).
@@ -51,7 +50,7 @@ const anno = new Date().getFullYear();
   <div class="ft__bottom">
     <div class="wrap ft__bottom-in type-mono text-meta">
       <span class="ft__cred">
-        <img class="ft__ctrlg" src={imgFit(IMMAGINI.ctrlg, 200)} alt="" width="600" height="440" loading="lazy" decoding="async" />
+        <img class="ft__ctrlg" src="/img/ctrlg-footer.png" alt="" width="200" height="141" loading="lazy" decoding="async" />
         <span class="ft__cred-t">
           <span>© {anno}, INVERSIONE A U</span>
           <span>Tutti i diritti riservati<span class="ft__sep"> | </span><span class="ft__design">Strategy &amp; design <a class="ft__a ft__by" href="https://www.ctrlg.it/" rel="noopener" target="_blank">by Ctrl+G</a></span></span>
@@ -89,7 +88,9 @@ const anno = new Date().getFullYear();
   @media(max-width:640px){
     .ft__sep{display:none}
     .ft__design{display:block}
-    .ft__ctrlg{width:68px;margin-bottom:-3px}
+    /* tre righe di testo: il marchio si allinea al centro del blocco, non alla base */
+    .ft__cred{align-items:center}
+    .ft__ctrlg{width:68px;margin-bottom:0}
   }
   .ft__cred-t{display:flex;flex-direction:column;gap:6px}
   .ft__by{font-family:inherit;font-size:inherit;letter-spacing:inherit;color:#999;text-decoration:underline;text-underline-offset:3px}

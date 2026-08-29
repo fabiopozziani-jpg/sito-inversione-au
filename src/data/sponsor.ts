@@ -1,7 +1,7 @@
 /** Sponsor — partner di stagione (annuali) e sponsor di singolo evento. Loghi bianchi su trasparente. */
 export type Sponsor = { name: string; logo: string; url?: string; w?: number; h?: number };
 /** Dimensioni dei PNG in public/img/sponsor (per width/height sugli <img>, niente CLS). */
-const DIM: Record<string, [number, number]> = { 'abano-ghiaccio': [383,180], 'auto-landi': [303,180], 'auto31': [440,90], 'autoservizi-cavinato': [440,79], 'baap-bergamaschi': [440,173], 'bellavista': [259,180], 'bull-barber': [331,180], 'caneva-car': [440,62], 'carrozzeria-angela': [440,110], 'cattelan': [184,180], 'centro-del-piede': [388,180], 'cesaro-group': [440,89], 'datex': [440,174], 'dealernet': [215,180], 'ecosider': [402,180], 'gemini': [440,73], 'gruppo-s2': [440,59], 'labor': [321,180], 'locanda-al-colle': [440,101], 'lovato': [440,168], 'marchioro': [440,155], 'metal-nord': [440,98], 'polo-cucine': [440,114], 'race-shop': [440,69], 'rally-bar': [440,147], 'rally-team': [440,179], 'ricambi-americani': [440,132], 'siderurgica-veneta': [327,180], 'sky-motors': [440,94], 'donolauto': [600,219] };
+const DIM: Record<string, [number, number]> = { 'abano-ghiaccio': [383,180], 'auto-landi': [303,180], 'auto31': [440,90], 'autoservizi-cavinato': [440,79], 'baap-bergamaschi': [440,173], 'bellavista': [259,180], 'bull-barber': [331,180], 'caneva-car': [440,62], 'carrozzeria-angela': [440,110], 'cattelan': [184,180], 'centro-del-piede': [388,180], 'cesaro-group': [440,89], 'datex': [440,174], 'dealernet': [215,180], 'ecosider': [402,180], 'gemini': [440,73], 'gruppo-s2': [440,59], 'labor': [321,180], 'locanda-al-colle': [440,101], 'lovato': [440,168], 'marchioro': [440,155], 'metal-nord': [440,98], 'polo-cucine': [440,114], 'race-shop': [440,69], 'rally-bar': [440,147], 'rally-team': [440,179], 'ricambi-americani': [440,132], 'siderurgica-veneta': [327,180], 'sky-motors': [440,94], 'donolauto': [600,219], 'ctrlg': [600,422] };
 const s = (slug: string, name: string): Sponsor => ({ name, logo: `/img/sponsor/${slug}.png`, w: DIM[slug]?.[0], h: DIM[slug]?.[1] });
 
 export const annuali: Sponsor[] = [
@@ -16,7 +16,7 @@ export const annuali: Sponsor[] = [
   s('labor', 'Labor F.lli Corazzari'),
   s('marchioro', 'Marchioro Scavi e Demolizioni'),
   s('dealernet', 'Dealernet'),
-  { name: 'Ctrl+G', logo: '', url: 'https://www.ctrlg.it/' },
+  { ...s('ctrlg', 'Ctrl+G'), url: 'https://www.ctrlg.it/' },
 ];
 export const rally: Sponsor[] = [];
 export const polo: Sponsor[] = [
