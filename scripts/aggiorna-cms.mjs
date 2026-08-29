@@ -181,6 +181,11 @@ for (const coll of COLLEZIONI) {
         campi.push('livello→evento · evento→polo');
       }
     }
+    if (coll === 'Sponsor' && String(item.data.nome ?? '').trim().toLowerCase() === 'ctrl+g' && item.data.logo) {
+      // il marchio nuovo sta nel repository (public/img/sponsor/ctrlg.png): libero il campo del Media Manager
+      item.data.logo = '';
+      campi.push('logo→statico (marchio nuovo)');
+    }
     if (coll === 'Sponsor' && String(item.data.nome ?? '').trim().toLowerCase() === 'duo') {
       // il file duo.png non esiste più nel Media Manager: si passa al logo statico del repository
       item.data.nome = 'Donolauto';
