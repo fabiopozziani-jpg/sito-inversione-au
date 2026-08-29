@@ -26,7 +26,7 @@ export const rally = {
   /** Iscrizioni: 'non-aperte' | 'aperte' | 'chiuse' */
   statoIscrizioni: 'non-aperte' as 'non-aperte' | 'aperte' | 'chiuse',
   moduloUrl: 'https://www.acisport.it',
-  /** Scheda dell'evento nel calendario ufficiale ACI Sport */
+  /** Scheda nel calendario ACI Sport. NON linkata sul sito: quella pagina risponde spesso in errore (scelta di Fabio, 29/8). */
   aciUrl: 'https://www.acisport.it/it/acisport/dettaglio-calendari/7506131/1%C2%B0-rally-colli-euganei',
   chiusuraIscrizioni: '6 novembre 2026',
   /** Testo vago finché non c'è una data ufficiale (scelta di Fabio, 19/8). */

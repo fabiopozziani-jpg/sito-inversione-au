@@ -23,7 +23,7 @@ const eventLd = {
   location: { '@type': 'Place', name: 'Colli Euganei', address: { '@type': 'PostalAddress', addressLocality: 'Teolo', addressRegion: 'PD', addressCountry: 'IT' } },
   organizer: { '@id': 'https://www.inversioneau.com/#org' }, image: 'https://www.inversioneau.com/img/social/rally-colli-euganei.jpg',
   description: 'Prima edizione del rally sui Colli Euganei con titolazione ACI Sport. Due giorni di gara, ingresso libero per il pubblico.',
-  isAccessibleForFree: true, url: 'https://www.inversioneau.com/rally-colli-euganei/', sameAs: [rally.aciUrl],
+  isAccessibleForFree: true, url: 'https://www.inversioneau.com/rally-colli-euganei/',
   performer: { '@type': 'PerformingGroup', name: 'Equipaggi iscritti al 1° Rally Colli Euganei' },
   offers: { '@type': 'Offer', url: 'https://www.inversioneau.com/rally-colli-euganei/spettatori/', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', validFrom: '2026-08-28' },
 };
@@ -56,7 +56,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         {stato === 'pre' && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
         {stato === 'in' && <p class="type-mono hero__count hero__count--live">Il rally è in corso</p>}
         {stato === 'post' && <a class="type-mono link-line hero__count" href="/foto-e-video/rally-colli-euganei-2026/">Rally concluso · classifiche e foto <span class="arrow-x" aria-hidden="true">→</span></a>}
-        <span class="pill pill--ev">Rally Sprint</span>
+        <span class="pill pill--ev">Rally Sprint · Atipico Sperimentale</span>
       </div>
       <div class="hero__cta">
         <a href="/rally-colli-euganei/documenti/" class="btn btn--primary">Apri i documenti di gara</a>
@@ -134,7 +134,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
       </figure>
       <dl class="storia__dl reveal">
         <div><dt class="type-mono">Prima edizione</dt><dd>21–22 novembre 2026</dd></div>
-        <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport · <a href={rally.aciUrl} target="_blank" rel="noopener" class="storia__link">scheda nel calendario ACI Sport ↗</a></dd></div>
+        <div><dt class="type-mono">Titolazione</dt><dd>ACI Sport</dd></div>
         <div><dt class="type-mono">Organizzazione</dt><dd>Inversione A U A.S.D.</dd></div>
       </dl>
     </div>
