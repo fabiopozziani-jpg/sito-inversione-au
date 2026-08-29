@@ -24,6 +24,8 @@ const eventLd = {
   organizer: { '@id': 'https://www.inversioneau.com/#org' }, image: 'https://www.inversioneau.com/img/social/rally-colli-euganei.jpg',
   description: 'Prima edizione del rally sui Colli Euganei con titolazione ACI Sport. Due giorni di gara, ingresso libero per il pubblico.',
   isAccessibleForFree: true, url: 'https://www.inversioneau.com/rally-colli-euganei/', sameAs: [rally.aciUrl],
+  performer: { '@type': 'PerformingGroup', name: 'Equipaggi iscritti al 1° Rally Colli Euganei' },
+  offers: { '@type': 'Offer', url: 'https://www.inversioneau.com/rally-colli-euganei/spettatori/', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', validFrom: '2026-08-28' },
 };
 const sponsorRally = [...annuali, ...sponsorEvento('rally')];
 // Ultime due notizie del rally (CMS News, riserva statica): la categoria mostra a chi si rivolge.

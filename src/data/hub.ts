@@ -11,6 +11,10 @@ export type Hub = {
   href: string; logo: string; hero: string; claim: string;
   dataInizio: string; dataFine: string; dataIso: string; luogo: string;
   stato: Stato; ticketUrl: string;
+  /** Ingresso: `prezzo` vuoto = non dichiarato. Serve al blocco offers dei dati strutturati. */
+  ingresso: { gratuito: boolean; prezzo: string };
+  /** Chi si esibisce, per il campo performer dei dati strutturati. */
+  performer: string;
   introTitolo: string; introTesto1: string; introTesto2: string;
   stats: { value: string; label: string }[];
   programma: { time: string; title: string; text?: string }[];
@@ -37,6 +41,8 @@ export const hubs: Record<'polo' | 'legnaro', Hub> = {
     claim: 'Drift, rally show ed esposizione sul circuito cittadino dei Colli',
     dataInizio: '13', dataFine: '14 giugno 2026', dataIso: '2026-06-13', luogo: 'Selve di Teolo',
     stato: 'conclusa', ticketUrl: '',
+    ingresso: { gratuito: false, prezzo: '' },
+    performer: 'Piloti drift e rally show del Polo Motor Show',
     introTitolo: "Che cos'è il Polo Motor Show",
     introTesto1: 'Due giorni di esibizioni drift, rally show ed esposizione di auto. Le strade di Selve di Teolo diventano circuito e paddock, con il pubblico a pochi metri dalla pista.',
     introTesto2: "L'edizione 2026 si è chiusa domenica 14 giugno con oltre 10.000 spettatori. La prossima è in preparazione.",
@@ -98,6 +104,8 @@ export const hubs: Record<'polo' | 'legnaro', Hub> = {
     claim: 'Drift e raduno — la prima edizione',
     dataInizio: '15 marzo 2026', dataFine: '15 marzo 2026', dataIso: '2026-03-15', luogo: 'Legnaro',
     stato: 'conclusa', ticketUrl: '',
+    ingresso: { gratuito: true, prezzo: '0' },
+    performer: 'Piloti drift di Legnaro Motori',
     introTitolo: "Che cos'è Legnaro Motori",
     introTesto1: "Una giornata di esibizioni drift e raduno di auto. È la versione compatta del format: un solo giorno, un'unica area, tutto raggiungibile a piedi.",
     introTesto2: 'La prima edizione si è svolta domenica 15 marzo 2026, con il tracciato drift, il raduno e gli stand delle aziende di settore in un’unica area.',
@@ -172,5 +180,15 @@ export function eventLd(h: Hub) {
     location: { '@type': 'Place', name: h.luogo, address: { '@type': 'PostalAddress', addressLocality: h.luogo, addressRegion: 'PD', addressCountry: 'IT' } },
     organizer: { '@id': 'https://www.inversioneau.com/#org' }, image: `https://www.inversioneau.com/img/social/${h.key === 'polo' ? 'polo-motor-show' : 'legnaro-motori'}.jpg`,
     description: h.claim, url: `https://www.inversioneau.com${h.href}`,
+    isAccessibleForFree: h.ingresso.gratuito,
+    performer: { '@type': 'PerformingGroup', name: h.performer },
+    offers: {
+      '@type': 'Offer',
+      url: h.ticketUrl || `https://www.inversioneau.com${h.href}`,
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'EUR',
+      validFrom: `${h.anno}-01-01`,
+      ...(h.ingresso.prezzo ? { price: h.ingresso.prezzo } : {}),
+    },
   };
 }
