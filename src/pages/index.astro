@@ -11,6 +11,7 @@ import StatBlock from '../components/StatBlock.astro';
 import NewsCard from '../components/NewsCard.astro';
 import PhotoStrip from '../components/PhotoStrip.astro';
 import SponsorBlock from '../components/SponsorBlock.astro';
+import PartnerMarquee from '../components/PartnerMarquee.astro';
 import SocialStrip from '../components/SocialStrip.astro';
 import CTABlock from '../components/CTABlock.astro';
 import { numeri } from '../data/eventi';
@@ -59,6 +60,9 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
       </div>
     </div>
   </section>
+
+  <!-- PARTNER DI STAGIONE (fascia a scorrimento) -->
+  <PartnerMarquee sponsors={annuali} />
 
   <!-- ACCESSO RAPIDO -->
   <nav class="accesso" aria-label="Accesso rapido">

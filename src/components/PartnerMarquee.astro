@@ -1,0 +1,113 @@
+---
+/**
+ * Fascia partner a scorrimento continuo (full width).
+ *
+ * Quarto motivo di movimento del sito, dopo il taglio, lo schieramento e il tabellone:
+ * la fascia (.mq). Si anima solo transform, curva lineare perché il moto è continuo
+ * e non ha un inizio e una fine da accompagnare. Si ferma al passaggio del mouse,
+ * con il fuoco da tastiera dentro la fascia, e quando la fascia è fuori dallo schermo.
+ * Con `prefers-reduced-motion` non scorre: diventa una striscia che si trascina a mano.
+ *
+ * I loghi sono a caricamento immediato e priorità bassa: con `lazy` la fascia mostrerebbe
+ * riquadri vuoti, perché il transform non cambia la posizione di layout su cui il browser
+ * decide cosa caricare. Sono gli stessi file del blocco in fondo alla pagina, quindi il
+ * secondo blocco li ritrova in cache.
+ *
+ * Loghi più piccoli del blocco partner in fondo alla home: qui la fascia è un segnale
+ * di presenza sotto la hero, non la sezione istituzionale degli sponsor.
+ */
+import type { Sponsor } from '../data/sponsor';
+interface Props {
+  sponsors: Sponsor[];
+  /** Nome della fascia per gli screen reader: non compare a schermo. */
+  label?: string;
+  /** Secondi di percorrenza per logo: più alto = più lento. */
+  ritmo?: number;
+}
+const { sponsors, label = 'Partner di stagione', ritmo = 4.2 } = Astro.props;
+/** Con pochi loghi servono più copie, altrimenti la fascia resta più corta dello schermo.
+ *  Le copie sono sempre in numero pari: lo spostamento del 50% ne fa scorrere esattamente metà. */
+const copie = sponsors.length >= 10 ? 2 : 4;
+const durata = Math.round(sponsors.length * ritmo * (copie / 2));
+---
+{sponsors.length > 0 && (
+  <section class="mq" aria-label={label}>
+    <div class="mq__view">
+      <div class="mq__track" style={`--dur:${durata}s`}>
+        {Array.from({ length: copie }, (_, c) => (
+          <ul class="mq__copy" aria-hidden={c > 0 ? 'true' : undefined}>
+            {sponsors.map(s => (
+              <li>
+                {s.url
+                  ? <a href={s.url} target="_blank" rel="noopener" tabindex={c > 0 ? -1 : undefined}>
+                      <img src={s.logo} alt={c > 0 ? '' : s.name} width={s.w} height={s.h} loading="eager" fetchpriority="low" decoding="async" />
+                    </a>
+                  : <img src={s.logo} alt={c > 0 ? '' : s.name} width={s.w} height={s.h} loading="eager" fetchpriority="low" decoding="async" />}
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+<script>
+  // La fascia si ferma quando esce dallo schermo: nessuna animazione che gira a vuoto
+  // per tutta la pagina. Senza JavaScript scorre e basta.
+  const fasce = document.querySelectorAll('.mq');
+  if (fasce.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (voci) => voci.forEach(v => v.target.classList.toggle('is-off', !v.isIntersecting)),
+      { rootMargin: '80px 0px' },
+    );
+    fasce.forEach(f => io.observe(f));
+  }
+</script>
+<style>
+  .mq{
+    --h:28px;          /* altezza massima del logo */
+    --w:128px;         /* larghezza massima: tiene ottica omogenea fra loghi larghi e quadrati */
+    --gap:20px;        /* mezzo spazio fra due loghi, in padding: così le copie combaciano */
+    --banda:64px;      /* altezza della fascia */
+    --fade:40px;       /* dissolvenza ai due bordi dello schermo */
+    background:var(--nero);
+    border-top:1px solid var(--border-on-dark);
+    /* nessun bordo inferiore: sotto c'è già la riga della fascia di accesso rapido */
+  }
+  .mq__view{overflow:hidden}
+  /* la dissolvenza ai bordi dice che la fascia continua; dove non è supportata, taglio netto */
+  @supports (mask-image: linear-gradient(#000,#000)) or (-webkit-mask-image: linear-gradient(#000,#000)){
+    .mq__view{
+      -webkit-mask-image:linear-gradient(to right,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+      mask-image:linear-gradient(to right,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);
+    }
+  }
+  /* larghezza a contenuto: le copie sono identiche, quindi -50% è esattamente metà pista */
+  .mq__track{display:flex;width:max-content;animation:mq-scorri var(--dur,60s) linear infinite}
+  .mq__copy{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+  .mq__copy>li{display:flex;align-items:center;justify-content:center;min-height:var(--banda);padding-inline:var(--gap)}
+  .mq__copy a{display:flex;align-items:center;justify-content:center}
+  .mq__copy img{
+    width:auto;height:auto;max-width:var(--w);max-height:var(--h);
+    opacity:.8;transition:opacity var(--dur-base) var(--ease-out);
+  }
+  .mq__copy a:hover img,.mq__copy a:focus-visible img{opacity:1}
+  @keyframes mq-scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  /* si ferma: mouse sopra, fuoco da tastiera dentro, fascia fuori dallo schermo */
+  .mq:hover .mq__track,.mq:focus-within .mq__track,.mq.is-off .mq__track{animation-play-state:paused}
+
+  @media(min-width:900px){
+    .mq{--h:34px;--w:160px;--gap:28px;--banda:76px;--fade:64px}
+  }
+
+  /* movimento ridotto: non scorre. Resta una striscia che si trascina, senza doppioni. */
+  @media (prefers-reduced-motion: reduce){
+    .mq__view{overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}
+    .mq__view::-webkit-scrollbar{display:none}
+    .mq__track{animation:none;width:auto}
+    .mq__copy[aria-hidden]{display:none}
+    .mq__copy{margin-inline:auto}
+    .mq__copy>li{scroll-snap-align:center}
+    .mq__copy img{transition:none}
+  }
+</style>

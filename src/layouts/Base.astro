@@ -22,6 +22,7 @@ interface Props {
   /** dati strutturati aggiuntivi (JSON-LD), uno o più oggetti */
   jsonld?: Record<string, unknown> | Record<string, unknown>[];
 }
+import { indirizzoStrutturato } from '../data/riservatezza';
 const { title, description, active = '', bodyClass = '', noindex = false, image = '/img/social/inversione-au.jpg', imageAlt = 'Inversione A U — eventi motorsport sui Colli Euganei', ogType = 'website', jsonld } = Astro.props;
 const origin = (Astro.site ?? Astro.url).origin;
 const percorso = Astro.url.pathname.replace(/\/+$/, '') || '/';
@@ -36,7 +37,7 @@ const org = {
   '@context': 'https://schema.org', '@type': 'SportsOrganization', '@id': `${origin}/#org`,
   name: 'Inversione A U A.S.D.', alternateName: 'Inversione A U', url: origin, logo: `${origin}/img/logo_positivo_nero.png`,
   email: 'inversione.au3@gmail.com', telephone: '+39 348 570 1233',
-  address: { '@type': 'PostalAddress', streetAddress: 'Via Selve 46/B', addressLocality: 'Saccolongo', addressRegion: 'PD', postalCode: '35030', addressCountry: 'IT' },
+  address: indirizzoStrutturato,
   sameAs: ['https://www.instagram.com/inversione.au/', 'https://www.facebook.com/inversione.au'],
   sport: 'Motorsport',
 };

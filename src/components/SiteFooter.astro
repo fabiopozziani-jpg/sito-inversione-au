@@ -3,6 +3,7 @@
  * Footer master — monocromo. È la casa di Stampa, Privacy e delle pagine istituzionali.
  * Recapiti: solo indirizzi sul dominio e ruoli, mai nomi propri (Ondata 5).
  */
+import { sedeFooter } from '../data/riservatezza';
 const cols = [
   { title: 'Eventi', links: [
     ['Rally Colli Euganei', '/rally-colli-euganei/'],
@@ -34,7 +35,7 @@ const anno = new Date().getFullYear();
       <img src="/img/logo_negativo_bianco.png" alt="Inversione A U" width="200" height="88" loading="lazy" />
       <address class="type-mono text-meta ft__addr">
         A.S.D. Inversione A U<br />
-        Via Selve 46/B · Saccolongo (PD)<br />
+        {sedeFooter}<br />
         <a href="mailto:inversione.au3@gmail.com">inversione.au3@gmail.com</a>
       </address>
     </div>

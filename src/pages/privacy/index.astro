@@ -1,6 +1,7 @@
 ---
 /** Informativa privacy — testo Ondata 5, email ufficiale. */
 import Base from '../../layouts/Base.astro';
+import { sedeInFrase } from '../../data/riservatezza';
 const email = 'inversione.au3@gmail.com';
 const conserv: [string, string][] = [
   ['Messaggi dal modulo contatti', '24 mesi'], ['Accrediti non accolti', '12 mesi'], ['Accrediti rilasciati', '5 anni'], ['Richieste sponsor senza seguito', '24 mesi'],
@@ -16,7 +17,7 @@ const conserv: [string, string][] = [
   </header>
   <div class="wrap pv">
     <section id="titolare"><h2 class="type-h2">Chi tratta i tuoi dati</h2>
-      <p>Il titolare del trattamento è l'Associazione Sportiva Dilettantistica Inversione A U, con sede legale in Via Selve 46/B a Saccolongo (PD), codice fiscale 92324000287 e partita IVA 05585020281. I dati identificativi completi dell'associazione sono in <a href="/contatti/#dati">Contatti</a>.</p>
+      <p>Il titolare del trattamento è l'Associazione Sportiva Dilettantistica Inversione A U, con sede legale {sedeInFrase}, codice fiscale 92324000287 e partita IVA 05585020281. I dati identificativi completi dell'associazione sono in <a href="/contatti/#dati">Contatti</a>.</p>
       <p>Per qualsiasi richiesta sui tuoi dati scrivi a <a href={`mailto:${email}`}>{email}</a>.</p></section>
     <section id="dati"><h2 class="type-h2">Quali dati raccogliamo e perché</h2>
       <h3 class="type-h3">Modulo contatti</h3><p>Nome, email, telefono, motivo della richiesta e testo del messaggio. Li usiamo solo per risponderti.</p>

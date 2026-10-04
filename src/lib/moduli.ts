@@ -1,7 +1,7 @@
 /**
  * Moduli del sito → Wix Forms (app installata sul progetto headless, 19/8/2026).
  * Piano attuale (Free): massimo 4 moduli da 10 campi → quattro schemi condivisi:
- *   richieste  = contatti, richieste dagli hub evento, rally, tessera (campo `contesto` distingue la provenienza)
+ *   richieste  = contatti, richieste dagli hub evento, rally, tessera, documentazione (campo `contesto` distingue la provenienza)
  *   sponsor    = diventa sponsor
  *   accrediti  = accrediti stampa (i dettagli secondari sono riassunti nel campo `dettagli`)
  *   avvisami   = avviso apertura iscrizioni rally
@@ -32,9 +32,11 @@ export function prepara(modulo: ChiaveModulo, d: Record<string, unknown>): { val
     const contesto = s(d.contesto) || 'sito';
     let motivo = s(d.motivo);
     if (contesto === 'tessera') motivo = ['Tessera', s(d.tessera)].filter(Boolean).join(': ');
+    // richiesta della documentazione dell'associazione (4/10/2026: i PDF non sono più linkati in pagina)
+    if (contesto === 'documenti') motivo = ['Documentazione', s(d.documento)].filter(Boolean).join(': ');
     valori = { contesto, nome: s(d.nome), email: s(d.email), telefono: s(d.telefono), motivo, messaggio: s(d.messaggio), privacy: si(d.privacy) };
     if (!si(d.privacy)) errori.push('Consenso privacy: è obbligatorio');
-    if (contesto !== 'tessera' && !valori.messaggio) errori.push('Messaggio: è obbligatorio');
+    if (contesto !== 'tessera' && contesto !== 'documenti' && !valori.messaggio) errori.push('Messaggio: è obbligatorio');
   } else if (modulo === 'sponsor') {
     const note = [s(d.settore) && `Settore: ${s(d.settore)}`, si(d.presentazione) && 'Vuole ricevere la presentazione sponsor in PDF', s(d.note)].filter(Boolean).join('\n');
     valori = { azienda: s(d.azienda), referente: s(d.referente), email: s(d.email), telefono: s(d.telefono), evento: s(d.evento), pacchetto: s(d.pacchetto), budget: s(d.budget), note, privacy: si(d.privacy) };

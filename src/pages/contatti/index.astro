@@ -2,6 +2,7 @@
 /** Contatti — email/telefono, a chi scrivere, dati dell'associazione, modulo. */
 import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
+import { sedeLegale } from '../../data/riservatezza';
 const email = 'inversione.au3@gmail.com';
 const motivi = ['Informazioni generali', 'Iscrizione o partecipazione a un evento', 'Sponsor, espositori e partner', 'Volontari e commissari di percorso', 'Segnalazioni e reclami', 'Altro'];
 const canali = [
@@ -40,7 +41,7 @@ const canali = [
         <h2 class="type-h2">Dati dell'associazione</h2>
         <dl class="dl">
           <div><dt class="type-mono">Denominazione</dt><dd>Associazione Sportiva Dilettantistica Inversione A U</dd></div>
-          <div><dt class="type-mono">Sede legale</dt><dd>Via Selve 46/B · Saccolongo (PD)</dd></div>
+          <div><dt class="type-mono">Sede legale</dt><dd>{sedeLegale}</dd></div>
           <div><dt class="type-mono">Codice fiscale</dt><dd>92324000287</dd></div>
           <div><dt class="type-mono">Partita IVA</dt><dd>05585020281</dd></div>
           <div><dt class="type-mono">Costituita il</dt><dd>20 novembre 2023</dd></div>
