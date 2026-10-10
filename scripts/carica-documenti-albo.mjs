@@ -8,6 +8,7 @@
  *   cd ~/Desktop/INVERSIONE_AU/NUOVO_SITO_INVERSIONE_AU/SITO_WIX
  *   node scripts/carica-documenti-albo.mjs          → simulazione: non scrive nulla
  *   node scripts/carica-documenti-albo.mjs --run    → carica i file e scrive nel CMS
+ *   node scripts/carica-documenti-albo.mjs --pesi   → risistema solo tipo e peso delle righe già in albo
  *
  * Resoconto sempre in .trigger/albo-report.txt (che leggo io dalla sessione).
  * Le credenziali arrivano da .env.local e non escono da qui.
@@ -19,6 +20,8 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 
 const RUN = process.argv.includes('--run');
+/** --pesi: non carica nulla, risistema solo il campo `nomeFile` (tipo e peso) delle righe già in albo. */
+const PESI = process.argv.includes('--pesi');
 const API = 'https://www.wixapis.com';
 const SITE_ID = '0fa841cd-37c1-4afa-98a8-07cd3feb9f54';
 const CARTELLA_FILE = '/Users/fabio/Desktop/INVERSIONE_AU/EVENTI/2026/21-22_NOVEMBRE_1_RALLY_COLLI_EUGANEI/MODULI/CARICATI_ONLINE';
@@ -57,7 +60,7 @@ function salva() {
   if (!existsSync('.trigger')) mkdirSync('.trigger');
   writeFileSync('.trigger/albo-report.txt', righe.join('\n') + '\n');
 }
-const kb = (n) => `${Math.round(n / 1024)} KB`;
+const kb = (n) => (n >= 1024 * 1000 ? `${(n / 1024 / 1024).toFixed(1).replace('.', ',')} MB` : `${Math.round(n / 1024)} KB`);
 
 /* ---------- API ---------- */
 let TOKEN = '', SCHEMA = 'Bearer ';
@@ -112,6 +115,25 @@ if (!q.ok) { log(`ERRORE lettura collection Documenti (${q.status}): ${q.corpo.s
 const items = JSON.parse(q.corpo).dataItems ?? [];
 log(`Collection Documenti: ${items.length} righe già presenti`);
 log('');
+
+if (PESI) {
+  let sistemati = 0;
+  for (const L of LAVORI) {
+    const percorso = `${CARTELLA_FILE}/${L.file}`;
+    const riga = items.find(i => String(i.data?.numero ?? '') === L.numero && String(i.data?.evento ?? '') === 'rally');
+    if (!riga || !existsSync(percorso)) continue;
+    const nomeFile = `PDF · ${kb(statSync(percorso).size)}`;
+    if (riga.data.nomeFile === nomeFile) continue;
+    const id = riga.id ?? riga.data._id;
+    const esito = await api(`/wix-data/v2/items/${id}`, { dataCollectionId: 'Documenti', dataItem: { id, data: { ...riga.data, nomeFile } } }, 'PUT');
+    log(`— ${L.numero}  "${riga.data.nomeFile}" → "${nomeFile}"${esito.ok ? '' : `  ! fallito (${esito.status}): ${esito.corpo.slice(0, 200)}`}`);
+    if (esito.ok) sistemati++;
+  }
+  log('');
+  log(`Fatto: ${sistemati} righe sistemate.`);
+  salva();
+  process.exit(0);
+}
 
 let fatti = 0;
 for (const L of LAVORI) {
