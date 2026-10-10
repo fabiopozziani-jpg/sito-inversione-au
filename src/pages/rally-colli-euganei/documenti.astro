@@ -20,7 +20,14 @@ const docs = list.map(d => ({
   revLine: d.revPrev && d.revPrevIso ? `Versione ${d.rev} · sostituisce la versione ${d.revPrev} del ${fmtData(d.revPrevIso)}` : '',
   superatoLine: d.superato ? `Superato dalla versione ${d.superatoDa}` : '',
 }));
-const gruppi = gruppiAlbo.map(label => ({ label, docs: docs.filter(d => d.gruppo === label) })).filter(g => g.docs.length);
+/** Dentro un gruppo l'albo si legge per numero (1.1, 1.2, 3.10…), non per data. */
+const chiaveNum = (n: string) => String(n ?? '').split('.').map(x => Number(x) || 0);
+const perNumero = (a: { num: string }, b: { num: string }) => {
+  const A = chiaveNum(a.num), B = chiaveNum(b.num);
+  for (let i = 0; i < Math.max(A.length, B.length); i++) { const d = (A[i] ?? 0) - (B[i] ?? 0); if (d) return d; }
+  return 0;
+};
+const gruppi = gruppiAlbo.map(label => ({ label, docs: docs.filter(d => d.gruppo === label).sort(perNumero) })).filter(g => g.docs.length);
 const ultimi = list.filter(d => !d.superato).slice(0, 3);
 const hasDocs = docs.length > 0;
 ---
@@ -37,9 +44,11 @@ const hasDocs = docs.length > 0;
       <div>
         <h1 class="type-h1">Documenti di gara e comunicazioni ufficiali</h1>
         <p class="lead" style="margin-top:12px">Tutti i documenti ufficiali del 1° Rally Colli Euganei, dal più recente. Vale sempre l'ultima versione.</p>
-        <p class="type-mono pg-head__reg">Tutti i documenti di gara sono pubblicati un mese prima della gara</p>
+        <p class="type-mono pg-head__reg">{hasDocs
+          ? 'Modulistica e allegati già pubblicati · regolamento, programma e tabella tempi un mese prima della gara'
+          : 'Tutti i documenti di gara sono pubblicati un mese prima della gara'}</p>
       </div>
-      {hasDocs && <p class="type-mono k-meta">Aggiornato al <time datetime={list[0].iso.slice(0, 10)}>{fmtData(list[0].iso, true)}</time></p>}
+      {hasDocs && <p class="type-mono k-meta">Aggiornato al <time datetime={list[0].iso.slice(0, 10)}>{fmtData(list[0].iso)}</time></p>}
     </div>
   </header>
 
@@ -113,7 +122,7 @@ const hasDocs = docs.length > 0;
                         {d.superatoLine && <div class="hint">{d.superatoLine}</div>}
                       </td>
                       <td class="type-mono" data-label="Versione">{d.rev ?? '—'}</td>
-                      <td class="type-mono" data-label="Pubblicato il"><time datetime={d.iso}>{fmtData(d.iso, true)}</time></td>
+                      <td class="type-mono" data-label="Pubblicato il"><time datetime={d.iso}>{fmtData(d.iso)}</time></td>
                       <td data-label="File">
                         <div class="albo__file">
                           <div class="albo__links"><a class="type-mono" href={d.href} target="_blank" rel="noopener">Apri ↗</a><a class="type-mono" href={d.href} download>Scarica ↓</a></div>

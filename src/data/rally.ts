@@ -147,12 +147,12 @@ export const iscrittiPdf = '';
 
 export type Documento = {
   num: string; title: string; iso: string; file: string; href: string; rev?: string;
-  gruppo?: 'Regolamento e programma' | 'Comunicazioni del direttore di gara' | 'Modulistica';
+  gruppo?: 'Regolamento e programma' | 'Comunicazioni del direttore di gara' | 'Modulistica' | 'Allegati tecnici';
   revPrev?: string; revPrevIso?: string; superato?: boolean; superatoDa?: string;
 };
 /** Albo di gara — vuoto fino alla pubblicazione ufficiale. */
 export const documenti: Documento[] = [];
-export const gruppiAlbo = ['Regolamento e programma', 'Comunicazioni del direttore di gara', 'Modulistica'] as const;
+export const gruppiAlbo = ['Regolamento e programma', 'Comunicazioni del direttore di gara', 'Modulistica', 'Allegati tecnici'] as const;
 
 const TBD2 = 'Da definire';
 export const programma = [

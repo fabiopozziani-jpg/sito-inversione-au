@@ -6,7 +6,7 @@ import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { subnav, classi, schedaGara, documentiRapidi } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
-const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf } = await caricaRally();
+const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
 const stato = rally.statoIscrizioni;
 const isc = {
@@ -15,6 +15,14 @@ const isc = {
   'chiuse': { kicker: 'Iscrizioni chiuse', titolo: 'Iscrizioni chiuse', testo: `Le iscrizioni si sono chiuse il ${rally.chiusuraIscrizioni}. Gli equipaggi ammessi sono nell'elenco iscritti qui sotto.` },
 }[stato];
 const haIscritti = iscritti.length > 0;
+/** Modulistica e allegati pubblicati in albo: compaiono qui da soli, senza toccare il codice. */
+const chiaveNum = (n: string) => String(n ?? '').split('.').map(x => Number(x) || 0);
+const moduli = documenti
+  .filter(d => !d.superato && d.href && (d.gruppo === 'Modulistica' || d.gruppo === 'Allegati tecnici'))
+  .sort((a, b) => { const A = chiaveNum(a.num), B = chiaveNum(b.num); for (let i = 0; i < Math.max(A.length, B.length); i++) { const x = (A[i] ?? 0) - (B[i] ?? 0); if (x) return x; } return 0; });
+/** Area riservata ACI Sport: chi si iscrive deve registrarsi lì. Il link si attiva da solo il 21 ottobre 2026. */
+const aciAreaRiservata = 'https://www.acisport.it/it/acisport/area-riservata/login';
+const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:00');
 ---
 <Base
   title="Iscrizioni Rally Colli Euganei 2026 | Inversione A U"
@@ -70,8 +78,16 @@ const haIscritti = iscritti.length > 0;
         <div class="req">
           <div class="req__head"><h3 class="type-h3">Licenza</h3></div>
           <p class="type-body-dark">Verifica la validità della propria licenza per questo evento sul sito ACI Sport.</p>
-          <a class="link-box" href="https://www.acisport.it/it/acisport" target="_blank" rel="noopener">Vai al sito ACI Sport ↗</a>
+          <div class="req__cta">
+            <a class="link-box" href="https://www.acisport.it/it/acisport" target="_blank" rel="noopener">Vai al sito ACI Sport ↗</a>
+            {aciAreaRiservataAttiva ? (
+              <a class="link-box" href={aciAreaRiservata} target="_blank" rel="noopener">Registrati nell'area riservata ↗</a>
+            ) : (
+              <span class="link-box link-box--off">Area riservata ACI Sport <span class="type-mono lb__q">dal 21 ottobre</span></span>
+            )}
+          </div>
           <span class="hint">Si apre in una nuova pagina · le licenze ammesse sono indicate nel Regolamento Particolare di Gara</span>
+          <p class="hint">Chi non ha mai gareggiato con licenza ACI Sport deve prima registrarsi nell'area riservata del sito ACI: la domanda di iscrizione si compila da lì.</p>
           <p class="hint">In caso di dubbio scrivi a <a href={`mailto:${rally.email}`}>{rally.email}</a></p>
         </div>
       </div>
@@ -111,7 +127,9 @@ const haIscritti = iscritti.length > 0;
       </div>
       <div class="sg__doc">
         <h3 class="type-h3 sg__t">Documenti in evidenza</h3>
-        <p class="type-body-dark sg__p">I file che si cercano per primi. Vengono pubblicati un mese prima della gara, qui e nell'albo di gara.</p>
+        <p class="type-body-dark sg__p">{moduli.length
+          ? "I file che si cercano per primi. La modulistica è già scaricabile, il resto esce un mese prima della gara."
+          : "I file che si cercano per primi. Vengono pubblicati un mese prima della gara, qui e nell'albo di gara."}</p>
         <ul class="sg__l">
           {documentiRapidi.map(d => (
             <li>
@@ -129,6 +147,21 @@ const haIscritti = iscritti.length > 0;
             </li>
           ))}
         </ul>
+        {moduli.length > 0 && (
+          <>
+            <h4 class="type-mono sg__sub">Modulistica da compilare</h4>
+            <ul class="sg__l">
+              {moduli.map(d => (
+                <li>
+                  <a class="sg__d sg__d--on" href={d.href} target="_blank" rel="noopener">
+                    <span class="sg__dn">{d.title}<span class="type-mono sg__dk">{d.num} · {d.file}</span></span>
+                    <span class="type-mono sg__da">Scarica ↓</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <a class="type-mono link-line sg__all" href="/rally-colli-euganei/documenti/">Vai all'albo di gara completo <span class="arrow-x" aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -252,6 +285,10 @@ const haIscritti = iscritti.length > 0;
   .req{display:flex;flex-direction:column;gap:12px}
   .req__head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .req .hint a{color:#fff}
+  .req__cta{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+  @media(min-width:560px){.req__cta{flex-direction:row;flex-wrap:wrap;align-items:center}}
+  .link-box--off{opacity:.62}
+  .link-box--off .lb__q{color:var(--grigio-450)}
   .tbl--scad{min-width:0}
   .tbl--scad td{white-space:nowrap}
   /* albo (bianco) */
@@ -296,5 +333,6 @@ const haIscritti = iscritti.length > 0;
   .sg__d--on .sg__da{color:var(--ev)}
   .sg__d--off{opacity:.62}
   .sg__d--off .sg__da{color:var(--grigio-450)}
+  .sg__sub{color:var(--grigio-450);margin:20px 0 8px}
   .sg__all{display:inline-flex;margin-top:16px;color:#fff}
 </style>
