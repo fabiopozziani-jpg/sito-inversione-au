@@ -75,12 +75,12 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <div class="wrap">
     <ul class="qa__grid">
       {[
-        ['01', 'Concorrenti', '/rally-colli-euganei/concorrenti/'],
-        ['02', 'Spettatori', '/rally-colli-euganei/spettatori/'],
-        ['03', 'Documenti di gara', '/rally-colli-euganei/documenti/'],
-        ['04', 'Accrediti stampa', '/stampa/accrediti/'],
-      ].map(([n, t, h]) => (
-        <li><a href={h} class="type-mono"><span class="qa__n">{n}</span>{t}</a></li>
+        ['01', 'Concorrenti', '/rally-colli-euganei/concorrenti/', rally.statoIscrizioni === 'aperte' ? 'Iscrizioni aperte' : ''],
+        ['02', 'Spettatori', '/rally-colli-euganei/spettatori/', ''],
+        ['03', 'Documenti di gara', '/rally-colli-euganei/documenti/', ''],
+        ['04', 'Accrediti stampa', '/stampa/accrediti/', ''],
+      ].map(([n, t, h, b]) => (
+        <li><a href={h} class="type-mono"><span class="qa__n">{n}</span>{t}{b && <span class="qa__stato">{b}</span>}</a></li>
       ))}
     </ul>
     </div>
@@ -247,11 +247,13 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .qa{width:100%;border-top:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark)}
   .qa__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   @media(min-width:900px){.qa__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-  .qa__grid a{display:flex;align-items:baseline;gap:12px;line-height:1.3;padding:20px clamp(16px,3vw,28px);color:#fff;text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out)}
+  .qa__grid a{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;line-height:1.3;padding:20px clamp(16px,3vw,28px);color:#fff;text-decoration:none;border-right:1px solid var(--border-on-dark);border-bottom:1px solid var(--border-on-dark);transition:background-color var(--dur-fast) var(--ease-out)}
   .qa__grid li:nth-child(2n) a{border-right:0}
   @media(min-width:900px){.qa__grid a{border-bottom:0}.qa__grid li:nth-child(2n) a{border-right:1px solid var(--border-on-dark)}.qa__grid li:last-child a{border-right:0}}
   .qa__grid a:hover,.qa__grid a:focus-visible{background:var(--carbone)}
   .qa__n{color:var(--rally-verde)}
+  .qa__stato{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.06em;color:var(--rally-verde);border:1px solid currentColor;padding:2px 7px;white-space:nowrap;align-self:center}
+  .qa__stato::before{content:"";width:6px;height:6px;background:currentColor;flex:none}
   /* porte */
   .porte{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);padding-bottom:var(--sp-4)}
   @media(min-width:768px){.porte{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
