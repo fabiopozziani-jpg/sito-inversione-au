@@ -380,7 +380,9 @@ const aciAreaRiservataAttiva = unMesePrima();
   .sg .sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--sp-4)}
   .sg .sec-head p{max-width:70ch}
   .sg__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5)}
-  @media(min-width:900px){.sg__grid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--sp-6);align-items:start}}
+  /* Da telefono i documenti vengono prima della scheda: è quello che si cerca per primo. */
+  .sg__doc{order:-1}
+  @media(min-width:900px){.sg__grid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--sp-6);align-items:start}.sg__doc{order:0}}
   .sg__t{color:#fff;margin-bottom:12px}
   .sg__p{margin-bottom:16px;max-width:44ch}
   .sg__dl{display:flex;flex-direction:column;border-top:1px solid var(--border-on-dark)}
