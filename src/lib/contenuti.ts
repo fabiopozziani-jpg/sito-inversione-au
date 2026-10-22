@@ -66,10 +66,26 @@ function postDaCms(n: NewsCms & { _id: string }): Post {
     cta2: n.cta2Label && n.cta2Url ? { label: n.cta2Label, href: rel(n.cta2Url) } : statico?.cta2,
   };
 }
+/** I chilometri veri del percorso escono con i documenti, a mezzanotte fra il 22 e il 23
+ *  ottobre. Il comunicato ufficiale nel CMS li porta già: fino a quel momento qui vengono
+ *  rimessi i testi di prima, così niente esce in anticipo.
+ *  SI PUÒ TOGLIERE DOPO IL 23 OTTOBRE 2026 (questa funzione e la sua chiamata). */
+const PRIMA_DEL_23: [RegExp, string][] = [
+  [/21,36 chilometri contro il tempo, su 109,26 km di percorso totale/g, '20–35 chilometri contro il tempo'],
+  [/Tracciato, chilometraggi e orari di passaggio della prima vettura sono pubblicati nella pagina del percorso e nell[’']albo di gara\./g,
+   'Tracciato, chilometraggi esatti e orari di passaggio sono in arrivo con i documenti di gara.'],
+  [/21,36 km/g, '20–35 km'],
+  [/109,26 km/g, '—'],
+];
+const velaKm = (t: string) => PRIMA_DEL_23.reduce((x, [a, b]) => x.replace(a, b), t ?? '');
+const velaPost = (p: Post): Post => ({ ...p, excerpt: velaKm(p.excerpt),
+  corpo: ((p.corpo ?? []) as any[]).map(b => (b && typeof b.html === 'string' ? { ...b, html: velaKm(b.html) } : b)) as Post['corpo'] });
+
 /** Tutte le news pubblicate (CMS) o quelle statiche. */
 export async function caricaPosts(): Promise<Post[]> {
   const cms = await query<NewsCms>('News', { filter: { pubblicato: true }, sort: [{ fieldName: 'data', order: 'DESC' }], limit: 200 });
-  return pieno(cms?.filter(n => n.slug && n.titolo).map(postDaCms) ?? null, postsStatici);
+  const tutti = pieno(cms?.filter(n => n.slug && n.titolo).map(postDaCms) ?? null, postsStatici);
+  return R.unMesePrima() ? tutti : tutti.map(velaPost);
 }
 const rank: Record<string, number> = { 'Rally Colli Euganei': 0, 'Polo Motor Show': 1, 'Legnaro Motori': 2, 'Associazione': 3 };
 export const ordinaPerEvento = (p: Post[]) => [...p].sort((a, b) => (rank[a.event] ?? 9) - (rank[b.event] ?? 9) || (a.iso < b.iso ? 1 : -1));
@@ -220,7 +236,8 @@ export async function caricaRally() {
   const rally = {
     ...R.rally,
     nome: s(x?.nome, R.rally.nome), luogo: s(x?.luogo, R.rally.luogo),
-    statoIscrizioni: (s(x?.statoIscrizioni, R.rally.statoIscrizioni)) as typeof R.rally.statoIscrizioni,
+    // Vuoto nel CMS e nei dati statici = lo stato lo decidono le date (apertura/chiusura).
+    statoIscrizioni: (s(x?.statoIscrizioni, s(R.rally.statoIscrizioni)) || R.statoIscrizioniOra()) as R.StatoIscrizioni,
     moduloUrl: s(x?.moduloIscrizione, R.rally.moduloUrl),
     sportity: { ...R.rally.sportity, password: s(x?.sportityPassword, R.rally.sportity.password) },
     whatsapp: s(x?.whatsapp, R.rally.whatsapp),
@@ -228,22 +245,59 @@ export async function caricaRally() {
     hero: imgFill(x?.hero, 1920, 1080, R.rally.hero),
     stato: s(x?.stato, 'annuncio') as Stato,
   };
-  const proveOut = prove && prove.length ? prove.map(p => ({ sigla: p.sigla, nome: p.nome, km: s(p.km), chiusura: s(p.chiusura, '— · da definire'), prima: s(p.primaVettura, '— · da definire'), pubblico: s(p.zonaPubblico), maps: s(p.mapsUrl), mappa: imgFit(p.mappa, 1600) })) : R.prove;
-  const scadenzeOut = scadenze && scadenze.length ? scadenze.map(z => ({ fase: z.fase, data: s(z.data, 'Da definire'), ora: s(z.ora, '—') })) : R.scadenze;
+  // Tutti i dati di percorso escono insieme ai documenti, a mezzanotte fra il 22 e il 23
+  // ottobre (`DATE.unMesePrima`): prima di quel momento il sito mostra le versioni "prima",
+  // senza chilometri né orari. Stessa regola già in uso per il programma.
+  const dopo = R.unMesePrima();
+  // Le prove: il CMS ha la precedenza campo per campo, ma dove la collection è vuota vale
+  // la riserva statica di rally.ts. Così km, orari della prima vettura e tracciati restano
+  // in linea anche finché `ProveSpeciali` non è stata allineata.
+  const proveDopo = prove && prove.length ? prove.map((p, i) => {
+    const st = R.prove[i];
+    return { sigla: s(p.sigla, st?.sigla), nome: s(p.nome, st?.nome), km: s(p.km, st?.km),
+      chiusura: s(p.chiusura, st?.chiusura ?? '— · da definire'), prima: s(p.primaVettura, st?.prima ?? '— · da definire'),
+      pubblico: s(p.zonaPubblico, st?.pubblico), maps: s(p.mapsUrl, st?.maps), mappa: imgFit(p.mappa, 1600) || st?.mappa || '' };
+  }) : R.prove;
+  const proveOut = dopo ? proveDopo : R.provePrima;
+  const scadenzeDopo = scadenze && scadenze.length ? scadenze.map(z => ({ fase: z.fase, data: s(z.data, 'Da definire'), ora: s(z.ora, '—') })) : R.scadenze;
+  const scadenzeOut = dopo ? scadenzeDopo : R.scadenzePrima;
   const iscrittiOut: R.Iscritto[] = iscritti && iscritti.length ? iscritti.map(i => ({ num: s(i.numero), equipaggio: i.equipaggio, vettura: s(i.vettura), classe: s(i.classe) })) : R.iscritti;
-  const documentiOut: R.Documento[] = documenti && documenti.length ? documenti.map(d => ({
+  // Un documento con `pubblicatoIl` nel futuro resta fuori dall'albo fino a quel giorno:
+  // si carica in anticipo e compare da solo, senza che nessuno debba ricordarsene.
+  const oggiRoma = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Rome' });
+  const documentiVisibili = (documenti ?? []).filter(d => s(d.pubblicatoIl).slice(0, 10) <= oggiRoma);
+  const documentiOut: R.Documento[] = documentiVisibili.length ? documentiVisibili.map(d => ({
     num: s(d.numero), title: d.titolo, iso: s(d.pubblicatoIl).slice(0, 10), file: s(d.nomeFile, 'PDF'), href: s(d.file), rev: s(d.versione) || undefined,
     gruppo: (s(d.gruppo) || undefined) as R.Documento['gruppo'], revPrev: s(d.versionePrecedente) || undefined, revPrevIso: s(d.dataVersionePrecedente).slice(0, 10) || undefined,
     superato: !!d.superato, superatoDa: s(d.superatoDa) || undefined,
   })) : R.documenti;
+  // Il programma provvisorio esce il 23 ottobre: prima di quella data vale la versione
+  // senza orari, anche se il CMS è già stato riempito.
   let programmaOut = R.programma;
   if (prog && prog.length) {
     const gruppi = new Map<string, { ora: string; titolo: string; nota: string; prima?: string }[]>();
     for (const p of prog) { const g = s(p.giorno, 'Programma'); const arr = gruppi.get(g) ?? []; arr.push({ ora: s(p.ora, 'Da definire'), titolo: p.titolo, nota: s(p.nota), prima: s(p.primaVettura) ? 'Prima vettura: ' + p.primaVettura : undefined }); gruppi.set(g, arr); }
     programmaOut = [...gruppi].map(([titolo, voci]) => ({ titolo, voci })) as typeof R.programma;
   }
+  // Due filtri sul programma pubblico, entrambi temporanei (21 ottobre 2026):
+  //  · `vociNascosteSpettatori` — voci da equipaggio, si tolgono e basta.
+  //  · `vociOrariNascoste` — orari non ancora pubblicabili, sostituiti da una riga sola.
+  // Valgono sia per il CMS sia per la riserva statica: gli script del CMS non cancellano
+  // righe, quindi nasconderle qui è l'unico modo per essere sicuri che non ricompaiano.
+  // PER TORNARE AL PROGRAMMA INTERO: svuotare i due elenchi in `src/data/rally.ts`.
+  if (R.vociNascosteSpettatori.length || R.vociOrariNascoste.length) {
+    const via = (t: string) => R.vociNascosteSpettatori.includes(t);
+    const sost = (t: string) => R.vociOrariNascoste.includes(t);
+    programmaOut = programmaOut.map(g => {
+      if (!g.voci.some(v => via(v.titolo) || sost(v.titolo))) return g;
+      const tieni = (v: { titolo: string }) => !via(v.titolo) && !sost(v.titolo);
+      const i = g.voci.findIndex(v => sost(v.titolo));
+      if (i < 0) return { ...g, voci: g.voci.filter(tieni) };
+      return { ...g, voci: [...g.voci.slice(0, i).filter(tieni), R.vocePerOrariMancanti, ...g.voci.slice(i).filter(tieni)] };
+    }) as typeof programmaOut;
+  }
   const ultimoAgg = iscritti && iscritti.length ? (iscritti as any[]).map(i => i._updatedDate?.$date ?? i._updatedDate ?? '').sort().pop() : '';
-  return { rally, prove: proveOut, scadenze: scadenzeOut, iscritti: iscrittiOut, iscrittiAggiornatoAl: ultimoAgg ? new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', timeZone: 'Europe/Rome' }).format(new Date(ultimoAgg)) : R.iscrittiAggiornatoAl, iscrittiPdf: R.iscrittiPdf, documenti: documentiOut, programma: programmaOut };
+  return { rally, prove: proveOut, scadenze: scadenzeOut, iscritti: iscrittiOut, iscrittiAggiornatoAl: ultimoAgg ? new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', timeZone: 'Europe/Rome' }).format(new Date(ultimoAgg)) : R.iscrittiAggiornatoAl, iscrittiPdf: R.iscrittiPdf, documenti: documentiOut, programma: dopo ? programmaOut : R.programmaPrima };
 }
 
 /* ---------- Edizioni e direttivo ---------- */

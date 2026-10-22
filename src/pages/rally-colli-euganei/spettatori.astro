@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CTABlock from '../../components/CTABlock.astro';
-import { subnav, consentito, vietato } from '../../data/rally';
+import { subnav, consentito, vietato, unMesePrima } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 import { rallyImg, RALLY_IMG } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
@@ -18,7 +18,7 @@ const url = '/rally-colli-euganei/spettatori/';
   description="Come vedere il 1° Rally Colli Euganei il 21 e 22 novembre 2026: programma, dove guardare la gara, regole di sicurezza e come arrivare sui Colli."
   active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
 >
-  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <EventSubnav items={subnav()} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Spettatori' }]} />
 
   <!-- HERO -->
@@ -28,15 +28,18 @@ const url = '/rally-colli-euganei/spettatori/';
     <div class="wrap hero__in">
       <p class="type-mono hero__kicker">{rally.dataLabel} · Colli Euganei</p>
       <h1 id="hero-h1" class="type-h1">Come vedere il 1° Rally Colli Euganei</h1>
-      <p class="hero__intro">Ingresso libero. Programma, regole di sicurezza e come arrivare sui Colli.</p>
+      <p class="hero__intro">{unMesePrima() ? 'Ingresso libero. Programma, sicurezza e come arrivare sui Colli.' : 'Ingresso libero. Programma, regole di sicurezza e come arrivare sui Colli.'}</p>
       <div><a href="/rally-colli-euganei/percorso/" class="btn btn--ev">Vedi percorso e prove speciali</a></div>
     </div>
   </section>
 
   <!-- PROGRAMMA -->
   <section id="programma" class="wrap section prog" aria-labelledby="prog-h">
+    {unMesePrima() && <p class="type-mono k-ev">Programma ufficiale</p>}
     <h2 id="prog-h" class="type-h2">Programma e orari</h2>
-    <p class="type-body-dark prog__intro">Le due giornate di gara. Gli orari mancanti vengono pubblicati appena confermati.</p>
+    {unMesePrima()
+      ? <p class="hint prog__tag">Gli orari del programma potrebbero subire variazioni.</p>
+      : <p class="type-body-dark prog__intro">Le due giornate di gara. Gli orari mancanti vengono pubblicati appena confermati.</p>}
     {programma.map(g => (
       <div class="prog__giorno reveal">
         <h3 class="type-h3 prog__g">{g.titolo}</h3>
@@ -53,12 +56,14 @@ const url = '/rally-colli-euganei/spettatori/';
   </section>
 
   <!-- ZONE PUBBLICO -->
+  {!unMesePrima() && (
   <section id="zone-pubblico" class="wrap zone" aria-labelledby="zone-h">
     <h2 id="zone-h" class="type-h2">Dove guardare la gara</h2>
-    <p class="type-body-dark zone__p">Le zone da cui si assiste al rally sono aree scelte dall'organizzazione, delimitate e presidiate dai commissari: buona visuale, accesso a piedi e un punto dove lasciare l'auto.</p>
-    <p class="type-body-dark zone__p">Le prove speciali, i punti di accesso e le coordinate per raggiungerli vengono pubblicati sulla pagina del percorso, prova per prova, appena il tracciato è definito.</p>
+    <p class="type-body-dark zone__p">{unMesePrima() ? "Le zone pubblico sono aree delimitate e presidiate dai commissari: buona visuale, accesso a piedi, un posto dove lasciare l'auto." : "Le zone da cui si assiste al rally sono aree scelte dall'organizzazione, delimitate e presidiate dai commissari: buona visuale, accesso a piedi e un punto dove lasciare l'auto."}</p>
+    <p class="type-body-dark zone__p">{unMesePrima() ? 'Punti di accesso e coordinate arrivano sulla pagina del percorso, prova per prova, appena il tracciato è definito.' : 'Le prove speciali, i punti di accesso e le coordinate per raggiungerli vengono pubblicati sulla pagina del percorso, prova per prova, appena il tracciato è definito.'}</p>
     <a class="link-box zone__cta" href="/rally-colli-euganei/percorso/">Vai a percorso e prove speciali <span class="arrow-x" aria-hidden="true">→</span></a>
   </section>
+  )}
 
   <!-- SICUREZZA -->
   <section id="sicurezza" class="sic" aria-labelledby="sic-h">
@@ -82,20 +87,28 @@ const url = '/rally-colli-euganei/spettatori/';
         </div>
       </div>
       <div class="sic__avv">
-        <p>La presenza lungo il percorso avviene a proprio rischio. Chi assiste alla gara è tenuto a rispettare le indicazioni dei commissari di percorso e delle forze dell'ordine, e le prescrizioni dell'ordinanza comunale di chiusura delle strade. Chi non rispetta queste indicazioni viene allontanato dalla zona.</p>
-        <p>Le strade chiudono un'ora prima del passaggio della prima vettura e riaprono solo dopo il passaggio della vettura scopa, l'ultima del rally. Prima di quel momento non si attraversa e non si sposta l'auto.</p>
+        <p>{unMesePrima() ? "Si assiste alla gara a proprio rischio, seguendo le indicazioni dei commissari e delle forze dell'ordine e i provvedimenti di chiusura delle strade. Chi non le rispetta viene allontanato." : "La presenza lungo il percorso avviene a proprio rischio. Chi assiste alla gara è tenuto a rispettare le indicazioni dei commissari di percorso e delle forze dell'ordine, e i provvedimenti di chiusura delle strade. Chi non rispetta queste indicazioni viene allontanato dalla zona."}</p>
+        <p>{unMesePrima() ? "Le strade chiudono un'ora prima della prima vettura e riaprono dopo la vettura scopa, l'ultima del rally. Nel mezzo non si attraversa e non si sposta l'auto." : "Le strade chiudono un'ora prima del passaggio della prima vettura e riaprono solo dopo il passaggio della vettura scopa, l'ultima del rally. Prima di quel momento non si attraversa e non si sposta l'auto."}</p>
       </div>
       <div class="card card--rosso fuoco" role="note">
         <div class="sic__head">
           <span class="sic__ico sic__ico--no" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
           <h3 class="type-h3">Niente fuochi, fumogeni e artifici</h3>
         </div>
-        <p class="fuoco__p">Lungo il percorso e nelle zone pubblico non si accendono fuochi, fumogeni, torce, bengala, petardi o inneschi di alcun tipo. Non è una questione di scenografia: è la condizione che ci permette di correre su queste strade.</p>
+        <p class="fuoco__p">{unMesePrima() ? 'Niente fuochi, fumogeni, torce, bengala o petardi, da nessuna parte. Non è scenografia: è la condizione che ci permette di correre su queste strade.' : 'Lungo il percorso e nelle zone pubblico non si accendono fuochi, fumogeni, torce, bengala, petardi o inneschi di alcun tipo. Non è una questione di scenografia: è la condizione che ci permette di correre su queste strade.'}</p>
         <ul class="lista-ev fuoco__l">
-          <li>Il fumo toglie la visibilità a un equipaggio che arriva a oltre cento all'ora. Una prova speciale invasa dal fumo viene fermata, e quando si ferma una prova si ferma la gara per tutti.</li>
-          <li>Si corre dentro un parco regionale, tra boschi, castagneti e prati secchi. Una scintilla, in una giornata di vento, è un incendio.</li>
-          <li>Fumogeni e artifici sono materiale pirotecnico: chi li accende risponde in prima persona dei danni a persone, mezzi e vegetazione, e dell'interruzione della gara.</li>
-          <li>Chi viene trovato con questo materiale è allontanato dalla zona pubblico dai commissari e dalle forze dell'ordine.</li>
+          {unMesePrima()
+            ? <Fragment>
+              <li>Il fumo acceca un equipaggio che arriva a velocità sostenuta. Una prova invasa dal fumo viene fermata, e con lei si ferma la gara per tutti.</li>
+              <li>Si corre in un parco regionale, fra boschi e prati secchi: una scintilla in una giornata di vento può aumentare il rischio di incendio.</li>
+              <li>Fumogeni e artifici sono materiale pirotecnico: chi li accende risponde dei danni e dell'interruzione della gara, e viene allontanato dai commissari e dalle forze dell'ordine.</li>
+            </Fragment>
+            : <Fragment>
+              <li>{unMesePrima() ? "Il fumo acceca un equipaggio che arriva a velocità sostenuta. Una prova invasa dal fumo viene fermata, e con lei si ferma la gara per tutti." : "Il fumo toglie la visibilità a un equipaggio che arriva a velocità sostenuta. Una prova speciale invasa dal fumo viene fermata, e quando si ferma una prova si ferma la gara per tutti."}</li>
+              <li>{unMesePrima() ? 'Si corre in un parco regionale, fra boschi e prati secchi: una scintilla in una giornata di vento può aumentare il rischio di incendio.' : 'Si corre dentro un parco regionale, tra boschi, castagneti e prati secchi. Una scintilla, in una giornata di vento, può aumentare il rischio di incendio.'}</li>
+              <li>Fumogeni e artifici sono materiale pirotecnico: chi li accende risponde in prima persona dei danni a persone, mezzi e vegetazione, e dell'interruzione della gara.</li>
+              <li>Chi viene trovato con questo materiale è allontanato dalla zona pubblico dai commissari e dalle forze dell'ordine.</li>
+            </Fragment>}
         </ul>
         <p class="fuoco__p">Vale lo stesso per i rifiuti: quello che porti in prova speciale torna a casa con te.</p>
       </div>
@@ -118,9 +131,9 @@ const url = '/rally-colli-euganei/spettatori/';
       <div class="terr__t">
         <p class="type-mono terr__k">Il territorio</p>
         <h2 id="terr-h" class="type-h2">Si corre dentro un parco regionale</h2>
-        <p>I Colli Euganei sono un parco regionale dal 1989: 18.694 ettari su quindici comuni della provincia di Padova, un centinaio di rilievi di origine vulcanica nati trentacinque milioni di anni fa in mezzo alla pianura. Castagneti e querceti sui versanti freschi, macchia mediterranea su quelli esposti al sole, vigne e ulivi a mezza costa. In cima al Monte Venda, 601 metri: il punto più alto della pianura padana.</p>
-        <p>Il rally passa di qui due giorni all'anno. Le strade che chiudiamo sono strade di casa: ci vivono famiglie, ci lavorano aziende agricole e cantine, ci camminano escursionisti tutto il resto dell'anno.</p>
-        <p>Quello che chiediamo a chi viene a vedere la gara è semplice: restare nelle zone segnalate, non entrare in vigne, orti e coltivi, non accendere nulla, non lasciare nulla per terra. Il rally torna qui l'anno prossimo solo se il Parco, i Comuni e chi ci abita lo rivogliono.</p>
+        <p>{unMesePrima() ? 'Un centinaio di rilievi vulcanici in mezzo alla pianura, parco regionale dal 1989: castagneti sui versanti freschi, macchia mediterranea su quelli al sole, vigne e ulivi a mezza costa.' : 'I Colli Euganei sono un parco regionale dal 1989: 18.694 ettari su quindici comuni della provincia di Padova, un centinaio di rilievi di origine vulcanica nati trentacinque milioni di anni fa in mezzo alla pianura. Castagneti e querceti sui versanti freschi, macchia mediterranea su quelli esposti al sole, vigne e ulivi a mezza costa. In cima al Monte Venda, 601 metri: il punto più alto della pianura padana.'}</p>
+        <p>{unMesePrima() ? "Il rally passa di qui due giorni all'anno. Le strade che chiudiamo sono strade di casa: ci vivono famiglie, ci lavorano cantine e aziende agricole." : "Il rally passa di qui due giorni all'anno. Le strade che chiudiamo sono strade di casa: ci vivono famiglie, ci lavorano aziende agricole e cantine, ci camminano escursionisti tutto il resto dell'anno."}</p>
+        <p>{unMesePrima() ? "Resta nelle zone segnalate, non entrare in vigne e coltivi, non accendere fuochi o fiamme libere e non lasciare nulla. Il rally torna l'anno prossimo solo se il Parco, i Comuni e chi ci vive lo rivogliono." : "Quello che chiediamo a chi viene a vedere la gara è semplice: restare nelle zone segnalate, non entrare in vigne, orti e coltivi, non accendere fuochi o fiamme libere, non lasciare nulla per terra. Il rally torna qui l'anno prossimo solo se il Parco, i Comuni e chi ci abita lo rivogliono."}</p>
         <a class="type-mono dorm__l" href="https://www.parcocollieuganei.com/" target="_blank" rel="noopener">Parco Regionale dei Colli Euganei ↗</a>
       </div>
       <figure class="terr__foto reveal">
@@ -141,8 +154,8 @@ const url = '/rally-colli-euganei/spettatori/';
       <h2 id="arr-h" class="type-h2">Come arrivare</h2>
       <div class="arr__grid stagger">
         <div class="arr__col reveal"><span class="type-mono arr__k">In auto</span><p>Autostrada A13, uscita Terme Euganee, poi direzione Colli Euganei.</p></div>
-        <div class="arr__col reveal"><span class="type-mono arr__k">In treno</span><p>Stazione di Terme Euganee — Abano Montegrotto, oppure Padova. Dalla stazione ai punti di gara serve un'auto: il trasporto pubblico non arriva alle prove speciali.</p></div>
-        <div class="arr__col reveal"><span class="type-mono arr__k">Coordinate delle prove</span><p>I punti da cui si raggiungono le prove speciali vengono pubblicati sulla <a href="/rally-colli-euganei/percorso/">pagina del percorso</a>, insieme al tracciato.</p></div>
+        <div class="arr__col reveal"><span class="type-mono arr__k">In treno</span><p>{unMesePrima() ? "Stazione di Terme Euganee — Abano Montegrotto, oppure Padova. Da lì serve l'auto: il trasporto pubblico non arriva alle prove." : "Stazione di Terme Euganee — Abano Montegrotto, oppure Padova. Dalla stazione ai punti di gara serve un'auto: il trasporto pubblico non arriva alle prove speciali."}</p></div>
+        <div class="arr__col reveal"><span class="type-mono arr__k">Coordinate delle prove</span><p>{unMesePrima() ? 'I punti di accesso alle prove escono sulla ' : 'I punti da cui si raggiungono le prove speciali vengono pubblicati sulla '}<a href="/rally-colli-euganei/percorso/">pagina del percorso</a>, insieme al tracciato.</p></div>
       </div>
     </div>
   </section>
@@ -152,7 +165,7 @@ const url = '/rally-colli-euganei/spettatori/';
   <section id="dormire" class="on-light dorm" aria-labelledby="dorm-h">
     <div class="wrap section">
       <h2 id="dorm-h" class="type-h2">Dove dormire e mangiare</h2>
-      <p class="dorm__p">Il rally si corre a fine novembre sui Colli Euganei, a venti minuti da Padova. Se arrivi da fuori regione, queste sono le zone più comode. Non segnaliamo strutture singole: qui sotto trovi i canali ufficiali del territorio, sempre aggiornati.</p>
+      <p class="dorm__p">{unMesePrima() ? 'Se arrivi da fuori regione, queste sono le zone più comode. Non segnaliamo singole strutture: qui sotto i canali ufficiali del territorio.' : 'Il rally si corre a fine novembre sui Colli Euganei, a venti minuti da Padova. Se arrivi da fuori regione, queste sono le zone più comode. Non segnaliamo strutture singole: qui sotto trovi i canali ufficiali del territorio, sempre aggiornati.'}</p>
       <div class="arr__grid stagger">
         <div class="arr__col reveal">
           <span class="type-mono arr__k">Terme di Abano e Montegrotto</span>
@@ -161,12 +174,12 @@ const url = '/rally-colli-euganei/spettatori/';
         </div>
         <div class="arr__col reveal">
           <span class="type-mono arr__k">Nei paesi dei Colli</span>
-          <p>Agriturismi, B&amp;B e cantine con ospitalità nei comuni attraversati dalla gara. Sono strutture piccole: a novembre conviene prenotare con qualche settimana di anticipo.</p>
+          <p>{unMesePrima() ? 'Agriturismi, B&amp;B e cantine nei comuni attraversati dalla gara. Sono strutture piccole: prenota con qualche settimana di anticipo.' : 'Agriturismi, B&amp;B e cantine con ospitalità nei comuni attraversati dalla gara. Sono strutture piccole: a novembre conviene prenotare con qualche settimana di anticipo.'}</p>
           <a class="type-mono dorm__l" href="https://www.stradadelvinocollieuganei.it/" target="_blank" rel="noopener">Strada del Vino Colli Euganei ↗</a>
         </div>
         <div class="arr__col reveal">
           <span class="type-mono arr__k">Mangiare il giorno della gara</span>
-          <p>Il rally attraversa i centri dei Colli: bar, trattorie e ristoranti dei paesi restano aperti per tutta la durata della gara. Nelle zone pubblico non c'è ristoro organizzato: porta acqua e qualcosa da mangiare, soprattutto per le prove del mattino.</p>
+          <p>{unMesePrima() ? "Bar e trattorie dei paesi restano aperti per tutta la gara. Nelle zone pubblico non c'è ristoro: porta acqua e qualcosa da mangiare, soprattutto per le prove del mattino." : "Il rally attraversa i centri dei Colli: bar, trattorie e ristoranti dei paesi restano aperti per tutta la durata della gara. Nelle zone pubblico non c'è ristoro organizzato: porta acqua e qualcosa da mangiare, soprattutto per le prove del mattino."}</p>
         </div>
       </div>
     </div>
@@ -188,6 +201,7 @@ const url = '/rally-colli-euganei/spettatori/';
   /* programma */
   .prog h2{color:#fff;margin-bottom:8px}
   .prog__intro{max-width:60ch;margin-bottom:var(--sp-5)}
+  .prog__tag{margin-top:6px;margin-bottom:var(--sp-5)}
   .prog__giorno{margin-bottom:var(--sp-5)}
   .prog__g{color:#fff;display:inline-block;padding-bottom:8px;border-bottom:var(--border-accent) solid var(--ev);margin-bottom:12px}
   .prog__riga{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding:14px 0;border-top:1px solid var(--border-on-dark)}

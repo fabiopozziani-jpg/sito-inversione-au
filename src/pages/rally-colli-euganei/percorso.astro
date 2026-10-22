@@ -4,29 +4,37 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav } from '../../data/rally';
+import { subnav, cartinaPercorsoAlbo, tabellaTempiAlbo, unMesePrima } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
-const { rally, prove } = await caricaRally();
+const { rally, prove, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/percorso/';
+/** La cartina del percorso esce in albo con gli altri documenti di gara: finché la riga
+ *  non è pubblica il riquadro resta in attesa, poi il link si accende da solo. */
+const cartina = documenti.find(d => d.num === cartinaPercorsoAlbo && !d.superato);
+/** La tabella distanze e tempi: stesso meccanismo della cartina, riga d'albo 1.4. */
+const tdt = documenti.find(d => d.num === tabellaTempiAlbo && !d.superato);
+/** Tutti i dati di percorso escono con i documenti, a mezzanotte fra il 22 e il 23 ottobre.
+ *  Prima di allora la pagina resta quella di annuncio, senza chilometri né orari. */
+const dopo = unMesePrima();
 ---
 <Base
   title="Percorso Rally Colli Euganei 2026 | Inversione A U"
-  description="Percorso del 1° Rally Colli Euganei: due prove speciali con tre passaggi ciascuna, 20–35 km cronometrati, mappa e orari di passaggio."
+  description={dopo ? "Percorso del 1° Rally Colli Euganei: due prove speciali con tre passaggi ciascuna, 21,36 km cronometrati, mappa e orari di passaggio." : "Percorso del 1° Rally Colli Euganei: due prove speciali con tre passaggi ciascuna, mappa e orari di passaggio."}
   active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
 >
-  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <EventSubnav items={subnav()} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Percorso e prove speciali' }]} />
 
   <header class="wrap pg-head">
     <h1 class="type-h1">Percorso e prove speciali</h1>
-    <p class="lead">Dove si corre, quanti chilometri si cronometrano e a che ora passa la prima vettura.</p>
-    <p class="type-mono pg-head__tipo">Rally Sprint · atipico sperimentale · a calendario ACI Sport</p>
+    {!dopo && <p class="lead">Dove si corre, quanti chilometri si cronometrano e a che ora passa la prima vettura.</p>}
+    <p class="type-mono pg-head__tipo">Rally Sprint · a calendario ACI Sport</p>
   </header>
 
   <!-- MAPPA -->
   <section id="mappa" class="wrap mappa" aria-labelledby="mappa-h">
     <h2 id="mappa-h" class="type-h2">La mappa del percorso</h2>
-    <p class="type-body-dark mappa__intro">Il tracciato completo con prove speciali, riordini e parcheggi per il pubblico.</p>
+    <p class="type-body-dark mappa__intro">{dopo ? 'Tracciato completo con prove speciali, riordini e parcheggi.' : 'Il tracciato completo con prove speciali, riordini e parcheggi per il pubblico.'}</p>
     {rally.mappaPercorso ? (
       <button type="button" class="mappa__btn img-zoom" data-lb data-src={rally.mappaPercorso} data-alt="Mappa del percorso del 1° Rally Colli Euganei" aria-label="Ingrandisci la mappa del percorso">
         <img src={rally.mappaPercorso} alt="Mappa del percorso del 1° Rally Colli Euganei" loading="lazy" decoding="async" />
@@ -37,10 +45,24 @@ const url = '/rally-colli-euganei/percorso/';
       </button>
     ) : (
       <div class="mappa__attesa card card--top reveal">
-        <img src={rally.targa} alt="" width="1400" height="643" loading="lazy" decoding="async" />
+        {dopo && cartina
+          ? <a class="mappa__foto" href={cartina.href} target="_blank" rel="noopener">
+              <img src="/img/rally/cartina-percorso.jpg" alt="Cartina del percorso del 1° Rally Colli Euganei" width="1200" height="1861" loading="lazy" decoding="async" />
+              <span class="type-mono mappa__pdf" aria-hidden="true">PDF ↓</span>
+              <span class="sr-only">Scarica la cartina del percorso in PDF</span>
+            </a>
+          : <img src={rally.targa} alt="" width="1400" height="643" loading="lazy" decoding="async" />}
         <div>
-          <p class="type-mono k-ev">In pubblicazione</p>
-          <p class="mappa__attesa-t">La mappa ufficiale del percorso viene pubblicata qui con i documenti di gara, un mese prima della gara, insieme ai punti di accesso per il pubblico.</p>
+          <p class="type-mono k-ev">{dopo ? 'È disponibile' : 'In pubblicazione'}</p>
+          <p class="mappa__attesa-t">{dopo
+            ? 'La cartina ufficiale, con le due prove e lo shakedown, è nell\'albo di gara. Qui sotto i tracciati prova per prova.'
+            : 'La mappa ufficiale del percorso è in arrivo con i documenti di gara, insieme ai punti di accesso per il pubblico.'}</p>
+          {dopo && (
+            <div class="mappa__cta">
+              {cartina && <a class="btn btn--ev" href={cartina.href} target="_blank" rel="noopener">Scarica la mappa ↓</a>}
+              <a class="btn" href="#prove-speciali">Scopri le prove</a>
+            </div>
+          )}
         </div>
       </div>
     )}
@@ -49,10 +71,21 @@ const url = '/rally-colli-euganei/percorso/';
   <!-- DATI CHIAVE -->
   <section class="wrap dati-sec" aria-label="Dati chiave del percorso">
     <dl class="dati reveal">
-      <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">20–35 km</dd></div>
-      <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2 · 21–22 nov 2026</dd></div>
-      <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">2 prove · 3 passaggi ciascuna</dd></div>
-      <div><dt class="type-mono">Tipologia</dt><dd class="type-mono">Rally Sprint · atipico sperimentale</dd></div>
+      {dopo ? (
+        <Fragment>
+          <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">21,36 km</dd></div>
+          <div><dt class="type-mono">Percorso totale</dt><dd class="type-mono">109,26 km</dd></div>
+          <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">2 prove · 3 passaggi ciascuna</dd></div>
+          <div><dt class="type-mono">Tipologia</dt><dd class="type-mono">Rally Sprint</dd></div>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">20–35 km</dd></div>
+          <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2 · 21–22 nov 2026</dd></div>
+          <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">2 prove · 3 passaggi ciascuna</dd></div>
+          <div><dt class="type-mono">Tipologia</dt><dd class="type-mono">Rally Sprint</dd></div>
+        </Fragment>
+      )}
     </dl>
   </section>
 
@@ -60,11 +93,16 @@ const url = '/rally-colli-euganei/percorso/';
   <section id="prove-speciali" class="wrap section ps" aria-labelledby="ps-h">
     <div class="ps__head">
       <h2 id="ps-h" class="type-h2">Le prove speciali</h2>
-      <span class="pill pill--ev">Rally Sprint · Atipico Sperimentale</span>
-      <span class="pill">Provvisorio</span>
+      <span class="pill pill--ev">Rally Sprint</span>
+      {!dopo && <span class="pill">Provvisorio</span>}
     </div>
-    <p class="type-body-dark ps__intro">Due prove speciali, tre passaggi ciascuna: sei tratti cronometrati in tutto, per 20–35 km a cronometro.</p>
-    <p class="ps__p">Tracciati, chilometraggi e orari vengono pubblicati con i documenti di gara, un mese prima della gara. Gli orari indicati saranno i passaggi della prima vettura: le vetture successive transitano a distanza di un minuto l'una dall'altra.</p>
+    {dopo && <p class="hint ps__tag">Gli orari del programma potrebbero subire variazioni.</p>}
+    <p class="type-body-dark ps__intro">{dopo
+      ? 'Due prove, tre passaggi ciascuna: sei tratti cronometrati, 21,36 km sui 109,26 km del percorso.'
+      : 'Due prove speciali, tre passaggi ciascuna: sei tratti cronometrati in tutto.'}</p>
+    <p class="ps__p">{dopo
+      ? "Gli orari sono quelli della prima vettura in prova, dalla tabella distanze e tempi ufficiale. Le vetture successive transitano a distanza di un minuto l'una dall'altra."
+      : "Tracciati, chilometraggi e orari sono in arrivo con i documenti di gara. Gli orari indicati saranno i passaggi della prima vettura: le vetture successive transitano a distanza di un minuto l'una dall'altra."}</p>
     <div class="ps__grid stagger">
       {prove.map(p => (
         <article class="ps__card reveal">
@@ -80,12 +118,11 @@ const url = '/rally-colli-euganei/percorso/';
               <div><dt>Lunghezza</dt><dd class="tabular">{p.km}</dd></div>
               <div><dt>Chiusura della strada</dt><dd>{p.chiusura}</dd></div>
               <div><dt>Prima vettura</dt><dd>{p.prima}</dd></div>
-              <div><dt>Zona pubblico</dt><dd>{p.pubblico}</dd></div>
+              {!dopo && <div><dt>Zona pubblico</dt><dd>{p.pubblico}</dd></div>}
             </dl>
-            {p.maps
-              ? <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>
-              : <span class="link-box link-box--off">Mappa Google Maps · un mese prima della gara</span>}
-            <span class="hint">{p.maps ? 'Si apre in una nuova pagina' : 'Il punto di accesso arriva con i documenti di gara, un mese prima della gara'}</span>
+            {p.maps && <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>}
+            {p.maps && <span class="hint">Si apre in una nuova pagina</span>}
+            {!dopo && !p.maps && <span class="link-box link-box--off">Parcheggio su Google Maps · da definire</span>}
           </div>
         </article>
       ))}
@@ -95,19 +132,71 @@ const url = '/rally-colli-euganei/percorso/';
   <!-- TABELLA TEMPI -->
   <section id="tabella-tempi" class="hair" aria-labelledby="tt-h">
     <div class="wrap section tt">
-      <h2 id="tt-h" class="type-h2">Tabella tempi</h2>
-      <p class="type-body-dark tt__intro">Il documento ufficiale con distanze e orari teorici di passaggio, prova per prova.</p>
-      <p class="tt__p">La tabella distanze e tempi indica, per ogni tratto del rally, i chilometri da percorrere e l'ora teorica di passaggio della prima vettura. È il documento che gli equipaggi usano per rispettare i tempi di trasferimento e che il pubblico usa per sapere quando arrivano le auto.</p>
-      <div class="tt__grid">
-        <div class="card card--left">
-          <h3 class="type-h3">Quando viene pubblicata</h3>
-          <p>La tabella viene pubblicata con gli altri documenti di gara, un mese prima della gara, e resta scaricabile in PDF fino alla fine del rally.</p>
-        </div>
-        <div class="card tt__dl">
-          <span class="type-mono tt__file"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Scarica la tabella tempi in PDF</span>
-          <span class="hint">Disponibile alla pubblicazione · la troverai anche nei <a href="/rally-colli-euganei/documenti/">documenti di gara</a></span>
-        </div>
-      </div>
+      {dopo ? (
+        <Fragment>
+          <h2 id="tt-h" class="type-h2">La giornata di gara</h2>
+          <p class="hint ps__tag">Gli orari del programma potrebbero subire variazioni.</p>
+          <p class="type-body-dark tt__intro">Domenica 22 novembre, dalla partenza delle 07:30 all'arrivo della prima vettura alle 16:15.</p>
+          <dl class="dati tt__dati reveal">
+            <div><dt class="type-mono">Sezioni</dt><dd class="type-mono">3</dd></div>
+            <div><dt class="type-mono">Settori</dt><dd class="type-mono">15</dd></div>
+            <div><dt class="type-mono">Parchi assistenza</dt><dd class="type-mono">2 · 30 min</dd></div>
+            <div><dt class="type-mono">Riordini</dt><dd class="type-mono">2 · Treponti</dd></div>
+            <div><dt class="type-mono">Zone rifornimento</dt><dd class="type-mono">3 · Polo SpA</dd></div>
+            <div><dt class="type-mono">Controlli a timbro</dt><dd class="type-mono">3 · Galzignano</dd></div>
+          </dl>
+          <table class="tt__tab">
+            <caption class="type-mono">Orari teorici della prima vettura — domenica 22 novembre</caption>
+            <thead><tr><th scope="col">Ora</th><th scope="col">Tappa</th><th scope="col">Dove</th></tr></thead>
+            <tbody>
+              <tr><td class="type-mono">07:30</td><th scope="row">Partenza</th><td>Polo SpA — uscita del parco assistenza</td></tr>
+              <tr><td class="type-mono">07:48</td><th scope="row">PS 1 · Teolo</th><td>Primo passaggio · 3,00 km</td></tr>
+              <tr><td class="type-mono">08:11</td><th scope="row">PS 2 · Roccolo – Cingolina</th><td>Primo passaggio · 4,12 km</td></tr>
+              <tr><td class="type-mono">08:48 – 10:33</td><th scope="row">Riordino</th><td>Treponti — Piazza Mercato</td></tr>
+              <tr><td class="type-mono">10:48 – 11:18</td><th scope="row">Parco assistenza A</td><td>Polo SpA · 30 minuti</td></tr>
+              <tr><td class="type-mono">11:36</td><th scope="row">PS 3 · Teolo</th><td>Secondo passaggio</td></tr>
+              <tr><td class="type-mono">11:59</td><th scope="row">PS 4 · Roccolo – Cingolina</th><td>Secondo passaggio</td></tr>
+              <tr><td class="type-mono">12:36 – 14:11</td><th scope="row">Riordino</th><td>Treponti — Piazza Mercato</td></tr>
+              <tr><td class="type-mono">14:26 – 14:56</td><th scope="row">Parco assistenza B</td><td>Polo SpA · 30 minuti</td></tr>
+              <tr><td class="type-mono">15:14</td><th scope="row">PS 5 · Teolo</th><td>Terzo e ultimo passaggio</td></tr>
+              <tr><td class="type-mono">15:37</td><th scope="row">PS 6 · Roccolo – Cingolina</th><td>Terzo e ultimo passaggio</td></tr>
+              <tr><td class="type-mono">16:15</td><th scope="row">Arrivo</th><td>Treponti — Via Alcide De Gasperi</td></tr>
+              <tr><td class="type-mono">16:30</td><th scope="row">Pedana e premiazioni</th><td>Treponti — Piazza Mercato · ingresso libero</td></tr>
+            </tbody>
+          </table>
+          <div class="tt__grid">
+            <div class="card card--left">
+              <h3 class="type-h3">Shakedown</h3>
+              <p>Sabato 21 novembre, 13:00–16:45, sul tracciato di Teolo verso Rovolon. Massimo tre passaggi. Costi nei moduli di iscrizione.</p>
+            </div>
+            <div class="card tt__dl">
+              {tdt
+                ? <a class="link-box" href={tdt.href} target="_blank" rel="noopener">Scarica la tabella distanze e tempi ↗</a>
+                : <span class="link-box link-box--off">Tabella distanze e tempi · in pubblicazione</span>}
+              {cartina
+                ? <a class="link-box" href={cartina.href} target="_blank" rel="noopener">Scarica la cartina del percorso ↗</a>
+                : <span class="link-box link-box--off">Cartina del percorso · in pubblicazione</span>}
+              <span class="hint">Distanze, tempi imposti e orari di ogni controllo orario, più i tracciati di PS 1-2-3-4-5-6 e shakedown. Li trovi anche nei <a href="/rally-colli-euganei/documenti/">documenti di gara</a>.</span>
+            </div>
+          </div>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <h2 id="tt-h" class="type-h2">Tabella tempi</h2>
+          <p class="type-body-dark tt__intro">Il documento ufficiale con distanze e orari teorici di passaggio, prova per prova.</p>
+          <p class="tt__p">La tabella distanze e tempi indica, per ogni tratto del rally, i chilometri da percorrere e l'ora teorica di passaggio della prima vettura. È il documento che gli equipaggi usano per rispettare i tempi di trasferimento e che il pubblico usa per sapere quando arrivano le auto.</p>
+          <div class="tt__grid">
+            <div class="card card--left">
+              <h3 class="type-h3">Pubblicazione in arrivo</h3>
+              <p>La tabella distanze e tempi è in arrivo con gli altri documenti di gara, e resta scaricabile in PDF fino alla fine del rally.</p>
+            </div>
+            <div class="card tt__dl">
+              <span class="type-mono tt__file"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Scarica la tabella tempi in PDF</span>
+              <span class="hint">In arrivo · la troverai anche nei <a href="/rally-colli-euganei/documenti/">documenti di gara</a></span>
+            </div>
+          </div>
+        </Fragment>
+      )}
     </div>
   </section>
 </Base>
@@ -123,9 +212,22 @@ const url = '/rally-colli-euganei/percorso/';
   .mappa__hint{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.7);color:#fff;padding:6px 10px}
   .mappa__attesa{flex-direction:row;align-items:center;flex-wrap:wrap;gap:24px}
   .mappa__attesa img{width:min(200px,40%)}
+  .mappa__foto{position:relative;display:block;width:min(220px,42%);flex:0 0 auto;border:1px solid rgba(255,255,255,.14);overflow:hidden}
+  .mappa__foto img{width:100%;height:auto;display:block}
+  .mappa__pdf{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.78);color:#fff;border:1px solid rgba(255,255,255,.28);padding:4px 8px;font-size:12px}
+  .ps__tag{margin-top:6px}
   .mappa__attesa-t{color:#DDD;max-width:56ch;margin-top:8px}
   .mappa__nota{max-width:70ch}
   .dati-sec{padding-bottom:var(--sp-4)}
+  .tt__tab{width:100%;border-collapse:collapse;margin:24px 0}
+  .tt__tab caption{text-align:left;padding-bottom:10px;letter-spacing:.06em;opacity:.75}
+  .tt__tab th,.tt__tab td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(128,128,128,.35);vertical-align:top}
+  .tt__tab th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+  .tt__tab td:first-child{white-space:nowrap}
+  .tt__dati{margin-bottom:24px}
+  .mappa__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .ps__prov{margin-left:8px;font-size:10px;letter-spacing:.08em;border:1px solid currentColor;padding:1px 5px;opacity:.75}
+  @media (max-width:640px){.tt__tab th,.tt__tab td{padding:8px 6px;font-size:14px}}
   /* prove */
   .ps__head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
   .ps h2{color:#fff}

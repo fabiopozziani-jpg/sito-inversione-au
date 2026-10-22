@@ -4,27 +4,27 @@ import '../../../styles/hub.css';
 import Base from '../../../layouts/Base.astro';
 import EventSubnav from '../../../components/EventSubnav.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
-import { subnav } from '../../../data/rally';
+import { subnav, unMesePrima } from '../../../data/rally';
 const email = 'inversione.au3@gmail.com';
 const eventi = ['1° Rally Colli Euganei ACI Sport — 21–22 novembre 2026', 'Polo Motor Show — edizione 2027', 'Legnaro Motori — edizione 2027'];
 const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social'];
 ---
 <Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description="Accredito stampa per il 1° Rally Colli Euganei: chi può chiederlo, entro quando, regole sulle riprese con drone e modulo di richiesta." active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="Accrediti stampa — 1° Rally Colli Euganei">
-  <EventSubnav items={subnav} current="/stampa/accrediti/" bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <EventSubnav items={subnav()} current="/stampa/accrediti/" bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Stampa', href: '/stampa/' }, { label: 'Accrediti stampa' }]} />
   <header class="wrap pg-head">
     <h1 class="type-h1">Accrediti stampa per il Rally Colli Euganei</h1>
-    <p class="lead">Giornalisti, fotografi e videomaker: compila il modulo e ricevi l'esito via email.</p>
+    <p class="lead">{unMesePrima() ? "Giornalisti, fotografi e videomaker: compila il modulo, l'esito arriva via email." : "Giornalisti, fotografi e videomaker: compila il modulo e ricevi l'esito via email."}</p>
   </header>
 
   <section id="chi" class="wrap section s" aria-labelledby="chi-h">
     <h2 id="chi-h" class="type-h2">Chi può chiedere l'accredito</h2>
     <p class="type-body-dark p">L'accredito è nominativo.</p>
     <ul class="lista-ev">
-      <li>Giornalista con tessera dell'Ordine.</li><li>Fotografo o videomaker con incarico scritto di una redazione.</li>
+      <li>Giornalista con tessera dell'Ordine.</li><li>{unMesePrima() ? 'Fotografo o videomaker con incarico scritto di una redazione.' : 'Fotografo o videomaker con incarico scritto di una redazione.'}</li>
       <li>Testata online o canale video con pubblicazioni verificabili sul motorsport.</li><li>Operatore televisivo con richiesta della propria emittente.</li>
     </ul>
-    <p class="type-body-dark p">Non rilasciamo accrediti per uso personale, per accesso agevolato al pubblico o per riprese a scopo commerciale.</p>
+    <p class="type-body-dark p">{unMesePrima() ? 'Niente accrediti per uso personale, per entrare più comodamente o per riprese commerciali.' : 'Non rilasciamo accrediti per uso personale, per accesso agevolato al pubblico o per riprese a scopo commerciale.'}</p>
   </section>
 
   <section id="scadenze" class="wrap section s" aria-labelledby="sc-h">
@@ -40,8 +40,8 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
     <div class="card card--rosso">
       <h3 class="type-h3">Il drone non è ammesso</h3>
       <p>Al 1° Rally Colli Euganei non rilasciamo accrediti per riprese con drone.</p>
-      <p>La gara si svolge dentro il Parco Regionale dei Colli Euganei. Nelle aree naturali protette il sorvolo non autorizzato è vietato dalla legge quadro sulle aree protette (legge 394/1991, art. 11) e il volo con droni resta comunque subordinato all'autorizzazione dell'Ente Parco: non è una regola dell'organizzazione, è il regime che vale su tutta l'area.</p>
-      <p>Per questo non possiamo autorizzare voli sul percorso, e nessun accredito stampa dà diritto a farne.</p>
+      <p>{unMesePrima() ? "La gara si corre dentro il Parco Regionale dei Colli Euganei, dove il sorvolo è subordinato all'autorizzazione dell'Ente Parco (legge 394/1991, art. 11). Non è una regola nostra: vale su tutta l'area." : "La gara si svolge dentro il Parco Regionale dei Colli Euganei. Nelle aree naturali protette il sorvolo non autorizzato è vietato dalla legge quadro sulle aree protette (legge 394/1991, art. 11) e il volo con droni resta comunque subordinato all'autorizzazione dell'Ente Parco: non è una regola dell'organizzazione, è il regime che vale su tutta l'area."}</p>
+      <p>{unMesePrima() ? 'Nessun accredito stampa dà diritto a volare sul percorso.' : 'Per questo non possiamo autorizzare voli sul percorso, e nessun accredito stampa dà diritto a farne.'}</p>
     </div>
   </section>
 

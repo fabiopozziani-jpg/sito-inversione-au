@@ -4,103 +4,141 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, classi, schedaGara, documentiRapidi } from '../../data/rally';
+import { subnav, classi, schedaGara, schedaGaraPrima, documentiRapidi, liveTimingAttivo, unMesePrima, domandeOnline, moduliIscrizionePdf } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
 const stato = rally.statoIscrizioni;
 const isc = {
-  'non-aperte': { kicker: 'Iscrizioni non ancora aperte', titolo: 'Le iscrizioni non sono ancora aperte', testo: `L'apertura è prevista ${rally.aperturaPrevista}. Lasciaci la tua email: ti scriviamo il giorno stesso in cui le iscrizioni aprono.` },
-  'aperte': { kicker: 'Iscrizioni aperte', titolo: `Iscrizioni aperte fino al ${rally.chiusuraIscrizioni}`, testo: 'La domanda di iscrizione si compila sul portale ACI Sport. Tieni a portata di mano licenza, dati della vettura e dati del navigatore.' },
-  'chiuse': { kicker: 'Iscrizioni chiuse', titolo: 'Iscrizioni chiuse', testo: `Le iscrizioni si sono chiuse il ${rally.chiusuraIscrizioni}. Gli equipaggi ammessi sono nell'elenco iscritti qui sotto.` },
+  'non-aperte': { kicker: 'Iscrizioni dal 22 ottobre', titolo: 'Iscrizioni in area riservata ACI', testo: `La domanda di iscrizione si compila nell'area riservata ACI Sport e con i moduli qui sotto. Si accendono ${rally.aperturaPrevista}.` },
+  'aperte': { kicker: 'Iscrizioni aperte', titolo: `Iscrizioni aperte fino al ${rally.chiusuraIscrizioni}, ore ${rally.chiusuraIscrizioniOra}`, testo: 'Compila la domanda online: servono licenza, dati della vettura e del navigatore. Equipaggi esteri e ricognitori usano invece il modulo PDF, da inviare per email con la copia del bonifico.' },
+  'chiuse': { kicker: 'Iscrizioni chiuse', titolo: 'Iscrizioni chiuse', testo: `Le iscrizioni si sono chiuse il ${rally.chiusuraIscrizioni} alle ${rally.chiusuraIscrizioniOra}. Gli equipaggi ammessi sono nell'elenco iscritti qui sotto.` },
 }[stato];
 const haIscritti = iscritti.length > 0;
+/** La scheda gara compilata esce con i documenti, a mezzanotte fra il 22 e il 23 ottobre.
+ *  Prima di allora restano le voci senza valori. */
+const scheda = unMesePrima() ? schedaGara : schedaGaraPrima;
+/** Alcuni documenti rapidi arrivano dall'albo per numero (la cartina del percorso):
+ *  il link si accende da solo il giorno in cui la riga d'albo diventa pubblica. */
+const rapidi = documentiRapidi.map(d => d.albo
+  ? { ...d, href: documenti.find(x => x.num === d.albo && !x.superato)?.href ?? '' }
+  : d);
 /** Modulistica e allegati pubblicati in albo: compaiono qui da soli, senza toccare il codice. */
 const chiaveNum = (n: string) => String(n ?? '').split('.').map(x => Number(x) || 0);
 const moduli = documenti
   .filter(d => !d.superato && d.href && (d.gruppo === 'Modulistica' || d.gruppo === 'Allegati tecnici'))
   .sort((a, b) => { const A = chiaveNum(a.num), B = chiaveNum(b.num); for (let i = 0; i < Math.max(A.length, B.length); i++) { const x = (A[i] ?? 0) - (B[i] ?? 0); if (x) return x; } return 0; });
-/** Area riservata ACI Sport: chi si iscrive deve registrarsi lì. Il link si attiva da solo il 21 ottobre 2026. */
+/** I due moduli in PDF dell'iscrizione, presi dall'albo per numero: così il collegamento
+ *  è sempre quello dell'ultima versione pubblicata, e se non sono ancora in albo il
+ *  riquadro mostra solo le domande online. */
+const moduliIscrizione = moduliIscrizionePdf.map(n => moduli.find(d => d.num === n)).filter(Boolean) as typeof moduli;
+/** Area riservata ACI Sport: chi si iscrive deve registrarsi lì. Il link si attiva da solo il 23 ottobre 2026. */
 const aciAreaRiservata = 'https://www.acisport.it/it/acisport/area-riservata/login';
-const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:00');
+const aciAreaRiservataAttiva = unMesePrima();
 ---
 <Base
   title="Iscrizioni Rally Colli Euganei 2026 | Inversione A U"
   description="Come iscriversi al 1° Rally Colli Euganei ACI Sport: licenze richieste, scadenze, modulo di iscrizione ed elenco degli equipaggi ammessi."
   active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
 >
-  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <EventSubnav items={subnav()} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Concorrenti' }]} />
 
   <header class="wrap pg-head">
     <h1 class="type-h1">Concorrenti: iscrizione al Rally Colli Euganei</h1>
-    <p class="lead">Come iscriversi, quali licenze servono, quali documenti scaricare e chi è ammesso alla partenza.</p>
+    {!unMesePrima() && <p class="lead">Come iscriversi, quali licenze servono, quali documenti scaricare e chi è ammesso alla partenza.</p>}
+    {unMesePrima() && <p class="pg-head__stato"><span class="pill">Informazioni in aggiornamento</span></p>}
   </header>
 
-  <div class="wrap">
-    <div class="card card--rosso avviso" role="note">
-      <span class="type-mono avviso__k">Elenco provvisorio</span>
-      <p class="avviso__p">Le informazioni di questa pagina non sono ancora definitive. Fanno fede il Regolamento Particolare di Gara e le disposizioni ACI Sport, che pubblichiamo nell'albo di gara. Verifica l'ultima versione prima di iscriverti.</p>
-      <span class="hint">Ultima revisione · 28 AGO 2026</span>
+  {!unMesePrima() && (
+    <div class="wrap">
+      <div class="card card--rosso avviso" role="note">
+        <span class="type-mono avviso__k">Elenco provvisorio</span>
+        <p class="avviso__p">Le informazioni di questa pagina non sono ancora definitive. Fanno fede il Regolamento Particolare di Gara, in fase di approvazione, e le disposizioni ACI Sport, che pubblichiamo nell'albo di gara. Verifica l'ultima versione prima di iscriverti.</p>
+        <span class="hint">Ultima revisione · 28 AGO 2026</span>
+      </div>
     </div>
-  </div>
+  )}
 
   <!-- ISCRIZIONI -->
   <section id="iscrizioni" class="wrap section isc" aria-labelledby="isc-h">
     <h2 id="isc-h" class="type-h2">Iscrizioni e licenze</h2>
-    <p class="type-body-dark isc__intro">Stato delle iscrizioni, licenza e date da tenere sotto controllo.</p>
-    <div class="isc__grid">
+    {!unMesePrima() && <p class="type-body-dark isc__intro">Stato delle iscrizioni, licenza e date da tenere sotto controllo.</p>}
+    <div class:list={['isc__grid', { 'isc__grid--mono': unMesePrima() }]}>
       <div class="isc__col">
         <div class="card card--top reveal">
           <span class="type-mono k-ev">{isc.kicker}</span>
           <h3 class="type-h3">{isc.titolo}</h3>
           <p>{isc.testo}</p>
           {stato === 'non-aperte' && (
-            <form class="avviso-form" data-mailform data-modulo="avvisami" data-to={rally.email} data-subject="Avvisami all'apertura delle iscrizioni · Rally Colli Euganei" novalidate>
-              <input type="hidden" name="evento" value="Rally Colli Euganei 2026" />
-              <div class="avviso-form__row">
-                <label class="field"><span>La tua email</span><input type="email" name="email" placeholder="nome@email.it" autocomplete="email" required /></label>
-                <button type="submit" class="btn btn--ev">Avvisami all'apertura</button>
-              </div>
-              <span class="hint">Usiamo l'indirizzo solo per questo avviso · <a href="/privacy/">informativa privacy</a></span>
-              <p class="form-msg" role="status" aria-live="polite"></p>
-            </form>
+            <div class="isc__cta isc__cta--moduli">
+              <ul class="sg__l">
+                {domandeOnline.map(d => (
+                  <li>
+                    <span class="sg__d sg__d--off">
+                      <span class="sg__dn">{d.nome}<span class="type-mono sg__dk">{d.nota}</span></span>
+                      <span class="type-mono sg__da">{rally.aperturaPrevista.replace('il ', 'dal ')}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <span class="hint">I collegamenti si attivano da soli all'apertura. Gli equipaggi esteri e i ricognitori hanno in più il modulo in PDF, nell'albo di gara.</span>
+            </div>
           )}
           {stato === 'aperte' && (
-            <div class="isc__cta">
-              <a href={rally.moduloUrl} target="_blank" rel="noopener" class="btn btn--ev">Compila la domanda di iscrizione ↗</a>
-              <span class="hint">Si apre in una nuova pagina, sul sito ACI Sport</span>
-              <p>Dopo l'invio riceverai la conferma dalla segreteria.</p>
+            <div class="isc__cta isc__cta--moduli">
+              <ul class="sg__l">
+                {domandeOnline.map(d => (
+                  <li>
+                    <a class="sg__d sg__d--on" href={d.url} target="_blank" rel="noopener">
+                      <span class="sg__dn">{d.nome}<span class="type-mono sg__dk">{d.nota}</span></span>
+                      <span class="type-mono sg__da">Apri ↗<span class="sr-only"> Si apre in una nuova pagina</span></span>
+                    </a>
+                  </li>
+                ))}
+                {moduliIscrizione.map(d => (
+                  <li>
+                    <a class="sg__d sg__d--on" href={d.href} target="_blank" rel="noopener">
+                      <span class="sg__dn">{d.title}<span class="type-mono sg__dk">{d.num} · {d.file}</span></span>
+                      <span class="type-mono sg__da">Scarica ↓</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <span class="hint">I moduli in PDF, compilati e firmati, vanno inviati a <a href={`mailto:${rally.email}`}>{rally.email}</a> con la copia del bonifico, entro la chiusura delle iscrizioni.</span>
+              <p>{unMesePrima() ? 'La segreteria conferma per email.' : "Dopo l'invio riceverai la conferma dalla segreteria."}</p>
             </div>
           )}
           {stato === 'chiuse' && <a href="#elenco-iscritti" class="btn btn--secondary">Vai all'elenco iscritti</a>}
         </div>
         <div class="req">
           <div class="req__head"><h3 class="type-h3">Licenza</h3></div>
-          <p class="type-body-dark">Verifica la validità della propria licenza per questo evento sul sito ACI Sport.</p>
+          <p class="type-body-dark">{unMesePrima() ? 'Controlla sul sito ACI Sport che la tua licenza sia valida per questo evento.' : 'Verifica la validità della propria licenza per questo evento sul sito ACI Sport.'}</p>
           <div class="req__cta">
             <a class="link-box" href="https://www.acisport.it/it/acisport" target="_blank" rel="noopener">Vai al sito ACI Sport ↗</a>
             {aciAreaRiservataAttiva ? (
               <a class="link-box" href={aciAreaRiservata} target="_blank" rel="noopener">Registrati nell'area riservata ↗</a>
             ) : (
-              <span class="link-box link-box--off">Area riservata ACI Sport <span class="type-mono lb__q">dal 21 ottobre</span></span>
+              <span class="link-box link-box--off">Area riservata ACI Sport <span class="type-mono lb__q">dal 23 ottobre</span></span>
             )}
           </div>
-          <span class="hint">Si apre in una nuova pagina · le licenze ammesse sono indicate nel Regolamento Particolare di Gara</span>
-          <p class="hint">Chi non ha mai gareggiato con licenza ACI Sport deve prima registrarsi nell'area riservata del sito ACI: la domanda di iscrizione si compila da lì.</p>
-          <p class="hint">In caso di dubbio scrivi a <a href={`mailto:${rally.email}`}>{rally.email}</a></p>
+          <span class="hint">{unMesePrima() ? 'Le licenze ammesse sono indicate nel Regolamento Particolare di Gara, in fase di approvazione' : 'Si apre in una nuova pagina · le licenze ammesse sono indicate nel Regolamento Particolare di Gara, in fase di approvazione'}</span>
+          <p class="hint">{unMesePrima() ? "Prima gara con licenza ACI Sport? Registrati nell'area riservata ACI: la domanda si compila da lì." : "Chi non ha mai gareggiato con licenza ACI Sport deve prima registrarsi nell'area riservata del sito ACI: la domanda di iscrizione si compila da lì."}</p>
+          <p class="hint">{unMesePrima() ? 'Dubbi? Scrivi a ' : 'In caso di dubbio scrivi a '}<a href={`mailto:${rally.email}`}>{rally.email}</a></p>
         </div>
       </div>
+      {!unMesePrima() && (
       <div class="isc__col">
         <h3 class="type-h3">Date da segnare</h3>
         <div class="tbl-wrap">
           <table class="tbl tbl--scad tbl--cards">
             <thead><tr><th scope="col">Fase</th><th scope="col">Data</th><th scope="col">Ora</th></tr></thead>
-            <tbody>{scadenze.map(s => <tr><th scope="row">{s.fase}</th><td data-label="Data">{s.data}</td><td class="tabular" data-label="Ora">{s.ora}</td></tr>)}</tbody>
+            <tbody>{scadenze.map(s => <tr><th scope="row">{s.fase}</th><td data-label="Data">{s.data}</td><td class:list={['tabular', { 'is-vuota': !s.ora || s.ora === '—' }]} data-label="Ora">{s.ora}</td></tr>)}</tbody>
           </table>
         </div>
-        <p class="hint">Le date confermate vengono pubblicate anche nell'albo di gara</p>
+        <p class="hint">{unMesePrima() ? "Le date confermate sono anche nell'albo di gara" : "Le date confermate vengono pubblicate anche nell'albo di gara"}</p>
       </div>
+      )}
     </div>
   </section>
 
@@ -108,13 +146,14 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
   <section id="scheda" class="wrap section sg" aria-labelledby="sg-h">
     <div class="sec-head">
       <h2 id="sg-h" class="type-h2">Tutto quello che serve, in una schermata</h2>
-      <p class="type-body-dark">Le voci ci sono già tutte: si riempiono con la pubblicazione del regolamento particolare e dell'albo di gara, un mese prima della gara. Quello che vedi «da definire» non è dimenticato, è in lavorazione.</p>
+      {unMesePrima() && <p class="hint sg__tag">Gli orari del programma potrebbero subire variazioni.</p>}
+      {!unMesePrima() && <p class="type-body-dark">Le voci ci sono già tutte: si riempiono con la pubblicazione del regolamento particolare, oggi in fase di approvazione, e dell'albo di gara. Quello che vedi «da definire» non è dimenticato, è in lavorazione.</p>}
     </div>
     <div class="sg__grid">
       <div class="sg__tab">
         <h3 class="type-h3 sg__t">Scheda della gara</h3>
         <dl class="sg__dl">
-          {schedaGara.map(v => (
+          {scheda.map(v => (
             <div class:list={['sg__r', { 'sg__r--vuota': !v.valore }]}>
               <dt>{v.voce}</dt>
               <dd>
@@ -127,11 +166,11 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
       </div>
       <div class="sg__doc">
         <h3 class="type-h3 sg__t">Documenti in evidenza</h3>
-        <p class="type-body-dark sg__p">{moduli.length
-          ? "I file che si cercano per primi. La modulistica è già scaricabile, il resto esce un mese prima della gara."
-          : "I file che si cercano per primi. Vengono pubblicati un mese prima della gara, qui e nell'albo di gara."}</p>
+        {!unMesePrima() && <p class="type-body-dark sg__p">{moduli.length
+          ? (unMesePrima() ? 'I file più cercati. La modulistica è scaricabile, il resto è in arrivo.' : 'I file che si cercano per primi. La modulistica è già scaricabile, il resto è in arrivo.')
+          : "I file che si cercano per primi. Sono in arrivo, qui e nell'albo di gara."}</p>}
         <ul class="sg__l">
-          {documentiRapidi.map(d => (
+          {rapidi.map(d => (
             <li>
               {d.href ? (
                 <a class="sg__d sg__d--on" href={d.href} target="_blank" rel="noopener">
@@ -141,7 +180,7 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
               ) : (
                 <span class="sg__d sg__d--off">
                   <span class="sg__dn">{d.nome}{d.nota && <span class="type-mono sg__dk">{d.nota}</span>}</span>
-                  <span class="type-mono sg__da">Un mese prima</span>
+                  <span class="type-mono sg__da">In arrivo</span>
                 </span>
               )}
             </li>
@@ -173,8 +212,8 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
       <div>
         <p class="type-mono albo__k">Albo di gara digitale</p>
         <h2 id="albo-h" class="type-h2">Documenti di gara</h2>
-        <p class="albo__p">Regolamento, programma, tabella tempi, comunicazioni del direttore di gara e modulistica.</p>
-        <p class="albo__p">Ogni documento è numerato, datato e vale nella sua ultima versione. L'albo resta aggiornato fino al giorno di gara.</p>
+        <p class="albo__p">{unMesePrima() ? 'Regolamento, programma, tabella tempi, comunicazioni del direttore di gara, modulistica.' : 'Regolamento, programma, tabella tempi, comunicazioni del direttore di gara e modulistica.'}</p>
+        {!unMesePrima() && <p class="albo__p">Ogni documento è numerato, datato e vale nella sua ultima versione. L'albo resta aggiornato fino al giorno di gara.</p>}
       </div>
       <a href="/rally-colli-euganei/documenti/" class="btn btn--ev">Apri l'albo di gara</a>
     </div>
@@ -214,7 +253,7 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
       </div>
     ) : (
       <div class="card card--left reveal">
-        <p role="status" class="el__attesa">L'elenco degli equipaggi ammessi viene pubblicato nella settimana di gara. Lo trovi qui, leggibile dal telefono e scaricabile in PDF.</p>
+        <p role="status" class="el__attesa">{unMesePrima() ? "L'elenco esce nella settimana di gara: qui, leggibile dal telefono, e in PDF." : "L'elenco degli equipaggi ammessi viene pubblicato nella settimana di gara. Lo trovi qui, leggibile dal telefono e scaricabile in PDF."}</p>
       </div>
     )}
   </section>
@@ -223,18 +262,18 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
   <section id="classifiche" class="wrap section cls" aria-labelledby="cls-h">
     <div class="cls__head">
       <h2 id="cls-h" class="type-h2">Classifica live</h2>
-      <p class="type-body-dark cls__intro">Durante la gara i tempi delle prove speciali e la classifica generale sono pubblicati in tempo reale dal servizio di cronometraggio.</p>
+      <p class="type-body-dark cls__intro">{unMesePrima() ? 'Durante la gara, tempi delle prove e classifica generale in tempo reale dal servizio di cronometraggio.' : 'Durante la gara i tempi delle prove speciali e la classifica generale sono pubblicati in tempo reale dal servizio di cronometraggio.'}</p>
     </div>
     <div class="card card--top cls__box reveal">
-      {rally.classificheUrl ? (
+      {liveTimingAttivo() ? (
         <>
-          <a class="btn btn--ev" href={rally.classificheUrl} target="_blank" rel="noopener">Apri la classifica live ↗</a>
+          <a class="btn btn--ev" href={rally.classificheUrl} target="_blank" rel="noopener">Apri il live timing ↗</a>
           <span class="hint">Si apre in una nuova pagina, sul sito del servizio di cronometraggio</span>
         </>
       ) : (
         <>
-          <span class="link-box link-box--off">Disponibile il weekend della gara</span>
-          <span class="hint">Il collegamento al servizio di cronometraggio si attiva qui il 21 e 22 novembre. Le classifiche ufficiali restano quelle pubblicate nell'albo di gara.</span>
+          <span class="link-box link-box--off">Disponibile dalla settimana di gara</span>
+          <span class="hint">{unMesePrima() ? "Il collegamento si attiva qui dal 14 novembre. Le classifiche ufficiali restano quelle dell'albo di gara." : "Il collegamento al servizio di cronometraggio si attiva qui dal 14 novembre, e compare anche nel menù del rally. Le classifiche ufficiali restano quelle pubblicate nell'albo di gara."}</span>
         </>
       )}
     </div>
@@ -270,14 +309,17 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
   .avviso__p{color:#fff;max-width:80ch}
   .isc h2{color:#fff;margin-bottom:8px}
   .isc__intro{max-width:56ch;margin-bottom:var(--sp-5)}
+  .sg__tag{margin-top:6px}
   .isc__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6)}
-  @media(min-width:900px){.isc__grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+  @media(min-width:900px){.isc__grid:not(.isc__grid--mono){grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
   .isc__col{display:flex;flex-direction:column;gap:var(--sp-4);min-width:0}
   .isc__col h3{color:#fff}
   .avviso-form{display:flex;flex-direction:column;gap:8px;margin-top:8px}
   .avviso-form__row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
   .avviso-form__row .field{flex:1 1 220px}
   .isc__cta{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-top:8px}
+  .isc__cta--moduli{align-items:stretch}
+  .isc__cta--moduli .sg__l{width:100%}
   .cls__head{margin-bottom:var(--sp-3)}
   .cls h2{color:#fff;margin-bottom:8px}
   .cls__intro{max-width:60ch}
@@ -289,8 +331,23 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
   @media(min-width:560px){.req__cta{flex-direction:row;flex-wrap:wrap;align-items:center}}
   .link-box--off{opacity:.62}
   .link-box--off .lb__q{color:var(--grigio-450)}
+  /* stesso problema del blocco moduli: a fianco del testo l'etichetta «dal 23 ottobre»
+     spezzava «Area riservata ACI / Sport» a metà. Su telefono va sotto. */
+  @media(max-width:639px){
+    .link-box--off{flex-direction:column;align-items:flex-start;gap:4px}
+  }
   .tbl--scad{min-width:0}
   .tbl--scad td{white-space:nowrap}
+  /* Date da segnare su telefono: la fase in testa, data e ora sulla stessa riga.
+     Senza questo ogni scadenza occupa cinque righe (fase, ETICHETTA DATA, data, ETICHETTA ORA, ora). */
+  @media(max-width:639px){
+    .tbl--scad tbody tr{padding:12px 0}
+    .tbl--scad tbody th{margin-bottom:2px}
+    .tbl--scad tbody td,.tbl--scad tbody td[data-label]{display:inline;margin:0;white-space:normal}
+    .tbl--scad tbody td[data-label]::before{content:none}
+    .tbl--scad tbody td[data-label="Ora"]::before{content:'·';color:var(--grigio-500);margin:0 6px}
+    .tbl--scad tbody td.is-vuota{display:none}
+  }
   /* albo (bianco) */
   .albo{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-5);flex-wrap:wrap}
   .albo__k{color:var(--rally-teal-scuro);margin-bottom:12px}
@@ -304,6 +361,17 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
   .el__filtri{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:end}
   @media(min-width:768px){.el__filtri{grid-template-columns:220px 1fr auto}}
   .el__eq{font-weight:600;color:#fff}
+  /* Elenco iscritti su telefono: numero di gara ed equipaggio sulla stessa riga,
+     vettura e classe sotto come dati della scheda. */
+  @media(max-width:639px){
+    .el .tbl--cards tbody tr{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 14px;align-items:baseline;padding:14px 0}
+    .el .tbl--cards tbody tr[hidden]{display:none}
+    .el .tbl--cards tbody th.num{margin:0}
+    .el .tbl--cards tbody td.el__eq{grid-column:2;display:block;margin:0;font-size:17px;line-height:1.3}
+    .el .tbl--cards tbody td.el__eq::before{content:none}
+    .el .tbl--cards tbody td:not(.el__eq){grid-column:1/-1}
+    .el .tbl--cards tbody td.el__eq+td{margin-top:10px}
+  }
   .el__vuoto{display:flex;flex-direction:column;gap:16px;align-items:flex-start;padding:var(--sp-4);border:1px solid var(--border-on-dark)}
   .el__vuoto p{color:#DDD}
   .el__attesa{color:#DDD !important;max-width:70ch}
@@ -333,6 +401,21 @@ const aciAreaRiservataAttiva = Date.now() >= Date.parse('2026-10-21T00:00:00+02:
   .sg__d--on .sg__da{color:var(--ev)}
   .sg__d--off{opacity:.62}
   .sg__d--off .sg__da{color:var(--grigio-450)}
+  /* Telefono. Due problemi diversi, due risposte diverse.
+     1) Rete di sicurezza per tutti: con wrap e una base di 11em il titolo non viene mai
+        schiacciato a larghezza zero da un'etichetta larga; al limite l'azione va a capo.
+     2) Moduli con data di apertura: l'etichetta «DAL 22 OTTOBRE ALLE 23:59» occupa 182px
+        fissi e in due colonne non ci sta. Lì la riga diventa una colonna sola — titolo,
+        nota, poi la data staccata da una linea, come il piede di una scheda tecnica.
+     Le voci attive («Apri ↗», «Scarica ↓») restano su due colonne: l'etichetta è corta
+     e impilarla costerebbe una riga per ogni documento. */
+  @media(max-width:639px){
+    .sg__d{flex-wrap:wrap}
+    .sg__dn{flex:1 1 11em}
+    .isc__cta--moduli .sg__d--off{flex-direction:column;align-items:stretch;gap:0}
+    .isc__cta--moduli .sg__d--off .sg__dn{flex:0 0 auto;font-size:16px}
+    .isc__cta--moduli .sg__d--off .sg__da{align-self:stretch;margin-top:10px;padding-top:8px;border-top:1px solid var(--border-on-dark)}
+  }
   .sg__sub{color:var(--grigio-450);margin:20px 0 8px}
   .sg__all{display:inline-flex;margin-top:16px;color:#fff}
 </style>

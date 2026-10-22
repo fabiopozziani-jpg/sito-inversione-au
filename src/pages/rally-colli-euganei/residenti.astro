@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CTABlock from '../../components/CTABlock.astro';
-import { subnav, chiusure } from '../../data/rally';
+import { subnav, chiusure, stradeChiuse, unMesePrima } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally } = await caricaRally();
 const url = '/rally-colli-euganei/residenti/';
@@ -16,23 +16,23 @@ const email = 'inversione.au3@gmail.com';
   description="Abiti o lavori lungo il percorso del 1° Rally Colli Euganei? Chiusure delle strade, cosa succede il giorno di gara, come muoverti e chi contattare."
   active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
 >
-  <EventSubnav items={subnav} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <EventSubnav items={subnav()} current={url} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Residenti' }]} />
 
   <header class="wrap pg-head">
     <p class="type-mono k-ev">Chi abita e lavora lungo il percorso</p>
     <h1 class="type-h1">Il rally passa da casa tua</h1>
-    <p class="lead">Per qualche ora la strada davanti a casa diventa una prova speciale. Qui trovi cosa succede, quanto dura, come muoverti e chi chiamare se qualcosa non torna.</p>
+    <p class="lead">{unMesePrima() ? 'Per qualche ora la strada davanti a casa diventa una prova speciale. Qui trovi cosa succede, quanto dura e chi chiamare.' : 'Per qualche ora la strada davanti a casa diventa una prova speciale. Qui trovi cosa succede, quanto dura, come muoverti e chi chiamare se qualcosa non torna.'}</p>
   </header>
 
   <!-- IN BREVE -->
   <section class="wrap section breve" aria-labelledby="br-h">
     <h2 id="br-h" class="type-h2">In breve</h2>
     <ul class="breve__l">
-      <li><strong>Le strade non chiudono tutto il giorno.</strong> Ogni tratto chiude circa un'ora prima del passaggio della prima vettura e riapre appena passa l'ultima, la vettura scopa.</li>
-      <li><strong>Se devi uscire, sposta l'auto prima.</strong> A strada chiusa non si entra e non si esce, nemmeno a piedi sulla sede stradale.</li>
-      <li><strong>I mezzi di soccorso passano sempre.</strong> Ogni tratto è presidiato da commissari in contatto radio con la direzione di gara, che può fermare la prova in qualsiasi momento.</li>
-      <li><strong>Non sei solo su questa pagina.</strong> Prima della gara ricevi anche un avviso cartaceo con gli orari del tuo tratto.</li>
+      <li><strong>Le strade non chiudono tutto il giorno.</strong> {unMesePrima() ? "Ogni tratto chiude un'ora prima della prima vettura e riapre appena passa l'ultima, la vettura scopa." : "Ogni tratto chiude circa un'ora prima del passaggio della prima vettura e riapre appena passa l'ultima, la vettura scopa."}</li>
+      <li><strong>Se devi uscire, sposta l'auto prima.</strong> {unMesePrima() ? 'A strada chiusa non si entra e non si esce, nemmeno a piedi.' : 'A strada chiusa non si entra e non si esce, nemmeno a piedi sulla sede stradale.'}</li>
+      <li><strong>I mezzi di soccorso passano sempre.</strong> {unMesePrima() ? 'Ogni tratto ha commissari in radio con la direzione di gara, che può fermare la prova in qualsiasi momento.' : 'Ogni tratto è presidiato da commissari in contatto radio con la direzione di gara, che può fermare la prova in qualsiasi momento.'}</li>
+      <li><strong>{unMesePrima() ? "Non c'è solo questa pagina." : 'Non sei solo su questa pagina.'}</strong> {unMesePrima() ? 'Prima della gara ricevi un avviso cartaceo con gli orari del tuo tratto.' : 'Prima della gara ricevi anche un avviso cartaceo con gli orari del tuo tratto.'}</li>
     </ul>
   </section>
 
@@ -40,7 +40,8 @@ const email = 'inversione.au3@gmail.com';
   <section id="chiusure" class="wrap section chi" aria-labelledby="chi-h">
     <div class="sec-head">
       <h2 id="chi-h" class="type-h2">Quando chiude la tua strada</h2>
-      <p class="type-body-dark">Gli orari arrivano con l'ordinanza dei Comuni, dopo l'approvazione del percorso. Appena firmata, questa tabella si riempie e resta l'unico riferimento aggiornato.</p>
+      <p class="type-body-dark">{unMesePrima() ? 'Qui sotto le strade interessate, prova per prova.' : "Gli orari arrivano con l'ordinanza dei Comuni, dopo l'approvazione del percorso. Appena firmata, questa tabella si riempie e resta l'unico riferimento aggiornato."}</p>
+      {unMesePrima() && <p class="hint">Gli orari del programma potrebbero subire variazioni.</p>}
     </div>
 
     {chiusure.length ? (
@@ -70,50 +71,70 @@ const email = 'inversione.au3@gmail.com';
         </table>
       </>
     ) : (
-      <div class="card card--left chi__attesa">
-        <span class="type-mono k-ev">In pubblicazione</span>
-        <p>La tabella con comune, tratto e orari di chiusura sarà pubblicata qui appena i Comuni firmano l'ordinanza. Se vuoi essere avvisato, scrivici: ti mandiamo gli orari del tuo tratto appena escono.</p>
-        <a class="link-box" href={`mailto:${email}?subject=${encodeURIComponent('Residenti · Rally Colli Euganei')}`}>Chiedi gli orari della tua strada</a>
-      </div>
+      <Fragment>
+        <div class="card card--left chi__attesa">
+          <span class="type-mono k-ev">{unMesePrima() ? 'Orari di chiusura' : 'In pubblicazione'}</span>
+          {unMesePrima()
+            ? <p>Gli orari di chiusura qui sotto nascono dalla tabella distanze e tempi ufficiale: ogni tratto chiude un'ora prima del passaggio della prima vettura. Comune per comune, l'elenco completo dei tratti arriva con l'ordinanza.</p>
+            : <Fragment><p>La tabella con comune, tratto e orari di chiusura sarà pubblicata qui appena i Comuni firmano l'ordinanza. Se vuoi essere avvisato, scrivici: ti mandiamo gli orari del tuo tratto appena escono.</p>
+              <a class="link-box" href={`mailto:${email}?subject=${encodeURIComponent('Residenti · Rally Colli Euganei')}`}>Chiedi gli orari della tua strada</a></Fragment>}
+        </div>
+        {unMesePrima() && (
+          <Fragment>
+            <div class="tbl-wrap chi__strade">
+              <table class="tbl tbl--cards">
+                <caption class="type-mono">Strade interessate dalle chiusure — domenica 22 novembre</caption>
+                <thead><tr><th scope="col">Prova</th><th scope="col">Strade chiuse</th><th scope="col">Chiusura</th></tr></thead>
+                <tbody>
+                  {stradeChiuse.map(s => (
+                    <tr>
+                      <th scope="row">{s.prova}</th>
+                      <td data-label="Strade chiuse">{s.strade}</td>
+                      <td class="type-mono" data-label="Orari">{s.chiude}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="hint chi__nota">Ogni tratto riapre dopo il passaggio della vettura scopa, l'ultima del rally.</p>
+          </Fragment>
+        )}
+      </Fragment>
     )}
   </section>
 
   <!-- DOMANDE -->
   <section id="domande" class="hair" aria-labelledby="dom-h">
     <div class="wrap section dom">
-      <h2 id="dom-h" class="type-h2">Le domande che ci fanno tutti</h2>
+      <h2 id="dom-h" class="type-h2 dom__h">Le domande che ci fanno tutti</h2>
       <div class="dom__grid stagger">
         <div class="card card--left reveal">
           <h3 class="type-h3">Posso entrare o uscire di casa?</h3>
-          <p>A piedi, dentro la tua proprietà, sempre. Sulla sede stradale no: da quando la strada chiude a quando riapre non si transita, né in auto né a piedi né in bicicletta. È la regola che rende possibile correre.</p>
+          <p>{unMesePrima() ? 'Dentro la tua proprietà sempre. Sulla strada no: da quando chiude a quando riapre non si transita, né in auto né a piedi né in bici. È la regola che rende possibile correre.' : 'A piedi, dentro la tua proprietà, sempre. Sulla sede stradale no: da quando la strada chiude a quando riapre non si transita, né in auto né a piedi né in bicicletta. È la regola che rende possibile correre.'}</p>
         </div>
         <div class="card card--left reveal">
           <h3 class="type-h3">E se devo andare al lavoro?</h3>
-          <p>Sposta l'auto fuori dal tratto chiuso <strong>prima</strong> dell'orario di chiusura. I commissari possono indicarti il parcheggio utile più vicino. Se hai un turno o un impegno che cade dentro la finestra di chiusura, scrivici in anticipo: cerchiamo la soluzione insieme.</p>
+          <p>Sposta l'auto fuori dal tratto chiuso <strong>prima</strong> {unMesePrima() ? "dell'orario di chiusura: i commissari ti indicano dove. Se hai un turno dentro la finestra di chiusura, scrivici prima: troviamo una soluzione." : "dell'orario di chiusura. I commissari possono indicarti il parcheggio utile più vicino. Se hai un turno o un impegno che cade dentro la finestra di chiusura, scrivici in anticipo: cerchiamo la soluzione insieme."}</p>
         </div>
         <div class="card card--left reveal">
           <h3 class="type-h3">E se serve un'ambulanza?</h3>
-          <p>La prova si ferma. Ogni tratto ha commissari in contatto radio permanente con la direzione di gara, un'ambulanza dedicata e un piano di evacuazione concordato con le autorità. La sicurezza delle persone viene prima della gara, sempre.</p>
+          <p>{unMesePrima() ? "La prova si ferma. Ogni tratto ha commissari in radio con la direzione di gara, un'ambulanza dedicata e un piano di evacuazione concordato con le autorità." : "La prova si ferma. Ogni tratto ha commissari in contatto radio permanente con la direzione di gara, un'ambulanza dedicata e un piano di evacuazione concordato con le autorità. La sicurezza delle persone viene prima della gara, sempre."}</p>
         </div>
         <div class="card card--left reveal">
           <h3 class="type-h3">Quanto rumore fa?</h3>
-          <p>Le vetture passano a distanza di un minuto l'una dall'altra, per la durata della prova. Non è rumore continuo: sono passaggi. Fuori dagli orari di gara non ci sono attività rumorose sul percorso.</p>
+          <p>{unMesePrima() ? 'Le vetture passano a un minuto di distanza, per la durata della prova: sono passaggi, non rumore continuo. Fuori orario il percorso è silenzioso.' : "Le vetture passano a distanza di un minuto l'una dall'altra, per la durata della prova. Non è rumore continuo: sono passaggi. Fuori dagli orari di gara non ci sono attività rumorose sul percorso."}</p>
         </div>
         <div class="card card--left reveal">
           <h3 class="type-h3">Ho animali</h3>
-          <p>Tieni cani e gatti in casa o nel recinto per tutta la finestra di chiusura, e allontana il bestiame dalla sede stradale. È la raccomandazione che ci sentiamo di fare con più insistenza: un animale sulla strada è un rischio per lui e per gli equipaggi.</p>
+          <p>{unMesePrima() ? 'Tieni cani e gatti in casa per tutta la finestra di chiusura e allontana il bestiame dalla strada. Un animale in prova speciale è un rischio per lui e per gli equipaggi.' : 'Tieni cani e gatti in casa o nel recinto per tutta la finestra di chiusura, e allontana il bestiame dalla sede stradale. È la raccomandazione che ci sentiamo di fare con più insistenza: un animale sulla strada è un rischio per lui e per gli equipaggi.'}</p>
         </div>
         <div class="card card--left reveal">
           <h3 class="type-h3">Ho un'attività lungo il percorso</h3>
-          <p>Bar, ristoranti e negozi restano aperti e in quelle ore hanno molte più persone del solito davanti alla porta. Se vuoi comparire fra i punti di ristoro che segnaliamo al pubblico, scrivici: è gratis.</p>
-        </div>
-        <div class="card card--left reveal">
-          <h3 class="type-h3">Chi paga se qualcosa si rovina?</h3>
-          <p>La manifestazione è coperta da polizza assicurativa come previsto dalla normativa sportiva. Se rilevi un danno riconducibile alla gara, segnalacelo <strong>subito</strong>, con foto: apriamo la pratica noi.</p>
+          <p>{unMesePrima() ? 'Bar, ristoranti e negozi restano aperti, con molte più persone del solito davanti alla porta. Scrivici se vuoi comparire fra i punti di ristoro che segnaliamo al pubblico: è gratis.' : 'Bar, ristoranti e negozi restano aperti e in quelle ore hanno molte più persone del solito davanti alla porta. Se vuoi comparire fra i punti di ristoro che segnaliamo al pubblico, scrivici: è gratis.'}</p>
         </div>
         <div class="card card--left reveal">
           <h3 class="type-h3">Posso guardare la gara da casa mia?</h3>
-          <p>Dal tuo terreno o dal tuo balcone sì, purché tu resti fuori dalla sede stradale e lontano dalle vie di fuga. Se vuoi invitare gente, guarda prima la <a href="/rally-colli-euganei/spettatori/">pagina spettatori</a>: valgono le stesse regole di sicurezza.</p>
+          <p>{unMesePrima() ? 'Dal tuo terreno o dal balcone sì, restando fuori dalla strada e dalle vie di fuga. Se inviti qualcuno, leggi prima la ' : 'Dal tuo terreno o dal tuo balcone sì, purché tu resti fuori dalla sede stradale e lontano dalle vie di fuga. Se vuoi invitare gente, guarda prima la '}<a href="/rally-colli-euganei/spettatori/">pagina spettatori</a>{unMesePrima() ? '.' : ': valgono le stesse regole di sicurezza.'}</p>
         </div>
       </div>
     </div>
@@ -123,8 +144,8 @@ const email = 'inversione.au3@gmail.com';
   <section id="avvisi" class="wrap section avv" aria-labelledby="avv-h">
     <h2 id="avv-h" class="type-h2">Come ti avvisiamo</h2>
     <ol class="avv__l">
-      <li><span class="type-mono k-ev">1</span><div><strong>Ordinanza dei Comuni</strong><p>Il provvedimento ufficiale di chiusura viene pubblicato all'albo pretorio del tuo Comune e segnalato con i cartelli stradali nei giorni precedenti.</p></div></li>
-      <li><span class="type-mono k-ev">2</span><div><strong>Avviso cartaceo</strong><p>Nelle settimane prima della gara distribuiamo un avviso alle abitazioni e alle attività sui tratti interessati, con la data e gli orari del tuo tratto.</p></div></li>
+      <li><span class="type-mono k-ev">1</span><div><strong>Ordinanza dei Comuni</strong><p>{unMesePrima() ? "Il provvedimento di chiusura esce all'albo pretorio del tuo Comune, con i cartelli stradali nei giorni precedenti." : "Il provvedimento ufficiale di chiusura viene pubblicato all'albo pretorio del tuo Comune e segnalato con i cartelli stradali nei giorni precedenti."}</p></div></li>
+      <li><span class="type-mono k-ev">2</span><div><strong>Avviso cartaceo</strong><p>{unMesePrima() ? 'Nelle settimane prima della gara lo consegniamo a case e attività sui tratti interessati, con data e orari.' : 'Nelle settimane prima della gara distribuiamo un avviso alle abitazioni e alle attività sui tratti interessati, con la data e gli orari del tuo tratto.'}</p></div></li>
       <li><span class="type-mono k-ev">3</span><div><strong>Questa pagina</strong><p>È il riferimento sempre aggiornato: se un orario cambia, cambia qui per primo.</p></div></li>
     </ol>
   </section>
@@ -134,19 +155,19 @@ const email = 'inversione.au3@gmail.com';
     <div class="wrap section cr">
       <div class="cr__t">
         <h2 id="cr-h" class="type-h2">Parla con una persona</h2>
-        <p class="type-body-dark">Se hai una necessità particolare — un familiare non autosufficiente, un mezzo di lavoro da spostare, un accesso indispensabile — dillo prima, non il giorno della gara. Quasi tutto si risolve con una telefonata fatta per tempo.</p>
+        <p class="type-body-dark">{unMesePrima() ? 'Un familiare non autosufficiente, un mezzo di lavoro da spostare, un accesso indispensabile: dillo prima, non il giorno della gara. Quasi tutto si risolve con una telefonata per tempo.' : 'Se hai una necessità particolare — un familiare non autosufficiente, un mezzo di lavoro da spostare, un accesso indispensabile — dillo prima, non il giorno della gara. Quasi tutto si risolve con una telefonata fatta per tempo.'}</p>
       </div>
       <ul class="cr__list">
         <li><span class="type-mono text-meta">Email</span><a class="type-mono link-line" href={`mailto:${email}?subject=${encodeURIComponent('Residenti · Rally Colli Euganei')}`}>{email}</a></li>
         {rally.telefoni.map(t => (
           <li><span class="type-mono text-meta">{t.label}</span><a class="type-mono link-line" href={`tel:${t.tel}`}>{t.num}</a></li>
         ))}
-        <li><span class="type-mono text-meta">Nei giorni di gara</span><span class="cr__nota">I commissari lungo il percorso sono il riferimento immediato: sono in contatto radio con la direzione di gara.</span></li>
+        <li><span class="type-mono text-meta">Nei giorni di gara</span><span class="cr__nota">{unMesePrima() ? 'I commissari lungo il percorso sono il riferimento immediato: sono in radio con la direzione di gara.' : 'I commissari lungo il percorso sono il riferimento immediato: sono in contatto radio con la direzione di gara.'}</span></li>
       </ul>
     </div>
   </section>
 
-  <CTABlock kicker={rally.dataLabel} title="Dopo più di 35 anni torna un rally nel Padovano" text="Passa da queste strade perché sono belle e perché ci vive gente che ha accettato di ospitarlo. Se il weekend ti crea un problema, scrivici: ci teniamo a risolverlo.">
+  <CTABlock kicker={rally.dataLabel} title="Dopo più di 35 anni torna un rally nel Padovano" text={unMesePrima() ? 'Passa da queste strade perché ci vive gente che ha accettato di ospitarlo. Se il weekend ti crea un problema, scrivici.' : 'Passa da queste strade perché sono belle e perché ci vive gente che ha accettato di ospitarlo. Se il weekend ti crea un problema, scrivici: ci teniamo a risolverlo.'}>
     <a href="/rally-colli-euganei/spettatori/" class="btn btn--ev">Guarda la gara da spettatore</a>
     <a href="/rally-colli-euganei/percorso/" class="btn btn--secondary">Vedi il percorso</a>
   </CTABlock>
@@ -187,6 +208,9 @@ const email = 'inversione.au3@gmail.com';
   /* chiusure */
   .chi__cerca{display:flex;flex-direction:column;gap:8px;margin-bottom:var(--sp-4);max-width:460px}
   .chi__attesa{max-width:70ch;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  .chi__strade{margin-top:var(--sp-4)}
+  .chi__nota{margin-top:var(--sp-3)}
+  .dom__h{margin-bottom:var(--sp-5)}
   /* domande */
   .dom__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter)}
   @media(min-width:900px){.dom__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

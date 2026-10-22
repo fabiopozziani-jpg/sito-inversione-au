@@ -29,6 +29,8 @@ const log = (s = '') => { righe.push(s); console.log(s); };
 
 /* ---------- sostituzioni di testo (valgono su ogni campo testuale) ---------- */
 const COPPIE = [
+  // 18/10/2026 · il comunicato del rally ha le date vere delle iscrizioni: il testo
+  // buono è quello di NEWS_UFFICIALE qui sotto, che lo script riscrive per intero.
   ["Prima edizione: il rally torna sui Colli dopo più di trent'anni", 'Prima edizione: dopo più di 35 anni torna un rally nel Padovano'],
   ['Dopo più di 30 anni torna il rally sui Colli Euganei a Padova.', 'Dopo più di 35 anni torna un rally nel Padovano.'],
   ["Il rally torna sui Colli dopo più di trent'anni", 'Dopo più di 35 anni torna un rally nel Padovano'],
@@ -41,8 +43,11 @@ const COPPIE = [
   ['Diventa socio', 'Diventa Tesserato'],
   ['diventare socio', 'tesserarsi'],
   ['Nel 2019 abbiamo organizzato i primi raduni', 'Nel 2018 abbiamo organizzato i primi raduni'],
-  ['30–40 km', '20–35 km'],
-  ['30-40 km', '20–35 km'],
+  ['30–40 km', '21,36 km'],
+  ['30-40 km', '21,36 km'],
+  ['20–35 km', '21,36 km'],
+  ['20-35 km', '21,36 km'],
+  ['20–35 chilometri', '21,36 chilometri'],
   ['2 prove speciali ripetute 3 volte', '2 prove speciali, 3 passaggi ciascuna'],
   ['due prove speciali ripetute tre volte', 'due prove speciali con tre passaggi ciascuna'],
 ];
@@ -62,7 +67,7 @@ const A_EVENTO_POLO = ['polo'];   // POLO · insieme a te in cucina → solo sul
 /* ---------- news del rally: ne resta una sola, riscritta ---------- */
 const NEWS_VIA = ['iscrizioni-aperte-rally-colli-euganei', 'rally-zone-pubblico', 'rally-ricognizioni-date-regole'];
 const NEWS_UFFICIALE = {
-  sommario: `Formula Rally Sprint, due prove speciali con tre passaggi ciascuna, 20–35 km cronometrati. Dopo più di 35 anni un rally torna nel Padovano.`,
+  sommario: `Formula Rally Sprint, due prove speciali con tre passaggi ciascuna, 21,36 km cronometrati. Dopo più di 35 anni un rally torna nel Padovano.`,
   lead: `Il 1° Rally Colli Euganei ACI Sport si corre il 21 e 22 novembre 2026 sulle strade dei Colli Euganei. Gara a cronometro su strade chiuse, ingresso libero per il pubblico.`,
   data: '2026-08-28',
   credito: 'Foto: Inversione A U',
@@ -71,22 +76,22 @@ const NEWS_UFFICIALE = {
   corpo: `<p>Il 1° Rally Colli Euganei ACI Sport si corre <strong>sabato 21 e domenica 22 novembre 2026</strong>, sulle strade dei Colli Euganei, in provincia di Padova. Lo organizza Inversione A U A.S.D. Dopo più di trentacinque anni un rally torna a correre nel Padovano.</p>
 <p>Non è una rievocazione e non è un raduno: è una gara a cronometro su strade chiuse al traffico, con licenze, ufficiali di gara, classifica e regolamento particolare depositato.</p>
 <h2>La formula</h2>
-<p>ACI Sport ha iscritto la manifestazione a calendario come <strong>atipica sperimentale</strong> del settore rally, nella formula del <strong>Rally Sprint</strong>: poche prove speciali ripetute più volte, tutte nella stessa area, invece di una gara distesa su lunghi trasferimenti. Il sabato è dedicato alle verifiche sportive e tecniche e allo shakedown; la gara si corre la domenica.</p>
-<p>Il percorso prevede <strong>due prove speciali con tre passaggi ciascuna</strong>: sei tratti cronometrati, per 20–35 chilometri contro il tempo. Tracciato, chilometraggi esatti e orari di passaggio si pubblicano con i documenti di gara, un mese prima della gara.</p>
+<p>ACI Sport ha iscritto la manifestazione a calendario nella formula del <strong>Rally Sprint</strong>: poche prove speciali ripetute più volte, tutte nella stessa area, invece di una gara distesa su lunghi trasferimenti. Il sabato è dedicato alle verifiche sportive e tecniche e allo shakedown; la gara si corre la domenica.</p>
+<p>Il percorso prevede <strong>due prove speciali con tre passaggi ciascuna</strong>: sei tratti cronometrati, per 21,36 chilometri contro il tempo, su 109,26 km di percorso totale. Tracciato, chilometraggi e orari di passaggio della prima vettura sono pubblicati nella pagina del percorso e nell’albo di gara.</p>
 <h2>Dove si corre</h2>
 <p>Si corre dentro un parco regionale: 18.694 ettari su quindici comuni, un centinaio di rilievi di origine vulcanica in mezzo alla pianura. È un contesto che impone delle regole, e le abbiamo scritte per tempo: strade chiuse solo per le ore necessarie, zone pubblico delimitate e presidiate dai commissari, nessun fuoco e nessun fumogeno lungo il percorso, rispetto di vigne, coltivi e proprietà private.</p>
 <p>Chi abita o lavora sulle strade interessate trova nella <a href="/rally-colli-euganei/residenti/">pagina dedicata ai residenti</a> gli orari di chiusura, cosa succede il giorno di gara e un contatto diretto per le necessità particolari. Chiediamo di segnalarle prima, non la mattina della gara: quasi tutto si risolve con una telefonata fatta per tempo.</p>
 <h2>Per i concorrenti</h2>
-<p>Le iscrizioni aprono a breve: la data viene annunciata su questo sito e nell'<a href="/rally-colli-euganei/documenti/">albo di gara</a>. La chiusura è prevista per il 6 novembre 2026 e sarà confermata dal regolamento particolare.</p>
+<p>Le iscrizioni aprono il 22 ottobre 2026 alle 23:59 e chiudono il 16 novembre alle 23:59. I moduli sono nell'<a href="/rally-colli-euganei/concorrenti/">area concorrenti</a> e nell'<a href="/rally-colli-euganei/documenti/">albo di gara</a>.</p>
 <p>Licenze ammesse, vetture e requisiti seguono le disposizioni ACI Sport per questo evento: la validità della propria licenza si verifica sul <a href="https://www.acisport.it/it/acisport" target="_blank" rel="noopener">sito ACI Sport</a>. Il resto — scheda gara, scadenze, documenti in evidenza, elenco iscritti — è nell'<a href="/rally-colli-euganei/concorrenti/">area concorrenti</a>.</p>
 <h2>Per il pubblico</h2>
 <p>L'ingresso è libero. Le zone da cui si assiste alla gara sono scelte dall'organizzazione, delimitate e presidiate, con un accesso a piedi e un punto dove lasciare l'auto: vengono pubblicate insieme alla mappa del percorso. Programma, regole di sicurezza e come arrivare sono nella <a href="/rally-colli-euganei/spettatori/">pagina spettatori</a>.</p>
 <dl>
 <dt>Data</dt><dd>21–22 novembre 2026</dd>
 <dt>Dove</dt><dd>Colli Euganei, provincia di Padova</dd>
-<dt>Formula</dt><dd>Rally Sprint · atipica sperimentale ACI Sport</dd>
+<dt>Formula</dt><dd>Rally Sprint · a calendario ACI Sport</dd>
 <dt>Prove speciali</dt><dd>2 prove, 3 passaggi ciascuna</dd>
-<dt>Km cronometrati</dt><dd>20–35 km</dd>
+<dt>Km cronometrati</dt><dd>21,36 km</dd>
 <dt>Ingresso</dt><dd>Libero</dd>
 </dl>
 <p>Informazioni sulla gara: <a href="mailto:rallycollieuganei@gmail.com">rallycollieuganei@gmail.com</a> · organizzazione: <a href="mailto:inversione.au3@gmail.com">inversione.au3@gmail.com</a>.</p>`,

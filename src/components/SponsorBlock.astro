@@ -1,19 +1,41 @@
 ---
 import type { Sponsor } from '../data/sponsor';
-/** Griglia loghi. mono=true → monocromo (guscio del sito); mono=false → colore (hub evento). */
-interface Props { title?: string; sponsors: Sponsor[]; columns?: number; light?: boolean; mono?: boolean; headingLevel?: 2 | 3; logoH?: number }
-const { title, sponsors, columns = 4, light = false, mono = true, headingLevel = 2, logoH = 46 } = Astro.props;
+/** Griglia loghi. mono=true → monocromo (guscio del sito); mono=false → colore (hub evento).
+ *  `primi` = quanti loghi in testa all'elenco sono partner principali: occupano una cella
+ *  doppia e il marchio è reso più grande. L'ordine arriva dal CMS (campo `ordine`), quindi
+ *  chi è in evidenza si cambia dall'ordine, non dal codice. */
+interface Props { title?: string; sponsors: Sponsor[]; columns?: number; light?: boolean; mono?: boolean; headingLevel?: 2 | 3; logoH?: number; primi?: number }
+const { title, sponsors, columns = 4, light = false, mono = true, headingLevel = 2, logoH = 46, primi = 0 } = Astro.props;
 const H = `h${headingLevel}` as 'h2' | 'h3';
+/** Una cella doppia su una griglia a colonne dispari lascerebbe righe spaiate:
+ *  con i partner principali si sale alla colonna pari successiva. */
+const colonne = primi > 0 && columns % 2 ? columns + 1 : columns;
+/** Le caselle che avanzano in fondo lascerebbero vedere il reticolo grigio: si riempiono
+ *  con celle nere vuote. Quante ne servono dipende dalle colonne, che cambiano con lo
+ *  schermo (da 900px in su `colonne`, sotto 3, sotto 560px 2); sotto i 900 i partner
+ *  principali prendono tutta la riga e quindi non contano nel conteggio. */
+const avanzo = (col: number, grandiAPienaRiga: boolean) => {
+  const tracce = grandiAPienaRiga ? sponsors.length - primi : primi * 2 + (sponsors.length - primi);
+  const resto = tracce % col;
+  return resto === 0 ? 0 : col - resto;
+};
+const vuoteDesktop = avanzo(colonne, false), vuoteTablet = avanzo(3, true), vuoteTelefono = avanzo(2, true);
+const riempitivi = Math.max(vuoteDesktop, vuoteTablet, vuoteTelefono);
 ---
-<div class:list={['spb sponsor-fade', { 'spb--light': light, 'spb--mono': mono }]} style={`--c:${columns};--logo-h:${logoH}px`}>
+<div class:list={['spb sponsor-fade', { 'spb--light': light, 'spb--mono': mono }]} style={`--c:${colonne};--logo-h:${logoH}px`}>
   {title && <H class="type-mono spb__h">{title}</H>}
   <ul class="spb__grid">
-    {sponsors.map(s => (
-      <li class="spb__cell">
+    {sponsors.map((s, i) => (
+      <li class:list={['spb__cell', { 'spb__cell--grande': i < primi }]}>
         {s.url
           ? <a href={s.url} target="_blank" rel="noopener">{s.logo ? <img src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" decoding="async" /> : <span class="spb__nome">{s.name}</span>}</a>
           : s.logo ? <img src={s.logo} alt={s.name} width={s.w} height={s.h} loading="lazy" decoding="async" /> : <span class="spb__nome">{s.name}</span>}
       </li>
+    ))}
+    {Array.from({ length: riempitivi }, (_, k) => (
+      <li aria-hidden="true" class:list={['spb__cell', 'spb__vuota', {
+        'spb__vuota--d': k < vuoteDesktop, 'spb__vuota--t': k < vuoteTablet, 'spb__vuota--m': k < vuoteTelefono,
+      }]}></li>
     ))}
   </ul>
 </div>
@@ -36,6 +58,13 @@ const H = `h${headingLevel}` as 'h2' | 'h3';
   .spb__cell{background:var(--nero);aspect-ratio:2/1;display:flex;align-items:center;justify-content:center;padding:16px}
   .spb__cell img{max-width:76%;max-height:var(--logo-h,46px);width:auto;height:auto;opacity:.8;transition:opacity var(--dur-base) var(--ease-out)}
   @media(min-width:1180px){.spb__cell img{max-height:calc(var(--logo-h,46px) + 8px)}}
+  /* partner principali: cella doppia, marchio di mezzo passo più grande */
+  .spb__cell--grande{grid-column:span 2;aspect-ratio:2.6/1}
+  .spb__cell--grande img{max-width:72%;max-height:calc(var(--logo-h,46px) * 1.55)}
+  @media(min-width:1180px){.spb__cell--grande img{max-height:calc(var(--logo-h,46px) * 1.55 + 10px)}}
+  /* celle di riempimento: nere e vuote, servono solo a non lasciare buchi grigi */
+  .spb__vuota{display:none}
+  .spb__vuota--d{display:flex}
   .spb__cell:hover img{opacity:1}
   .spb__nome{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-align:center;color:var(--grigio-450);line-height:1.3;overflow-wrap:anywhere}
   .spb--light .spb__nome{color:#6B6B6B}
@@ -44,6 +73,18 @@ const H = `h${headingLevel}` as 'h2' | 'h3';
   .spb--light .spb__cell{background:var(--bianco)}
   .spb--light .spb__h{color:#6B6B6B}
   .spb--light.spb--mono .spb__cell img{filter:grayscale(1)}
-  @media(max-width:900px){.spb__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media(max-width:560px){.spb__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spb__grid>*:last-child:nth-child(odd){grid-column:span 2}}
+  /* Sotto i 900px le colonne diventano dispari: una cella doppia lascerebbe buchi,
+     quindi i partner principali prendono tutta la riga. */
+  @media(max-width:900px){
+    .spb__grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .spb__cell--grande{grid-column:1/-1;aspect-ratio:4/1}
+    .spb__vuota{display:none}
+    .spb__vuota--t{display:flex}
+  }
+  @media(max-width:560px){
+    .spb__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .spb__cell--grande{grid-column:1/-1;aspect-ratio:4/1}
+    .spb__vuota{display:none}
+    .spb__vuota--m{display:flex}
+  }
 </style>

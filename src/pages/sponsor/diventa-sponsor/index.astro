@@ -115,6 +115,12 @@ const budget = ['Da definire', 'Fino a 1.000 €', '1.000 – 3.000 €', '3.000
   .row-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:var(--sp-4)}
   .p{color:#DDD;max-width:70ch;margin-top:16px}
   .cmp{margin-top:var(--sp-4);margin-bottom:12px}
+  /* qui i valori sono frasi, non dati: su telefono l'etichetta resta sopra,
+     così il testo usa tutta la larghezza invece di incolonnarsi in metà schermo */
+  @media(max-width:639px){
+    .cmp .tbl--cards tbody td[data-label]{display:block;margin-top:6px}
+    .cmp .tbl--cards tbody td[data-label]::before{display:block;margin-bottom:2px}
+  }
   .tec ul{margin:12px 0}
   .tec{margin-top:var(--sp-5);max-width:80ch}
   .fs{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-6);align-items:start}

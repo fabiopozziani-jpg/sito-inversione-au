@@ -3,7 +3,7 @@
  * Sub-nav evento: si appoggia sotto l'header sticky (top: var(--header-h)), scorre in orizzontale su mobile.
  * Colore di sfondo e bordo = colori dell'evento. La voce attiva porta aria-current.
  */
-interface Item { label: string; href: string }
+interface Item { label: string; href: string; esterno?: boolean }
 interface Props { items: Item[]; current: string; bg: string; accent: string; label: string }
 const { items, current, bg, accent, label } = Astro.props;
 const norm = (p: string) => p.replace(/\/+$/, '') + '/';
@@ -11,7 +11,11 @@ const cur = norm(current);
 ---
 <nav class="ev-subnav" aria-label={label} style={`--sub-bg:${bg};--sub-accent:${accent}`}>
   <div class="wrap ev-subnav__in">
-    {items.map(i => (
+    {items.map(i => i.esterno ? (
+      <a href={i.href} class="ev-subnav__a ev-subnav__a--ext" target="_blank" rel="noopener">
+        {i.label} <span aria-hidden="true">↗</span><span class="sr-only"> Si apre in una nuova pagina</span>
+      </a>
+    ) : (
       <a href={i.href} class="ev-subnav__a" aria-current={norm(i.href) === cur ? 'page' : undefined}>{i.label}</a>
     ))}
   </div>

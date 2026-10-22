@@ -11,6 +11,7 @@ import StatBlock from '../components/StatBlock.astro';
 import NewsCard from '../components/NewsCard.astro';
 import PhotoStrip from '../components/PhotoStrip.astro';
 import SponsorBlock from '../components/SponsorBlock.astro';
+import { unMesePrima } from '../data/rally';
 import PartnerMarquee from '../components/PartnerMarquee.astro';
 import SocialStrip from '../components/SocialStrip.astro';
 import CTABlock from '../components/CTABlock.astro';
@@ -51,12 +52,14 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
       <p class="type-mono hero__kicker">Prossimo evento · 21–22 novembre 2026 · Colli Euganei</p>
       <h1 id="hero-h1" class="hero__h1">
         <span class="type-mono hero__name">Inversione A U</span>
-        <span class="hero__sub">Torna il rally sui Colli Euganei</span>
+        <span class="hero__sub">{unMesePrima() ? 'Iscrizioni aperte al Rally Colli Euganei' : 'Torna il rally sui Colli Euganei'}</span>
       </h1>
-      <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span><span class="hero__tag">Rally Sprint · Atipico Sperimentale</span></p>
+      <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span><span class="hero__tag">Rally Sprint</span></p>
       <div class="hero__cta">
         <a href="/rally-colli-euganei/percorso/" class="btn btn--primary">Guarda il percorso</a>
-        <a href="/rally-colli-euganei/" class="btn btn--secondary">Leggi le informazioni del rally <span class="arrow-x" aria-hidden="true">→</span></a>
+        {unMesePrima()
+          ? <a href="/rally-colli-euganei/concorrenti/" class="btn btn--secondary">Iscriviti come pilota <span class="arrow-x" aria-hidden="true">→</span></a>
+          : <a href="/rally-colli-euganei/" class="btn btn--secondary">Leggi le informazioni del rally <span class="arrow-x" aria-hidden="true">→</span></a>}
       </div>
     </div>
   </section>
@@ -82,7 +85,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
 
   <!-- STAGIONE -->
   <section class="wrap section" aria-labelledby="stagione">
-    <SectionHead id="stagione" title="Gli eventi della stagione 2026" intro="Tre eventi in provincia di Padova: una giornata drift, due giorni di circuito cittadino e un rally." href="/eventi/" label="Vedi il calendario completo" wipe />
+    <SectionHead id="stagione" title="Gli eventi della stagione 2026" intro={unMesePrima() ? 'Tre eventi in provincia di Padova: una giornata drift, due giorni di circuito cittadino, un rally.' : 'Tre eventi in provincia di Padova: una giornata drift, due giorni di circuito cittadino e un rally.'} href="/eventi/" label="Vedi il calendario completo" wipe />
     <div class="stagione stagger">
       <div class="stagione__rally"><EventCard e={rally} big /></div>
       <div class="stagione__polo"><EventCard e={polo} big /></div>
@@ -91,7 +94,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
         <div class="stagione__next-t">
           <span class="type-mono text-meta">Prossima stagione</span>
           <h3 class="type-h3">Calendario 2027</h3>
-          <p class="type-body-dark">Le date del 2027 saranno pubblicate nei prossimi mesi. Lasciaci la tua email e te le mandiamo.</p>
+          <p class="type-body-dark">{unMesePrima() ? 'Lasciaci la tua email: ti mandiamo le date del 2027 appena escono.' : 'Le date del 2027 saranno pubblicate nei prossimi mesi. Lasciaci la tua email e te le mandiamo.'}</p>
         </div>
         <a href="/contatti/" class="btn btn--secondary">Ricevi le date via email</a>
       </div>
@@ -103,8 +106,8 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <div class="chi__t">
       <p class="type-mono text-meta chi__k">L'associazione</p>
       <h2 id="chi-h" class="type-h2">Chi è Inversione A U</h2>
-      <p class="chi__p">Siamo nati nel 2017 come team di drifting. Nel 2018 abbiamo organizzato i primi raduni, dal 2022 gli eventi dinamici. Nel 2023 siamo diventati un'associazione sportiva dilettantistica.</p>
-      <p class="chi__p">Oggi lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco. Il nostro desiderio? Fare la differenza nel campo motorsport per il nostro territorio.</p>
+      <p class="chi__p">{unMesePrima() ? 'Nati nel 2017 come team di drifting, dal 2022 organizzatori di eventi dinamici, dal 2023 associazione sportiva dilettantistica.' : "Siamo nati nel 2017 come team di drifting. Nel 2018 abbiamo organizzato i primi raduni, dal 2022 gli eventi dinamici. Nel 2023 siamo diventati un'associazione sportiva dilettantistica."}</p>
+      <p class="chi__p">{unMesePrima() ? 'Oggi lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco per portare il motorsport vero su questo territorio.' : 'Oggi lavoriamo con ACI Sport, i Comuni dei Colli e le Pro Loco. Il nostro desiderio? Fare la differenza nel campo motorsport per il nostro territorio.'}</p>
       <a href="/associazione/" class="type-mono link-line chi__link">Leggi la storia dell'associazione <span class="arrow-x" aria-hidden="true">→</span></a>
     </div>
     <div class="chi__n">
@@ -116,7 +119,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   <!-- NOTIZIE (fondo bianco) -->
   <section class="on-light" aria-labelledby="notizie">
     <div class="wrap section">
-      <SectionHead id="notizie" title="Ultime notizie" intro="Comunicati, aggiornamenti sugli eventi e resoconti delle edizioni appena concluse." href="/news/" label="Leggi tutte le notizie" light />
+      <SectionHead id="notizie" title="Ultime notizie" intro={unMesePrima() ? 'Comunicati, aggiornamenti e resoconti delle edizioni.' : 'Comunicati, aggiornamenti sugli eventi e resoconti delle edizioni appena concluse.'} href="/news/" label="Leggi tutte le notizie" light />
       <div class="news-grid stagger">
         {news.map(n => <NewsCard {...n} light />)}
       </div>
@@ -125,21 +128,21 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
 
   <!-- FOTO -->
   <div class="wrap section">
-    <PhotoStrip full foto={fotoRecenti(10)} title="Foto degli ultimi eventi" intro="Una selezione dalle gallerie ufficiali di Polo Motor Show e Legnaro Motori." href="/foto-e-video/" credito="Foto: Inversione A U" id="foto-home" />
+    <PhotoStrip full foto={fotoRecenti(10)} title="Foto degli ultimi eventi" intro={unMesePrima() ? 'Dalle gallerie di Polo Motor Show e Legnaro Motori.' : 'Una selezione dalle gallerie ufficiali di Polo Motor Show e Legnaro Motori.'} href="/foto-e-video/" credito="Foto: Inversione A U" id="foto-home" />
   </div>
 
   <!-- PARTNER -->
   <section class="hair" aria-labelledby="partner">
     <div class="wrap section partner">
       <SectionHead id="partner" title="I nostri partner" intro="Le aziende che sostengono i nostri eventi 2026" />
-      <SponsorBlock sponsors={annuali} columns={4} logoH={74} mono={false} />
+      <SponsorBlock sponsors={annuali} columns={4} logoH={74} mono={false} primi={4} />
       <a href="/sponsor/diventa-sponsor/" class="partner__cta">
         <span class="partner__cta-t">
           <span class="type-mono text-meta">Stagione 2027</span>
           <h3 class="type-h3">Come diventare sponsor <span class="arrow-x" aria-hidden="true">→</span></h3>
         </span>
       </a>
-      <p class="type-body-dark partner__p">Nel 2026 al Polo Motor Show ci hanno affiancato 23 sponsor ufficiali e 4 espositori, davanti a oltre 10.000 spettatori nelle due giornate di evento e al nostro pubblico online.</p>
+      <p class="type-body-dark partner__p">{unMesePrima() ? 'Al Polo Motor Show 2026: 23 sponsor, 4 espositori e oltre 10.000 spettatori in due giorni.' : 'Nel 2026 al Polo Motor Show ci hanno affiancato 23 sponsor ufficiali e 4 espositori, davanti a oltre 10.000 spettatori nelle due giornate di evento e al nostro pubblico online.'}</p>
     </div>
   </section>
 
@@ -147,7 +150,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   <SocialStrip post={social} title="Seguici sui nostri canali" intro="Una selezione dei post che raccontano gli eventi e il dietro le quinte. Li scegliamo noi, uno per uno." id="social-home" />
 
   <!-- CHIUSURA -->
-  <CTABlock kicker="Inversione A U" title="Fai parte di Inversione A U" text="Piloti, volontari e sponsor, una grande famiglia in crescita, unita dal motorsport." image="/foto/polo_pubblico_sera.jpg">
+  <CTABlock kicker="Inversione A U" title="Fai parte di Inversione A U" text={unMesePrima() ? 'Piloti, volontari e sponsor: una squadra che cresce a ogni evento.' : 'Piloti, volontari e sponsor, una grande famiglia in crescita, unita dal motorsport.'} image="/foto/polo_pubblico_sera.jpg">
     <a href="/associazione/#tesseramento" class="btn btn--primary">Diventa Tesserato</a>
     <a href="/contatti/" class="btn btn--secondary">Scrivi all'associazione</a>
   </CTABlock>

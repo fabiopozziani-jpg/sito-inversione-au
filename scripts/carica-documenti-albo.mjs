@@ -9,6 +9,7 @@
  *   node scripts/carica-documenti-albo.mjs          → simulazione: non scrive nulla
  *   node scripts/carica-documenti-albo.mjs --run    → carica i file e scrive nel CMS
  *   node scripts/carica-documenti-albo.mjs --pesi   → risistema solo tipo e peso delle righe già in albo
+ *   node scripts/carica-documenti-albo.mjs --date   → allinea solo la data di pubblicazione delle righe già in albo
  *
  * Resoconto sempre in .trigger/albo-report.txt (che leggo io dalla sessione).
  * Le credenziali arrivano da .env.local e non escono da qui.
@@ -16,12 +17,20 @@
  * Regola dell'albo: una revisione NON sovrascrive il file precedente. Si aggiunge una
  * riga nuova e sulla vecchia si mette `superato` = Sì + `superatoDa`. Questo script
  * crea righe nuove e si ferma se un `numero` esiste già.
+ *
+ * Unica eccezione, `sostituisci: true`: una riga **non ancora pubblicata** (pubblicatoIl
+ * nel futuro, quindi invisibile sul sito) può ricevere un file nuovo al posto del
+ * precedente. Nessun link è ancora in giro, quindi non c'è niente da proteggere e
+ * l'albo non si riempie di versioni di un documento mai uscito. Se la riga è già
+ * pubblica lo script rifiuta e lo dice: lì vale la regola della revisione.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 
 const RUN = process.argv.includes('--run');
 /** --pesi: non carica nulla, risistema solo il campo `nomeFile` (tipo e peso) delle righe già in albo. */
 const PESI = process.argv.includes('--pesi');
+/** --date: non carica nulla, allinea solo `pubblicatoIl` delle righe gia in albo al campo `quando`. */
+const DATE = process.argv.includes('--date');
 const API = 'https://www.wixapis.com';
 const SITE_ID = '0fa841cd-37c1-4afa-98a8-07cd3feb9f54';
 const CARTELLA_FILE = '/Users/fabio/Desktop/INVERSIONE_AU/EVENTI/2026/21-22_NOVEMBRE_1_RALLY_COLLI_EUGANEI/MODULI/CARICATI_ONLINE';
@@ -35,14 +44,24 @@ const OGGI = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Rome' })
  * gruppo:  deve esistere in `gruppiAlbo` dentro src/data/rally.ts, altrimenti la riga
  *          non compare nella tabella
  * scarica: nome proposto al download, in minuscolo con i trattini
+ * quando:  data di pubblicazione in albo (AAAA-MM-GG). Si può omettere: vale oggi.
+ *          Con una data futura il documento resta nascosto sul sito fino a quel giorno
+ *          (il filtro sta in src/lib/contenuti.ts), così si carica in anticipo e esce da solo.
  */
 const LAVORI = [
+  // Gruppo 1: 1.1 resta libero per il Regolamento Particolare di Gara.
+  { numero: '1.2', file: 'PROGRAMMA_A.pdf', titolo: 'Programma', gruppo: 'Regolamento e programma', scarica: 'programma.pdf', quando: '2026-10-22', sostituisci: true },
+  { numero: '1.4', file: 'TABELLA_DISTANZE_E_TEMPI_V3.pdf', titolo: 'Tabella distanze e tempi', gruppo: 'Regolamento e programma', scarica: 'tabella-distanze-e-tempi.pdf', quando: '2026-10-22', sostituisci: true },
+  { numero: '1.3', file: 'CARTINA_PERCORSO_PS_E_SHAKEDOWN_V2.pdf', titolo: 'Cartina percorso PS 1-2-3-4-5-6 e shakedown', gruppo: 'Regolamento e programma', scarica: 'cartina-percorso-ps-1-2-3-4-5-6-e-shakedown.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '3.1', file: 'DICHIARAZIONE_2_CONDUTTORE.pdf', titolo: 'Dichiarazione 2° conduttore (MOD. 01)', gruppo: 'Modulistica', scarica: 'mod-01-dichiarazione-2-conduttore.pdf' },
   { numero: '3.2', file: 'DICHIARAZIONE_2_CONDUTTORE_NON_UNDER_23.pdf', titolo: 'Dichiarazione 2° conduttore non Under 23 (MOD. 02)', gruppo: 'Modulistica', scarica: 'mod-02-dichiarazione-2-conduttore-non-under-23.pdf' },
   { numero: '3.3', file: 'DICHIARAZIONE_1_CONDUTTORE_NEOPATENTATO.pdf', titolo: 'Dichiarazione 1° conduttore neopatentato (MOD. 03)', gruppo: 'Modulistica', scarica: 'mod-03-dichiarazione-1-conduttore-neopatentato.pdf' },
   { numero: '3.4', file: 'DICHIARAZIONE_VETTURA_RICOGNIZIONI.pdf', titolo: 'Dichiarazione vettura per ricognizioni (MOD. 04)', gruppo: 'Modulistica', scarica: 'mod-04-dichiarazione-vettura-ricognizioni.pdf' },
   { numero: '3.5', file: 'DICHIARAZIONE_MONTAGGIO_CAMERA_CAR.pdf', titolo: 'Dichiarazione montaggio camera car (MOD. 05)', gruppo: 'Modulistica', scarica: 'mod-05-dichiarazione-montaggio-camera-car.pdf' },
   { numero: '3.6', file: 'DICHIARAZIONE_CONFORMITA_ABBIGLIAMENTO_SICUREZZA.pdf', titolo: 'Dichiarazione conformità abbigliamento di sicurezza (mod. B ACI Sport)', gruppo: 'Modulistica', scarica: 'mod-b-dichiarazione-conformita-abbigliamento-di-sicurezza.pdf' },
+  { numero: '3.7', file: 'MOD_06_RICHIESTA_SPAZIO_PARCO_ASSISTENZA_V5.pdf', titolo: 'Richiesta spazio parco assistenza (MOD. 06)', gruppo: 'Modulistica', scarica: 'mod-06-richiesta-spazio-parco-assistenza.pdf', quando: '2026-10-22', sostituisci: true },
+  { numero: '3.8', file: 'MOD_07_DOMANDA_ISCRIZIONE_EQUIPAGGI_ESTERI_V7.pdf', titolo: 'Domanda di iscrizione equipaggi esteri (MOD. 07)', gruppo: 'Modulistica', scarica: 'mod-07-domanda-iscrizione-equipaggi-esteri.pdf', quando: '2026-10-22', sostituisci: true },
+  { numero: '3.9', file: 'MOD_08_SCHEDA_ISCRIZIONE_RICOGNITORI_V4.pdf', titolo: 'Scheda iscrizione ricognitori (MOD. 08)', gruppo: 'Modulistica', scarica: 'mod-08-scheda-iscrizione-ricognitori.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '4.1', file: 'GUIDA_TRACKING_EQUIPAGGI.pdf', titolo: 'Guida al sistema di tracking — equipaggi', gruppo: 'Allegati tecnici', scarica: 'guida-tracking-equipaggi.pdf' },
   { numero: '4.2', file: 'GUIDA_TRACKING_MECCANICI_MONTAGGIO.pdf', titolo: 'Guida al sistema di tracking — meccanici, istruzioni di montaggio', gruppo: 'Allegati tecnici', scarica: 'guida-tracking-meccanici-montaggio.pdf' },
 ];
@@ -88,7 +107,8 @@ async function api(path, body, metodo = 'POST') {
 }
 
 /* ---------- esecuzione ---------- */
-log(`Albo di gara — ${RUN ? 'ESECUZIONE' : 'simulazione (nessuna scrittura)'} — ${new Date().toLocaleString('it-IT')}`);
+const MODO = PESI ? 'ALLINEAMENTO PESI (scrive)' : DATE ? 'ALLINEAMENTO DATE (scrive)' : RUN ? 'ESECUZIONE' : 'simulazione (nessuna scrittura)';
+log(`Albo di gara — ${MODO} — ${new Date().toLocaleString('it-IT')}`);
 log(`Data di pubblicazione: ${OGGI}`);
 log('');
 
@@ -135,6 +155,33 @@ if (PESI) {
   process.exit(0);
 }
 
+/* --date: sposta la data di uscita di una riga gia creata.
+ * Lo script normale non tocca le righe esistenti, quindi cambiare `quando` in LAVORI
+ * non basta: serve questo passaggio. Una riga gia pubblica (data non futura) non si
+ * sposta, perche il documento e gia in giro: li vale la regola della revisione. */
+if (DATE) {
+  let spostate = 0;
+  for (const L of LAVORI) {
+    if (!L.quando) continue;
+    const riga = items.find(i => String(i.data?.numero ?? '') === L.numero && String(i.data?.evento ?? '') === 'rally');
+    if (!riga) { log(`— ${L.numero}  nessuna riga in albo: la crea lo script normale`); continue; }
+    const attuale = String(riga.data?.pubblicatoIl ?? '').slice(0, 10);
+    if (attuale === L.quando) { log(`— ${L.numero}  gia a posto (${attuale})`); continue; }
+    if (attuale && attuale <= OGGI) {
+      log(`— ${L.numero}  ! gia pubblica dal ${attuale}: non la sposto, vale la regola della revisione`);
+      continue;
+    }
+    const id = riga.id ?? riga.data._id;
+    const esito = await api(`/wix-data/v2/items/${id}`, { dataCollectionId: 'Documenti', dataItem: { id, data: { ...riga.data, pubblicatoIl: L.quando } } }, 'PUT');
+    log(`— ${L.numero}  ${attuale || '(vuota)'} → ${L.quando}${esito.ok ? '' : `  ! fallito (${esito.status}): ${esito.corpo.slice(0, 200)}`}`);
+    if (esito.ok) spostate++;
+  }
+  log('');
+  log(`Fatto: ${spostate} date spostate.`);
+  salva();
+  process.exit(0);
+}
+
 let fatti = 0;
 for (const L of LAVORI) {
   const percorso = `${CARTELLA_FILE}/${L.file}`;
@@ -145,9 +192,17 @@ for (const L of LAVORI) {
   log(`  file: ${L.file} · ${peso}`);
 
   const doppio = items.find(i => String(i.data?.numero ?? '') === L.numero && String(i.data?.evento ?? '') === 'rally');
-  if (doppio) { log(`  ! esiste già una riga con numero ${L.numero} ("${doppio.data?.titolo}"): la salto, non sovrascrivo l'albo`); continue; }
-
-  if (!RUN) { log(`  → in esecuzione caricherebbe il PDF e creerebbe la riga (gruppo "${L.gruppo}", versione 1, ${OGGI})`); continue; }
+  const quando = L.quando ?? OGGI;
+  const uscita = doppio ? String(doppio.data?.pubblicatoIl ?? '').slice(0, 10) : '';
+  const giaPubblico = !!doppio && uscita <= OGGI;
+  if (doppio && (!L.sostituisci || giaPubblico)) {
+    log(`  ! esiste già una riga con numero ${L.numero} ("${doppio.data?.titolo}"): la salto, non sovrascrivo l'albo`);
+    if (L.sostituisci && giaPubblico) log(`    (è già pubblica dal ${uscita}: una modifica va pubblicata come versione nuova, riga nuova + "superato" sulla vecchia)`);
+    continue;
+  }
+  if (doppio) log(`  riga già in albo ma non ancora pubblicata (esce il ${uscita}): sostituisco il file, nessun link è ancora in giro`);
+  if (quando > OGGI) log(`  pubblicazione datata ${quando}: resta nascosto sul sito fino a quel giorno`);
+  if (!RUN) { log(`  → in esecuzione caricherebbe il PDF e ${doppio ? 'sostituirebbe il file nella riga' : 'creerebbe la riga'} (gruppo "${L.gruppo}", ${quando})`); continue; }
 
   // 2a · indirizzo di caricamento
   const corpoGen = { mimeType: 'application/pdf', fileName: L.scarica };
@@ -182,15 +237,22 @@ for (const L of LAVORI) {
     log(`  verifica link: ${h.status}${h.ok ? ' ok' : ' — ATTENZIONE: il link non risponde'}`);
   } catch (e) { log(`  verifica link non riuscita: ${String(e).slice(0, 120)}`); }
 
-  // 2e · riga in albo
-  const data = {
-    evento: 'rally', numero: L.numero, titolo: L.titolo, gruppo: L.gruppo,
-    versione: '1', pubblicatoIl: OGGI, file: href, nomeFile: `PDF · ${peso}`,
-    superato: false,
-  };
-  const esito = await api('/wix-data/v2/items', { dataCollectionId: 'Documenti', dataItem: { data } });
+  // 2e · riga in albo: sostituzione del file se la riga c'è già e non è ancora uscita
+  let esito;
+  if (doppio) {
+    const id = doppio.id ?? doppio.data._id;
+    const data = { ...doppio.data, titolo: L.titolo, gruppo: L.gruppo, pubblicatoIl: quando, file: href, nomeFile: `PDF · ${peso}` };
+    esito = await api(`/wix-data/v2/items/${id}`, { dataCollectionId: 'Documenti', dataItem: { id, data } }, 'PUT');
+  } else {
+    const data = {
+      evento: 'rally', numero: L.numero, titolo: L.titolo, gruppo: L.gruppo,
+      versione: '1', pubblicatoIl: quando, file: href, nomeFile: `PDF · ${peso}`,
+      superato: false,
+    };
+    esito = await api('/wix-data/v2/items', { dataCollectionId: 'Documenti', dataItem: { data } });
+  }
   if (!esito.ok) { log(`  ! scrittura nel CMS fallita (${esito.status}): ${esito.corpo.slice(0, 300)}`); continue; }
-  log('  riga creata in albo');
+  log(doppio ? '  file sostituito nella riga esistente' : '  riga creata in albo');
   fatti++;
 }
 

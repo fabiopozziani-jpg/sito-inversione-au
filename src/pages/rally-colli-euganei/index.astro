@@ -8,7 +8,7 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import NewsCard from '../../components/NewsCard.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
-import { subnav, statoRally } from '../../data/rally';
+import { subnav, statoRally, unMesePrima } from '../../data/rally';
 import { caricaRally, caricaSponsor, senzaAnnuali, caricaPosts, ordinaPerData } from '../../lib/contenuti';
 import { IMMAGINI, imgFill } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
@@ -39,7 +39,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
   jsonld={[eventLd, { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.inversioneau.com/' }, { '@type': 'ListItem', position: 2, name: 'Rally Colli Euganei', item: 'https://www.inversioneau.com/rally-colli-euganei/' }] }]}
 >
-  <EventSubnav items={subnav} current={rally.base} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
+  <EventSubnav items={subnav()} current={rally.base} bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-h1">
@@ -56,10 +56,12 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         {stato === 'pre' && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
         {stato === 'in' && <p class="type-mono hero__count hero__count--live">Il rally è in corso</p>}
         {stato === 'post' && <a class="type-mono link-line hero__count" href="/foto-e-video/rally-colli-euganei-2026/">Rally concluso · classifiche e foto <span class="arrow-x" aria-hidden="true">→</span></a>}
-        <span class="pill pill--ev">Rally Sprint · Atipico Sperimentale</span>
+        <span class="pill pill--ev">Rally Sprint</span>
       </div>
       <div class="hero__cta">
-        <a href="/rally-colli-euganei/documenti/" class="btn btn--primary">Apri i documenti di gara</a>
+        {unMesePrima()
+          ? <a href="/rally-colli-euganei/concorrenti/" class="btn btn--primary">Iscriviti come pilota</a>
+          : <a href="/rally-colli-euganei/documenti/" class="btn btn--primary">Apri i documenti di gara</a>}
         <a href="/rally-colli-euganei/percorso/" class="btn btn--secondary">Guarda il percorso</a>
       </div>
     </div>
@@ -86,13 +88,13 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <a href="/rally-colli-euganei/concorrenti/" class="porta porta--verde reveal">
       <span class="type-mono porta__k">Piloti, navigatori e team</span>
       <h2 class="type-h2">Concorrenti</h2>
-      <p>Come iscriversi, quali licenze servono, documenti di gara ed elenco degli equipaggi ammessi.</p>
+      <p>{unMesePrima() ? 'Iscrizione, licenze, documenti di gara ed elenco degli equipaggi.' : 'Come iscriversi, quali licenze servono, documenti di gara ed elenco degli equipaggi ammessi.'}</p>
       <span class="type-mono porta__l">Apri l'area concorrenti <span class="arrow-x" aria-hidden="true">→</span></span>
     </a>
     <a href="/rally-colli-euganei/spettatori/" class="porta porta--teal reveal">
       <span class="type-mono porta__k">Pubblico, famiglie e appassionati</span>
       <h2 class="type-h2">Spettatori</h2>
-      <p>Programma e orari, dove guardare in sicurezza, parcheggi e come arrivare sui Colli.</p>
+      <p>{unMesePrima() ? 'Programma, dove guardare in sicurezza e come arrivare sui Colli.' : 'Programma e orari, dove guardare in sicurezza, parcheggi e come arrivare sui Colli.'}</p>
       <span class="type-mono porta__l">Apri le informazioni per il pubblico <span class="arrow-x" aria-hidden="true">→</span></span>
     </a>
   </section>
@@ -102,22 +104,25 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <div class="percorso__head">
       <div>
         <h2 id="percorso-h" class="type-h2 reveal-wipe"><span>Il percorso e le prove speciali</span></h2>
-        <p class="type-body-dark percorso__intro">Qui pubblicheremo mappa, chilometri e orari delle prove speciali.</p>
+        <p class="type-body-dark percorso__intro">{unMesePrima() ? 'Due prove speciali ripetute tre volte ciascuna, per sei tratti cronometrati: 21,36 km a cronometro sui 109,26 km complessivi del percorso di gara.' : 'Qui pubblicheremo mappa, chilometri e orari delle prove speciali.'}</p>
       </div>
-      <a href="/rally-colli-euganei/percorso/" class="type-mono link-line percorso__link">Guarda il percorso <span class="arrow-x" aria-hidden="true">→</span></a>
+      {!unMesePrima() && <a href="/rally-colli-euganei/percorso/" class="type-mono link-line percorso__link">Guarda il percorso <span class="arrow-x" aria-hidden="true">→</span></a>}
     </div>
-    <p class="percorso__p">Il tracciato attraversa le strade dei Colli Euganei. L'elenco delle prove speciali e la tabella tempi saranno pubblicati più avanti, appena definiti.</p>
+    {!unMesePrima() && <p class="percorso__p">Il tracciato attraversa le strade dei Colli Euganei. L'elenco delle prove speciali e la tabella tempi saranno pubblicati più avanti, appena definiti.</p>}
     <div class="percorso__grid">
       <div class="percorso__targa reveal">
         <img src={rally.targa} alt="Targa 1° Rally Colli Euganei 2026" width="1400" height="643" loading="lazy" decoding="async" />
-        <span class="hint">Mappa e prove speciali in arrivo</span>
+        {!unMesePrima() && <span class="hint">Mappa e prove speciali in arrivo</span>}
       </div>
       <dl class="dati reveal">
-        <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">20–35 km</dd></div>
-        <div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2</dd></div>
-        <div><dt class="type-mono">Al via</dt><dd class="type-mono">21–22 nov 2026</dd></div>
+        <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">{unMesePrima() ? '21,36 km' : '20–35 km'}</dd></div>
+        {unMesePrima()
+          ? <div><dt class="type-mono">Prove speciali</dt><dd class="type-mono">2 PS · 3 passaggi ognuna</dd></div>
+          : <><div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2</dd></div>
+            <div><dt class="type-mono">Al via</dt><dd class="type-mono">21–22 nov 2026</dd></div></>}
       </dl>
     </div>
+    {unMesePrima() && <div class="percorso__cta"><a class="btn btn--ev" href="/rally-colli-euganei/percorso/">Scopri il percorso completo</a></div>}
   </section>
 
   <!-- STORIA (fondo bianco) -->
@@ -127,7 +132,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         <p class="type-mono storia__k">La storia</p>
         <h2 id="storia-h" class="type-h2">Dopo più di 35 anni torna un rally nel Padovano</h2>
         <p>In provincia di Padova il rally ha una storia lunga: tornanti stretti, muretti a secco, pubblico a bordo strada. Quella storia si è interrotta a metà degli anni Ottanta.</p>
-        <p>Il 1° Rally Colli Euganei la riprende, con titolazione ACI Sport e l'organizzazione di Inversione A U A.S.D. Non è una rievocazione: è una gara vera, a cronometro, su strade chiuse al traffico.</p>
+        <p>{unMesePrima() ? 'Il 1° Rally Colli Euganei la riprende. Non è una rievocazione: è una gara a cronometro, su strade chiuse al traffico, a calendario ACI Sport.' : "Il 1° Rally Colli Euganei la riprende, con titolazione ACI Sport e l'organizzazione di Inversione A U A.S.D. Non è una rievocazione: è una gara vera, a cronometro, su strade chiuse al traffico."}</p>
       </div>
       <figure class="storia__foto reveal">
         <img src={imgFill(IMMAGINI.santo1986, 735, 499)} alt={IMMAGINI.santo1986.alt} width="735" height="499" loading="lazy" decoding="async" />
@@ -145,7 +150,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <div class="percorso__head">
       <div>
         <h2 id="news-h" class="type-h2">Ultime notizie sul rally</h2>
-        <p class="type-body-dark percorso__intro">Comunicati e aggiornamenti su iscrizioni, percorso e informazioni per il pubblico.</p>
+        <p class="type-body-dark percorso__intro">{unMesePrima() ? 'Comunicati e aggiornamenti su iscrizioni, percorso e pubblico.' : 'Comunicati e aggiornamenti su iscrizioni, percorso e informazioni per il pubblico.'}</p>
       </div>
       <a href="/news/" class="type-mono link-line percorso__link">Leggi tutte le notizie del rally <span class="arrow-x" aria-hidden="true">→</span></a>
     </div>
@@ -241,6 +246,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .percorso__head h2{color:#fff;margin-bottom:8px}
   .percorso__intro{max-width:56ch}
   .percorso__link{color:var(--grigio-450);white-space:nowrap}.percorso__link:hover{color:#fff}
+  .percorso__cta{margin-top:var(--sp-5)}
   .percorso__p{color:#DDD;max-width:70ch;margin-bottom:var(--sp-5)}
   .percorso__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);align-items:start}
   @media(min-width:900px){.percorso__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}}
