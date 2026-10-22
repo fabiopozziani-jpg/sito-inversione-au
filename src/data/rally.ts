@@ -27,7 +27,7 @@ export const rally = {
    *  Questo campo, e il campo `statoIscrizioni` dell'evento nel CMS, servono solo a
    *  forzarlo a mano — per esempio per chiudere in anticipo. Vuoto = automatico. */
   statoIscrizioni: '' as '' | 'non-aperte' | 'aperte' | 'chiuse',
-  aperturaIscrizioni: '2026-10-22T23:59:00+02:00',
+  aperturaIscrizioni: '2026-10-22T22:00:00+02:00',
   chiusuraIscrizioniIso: '2026-11-16T23:59:59+01:00',
   moduloUrl: 'https://www.acisport.it',
   /** Scheda nel calendario ACI Sport. NON linkata sul sito: quella pagina risponde spesso in errore (scelta di Fabio, 29/8). */
