@@ -217,7 +217,7 @@ export const schedaGara: VoceScheda[] = [
   { voce: 'Elenco verificati e ordine di partenza', valore: 'Sabato 21 novembre, ore 16:30', nota: 'In albo di gara, insieme all’orario individuale della cerimonia di presentazione' },
   { voce: 'Albo di gara e classifiche', valore: 'Albo di gara sul sito · comunicazioni del Direttore di Gara su Sportity', nota: 'Sportity viene aperta più avanti' },
   { voce: 'Parco partenza', valore: 'Piazza Mercato, Bresseo (PD)', nota: 'Ingresso al palco sabato 21 novembre, 17:30 – 18:00 · cerimonia di presentazione degli equipaggi alle 18:30' },
-  { voce: 'Partenza prima vettura', valore: 'Domenica 22 novembre, ore 07:30', nota: 'Polo SpA — uscita del parco assistenza' },
+  { voce: 'Partenza prima vettura', valore: 'Domenica 22 novembre, ore 07:30', nota: 'Selve di Teolo — uscita del parco assistenza' },
   { voce: 'Arrivo prima vettura', valore: 'Domenica 22 novembre, ore 16:15', nota: 'Treponti — Via Alcide De Gasperi · pedana arrivo in Piazza Mercato alle 16:30' },
   { voce: 'Elenco vetture in verifica', valore: 'Domenica 22 novembre, ore 16:00', nota: 'Vetture convocate alle verifiche tecniche dopo la gara · in albo di gara' },
   { voce: 'Premiazione', valore: 'Domenica 22 novembre, dalle 16:30', nota: 'Treponti — Piazza Mercato · insieme all’arrivo in pedana · ingresso libero' },
@@ -297,15 +297,15 @@ export const programma = [
     { ora: '18:30', titolo: 'Cerimonia di presentazione degli equipaggi', nota: 'Le vetture salgono sul palco in ordine inverso di numero. Ingresso libero.' },
   ] },
   { titolo: 'Domenica 22 novembre', voci: [
-    { ora: '07:30', titolo: 'Partenza, prima vettura', nota: 'Polo SpA — uscita del parco assistenza. Le vetture partono a un minuto di distanza.' },
+    { ora: '07:30', titolo: 'Partenza, prima vettura', nota: 'Selve di Teolo — uscita del parco assistenza. Le vetture partono a un minuto di distanza.' },
     { ora: '07:48', titolo: 'PS 1 · Teolo', nota: 'Primo passaggio. Prova di 3,00 km.' },
     { ora: '08:11', titolo: 'PS 2 · Roccolo – Cingolina', nota: 'Primo passaggio. Prova di 4,12 km.' },
     { ora: '08:48 – 10:33', titolo: 'Riordino', nota: 'Treponti — Piazza Mercato.' },
-    { ora: '10:48 – 11:18', titolo: 'Parco assistenza A', nota: 'Polo SpA. Trenta minuti di assistenza alle vetture.' },
+    { ora: '10:48 – 11:18', titolo: 'Parco assistenza A', nota: 'Selve di Teolo. Trenta minuti di assistenza alle vetture.' },
     { ora: '11:36', titolo: 'PS 3 · Teolo', nota: 'Secondo passaggio.' },
     { ora: '11:59', titolo: 'PS 4 · Roccolo – Cingolina', nota: 'Secondo passaggio.' },
     { ora: '12:36 – 14:11', titolo: 'Riordino', nota: 'Treponti — Piazza Mercato.' },
-    { ora: '14:26 – 14:56', titolo: 'Parco assistenza B', nota: 'Polo SpA. Ultimo intervento prima del terzo giro.' },
+    { ora: '14:26 – 14:56', titolo: 'Parco assistenza B', nota: 'Selve di Teolo. Ultimo intervento prima del terzo giro.' },
     { ora: '15:14', titolo: 'PS 5 · Teolo', nota: 'Terzo e ultimo passaggio.' },
     { ora: '15:37', titolo: 'PS 6 · Roccolo – Cingolina', nota: 'Terzo e ultimo passaggio.' },
     { ora: '16:00', titolo: 'Elenco vetture in verifica', nota: 'Pubblicazione in albo di gara delle vetture convocate alle verifiche tecniche dopo la gara.' },
@@ -337,7 +337,7 @@ export const vociNascosteSpettatori = [
 export const vocePerOrariMancanti = {
   ora: 'In arrivo',
   titolo: 'Prove speciali, riordini e assistenza',
-  nota: 'Sei passaggi cronometrati sulle due prove, due riordini a Treponti e due parchi assistenza a Polo SpA. Gli orari escono con la tabella tempi e distanze.',
+  nota: 'Sei passaggi cronometrati sulle due prove, due riordini a Treponti e due parchi assistenza a Selve di Teolo. Gli orari escono con la tabella tempi e distanze.',
 };
 
 export const consentito = [
