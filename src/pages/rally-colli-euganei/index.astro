@@ -8,11 +8,14 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import NewsCard from '../../components/NewsCard.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
-import { subnav, statoRally, unMesePrima } from '../../data/rally';
+import { subnav, statoRally, unMesePrima, cartinaPercorsoAlbo } from '../../data/rally';
 import { caricaRally, caricaSponsor, senzaAnnuali, caricaPosts, ordinaPerData } from '../../lib/contenuti';
 import { IMMAGINI, imgFill } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
-const [{ rally }, sponsor, tuttiIPost] = await Promise.all([caricaRally(), caricaSponsor(), caricaPosts()]);
+const [{ rally, documenti }, sponsor, tuttiIPost] = await Promise.all([caricaRally(), caricaSponsor(), caricaPosts()]);
+/** La cartina del percorso arriva dall'albo per numero: il riquadro si accende da solo
+ *  il giorno in cui la riga d'albo diventa pubblica. Finché non c'è, restano i dati chiave. */
+const cartina = documenti.find(d => d.num === cartinaPercorsoAlbo && !d.superato);
 const annuali = sponsor.annuali;
 const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali);
 
@@ -114,6 +117,23 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         <img src={rally.targa} alt="Targa 1° Rally Colli Euganei 2026" width="1400" height="643" loading="lazy" decoding="async" />
         {!unMesePrima() && <span class="hint">Mappa e prove speciali in arrivo</span>}
       </div>
+      {unMesePrima() && cartina ? (
+      <div class="cart reveal">
+        <a class="cart__foto" href={cartina.href} target="_blank" rel="noopener">
+          <img src="/img/rally/cartina-percorso.jpg" alt="Cartina del percorso del 1° Rally Colli Euganei" width="1200" height="1861" loading="lazy" decoding="async" />
+          <span class="type-mono cart__pdf" aria-hidden="true">PDF ↓</span>
+          <span class="sr-only">Scarica la cartina del percorso in PDF</span>
+        </a>
+        <div class="cart__t">
+          <p class="type-mono k-ev">È disponibile</p>
+          <p class="cart__p">La cartina ufficiale del percorso, con le due prove speciali e lo shakedown.</p>
+          <div class="cart__cta">
+            <a class="btn btn--ev" href={cartina.href} target="_blank" rel="noopener">Scarica la mappa ↓</a>
+            <a class="btn" href="/rally-colli-euganei/percorso/">Scopri il percorso completo</a>
+          </div>
+        </div>
+      </div>
+      ) : (
       <dl class="dati reveal">
         <div><dt class="type-mono">Km cronometrati</dt><dd class="type-mono">{unMesePrima() ? '21,36 km' : '20–35 km'}</dd></div>
         {unMesePrima()
@@ -121,8 +141,9 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
           : <><div><dt class="type-mono">Giorni di gara</dt><dd class="type-mono">2</dd></div>
             <div><dt class="type-mono">Al via</dt><dd class="type-mono">21–22 nov 2026</dd></div></>}
       </dl>
+      )}
     </div>
-    {unMesePrima() && <div class="percorso__cta"><a class="btn btn--ev" href="/rally-colli-euganei/percorso/">Scopri il percorso completo</a></div>}
+    {unMesePrima() && !cartina && <div class="percorso__cta"><a class="btn btn--ev" href="/rally-colli-euganei/percorso/">Scopri il percorso completo</a></div>}
   </section>
 
   <!-- STORIA (fondo bianco) -->
@@ -252,6 +273,13 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   @media(min-width:900px){.percorso__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}}
   .percorso__targa{background:var(--carbone);border:1px solid var(--border-on-dark);padding:var(--sp-4);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
   .percorso__targa img{width:min(78%,300px)}
+  .cart{background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--ev);padding:var(--sp-4);display:flex;gap:var(--sp-4);align-items:flex-start;flex-wrap:wrap}
+  .cart__foto{position:relative;display:block;width:min(180px,40%);flex:0 0 auto;border:1px solid rgba(255,255,255,.14);overflow:hidden}
+  .cart__foto img{width:100%;height:auto;display:block}
+  .cart__pdf{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.78);color:#fff;border:1px solid rgba(255,255,255,.28);padding:4px 8px;font-size:12px}
+  .cart__t{flex:1 1 260px;display:flex;flex-direction:column;gap:10px;min-width:0}
+  .cart__p{color:#DDD}
+  .cart__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
   /* storia */
   .storia{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-5);align-items:start}
   @media(min-width:900px){.storia{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.storia__dl{grid-column:1 / -1}}
