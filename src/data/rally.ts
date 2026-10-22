@@ -166,12 +166,18 @@ export const chiusure: Chiusura[] = [];
  *  del passaggio della prima vettura» applicata agli orari della tabella tempi V3. La
  *  riapertura dipende dal passaggio della vettura scopa, quindi dal numero di equipaggi
  *  ammessi: finché non è deciso, non si pubblica un orario di riapertura.
+ *  Una riga per passaggio, non per prova: la strada riapre fra un giro e l'altro e
+ *  richiude un'ora prima del passaggio successivo (confermato da Fabio il 22/10/2026).
  *  Attenzione al lessico: la PROVA si chiama «Cingolina» con la i, la VIA si scrive
  *  «Cengolina» con la e. Le due grafie convivono di proposito: nessuna delle due è
  *  un errore da correggere. */
 export const stradeChiuse = [
-  { prova: 'PS 1 · 3 · 5 — Teolo', strade: 'via Gazzo · via Bettone', chiude: 'Dalle 06:48' },
-  { prova: 'PS 2 · 4 · 6 — Roccolo – Cingolina', strade: 'via Roccolo · via Cengolina', chiude: 'Dalle 07:11' },
+  { prova: 'PS 1 — Teolo', strade: 'via Gazzo · via Bettone', chiude: 'Dalle 06:48' },
+  { prova: 'PS 2 — Roccolo – Cingolina', strade: 'via Roccolo · via Cengolina', chiude: 'Dalle 07:11' },
+  { prova: 'PS 3 — Teolo', strade: 'via Gazzo · via Bettone', chiude: 'Dalle 10:36' },
+  { prova: 'PS 4 — Roccolo – Cingolina', strade: 'via Roccolo · via Cengolina', chiude: 'Dalle 10:59' },
+  { prova: 'PS 5 — Teolo', strade: 'via Gazzo · via Bettone', chiude: 'Dalle 14:14' },
+  { prova: 'PS 6 — Roccolo – Cingolina', strade: 'via Roccolo · via Cengolina', chiude: 'Dalle 14:37' },
 ];
 
 /**
