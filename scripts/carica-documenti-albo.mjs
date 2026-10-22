@@ -53,6 +53,7 @@ const LAVORI = [
   { numero: '1.2', file: 'PROGRAMMA_A.pdf', titolo: 'Programma', gruppo: 'Regolamento e programma', scarica: 'programma.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.4', file: 'TABELLA_DISTANZE_E_TEMPI_V3.pdf', titolo: 'Tabella distanze e tempi', gruppo: 'Regolamento e programma', scarica: 'tabella-distanze-e-tempi.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.3', file: 'CARTINA_PERCORSO_PS_E_SHAKEDOWN_V2.pdf', titolo: 'Cartina percorso PS 1-2-3-4-5-6 e shakedown', gruppo: 'Regolamento e programma', scarica: 'cartina-percorso-ps-1-2-3-4-5-6-e-shakedown.pdf', quando: '2026-10-22', sostituisci: true },
+  { numero: '1.5', file: 'TASSE_DI_ISCRIZIONE_V1.pdf', titolo: 'Tasse di iscrizione', gruppo: 'Regolamento e programma', scarica: 'tasse-di-iscrizione.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '3.1', file: 'DICHIARAZIONE_2_CONDUTTORE.pdf', titolo: 'Dichiarazione 2° conduttore (MOD. 01)', gruppo: 'Modulistica', scarica: 'mod-01-dichiarazione-2-conduttore.pdf' },
   { numero: '3.2', file: 'DICHIARAZIONE_2_CONDUTTORE_NON_UNDER_23.pdf', titolo: 'Dichiarazione 2° conduttore non Under 23 (MOD. 02)', gruppo: 'Modulistica', scarica: 'mod-02-dichiarazione-2-conduttore-non-under-23.pdf' },
   { numero: '3.3', file: 'DICHIARAZIONE_1_CONDUTTORE_NEOPATENTATO.pdf', titolo: 'Dichiarazione 1° conduttore neopatentato (MOD. 03)', gruppo: 'Modulistica', scarica: 'mod-03-dichiarazione-1-conduttore-neopatentato.pdf' },

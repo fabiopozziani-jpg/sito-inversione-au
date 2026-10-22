@@ -93,6 +93,9 @@ export const domandeOnline = [
 ];
 /** Numeri d'albo dei due moduli in PDF da mostrare accanto alle domande online. */
 export const moduliIscrizionePdf = ['3.8', '3.9'];
+/** Numero d'albo del foglio delle tasse di iscrizione: compare nel riquadro iscrizioni
+ *  accanto ai moduli, ma non è modulistica da compilare, quindi non sta in `moduliIscrizionePdf`. */
+export const tasseIscrizioneAlbo = '1.5';
 /** Numero d'albo della cartina del percorso: la pagina Percorso la pesca da lì, così il
  *  link punta sempre all'ultima versione pubblicata e si accende da solo quando esce. */
 export const cartinaPercorsoAlbo = '1.3';

@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, classi, schedaGara, schedaGaraPrima, documentiRapidi, liveTimingAttivo, unMesePrima, domandeOnline, moduliIscrizionePdf } from '../../data/rally';
+import { subnav, classi, schedaGara, schedaGaraPrima, documentiRapidi, liveTimingAttivo, unMesePrima, domandeOnline, moduliIscrizionePdf, tasseIscrizioneAlbo } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
@@ -32,6 +32,9 @@ const moduli = documenti
  *  è sempre quello dell'ultima versione pubblicata, e se non sono ancora in albo il
  *  riquadro mostra solo le domande online. */
 const moduliIscrizione = moduliIscrizionePdf.map(n => moduli.find(d => d.num === n)).filter(Boolean) as typeof moduli;
+/** Il foglio delle tasse sta nel gruppo «Regolamento e programma», non in modulistica:
+ *  si pesca dall'albo per numero, come gli altri, ma fuori dalla lista `moduli`. */
+const tasse = documenti.find(d => d.num === tasseIscrizioneAlbo && !d.superato && d.href);
 /** Area riservata ACI Sport: chi si iscrive deve registrarsi lì. Il link si attiva da solo il 23 ottobre 2026. */
 const aciAreaRiservata = 'https://www.acisport.it/it/acisport/area-riservata/login';
 const aciAreaRiservataAttiva = unMesePrima();
@@ -103,8 +106,16 @@ const aciAreaRiservataAttiva = unMesePrima();
                     </a>
                   </li>
                 ))}
+                {tasse && (
+                  <li>
+                    <a class="sg__d sg__d--on" href={tasse.href} target="_blank" rel="noopener">
+                      <span class="sg__dn">{tasse.title}<span class="type-mono sg__dk">{tasse.num} · {tasse.file} · tutti i costi</span></span>
+                      <span class="type-mono sg__da">Scarica ↓</span>
+                    </a>
+                  </li>
+                )}
               </ul>
-              <span class="hint">I moduli in PDF, compilati e firmati, vanno inviati a <a href={`mailto:${rally.email}`}>{rally.email}</a> con la copia del bonifico, entro la chiusura delle iscrizioni.</span>
+              <span class="hint">I due moduli di iscrizione, compilati e firmati, vanno inviati a <a href={`mailto:${rally.email}`}>{rally.email}</a> con la copia del bonifico, entro la chiusura delle iscrizioni.</span>
               <p>{unMesePrima() ? 'La segreteria conferma per email.' : "Dopo l'invio riceverai la conferma dalla segreteria."}</p>
             </div>
           )}
