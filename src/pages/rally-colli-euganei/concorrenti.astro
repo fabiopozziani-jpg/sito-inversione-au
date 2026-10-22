@@ -45,7 +45,7 @@ const aciAreaRiservataAttiva = unMesePrima();
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Rally Colli Euganei', href: rally.base }, { label: 'Concorrenti' }]} />
 
   <header class="wrap pg-head">
-    <h1 class="type-h1">Concorrenti: iscrizione al Rally Colli Euganei</h1>
+    <h1 class="type-h1">{stato === 'aperte' ? 'Area concorrenti: iscrizioni aperte' : 'Concorrenti: iscrizione al Rally Colli Euganei'}</h1>
     {!unMesePrima() && <p class="lead">Come iscriversi, quali licenze servono, quali documenti scaricare e chi è ammesso alla partenza.</p>}
     {unMesePrima() && <p class="pg-head__stato"><span class="pill">Informazioni in aggiornamento</span></p>}
   </header>
@@ -306,6 +306,8 @@ const aciAreaRiservataAttiva = unMesePrima();
   .avviso{gap:8px}
   .avviso__k{color:var(--alert-rosso-chiaro)}
   .avviso__p{color:#fff}
+  .isc{padding-top:var(--sp-8)}
+  @media(min-width:900px){.isc{padding-top:var(--sp-10)}}
   .isc h2{color:#fff;margin-bottom:8px}
   .isc__intro{max-width:56ch;margin-bottom:var(--sp-5)}
   .sg__tag{margin-top:6px}
