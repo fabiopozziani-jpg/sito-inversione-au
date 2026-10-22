@@ -208,7 +208,7 @@ export const schedaGara: VoceScheda[] = [
   { voce: 'Chiusura iscrizioni', valore: '16 novembre 2026', nota: 'ore 23:59' },
   { voce: 'Consegna road book', valore: 'Venerdì 20 novembre, 18:00 – 22:00', nota: 'Distribuzione road book e controllo dei documenti sportivi pre gara · sede in arrivo' },
   { voce: 'Ricognizioni con vetture di serie', valore: 'Sabato 21 novembre, 07:20 – 11:20', nota: 'Massimo 3 passaggi per prova · limite 50 km/h sulle prove speciali' },
-  { voce: 'Targhe e numeri di gara', valore: 'Consegna alle verifiche sportive', nota: '6 pezzi: 2 portiere, 2 vetri posteriori, parabrezza, lunotto' },
+  { voce: 'Targhe e numeri di gara', valore: 'Consegna alle verifiche sportive' },
   { voce: 'Verifiche sportive ante gara', valore: 'Sabato 21 novembre, 11:00 – 13:00 con shakedown · 13:00 – 15:00 senza shakedown', nota: 'Piazza Mercato, Bresseo (PD)' },
   { voce: 'Verifiche tecniche ante gara', valore: 'Sabato 21 novembre, 11:30 – 13:30 con shakedown · 13:30 – 15:30 senza shakedown', nota: 'Via A. Volta, Selve di Teolo (PD)' },
   { voce: 'Shakedown', valore: 'Sabato 21 novembre, 13:00 – 16:45', nota: 'Facoltativo, massimo 3 passaggi · € 155,00 + IVA (€ 189,10)' },
