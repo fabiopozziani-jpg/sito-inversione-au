@@ -86,10 +86,6 @@ const url = '/rally-colli-euganei/spettatori/';
           <ul class="sic__list">{vietato.map(v => <li><span class="type-mono sic__noL">No</span><span>{v}</span></li>)}</ul>
         </div>
       </div>
-      <div class="sic__avv">
-        <p>{unMesePrima() ? "Si assiste alla gara a proprio rischio, seguendo le indicazioni dei commissari e delle forze dell'ordine e i provvedimenti di chiusura delle strade. Chi non le rispetta viene allontanato." : "La presenza lungo il percorso avviene a proprio rischio. Chi assiste alla gara è tenuto a rispettare le indicazioni dei commissari di percorso e delle forze dell'ordine, e i provvedimenti di chiusura delle strade. Chi non rispetta queste indicazioni viene allontanato dalla zona."}</p>
-        <p>{unMesePrima() ? "Le strade chiudono un'ora prima della prima vettura e riaprono dopo la vettura scopa, l'ultima del rally. Nel mezzo non si attraversa e non si sposta l'auto." : "Le strade chiudono un'ora prima del passaggio della prima vettura e riaprono solo dopo il passaggio della vettura scopa, l'ultima del rally. Prima di quel momento non si attraversa e non si sposta l'auto."}</p>
-      </div>
       <div class="card card--rosso fuoco" role="note">
         <div class="sic__head">
           <span class="sic__ico sic__ico--no" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
@@ -227,11 +223,9 @@ const url = '/rally-colli-euganei/spettatori/';
   .sic__list li{display:flex;gap:12px;align-items:flex-start;color:#DDD}
   .sic__list li>span:first-child{flex:none;width:28px;padding-top:3px}
   .sic__noL{color:var(--alert-rosso-chiaro)}
-  .sic__avv{margin-top:var(--sp-5);max-width:80ch;border-left:var(--border-accent) solid var(--alert-rosso);padding-left:var(--sp-3);display:flex;flex-direction:column;gap:12px}
-  .sic__avv p{color:#fff;font-size:15px}
   .sic__prima{margin-top:var(--sp-5);max-width:70ch;display:flex;flex-direction:column;gap:12px}
   .sic__prima h3{color:#fff}
-  .fuoco{margin-top:var(--sp-5);display:flex;flex-direction:column;gap:14px;max-width:80ch}
+  .fuoco{margin-top:var(--sp-5);display:flex;flex-direction:column;gap:14px}
   .fuoco__p{color:#fff}
   .fuoco__l li{color:#DDD}
   /* territorio */
