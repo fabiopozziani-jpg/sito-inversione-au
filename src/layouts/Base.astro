@@ -42,6 +42,7 @@ const org = {
   sport: 'Motorsport',
 };
 const ld = [org, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])];
+const cfBeacon = '{"token": "e95907449381488faec2276c413a43a3"}';
 ---
 <!doctype html>
 <html lang="it" class="no-js">
@@ -87,5 +88,7 @@ const ld = [org, ...(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [])]
     <SiteFooter />
     <Lightbox />
     <script src="../scripts/movimento.js"></script>
+    <!-- Cloudflare Web Analytics - misurazione statistica senza cookie -->
+    <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={cfBeacon}></script>
   </body>
 </html>
