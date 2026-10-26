@@ -37,15 +37,27 @@ export const rally = {
   aperturaPrevista: 'il 22 ottobre alle 23:59',
   /** Sportity: password del canale (vuota = non ancora pubblicata) */
   sportity: {
-    password: '',
+    password: 'RALLYEUGANEI2026',
     ios: 'https://apps.apple.com/app/sportity/id1450246005',
     android: 'https://play.google.com/store/apps/details?id=com.sportity.app',
+    /** Stesso canale dal browser, senza installare l'app e senza notifiche (vuoto = non attivo). */
+    web: 'https://webapp.sportity.com/event/RALLYEUGANEI2026/038c2bd8-7f05-4274-a5f3-c28005cecc46',
   },
   /** Canale WhatsApp per gli avvisi al pubblico (vuoto = non ancora attivo) */
   whatsapp: '',
   /** Mappe: percorso e zone pubblico (vuote = in pubblicazione) */
   mappaPercorso: '',
   mappaZone: '',
+  /** Mappa navigabile del percorso su Google My Maps (vuote = blocco non mostrato).
+   *  `embed` NON si carica da sola: l'iframe viene inserito solo quando l'utente tocca il
+   *  pulsante, così nessun contenuto di Google parte al caricamento della pagina e non
+   *  servono banner. `view` apre la mappa su Google in una nuova pagina.
+   *  La mappa deve essere condivisa in sola lettura con «chiunque abbia il link»,
+   *  altrimenti ai visitatori compare la richiesta di accesso a Google. */
+  myMaps: {
+    view: 'https://www.google.com/maps/d/viewer?mid=1jQrYJuut9dob93TQGSuNJIfH_GMnZr0',
+    embed: 'https://www.google.com/maps/d/embed?mid=1jQrYJuut9dob93TQGSuNJIfH_GMnZr0&ll=45.347664%2C11.703039&z=12',
+  },
   hero: rallyImg(RALLY_IMG.heroRally, 1920, 1080), heroAlt: rallyAlt(RALLY_IMG.heroRally),
   targa: imgFit(IMMAGINI.targaRally, 1400),
   targaW: 1400,
@@ -224,7 +236,7 @@ export const schedaGara: VoceScheda[] = [
   { voce: 'Caratteristiche del percorso', valore: '2 prove speciali, 3 passaggi ciascuna', nota: 'PS 1·3·5 «Teolo» 3,00 km · PS 2·4·6 «Roccolo – Cingolina» 4,12 km · 21,36 km cronometrati su 109,26 km totali' },
   { voce: 'Parco assistenza', valore: 'Selve di Teolo (PD), via A. Volta 24', nota: 'Ingresso team sabato 21 novembre, 08:00 – 12:00 · spazio su richiesta con il MOD. 06' },
   { voce: 'Elenco verificati e ordine di partenza', valore: 'Sabato 21 novembre, ore 16:30', nota: 'In albo di gara, insieme all’orario individuale della cerimonia di presentazione' },
-  { voce: 'Albo di gara e classifiche', valore: 'Albo di gara sul sito · comunicazioni del Direttore di Gara su Sportity', nota: 'Accesso Sportity in arrivo' },
+  { voce: 'Albo di gara e classifiche', valore: 'Albo di gara sul sito · comunicazioni del Direttore di Gara su Sportity', nota: 'Canale Sportity attivo · password RALLYEUGANEI2026' },
   { voce: 'Parco partenza', valore: 'Piazza Mercato, Bresseo (PD)', nota: 'Ingresso al palco sabato 21 novembre, 17:30 – 18:00 · cerimonia di presentazione degli equipaggi alle 18:30' },
   { voce: 'Partenza prima vettura', valore: 'Domenica 22 novembre, ore 07:30', nota: 'Selve di Teolo — uscita del parco assistenza' },
   { voce: 'Arrivo prima vettura', valore: 'Domenica 22 novembre, ore 16:15', nota: 'Treponti — Via Alcide De Gasperi · pedana arrivo in Piazza Mercato alle 16:30' },

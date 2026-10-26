@@ -68,6 +68,7 @@ const hasDocs = docs.length > 0;
         <p>Le comunicazioni ufficiali arrivano come notifica sul telefono, tramite l'app Sportity.</p>
         <p>{unMesePrima() ? "È l'app usata dai rally di tutto il mondo: gratuita, senza registrazione. Basta inserire una volta la password del canale." : "Sportity è l'app usata dai rally di tutto il mondo per l'albo di gara. È gratuita, non chiede registrazione e non serve creare un account. Basta inserire una volta la password del canale del rally."}</p>
         <p>{unMesePrima() ? "Sono le stesse comunicazioni dell'albo qui sotto: se non installi l'app, trovi tutto in questa pagina." : "Le comunicazioni pubblicate su Sportity sono le stesse dell'albo di gara qui sotto. Se non riesci a installare l'app, trovi tutto in questa pagina."}</p>
+        <p class="sp__uff">Sportity è il canale ufficiale con cui l'organizzazione del rally comunica e pubblica i documenti di gara. In caso di differenza fra le due versioni vale quella pubblicata su Sportity.</p>
       </div>
       <div class="sp__steps">
         <ol class="sp__ol">
@@ -87,6 +88,12 @@ const hasDocs = docs.length > 0;
           <a class="link-box" href={rally.sportity.android} target="_blank" rel="noopener">Scarica l'app per Android ↗</a>
         </div>
         <span class="hint">{unMesePrima() ? 'Si aprono in una nuova pagina' : 'I due pulsanti aprono lo store in una nuova pagina'}</span>
+        {rally.sportity.web && (
+          <div class="sp__web">
+            <a class="link-box" href={rally.sportity.web} target="_blank" rel="noopener">Apri il canale dal browser&nbsp;↗</a>
+            <span class="hint">Stesse comunicazioni, anche da computer, senza installare nulla. Le notifiche però arrivano solo con l'app.</span>
+          </div>
+        )}
       </div>
     </div>
   </section>
@@ -204,6 +211,8 @@ const hasDocs = docs.length > 0;
   .sp__pw--attesa{letter-spacing:.1em;color:var(--nero);opacity:.92}
   .pg-head__reg{color:var(--ev);letter-spacing:.06em;margin-top:12px}
   .sp__store{display:flex;gap:12px;flex-wrap:wrap}
+  .sp__uff{color:#fff;border-left:var(--border-accent) solid var(--ev);padding-left:14px}
+  .sp__web{display:flex;flex-direction:column;gap:6px;align-items:flex-start;margin-top:4px}
   /* ultimi */
   .ult h2{color:#fff;margin-bottom:8px}
   .ult__intro{max-width:56ch;margin-bottom:var(--sp-4)}

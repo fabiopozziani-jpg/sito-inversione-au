@@ -66,6 +66,26 @@ const dopo = unMesePrima();
         </div>
       </div>
     )}
+
+    {rally.myMaps?.embed && (
+      <div class="gmap reveal" data-gmap>
+        <div class="gmap__t">
+          <span class="type-mono k-ev">Mappa navigabile</span>
+          <p class="gmap__p">Lo stesso percorso su Google Maps: si ingrandisce, si sposta e mostra prove speciali, parco assistenza, riordini e arrivo.</p>
+        </div>
+        <div class="gmap__box" data-gmap-box data-src={rally.myMaps.embed}>
+          <div class="gmap__ph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            <button type="button" class="btn btn--ev" data-gmap-load>Carica la mappa interattiva</button>
+            <span class="hint gmap__hint">La mappa è ospitata da Google e si collega solo quando tocchi il pulsante.</span>
+          </div>
+        </div>
+        <div class="gmap__cta">
+          <a class="link-box" href={rally.myMaps.view} target="_blank" rel="noopener">Apri la mappa in Google Maps&nbsp;↗</a>
+          <span class="hint">Si apre in una nuova pagina</span>
+        </div>
+      </div>
+    )}
   </section>
 
   <!-- DATI CHIAVE -->
@@ -226,6 +246,18 @@ const dopo = unMesePrima();
   .tt__tab td:first-child{white-space:nowrap}
   .tt__dati{margin-bottom:24px}
   .mappa__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  /* mappa navigabile: l'iframe di Google entra solo al clic (vedi script in fondo) */
+  .gmap{display:flex;flex-direction:column;gap:12px;margin-top:var(--sp-4)}
+  .gmap__t{display:flex;flex-direction:column;gap:6px}
+  .gmap__p{color:#DDD;max-width:70ch}
+  .gmap__box{background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--ev);aspect-ratio:4/3}
+  @media(min-width:680px){.gmap__box{aspect-ratio:16/9}}
+  @media(min-width:1000px){.gmap__box{aspect-ratio:2/1}}
+  .gmap__box :global(iframe){display:block;width:100%;height:100%;border:0}
+  .gmap__ph{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:var(--sp-4)}
+  .gmap__ph svg{color:var(--ev)}
+  .gmap__hint{max-width:46ch}
+  .gmap__cta{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
   .ps__prov{margin-left:8px;font-size:10px;letter-spacing:.08em;border:1px solid currentColor;padding:1px 5px;opacity:.75}
   @media (max-width:640px){.tt__tab th,.tt__tab td{padding:8px 6px;font-size:14px}}
   /* prove */
@@ -259,3 +291,24 @@ const dopo = unMesePrima();
   .tt__file{display:inline-flex;align-items:center;gap:10px;color:var(--grigio-450)}
   .tt__dl .hint a{color:#fff}
 </style>
+
+
+<script>
+  /** Mappa del percorso: nessun contenuto di Google viene richiesto finché l'utente non
+   *  tocca il pulsante. Al clic il segnaposto viene sostituito dall'iframe di My Maps. */
+  document.querySelectorAll('[data-gmap-load]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const box = b.closest('[data-gmap-box]') as HTMLElement | null;
+      const src = box?.dataset.src;
+      if (!box || !src) return;
+      const f = document.createElement('iframe');
+      f.src = src;
+      f.title = 'Mappa del percorso del 1° Rally Colli Euganei su Google My Maps';
+      f.loading = 'lazy';
+      f.allow = 'fullscreen';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.style.cssText = 'display:block;width:100%;height:100%;border:0';
+      box.replaceChildren(f);
+    });
+  });
+</script>
