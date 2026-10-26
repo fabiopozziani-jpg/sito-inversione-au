@@ -55,8 +55,8 @@ export const rally = {
    *  La mappa deve essere condivisa in sola lettura con «chiunque abbia il link»,
    *  altrimenti ai visitatori compare la richiesta di accesso a Google. */
   myMaps: {
-    view: 'https://www.google.com/maps/d/viewer?mid=1jQrYJuut9dob93TQGSuNJIfH_GMnZr0',
-    embed: 'https://www.google.com/maps/d/embed?mid=1jQrYJuut9dob93TQGSuNJIfH_GMnZr0&ll=45.347664%2C11.703039&z=12',
+    view: 'https://www.google.com/maps/d/viewer?mid=1V5JGRtHSxao8F74aiVyrG3Y63R7f7Vo',
+    embed: 'https://www.google.com/maps/d/embed?mid=1V5JGRtHSxao8F74aiVyrG3Y63R7f7Vo&ll=45.347664%2C11.703039&z=12',
   },
   hero: rallyImg(RALLY_IMG.heroRally, 1920, 1080), heroAlt: rallyAlt(RALLY_IMG.heroRally),
   targa: imgFit(IMMAGINI.targaRally, 1400),
