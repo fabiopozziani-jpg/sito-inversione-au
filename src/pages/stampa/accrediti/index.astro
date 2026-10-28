@@ -1,38 +1,88 @@
 ---
-/** Accrediti stampa — sub-nav rally (la pagina è nell'hub), requisiti, scadenze, droni, modulo. */
+/** Accrediti stampa — sub-nav rally (la pagina è nell'hub): modulo PDF da scaricare,
+ *  requisiti, scadenza, allegati, droni e ritiro del pass in Sala Stampa.
+ *  Il modulo online è stato sostituito dal MOD. 10 il 28 ottobre 2026: la richiesta
+ *  si invia per email all'ufficio stampa, che risponde a tutti. */
 import '../../../styles/hub.css';
 import Base from '../../../layouts/Base.astro';
 import EventSubnav from '../../../components/EventSubnav.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
-import { subnav, unMesePrima } from '../../../data/rally';
-const email = 'inversione.au3@gmail.com';
-const eventi = ['1° Rally Colli Euganei ACI Sport — 21–22 novembre 2026', 'Polo Motor Show — edizione 2027', 'Legnaro Motori — edizione 2027'];
-const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social'];
+import { subnav } from '../../../data/rally';
+const email = 'niccolo@nbudoia.com';
+const modulo = '/documenti/mod-10-richiesta-accredito-stampa.pdf';
 ---
-<Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description="Accredito stampa per il 1° Rally Colli Euganei: chi può chiederlo, entro quando, regole sulle riprese con drone e modulo di richiesta." active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="Accrediti stampa — 1° Rally Colli Euganei">
+<Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description="Accredito stampa per il 1° Rally Colli Euganei: scarica il modulo MOD. 10, invialo entro il 18 novembre 2026. Requisiti, allegati e regole sui droni." active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="Accrediti stampa — 1° Rally Colli Euganei">
   <EventSubnav items={subnav()} current="/stampa/accrediti/" bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Stampa', href: '/stampa/' }, { label: 'Accrediti stampa' }]} />
   <header class="wrap pg-head">
     <h1 class="type-h1">Accrediti stampa per il Rally Colli Euganei</h1>
-    <p class="lead">{unMesePrima() ? "Giornalisti, fotografi e videomaker: compila il modulo, l'esito arriva via email." : "Giornalisti, fotografi e videomaker: compila il modulo e ricevi l'esito via email."}</p>
+    <p class="lead">Giornalisti, fotografi e videomaker: scarica il modulo, compilalo e invialo per email. L'esito arriva via email.</p>
   </header>
+
+  <section id="modulo" class="wrap section" aria-labelledby="mod-h">
+    <div class="card card--top dl">
+      <span class="pill pill--ev">MOD. 10</span>
+      <h2 id="mod-h" class="type-h2">Modulo di richiesta accredito</h2>
+      <p>Tre pagine: dati e qualifica, norme da accettare, dichiarazione della polizza assicurativa. Si compila al computer o in stampatello, poi si firma.</p>
+      <a class="btn btn--ev dl__b" href={modulo} download>Scarica il modulo <span class="arrow-down" aria-hidden="true">↓</span></a>
+      <p class="hint">PDF compilabile · 3 pagine · 548 KB</p>
+      <dl class="dl__d">
+        <div><dt class="type-mono">Invialo a</dt><dd><a class="link-line" href={`mailto:${email}?subject=Richiesta%20accredito%20stampa%20%C2%B7%201%C2%B0%20Rally%20Colli%20Euganei`}>{email}</a></dd></div>
+        <div><dt class="type-mono">Entro</dt><dd>Mercoledì 18 novembre 2026, ore 23:59</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="come" class="wrap section s" aria-labelledby="come-h">
+    <h2 id="come-h" class="type-h2">Come si richiede</h2>
+    <ol class="lista-ev passi">
+      <li>Scarica il modulo e compilalo in ogni campo.</li>
+      <li>Firma la pagina 1, dopo aver letto le norme di pagina 2.</li>
+      <li>Se sei fotografo o video-operatore, compila anche la pagina 3 e allega la copia della polizza.</li>
+      <li>Invia tutto a <a class="link-line" href={`mailto:${email}`}>{email}</a> entro il 18 novembre.</li>
+      <li>Porta l'originale firmato al ritiro del pass, in Sala Stampa.</li>
+    </ol>
+  </section>
 
   <section id="chi" class="wrap section s" aria-labelledby="chi-h">
     <h2 id="chi-h" class="type-h2">Chi può chiedere l'accredito</h2>
     <p class="type-body-dark p">L'accredito è nominativo.</p>
     <ul class="lista-ev">
-      <li>Giornalista con tessera dell'Ordine.</li><li>{unMesePrima() ? 'Fotografo o videomaker con incarico scritto di una redazione.' : 'Fotografo o videomaker con incarico scritto di una redazione.'}</li>
-      <li>Testata online o canale video con pubblicazioni verificabili sul motorsport.</li><li>Operatore televisivo con richiesta della propria emittente.</li>
+      <li>Giornalista con tessera dell'Ordine.</li>
+      <li>Fotografo o videomaker con incarico scritto di una redazione.</li>
+      <li>Testata online o canale video con pubblicazioni verificabili sul motorsport.</li>
+      <li>Operatore televisivo con richiesta della propria emittente.</li>
     </ul>
-    <p class="type-body-dark p">{unMesePrima() ? 'Niente accrediti per uso personale, per entrare più comodamente o per riprese commerciali.' : 'Non rilasciamo accrediti per uso personale, per accesso agevolato al pubblico o per riprese a scopo commerciale.'}</p>
+    <p class="type-body-dark p">Ogni testata può accreditare al massimo un giornalista e due fotografi. Le agenzie video e TV al massimo tre addetti.</p>
+    <p class="type-body-dark p">Niente accrediti per uso personale, per entrare più comodamente o per riprese commerciali.</p>
+  </section>
+
+  <section id="allegati" class="wrap section s" aria-labelledby="all-h">
+    <h2 id="all-h" class="type-h2">Cosa allegare</h2>
+    <ul class="lista-ev">
+      <li>Richiesta su carta intestata della testata, o documento che attesti la collaborazione.</li>
+      <li>Fotografi e video-operatori: copia della polizza professionale infortuni, morte e responsabilità civile verso terzi.</li>
+      <li>Free lance: iscrizione CCIAA, partita IVA e pubblicazioni dell'anno precedente.</li>
+    </ul>
+    <p class="type-body-dark p">Senza gli allegati la richiesta non può essere valutata.</p>
   </section>
 
   <section id="scadenze" class="wrap section s" aria-labelledby="sc-h">
-    <h2 id="sc-h" class="type-h2">Entro quando richiederlo</h2>
+    <h2 id="sc-h" class="type-h2">Date e risposte</h2>
     <dl class="dati sc">
-      <div><dt class="type-mono">Chiusura richieste</dt><dd>14 novembre 2026, ore 18:00<span class="hint">Una settimana prima della gara</span></dd></div>
+      <div><dt class="type-mono">Chiusura richieste</dt><dd>18 novembre 2026, ore 23:59<span class="hint">Tre giorni prima della gara</span></dd></div>
       <div><dt class="type-mono">Esito</dt><dd>Via email<span class="hint">Rispondiamo a tutte le richieste, anche in caso di rifiuto</span></dd></div>
     </dl>
+    <p class="type-body-dark p">L'invio della richiesta non vale come accredito: l'accredito esiste solo dopo la nostra conferma.</p>
+  </section>
+
+  <section id="pass" class="wrap section s" aria-labelledby="pass-h">
+    <h2 id="pass-h" class="type-h2">Dove si ritira il pass</h2>
+    <dl class="dati sc">
+      <div><dt class="type-mono">Sala Stampa</dt><dd>Piazza Bresseo, Teolo (PD)<span class="hint">Consegna del modulo in originale</span></dd></div>
+      <div><dt class="type-mono">Aperture</dt><dd>Venerdì 20 novembre dalla sera<span class="hint">Sabato 21 e domenica 22 per tutta la durata dell'evento</span></dd></div>
+    </dl>
+    <p class="type-body-dark p">Il pass è personale e viene consegnato solo a chi ha fatto la richiesta.</p>
   </section>
 
   <section id="droni" class="wrap section s" aria-labelledby="dr-h">
@@ -40,49 +90,17 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
     <div class="card card--rosso">
       <h3 class="type-h3">Il drone non è ammesso</h3>
       <p>Al 1° Rally Colli Euganei non rilasciamo accrediti per riprese con drone.</p>
-      <p>{unMesePrima() ? "La gara si corre dentro il Parco Regionale dei Colli Euganei, dove il sorvolo è subordinato all'autorizzazione dell'Ente Parco (legge 394/1991, art. 11). Non è una regola nostra: vale su tutta l'area." : "La gara si svolge dentro il Parco Regionale dei Colli Euganei. Nelle aree naturali protette il sorvolo non autorizzato è vietato dalla legge quadro sulle aree protette (legge 394/1991, art. 11) e il volo con droni resta comunque subordinato all'autorizzazione dell'Ente Parco: non è una regola dell'organizzazione, è il regime che vale su tutta l'area."}</p>
-      <p>{unMesePrima() ? 'Nessun accredito stampa dà diritto a volare sul percorso.' : 'Per questo non possiamo autorizzare voli sul percorso, e nessun accredito stampa dà diritto a farne.'}</p>
+      <p>La gara si corre dentro il Parco Regionale dei Colli Euganei, dove il sorvolo è subordinato all'autorizzazione dell'Ente Parco (legge 394/1991, art. 11). Non è una regola nostra: vale su tutta l'area.</p>
+      <p>Nessun accredito stampa dà diritto a volare sul percorso.</p>
     </div>
   </section>
 
-  <section id="modulo" class="wrap section" aria-labelledby="mod-h">
-    <form class="form-box" data-mailform data-modulo="accrediti" data-to={email} data-subject="Richiesta accredito stampa · Rally Colli Euganei" novalidate>
-      <h2 id="mod-h" class="type-h2">Modulo di richiesta accredito</h2>
-      <div class="errbox" role="alert" tabindex="-1" hidden data-errors></div>
-      <div class="f-grid">
-        <label class="field"><span>Evento *</span><select name="evento" required>{eventi.map(e => <option value={e}>{e}</option>)}</select></label>
-        <label class="field"><span>Ruolo *</span><select name="ruolo" required>{ruoli.map(r => <option value={r}>{r}</option>)}</select></label>
-        <label class="field"><span>Nome e cognome *</span><input type="text" name="nome" autocomplete="name" required /></label>
-        <label class="field"><span>Testata o committente *</span><input type="text" name="testata" autocomplete="organization" required /></label>
-        <label class="field"><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label>
-        <label class="field"><span>Cellulare * — lo usiamo solo nei giorni di gara</span><input type="tel" name="cellulare" autocomplete="tel" required minlength="8" /></label>
-        <label class="field"><span>N° tessera Ordine o link alla lettera di incarico</span><input type="text" name="tessera" /></label>
-        <label class="field"><span>Quante persone accrediti, te compreso *</span><input type="number" name="operatori" min="1" max="10" value="1" required /></label>
-        <label class="field f-full"><span>Nome e cognome degli altri operatori</span><input type="text" name="altri_operatori" /></label>
-        <fieldset class="f-full" data-almeno-una="Giorni di presenza">
-          <legend>Giorni di presenza *</legend>
-          <label class="chk"><input type="checkbox" name="sabato" /><span>Sabato 21 novembre — verifiche e shakedown</span></label>
-          <label class="chk"><input type="checkbox" name="domenica" /><span>Domenica 22 novembre — prove speciali e arrivo</span></label>
-        </fieldset>
-        <fieldset class="f-full">
-          <legend>Attrezzatura</legend>
-          <label class="chk"><input type="checkbox" name="fotocamera" /><span>Fotocamera e teleobiettivo</span></label>
-          <label class="chk"><input type="checkbox" name="videocamera" /><span>Videocamera o attrezzatura video</span></label>
-        </fieldset>
-        <label class="field"><span>Targa del veicolo *</span><input type="text" name="targa" required /></label>
-        <label class="field"><span>Marca, modello e colore *</span><input type="text" name="veicolo" required /></label>
-        <label class="field f-full"><span>Cosa hai in programma di pubblicare</span><textarea name="note" rows="3"></textarea></label>
-      </div>
-      <label class="chk"><input type="checkbox" name="regolamento" required /><span>Mi impegno a rispettare le indicazioni dei commissari di percorso e della direzione di gara e a non effettuare riprese con drone sul percorso.</span></label>
-      <label class="chk"><input type="checkbox" name="privacy" required /><span>Ho letto l'<a href="/privacy/">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla richiesta.</span></label>
-      <button type="submit" class="btn btn--ev">Invia richiesta</button>
-      <p class="form-msg" role="status" aria-live="polite"></p>
-    </form>
+  <section id="contatto" class="wrap section s" aria-labelledby="con-h">
+    <h2 id="con-h" class="type-h2">Chi risponde</h2>
+    <p class="type-body-dark p">Ufficio stampa del 1° Rally Colli Euganei.</p>
+    <p><a class="type-mono link-line" href={`mailto:${email}`}>{email}</a></p>
   </section>
 </Base>
-<script>
-  import '../../../scripts/mailform';
-</script>
 <style>
   .pg-head{padding-top:var(--sp-4);padding-bottom:var(--sp-2);display:flex;flex-direction:column;gap:12px}
   .pg-head h1{color:#fff;max-width:22ch;text-wrap:balance}
@@ -93,4 +111,16 @@ const ruoli = ['Giornalista', 'Fotografo', 'Videomaker', 'Redazione web o social
   .sc dd{display:flex;flex-direction:column;gap:6px;font-size:18px}
   .card--rosso h3{color:#fff}
   .card--rosso p{color:#DDD}
+  .dl{gap:14px;align-items:flex-start}
+  .dl p{max-width:62ch}
+  .dl__b{align-self:flex-start;margin-top:4px}
+  .dl__d{display:flex;flex-wrap:wrap;gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark);width:100%;margin-top:4px}
+  .dl__d>div{flex:1 1 220px;background:var(--nero);padding:16px 20px;display:flex;flex-direction:column-reverse;gap:6px}
+  .dl__d dt{color:var(--grigio-450)}
+  .dl__d dd{margin:0;color:#fff;font-size:17px}
+  .dl__d a{color:#fff}
+  .passi{counter-reset:passo}
+  .passi li{color:#DDD;counter-increment:passo;position:relative;padding-left:42px}
+  .passi li::before{content:counter(passo);position:absolute;left:14px;top:1px;font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;color:var(--ev)}
+  .passi a{color:#fff}
 </style>

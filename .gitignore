@@ -35,3 +35,4 @@ _to_delete/
 
 # gallerie complete (interim: restano sul Mac e vanno nel Media Manager, non in git)
 public/foto/*-20[0-9][0-9]/
+.lav/

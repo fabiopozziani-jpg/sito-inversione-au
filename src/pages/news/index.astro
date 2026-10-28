@@ -50,7 +50,7 @@ const fmt = (iso: string) => `${iso.slice(8,10)} ${MESI[Number(iso.slice(5,7))-1
     const state = { evento: '', chi: '' };
     const run = () => {
       let n = 0;
-      items.forEach(el => { const ok = (!state.evento || el.dataset.evento === state.evento) && (!state.chi || el.dataset.chi === state.chi); el.hidden = !ok; if (ok) n++; });
+      items.forEach(el => { const ok = (!state.evento || el.dataset.evento === state.evento) && (!state.chi || (el.dataset.chi ?? '').includes(state.chi)); el.hidden = !ok; if (ok) n++; });
       const ev = state.evento, ch = state.chi;
       const base = !ev ? 'News' : ev === 'Associazione' ? 'News dall’associazione' : `News sul ${ev}`;
       const who = ch === 'Per il pubblico' ? ' per il pubblico' : ch === 'Per i concorrenti' ? ' per i concorrenti' : '';

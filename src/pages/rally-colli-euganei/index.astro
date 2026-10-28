@@ -33,7 +33,7 @@ const eventLd = {
 const sponsorRally = [...annuali, ...sponsorEvento('rally')];
 // Ultime due notizie del rally (CMS News, riserva statica): la categoria mostra a chi si rivolge.
 const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euganei').slice(0, 2)
-  .map(p => ({ image: p.image, category: p.chi === 'Per i concorrenti' ? 'Concorrenti' : 'Spettatori', date: p.date, title: p.title, excerpt: p.excerpt, href: `/news/${p.slug}/` }));
+  .map(p => ({ image: p.image, category: p.chi.includes('pubblico') ? (p.chi.includes('concorrenti') ? 'Spettatori e concorrenti' : 'Spettatori') : 'Concorrenti', date: p.date, title: p.title, excerpt: p.excerpt, href: `/news/${p.slug}/` }));
 ---
 <Base
   title="Rally Colli Euganei 2026 · 21–22 novembre | Inversione A U"
