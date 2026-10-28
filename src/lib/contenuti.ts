@@ -295,6 +295,9 @@ export async function caricaRally() {
       if (i < 0) return { ...g, voci: g.voci.filter(tieni) };
       return { ...g, voci: [...g.voci.slice(0, i).filter(tieni), R.vocePerOrariMancanti, ...g.voci.slice(i).filter(tieni)] };
     }) as typeof programmaOut;
+    // Un giorno le cui voci sono tutte nascoste resterebbe come titolo con l'elenco vuoto
+    // (e' successo con il venerdi, che ha solo road book e briefing): si toglie del tutto.
+    programmaOut = programmaOut.filter(g => g.voci.length > 0);
   }
   const ultimoAgg = iscritti && iscritti.length ? (iscritti as any[]).map(i => i._updatedDate?.$date ?? i._updatedDate ?? '').sort().pop() : '';
   return { rally, prove: proveOut, scadenze: scadenzeOut, iscritti: iscrittiOut, iscrittiAggiornatoAl: ultimoAgg ? new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', timeZone: 'Europe/Rome' }).format(new Date(ultimoAgg)) : R.iscrittiAggiornatoAl, iscrittiPdf: R.iscrittiPdf, documenti: documentiOut, programma: dopo ? programmaOut : R.programmaPrima };

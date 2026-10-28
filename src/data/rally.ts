@@ -115,6 +115,14 @@ export const cartinaPercorsoAlbo = '1.3';
  *  pescano dall'albo, così il link punta sempre all'ultima versione pubblicata. */
 export const programmaAlbo = '1.2';
 export const tabellaTempiAlbo = '1.4';
+/** Numero d'albo del regolamento particolare di gara.
+ *  L'RPG del 28 ottobre 2026 e firmato dall'Organizzatore, dal Direttore di Gara e visto
+ *  dalla Delegazione Regionale, ma il riquadro ACI Sport e ancora in bianco: nessuna data
+ *  di approvazione e nessun numero RM/__/2026. Finche il numero resta in
+ *  `documentiInApprovazione` l'albo gli mette accanto la pillola «In approvazione»:
+ *  quando arriva il visto basta svuotare l'elenco. */
+export const rpgAlbo = '1.1';
+export const documentiInApprovazione: string[] = ['1.1'];
 
 export type StatoIscrizioni = 'non-aperte' | 'aperte' | 'chiuse';
 /** Stato delle iscrizioni ricavato dalle date: apertura 22 ottobre ore 23:59,
@@ -227,23 +235,27 @@ export const schedaGaraPrima: VoceScheda[] = [
 export const schedaGara: VoceScheda[] = [
   { voce: 'Apertura iscrizioni', valore: '22 ottobre 2026', nota: 'ore 23:59' },
   { voce: 'Chiusura iscrizioni', valore: '16 novembre 2026', nota: 'ore 23:59' },
-  { voce: 'Consegna road book', valore: 'Venerdì 20 novembre, 18:00 – 22:00', nota: 'Distribuzione road book e controllo dei documenti sportivi pre gara · sede in arrivo' },
-  { voce: 'Ricognizioni con vetture di serie', valore: 'Sabato 21 novembre, 07:20 – 11:20', nota: 'Massimo 3 passaggi per prova · limite 50 km/h sulle prove speciali' },
-  { voce: 'Targhe e numeri di gara', valore: 'Consegna alle verifiche sportive' },
-  { voce: 'Verifiche sportive ante gara', valore: 'Sabato 21 novembre, 11:00 – 13:00 con shakedown · 13:00 – 15:00 senza shakedown', nota: 'Piazza Mercato, Bresseo (PD)' },
-  { voce: 'Verifiche tecniche ante gara', valore: 'Sabato 21 novembre, 11:30 – 13:30 con shakedown · 13:30 – 15:30 senza shakedown', nota: 'Via A. Volta, Selve di Teolo (PD)' },
+  { voce: 'Consegna road book', valore: 'Venerdì 20 novembre, 18:00 – 22:00', nota: 'Rally Village — Piazza Mercato, Treponti (PD) · distribuzione road book e controllo dei documenti sportivi pre gara' },
+  { voce: 'Briefing', valore: 'Venerdì 20 novembre, ore 18:00', nota: 'Briefing scritto, pubblicato online: non si tiene in presenza' },
+  { voce: 'Ricognizioni con vetture di serie', valore: 'Sabato 21 novembre, 07:20 – 11:20', nota: 'Massimo 3 passaggi per prova · limite 70 km/h sulle prove speciali · servizio di tracciamento € 50,00 + IVA' },
+  { voce: 'Targhe e numeri di gara', valore: 'Sabato 21 novembre, 11:00 – 13:00 con shakedown · 13:00 – 15:00 senza shakedown', nota: 'Rally Village — Piazza Mercato, Treponti (PD) · targa anteriore, targa porta numero per il lunotto e due pannelli porta numeri' },
+  { voce: 'Verifiche sportive ante gara', valore: 'Sabato 21 novembre, 11:00 – 13:00 con shakedown · 13:00 – 15:00 senza shakedown', nota: 'Rally Village — Piazza Mercato, Treponti (PD)' },
+  { voce: 'Verifiche tecniche ante gara', valore: 'Sabato 21 novembre, 11:30 – 13:30 con shakedown · 13:30 – 15:30 senza shakedown', nota: 'Rally Village — Piazza Mercato, Treponti (PD)' },
   { voce: 'Shakedown', valore: 'Sabato 21 novembre, 13:00 – 16:45', nota: 'Facoltativo, massimo 3 passaggi' },
   { voce: 'Caratteristiche del percorso', valore: '2 prove speciali, 3 passaggi ciascuna', nota: 'PS 1·3·5 «Teolo» 3,00 km · PS 2·4·6 «Roccolo – Cingolina» 4,12 km · 21,36 km cronometrati su 109,26 km totali' },
   { voce: 'Parco assistenza', valore: 'Selve di Teolo (PD), via A. Volta 24', nota: 'Ingresso team sabato 21 novembre, 08:00 – 12:00 · spazio su richiesta con il MOD. 06' },
   { voce: 'Elenco verificati e ordine di partenza', valore: 'Sabato 21 novembre, ore 16:30', nota: 'In albo di gara, insieme all’orario individuale della cerimonia di presentazione' },
   { voce: 'Albo di gara e classifiche', valore: 'Albo di gara sul sito · comunicazioni del Direttore di Gara su Sportity', nota: 'Canale Sportity attivo · password RALLYEUGANEI2026' },
-  { voce: 'Parco partenza', valore: 'Piazza Mercato, Bresseo (PD)', nota: 'Ingresso al palco sabato 21 novembre, 17:30 – 18:00 · cerimonia di presentazione degli equipaggi alle 18:30' },
-  { voce: 'Partenza prima vettura', valore: 'Domenica 22 novembre, ore 07:30', nota: 'Selve di Teolo — uscita del parco assistenza' },
-  { voce: 'Arrivo prima vettura', valore: 'Domenica 22 novembre, ore 16:15', nota: 'Treponti — Via Alcide De Gasperi · pedana arrivo in Piazza Mercato alle 16:30' },
+  { voce: 'Cerimonia di presentazione', valore: 'Sabato 21 novembre, ore 18:30', nota: 'Rally Village — Piazza Mercato, Treponti (PD) · ingresso al palco 17:30 – 18:00 · parco partenza non previsto' },
+  { voce: 'Partenza prima vettura', valore: 'Domenica 22 novembre, ore 07:30', nota: 'Selve di Teolo — uscita del parco assistenza · località ufficiale di partenza e arrivo: Rally Village — Piazza Mercato, Treponti (PD)' },
+  { voce: 'Arrivo prima vettura', valore: 'Domenica 22 novembre, ore 16:15', nota: 'Treponti — Via Alcide De Gasperi · pedana arrivo al Rally Village, Piazza Mercato, alle 16:30' },
   { voce: 'Elenco vetture in verifica', valore: 'Domenica 22 novembre, ore 16:00', nota: 'Vetture convocate alle verifiche tecniche dopo la gara · in albo di gara' },
-  { voce: 'Premiazione', valore: 'Domenica 22 novembre, dalle 16:30', nota: 'Treponti — Piazza Mercato · insieme all’arrivo in pedana · ingresso libero' },
+  { voce: 'Verifiche tecniche dopo la gara', valore: 'Domenica 22 novembre, dalle 16:45', nota: 'Solo per le vetture convocate · modalità per circolare informativa' },
+  { voce: 'Premiazione', valore: 'Domenica 22 novembre, dalle 16:30', nota: 'Rally Village — Piazza Mercato, Treponti (PD) · insieme all’arrivo in pedana · ingresso libero' },
   { voce: 'Pubblicazione classifiche', valore: 'Classifiche finali domenica 22 novembre, ore 18:00', nota: 'In albo di gara · live timing su rally.ficr.it' },
-  { voce: 'Sala stampa e accrediti', valore: 'Accrediti con il modulo online sul sito' },
+  { voce: 'Direzione gara e segreteria', valore: 'Venerdì 20 novembre, 18:00 – 22:00 · sabato 21, 09:00 – 21:00 · domenica 22, 07:00 – 19:00', nota: 'Rally Village — Piazza Mercato, Treponti (PD)' },
+  { voce: 'Sala stampa e accrediti', valore: 'Sabato 21 novembre, 09:00 – 21:00 · domenica 22, 07:00 – 19:00', nota: 'Rally Village — Piazza Mercato, Treponti (PD) · accrediti con il MOD. 10 da scaricare' },
+  { voce: 'Parco chiuso di fine gara', valore: 'Rally Village — Piazza Mercato, Treponti (PD)', nota: 'Le vetture restano in parco chiuso fino alla scadenza dei termini per i reclami' },
 ];
 
 /**
@@ -252,7 +264,7 @@ export const schedaGara: VoceScheda[] = [
  */
 export type LinkDoc = { nome: string; nota?: string; href: string; albo?: string };
 export const documentiRapidi: LinkDoc[] = [
-  { nome: 'Regolamento particolare di gara', nota: 'RPG · in fase di approvazione', href: '' },
+  { nome: 'Regolamento particolare di gara', nota: 'RPG · in fase di approvazione', href: '', albo: rpgAlbo },
   { nome: 'Programma', href: '', albo: programmaAlbo },
   { nome: 'Cartina generale', href: '', albo: cartinaPercorsoAlbo },
   { nome: 'Tabella distanze e tempi', nota: 'TDT', href: '', albo: tabellaTempiAlbo },
@@ -307,6 +319,10 @@ export const programmaPrima = [
  *  Riserva statica: gli stessi orari stanno nella collection `Programma`, che ha la
  *  precedenza. Si allineano con `node scripts/programma-rally.mjs --run`. */
 export const programma = [
+  { titolo: 'Venerdì 20 novembre', voci: [
+    { ora: '18:00 – 22:00', titolo: 'Consegna road book e controllo documenti sportivi', nota: 'Rally Village — Piazza Mercato, Treponti. Aperte anche direzione gara e segreteria.' },
+    { ora: '18:00', titolo: 'Briefing scritto', nota: 'Pubblicato online: non si tiene in presenza.' },
+  ] },
   { titolo: 'Sabato 21 novembre', voci: [
     { ora: '07:20 – 11:20', titolo: 'Ricognizioni autorizzate del percorso', nota: 'Gli equipaggi percorrono le prove con vetture di serie, a velocità di codice.' },
     { ora: '08:00 – 12:00', titolo: 'Ingresso team in parco assistenza', nota: 'I team prendono posizione a Selve di Teolo.' },
@@ -331,7 +347,8 @@ export const programma = [
     { ora: '15:37', titolo: 'PS 6 · Roccolo – Cingolina', nota: 'Terzo e ultimo passaggio.' },
     { ora: '16:00', titolo: 'Elenco vetture in verifica', nota: 'Pubblicazione in albo di gara delle vetture convocate alle verifiche tecniche dopo la gara.' },
     { ora: '16:15', titolo: 'Arrivo, prima vettura', nota: 'Treponti — Via Alcide De Gasperi.' },
-    { ora: '16:30', titolo: 'Pedana arrivo e premiazioni', nota: 'Treponti — Piazza Mercato · ingresso libero.' },
+    { ora: '16:30', titolo: 'Pedana arrivo e premiazioni', nota: 'Rally Village — Piazza Mercato, Treponti · ingresso libero.' },
+    { ora: '16:45', titolo: 'Verifiche tecniche dopo la gara', nota: 'Solo per le vetture convocate in albo di gara.' },
     { ora: '18:00', titolo: 'Classifiche finali', nota: 'Pubblicazione in albo di gara.' },
   ] },
 ];
@@ -350,6 +367,9 @@ export const vociOrariNascoste: string[] = [];
  * soltanto dal programma pubblico. Si tolgono, senza riga sostitutiva.
  */
 export const vociNascosteSpettatori = [
+  'Consegna road book e controllo documenti sportivi',
+  'Briefing scritto',
+  'Verifiche tecniche dopo la gara',
   'Ricognizioni autorizzate del percorso',
   'Ingresso team in parco assistenza',
   'Verifiche sportive',
@@ -358,7 +378,7 @@ export const vociNascosteSpettatori = [
 export const vocePerOrariMancanti = {
   ora: 'In arrivo',
   titolo: 'Prove speciali, riordini e assistenza',
-  nota: 'Sei passaggi cronometrati sulle due prove, due riordini a Treponti e due parchi assistenza a Selve di Teolo. Gli orari escono con la tabella tempi e distanze.',
+  nota: 'Sei passaggi cronometrati sulle due prove, due riordini al Rally Village di Treponti e due parchi assistenza a Selve di Teolo. Gli orari escono con la tabella tempi e distanze.',
 };
 
 export const consentito = [

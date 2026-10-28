@@ -24,12 +24,14 @@ const RUN = process.argv.includes('--run');
 const API = 'https://www.wixapis.com';
 
 /* ---------- il programma, nell'ordine in cui deve comparire ---------- */
-const SAB = 'Sabato 21 novembre', DOM = 'Domenica 22 novembre', TBD = 'Da definire';
+const VEN = 'Venerdì 20 novembre', SAB = 'Sabato 21 novembre', DOM = 'Domenica 22 novembre', TBD = 'Da definire';
 const VOCI = [
+  { giorno: VEN, ora: '18:00 – 22:00', titolo: 'Consegna road book e controllo documenti sportivi', nota: 'Rally Village — Piazza Mercato, Treponti. Aperte anche direzione gara e segreteria.' },
+  { giorno: VEN, ora: '18:00', titolo: 'Briefing scritto', nota: 'Pubblicato online: non si tiene in presenza.' },
   { giorno: SAB, ora: '07:20 – 11:20', titolo: 'Ricognizioni autorizzate del percorso', nota: 'Gli equipaggi percorrono le prove con vetture di serie, a velocità di codice.' },
   { giorno: SAB, ora: '08:00 – 12:00', titolo: 'Ingresso team in parco assistenza', nota: 'I team prendono posizione a Selve di Teolo.' },
-  { giorno: SAB, ora: '11:00 – 15:00', titolo: 'Verifiche sportive', nota: 'Fino alle 13:00 gli equipaggi iscritti allo shakedown, dalle 13:00 tutti gli altri.' },
-  { giorno: SAB, ora: '11:30 – 15:30', titolo: 'Verifiche tecniche', nota: 'Controllo delle vetture. Fino alle 13:30 gli equipaggi iscritti allo shakedown, dalle 13:30 tutti gli altri.' },
+  { giorno: SAB, ora: '11:00 – 15:00', titolo: 'Verifiche sportive', nota: 'Rally Village — Piazza Mercato, Treponti. Fino alle 13:00 gli equipaggi iscritti allo shakedown, dalle 13:00 tutti gli altri.' },
+  { giorno: SAB, ora: '11:30 – 15:30', titolo: 'Verifiche tecniche', nota: 'Rally Village — Piazza Mercato, Treponti. Controllo delle vetture e consegna di targhe e numeri di gara. Fino alle 13:30 gli equipaggi iscritti allo shakedown, dalle 13:30 tutti gli altri.' },
   { giorno: SAB, ora: '13:00 – 16:45', titolo: 'Shakedown', nota: 'Messa a punto su un tratto breve, massimo tre passaggi. La prima occasione per vedere le auto in azione.' },
   { giorno: SAB, ora: '16:30', titolo: 'Elenco verificati e ordine di partenza', nota: 'Pubblicazione in albo di gara, insieme all’orario individuale della cerimonia di presentazione.' },
   { giorno: SAB, ora: '17:30 – 18:00', titolo: 'Ingresso palco partenza', nota: 'Le vetture si incolonnano verso il palco.' },
@@ -47,7 +49,8 @@ const VOCI = [
   { giorno: DOM, ora: '15:37', titolo: 'PS 6 · Roccolo – Cingolina', nota: 'Terzo e ultimo passaggio.' },
   { giorno: DOM, ora: '16:00', titolo: 'Elenco vetture in verifica', nota: 'Pubblicazione in albo di gara delle vetture convocate alle verifiche tecniche dopo la gara.' },
   { giorno: DOM, ora: '16:15', titolo: 'Arrivo, prima vettura', nota: 'Treponti — Via Alcide De Gasperi.' },
-  { giorno: DOM, ora: '16:30', titolo: 'Pedana arrivo e premiazioni', nota: 'Treponti — Piazza Mercato · ingresso libero.' },
+  { giorno: DOM, ora: '16:30', titolo: 'Pedana arrivo e premiazioni', nota: 'Rally Village — Piazza Mercato, Treponti · ingresso libero.' },
+  { giorno: DOM, ora: '16:45', titolo: 'Verifiche tecniche dopo la gara', nota: 'Solo per le vetture convocate in albo di gara.' },
   { giorno: DOM, ora: '18:00', titolo: 'Classifiche finali', nota: 'Pubblicazione in albo di gara.' },
 ];
 

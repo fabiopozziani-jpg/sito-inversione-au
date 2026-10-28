@@ -49,7 +49,11 @@ const OGGI = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Rome' })
  *          (il filtro sta in src/lib/contenuti.ts), così si carica in anticipo e esce da solo.
  */
 const LAVORI = [
-  // Gruppo 1: 1.1 resta libero per il Regolamento Particolare di Gara.
+  // 1.1 Regolamento Particolare di Gara: depositato il 28 ottobre 2026, firmato
+  // dall'Organizzatore e visto dalla Delegazione Regionale, ancora senza numero di
+  // approvazione ACI Sport. La pillola «In approvazione» in pagina arriva da
+  // `documentiInApprovazione` in src/data/rally.ts, non da qui.
+  { numero: '1.1', file: 'RPG_1_RALLY_COLLI_EUGANEI.pdf', titolo: 'Regolamento particolare di gara', gruppo: 'Regolamento e programma', scarica: 'regolamento-particolare-di-gara.pdf', quando: '2026-10-28', sostituisci: true },
   { numero: '1.2', file: 'PROGRAMMA_A.pdf', titolo: 'Programma', gruppo: 'Regolamento e programma', scarica: 'programma.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.4', file: 'TABELLA_DISTANZE_E_TEMPI_V3.pdf', titolo: 'Tabella distanze e tempi', gruppo: 'Regolamento e programma', scarica: 'tabella-distanze-e-tempi.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.3', file: 'CARTINA_PERCORSO_PS_E_SHAKEDOWN_V2.pdf', titolo: 'Cartina percorso PS 1-2-3-4-5-6 e shakedown', gruppo: 'Regolamento e programma', scarica: 'cartina-percorso-ps-1-2-3-4-5-6-e-shakedown.pdf', quando: '2026-10-22', sostituisci: true },

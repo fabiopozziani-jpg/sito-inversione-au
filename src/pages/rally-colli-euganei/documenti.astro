@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, gruppiAlbo, fmtData, unMesePrima, domandeOnline, moduliIscrizionePdf } from '../../data/rally';
+import { subnav, gruppiAlbo, fmtData, unMesePrima, domandeOnline, moduliIscrizionePdf, documentiInApprovazione } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/documenti/';
@@ -19,6 +19,7 @@ const docs = list.map(d => ({
   nuovo: !d.superato && ref - d.t <= NEW_MS,
   revLine: d.revPrev && d.revPrevIso ? `Versione ${d.rev} · sostituisce la versione ${d.revPrev} del ${fmtData(d.revPrevIso)}` : '',
   superatoLine: d.superato ? `Superato dalla versione ${d.superatoDa}` : '',
+  inApprovazione: !d.superato && documentiInApprovazione.includes(String(d.num)),
 }));
 /** Dentro un gruppo l'albo si legge per numero (1.1, 1.2, 3.10…), non per data. */
 const chiaveNum = (n: string) => String(n ?? '').split('.').map(x => Number(x) || 0);
@@ -162,7 +163,7 @@ const hasDocs = docs.length > 0;
                   {g.docs.map(d => (
                     <tr class:list={{ superato: d.superato }}>
                       <td>
-                        <div class="albo__doc"><span class="type-mono k-ev">{d.num}</span><span class="doc-title">{d.title}</span>{d.nuovo && <span class="pill pill--pieno">Nuovo</span>}{d.superato && <span class="pill">Superato</span>}</div>
+                        <div class="albo__doc"><span class="type-mono k-ev">{d.num}</span><span class="doc-title">{d.title}</span>{d.nuovo && <span class="pill pill--pieno">Nuovo</span>}{d.superato && <span class="pill">Superato</span>}{d.inApprovazione && <span class="pill">In approvazione</span>}</div>
                         {d.revLine && <div class="hint">{d.revLine}</div>}
                         {d.superatoLine && <div class="hint">{d.superatoLine}</div>}
                       </td>
