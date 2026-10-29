@@ -134,6 +134,23 @@ export function statoIscrizioniOra(now = Date.now()): StatoIscrizioni {
   return 'non-aperte';
 }
 
+/**
+ * Pagine del rally temporaneamente oscurate (decisione di Fabio, 29 ottobre 2026,
+ * «a data da destinarsi»). Il contenuto resta tutto nel repository e nel CMS: qui si
+ * spegne solo l'accesso. Per ogni slug elencato:
+ *   · l'indirizzo risponde con un rimando temporaneo (302) all'hub del rally,
+ *   · la voce sparisce dal menù principale, dal menù del rally, dalla home e dall'hub,
+ *   · l'indirizzo esce dalla sitemap.
+ * I link dentro i comunicati sono stati tolti a mano in `news.ts` e nel CMS: quando le
+ * pagine tornano vanno rimessi anche quelli.
+ * PER RIACCENDERLE: svuotare questo elenco, poi `npm run build` + `npm run release`.
+ */
+export const pagineOscurate: string[] = ['spettatori', 'residenti'];
+export const oscurata = (slug: string) => pagineOscurate.includes(slug);
+/** true se l'indirizzo passato è quello di una pagina oscurata. */
+export const indirizzoOscurato = (href: string) =>
+  pagineOscurate.some(s => href === `/rally-colli-euganei/${s}/`);
+
 /** Voci del menù del rally. È una funzione, non un elenco fisso: le voci a tempo
  *  (live timing, foto e video) si accendono da sole alla data giusta. */
 export function subnav(now = Date.now()) {
@@ -150,7 +167,7 @@ export function subnav(now = Date.now()) {
   if (liveTimingAttivo(now)) voci.splice(3, 0, { label: 'Live timing', href: rally.classificheUrl, esterno: true });
   // la galleria del rally torna nel menù il lunedì dopo la gara
   if (da(DATE.fotoVideo, now)) voci.push({ label: 'Foto e video', href: '/foto-e-video/rally-colli-euganei-2026/' });
-  return voci;
+  return voci.filter(v => !indirizzoOscurato(v.href));
 }
 
 export function statoRally(now = Date.now()): { stato: Stato; giorni: number } {

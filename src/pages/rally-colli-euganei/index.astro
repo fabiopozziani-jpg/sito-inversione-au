@@ -8,7 +8,7 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import NewsCard from '../../components/NewsCard.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
-import { subnav, statoRally, unMesePrima, cartinaPercorsoAlbo } from '../../data/rally';
+import { subnav, statoRally, unMesePrima, cartinaPercorsoAlbo, indirizzoOscurato } from '../../data/rally';
 import { caricaRally, caricaSponsor, senzaAnnuali, caricaPosts, ordinaPerData } from '../../lib/contenuti';
 import { IMMAGINI, imgFill } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
@@ -28,7 +28,7 @@ const eventLd = {
   description: 'Prima edizione del rally sui Colli Euganei con titolazione ACI Sport. Due giorni di gara, ingresso libero per il pubblico.',
   isAccessibleForFree: true, url: 'https://www.inversioneau.com/rally-colli-euganei/',
   performer: { '@type': 'PerformingGroup', name: 'Equipaggi iscritti al 1° Rally Colli Euganei' },
-  offers: { '@type': 'Offer', url: 'https://www.inversioneau.com/rally-colli-euganei/spettatori/', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', validFrom: '2026-08-28' },
+  offers: { '@type': 'Offer', url: 'https://www.inversioneau.com/rally-colli-euganei/', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', validFrom: '2026-08-28' },
 };
 const sponsorRally = [...annuali, ...sponsorEvento('rally')];
 // Ultime due notizie del rally (CMS News, riserva statica): la categoria mostra a chi si rivolge.
@@ -75,11 +75,14 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <div class="wrap">
     <ul class="qa__grid">
       {[
-        ['01', 'Concorrenti', '/rally-colli-euganei/concorrenti/', rally.statoIscrizioni === 'aperte' ? 'Iscrizioni aperte' : ''],
-        ['02', 'Spettatori', '/rally-colli-euganei/spettatori/', ''],
-        ['03', 'Documenti di gara', '/rally-colli-euganei/documenti/', ''],
-        ['04', 'Accrediti stampa', '/stampa/accrediti/', ''],
-      ].map(([n, t, h, b]) => (
+        ['Concorrenti', '/rally-colli-euganei/concorrenti/', rally.statoIscrizioni === 'aperte' ? 'Iscrizioni aperte' : ''],
+        ['Spettatori', '/rally-colli-euganei/spettatori/', ''],
+        ['Documenti di gara', '/rally-colli-euganei/documenti/', ''],
+        ['Accrediti stampa', '/stampa/accrediti/', ''],
+      /* la numerazione nasce qui: togliendo una voce oscurata le altre si rinumerano da sole */
+      ].filter(([, h]) => !indirizzoOscurato(h as string))
+       .map(([t, h, b], i) => [String(i + 1).padStart(2, '0'), t, h, b])
+       .map(([n, t, h, b]) => (
         <li><a href={h} class="type-mono"><span class="qa__n">{n}</span>{t}{b && <span class="qa__stato">{b}</span>}</a></li>
       ))}
     </ul>
@@ -87,18 +90,12 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   </nav>
 
   <!-- DUE PORTE -->
-  <section class="wrap section porte stagger" aria-label="Scegli il tuo percorso">
+  <section class="wrap section porte porte--una stagger" aria-label="Scegli il tuo percorso">
     <a href="/rally-colli-euganei/concorrenti/" class="porta porta--verde reveal">
       <span class="type-mono porta__k">Piloti, navigatori e team</span>
       <h2 class="type-h2">Concorrenti</h2>
       <p>{unMesePrima() ? 'Iscrizione, licenze, documenti di gara ed elenco degli equipaggi.' : 'Come iscriversi, quali licenze servono, documenti di gara ed elenco degli equipaggi ammessi.'}</p>
       <span class="type-mono porta__l">Apri l'area concorrenti <span class="arrow-x" aria-hidden="true">→</span></span>
-    </a>
-    <a href="/rally-colli-euganei/spettatori/" class="porta porta--teal reveal">
-      <span class="type-mono porta__k">Pubblico, famiglie e appassionati</span>
-      <h2 class="type-h2">Spettatori</h2>
-      <p>{unMesePrima() ? 'Programma, dove guardare in sicurezza e come arrivare sui Colli.' : 'Programma e orari, dove guardare in sicurezza, parcheggi e come arrivare sui Colli.'}</p>
-      <span class="type-mono porta__l">Apri le informazioni per il pubblico <span class="arrow-x" aria-hidden="true">→</span></span>
     </a>
   </section>
 
@@ -257,6 +254,9 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   /* porte */
   .porte{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--grid-gutter);padding-bottom:var(--sp-4)}
   @media(min-width:768px){.porte{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  /* con la pagina Spettatori oscurata resta una porta sola: niente mezza riga vuota */
+  .porte--una{grid-template-columns:minmax(0,1fr)}
+  @media(min-width:768px){.porte--una{grid-template-columns:minmax(0,1fr)}}
   .porta{display:flex;flex-direction:column;gap:12px;padding:clamp(24px,4vw,40px);text-decoration:none;color:#fff;background:var(--carbone);border:1px solid var(--border-on-dark);border-top:var(--border-accent) solid var(--porta);transition:border-color var(--dur-fast) var(--ease-out),background-color var(--dur-fast) var(--ease-out);min-height:260px}
   .porta--verde{--porta:var(--rally-verde)} .porta--teal{--porta:var(--rally-teal)}
   .porta:hover,.porta:focus-visible{border-color:var(--porta);background:#151515}

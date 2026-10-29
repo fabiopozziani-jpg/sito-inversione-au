@@ -5,9 +5,10 @@
  */
 interface Props { active?: string }
 const { active = '' } = Astro.props;
+import { indirizzoOscurato } from '../data/rally';
 const is = (k: string) => (active === k ? 'page' : undefined);
 
-const rally = [
+const rallyTutte = [
   ['Il Rally', '/rally-colli-euganei/'],
   ['Percorso e prove speciali', '/rally-colli-euganei/percorso/'],
   ['Concorrenti', '/rally-colli-euganei/concorrenti/'],
@@ -15,6 +16,8 @@ const rally = [
   ['Documenti di gara', '/rally-colli-euganei/documenti/'],
   ['Stampa e accrediti', '/stampa/accrediti/'],
 ];
+/** Le pagine oscurate spariscono dal menù: vedi `pagineOscurate` in src/data/rally.ts. */
+const rally = rallyTutte.filter(([, href]) => !indirizzoOscurato(href));
 const eventi = [
   ['Calendario stagione', '/eventi/'],
   ['Polo Motor Show', '/eventi/polo-motor-show/'],

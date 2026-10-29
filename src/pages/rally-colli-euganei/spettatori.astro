@@ -5,10 +5,14 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CTABlock from '../../components/CTABlock.astro';
-import { subnav, consentito, vietato, unMesePrima } from '../../data/rally';
+import { subnav, consentito, vietato, unMesePrima, oscurata } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 import { rallyImg, RALLY_IMG } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
+/* Pagina oscurata a data da destinarsi: l'indirizzo rimanda all'hub del rally.
+   Il contenuto qui sotto resta intatto. Vedi `pagineOscurate` in src/data/rally.ts. */
+if (oscurata('spettatori')) return Astro.redirect('/rally-colli-euganei/', 302);
+
 const heroSpett = rallyImg(RALLY_IMG.heroSpettatori, 1920, 1080);
 const { rally, programma } = await caricaRally();
 const url = '/rally-colli-euganei/spettatori/';

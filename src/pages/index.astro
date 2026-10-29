@@ -11,7 +11,7 @@ import StatBlock from '../components/StatBlock.astro';
 import NewsCard from '../components/NewsCard.astro';
 import PhotoStrip from '../components/PhotoStrip.astro';
 import SponsorBlock from '../components/SponsorBlock.astro';
-import { unMesePrima } from '../data/rally';
+import { unMesePrima, indirizzoOscurato } from '../data/rally';
 import PartnerMarquee from '../components/PartnerMarquee.astro';
 import SocialStrip from '../components/SocialStrip.astro';
 import CTABlock from '../components/CTABlock.astro';
@@ -72,11 +72,14 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <div class="wrap">
     <ul class="accesso__grid">
       {[
-        ['01', 'Piloti e navigatori', 'Iscrizioni, scadenze, elenco iscritti', '/rally-colli-euganei/concorrenti/'],
-        ['02', 'Spettatori', 'Programma, dove vedere le prove, come arrivare', '/rally-colli-euganei/spettatori/'],
-        ['03', 'Documenti di gara', 'Regolamento, ordini di partenza, comunicati', '/rally-colli-euganei/documenti/'],
-        ['04', 'Giornalisti e fotografi', 'Come richiedere l\'accredito', '/stampa/accrediti/'],
-      ].map(([n, t, d, h]) => (
+        ['Piloti e navigatori', 'Iscrizioni, scadenze, elenco iscritti', '/rally-colli-euganei/concorrenti/'],
+        ['Spettatori', 'Programma, dove vedere le prove, come arrivare', '/rally-colli-euganei/spettatori/'],
+        ['Documenti di gara', 'Regolamento, ordini di partenza, comunicati', '/rally-colli-euganei/documenti/'],
+        ['Giornalisti e fotografi', 'Come richiedere l\'accredito', '/stampa/accrediti/'],
+      /* la numerazione nasce qui: togliendo una voce oscurata le altre si rinumerano da sole */
+      ].filter(([, , h]) => !indirizzoOscurato(h))
+       .map(([t, d, h], i) => [String(i + 1).padStart(2, '0'), t, d, h])
+       .map(([n, t, d, h]) => (
         <li><a href={h}><span class="type-mono accesso__n">{n}</span><span class="type-mono accesso__t">{t}</span><span class="accesso__d">{d}</span></a></li>
       ))}
     </ul>

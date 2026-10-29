@@ -5,8 +5,12 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CTABlock from '../../components/CTABlock.astro';
-import { subnav, chiusure, stradeChiuse, unMesePrima } from '../../data/rally';
+import { subnav, chiusure, stradeChiuse, unMesePrima, oscurata } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
+/* Pagina oscurata a data da destinarsi: l'indirizzo rimanda all'hub del rally.
+   Il contenuto qui sotto resta intatto. Vedi `pagineOscurate` in src/data/rally.ts. */
+if (oscurata('residenti')) return Astro.redirect('/rally-colli-euganei/', 302);
+
 const { rally } = await caricaRally();
 const url = '/rally-colli-euganei/residenti/';
 const email = 'inversione.au3@gmail.com';
