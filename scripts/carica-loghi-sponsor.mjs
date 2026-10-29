@@ -51,16 +51,31 @@ const LAVORI = [
      SponsorBlock.astro, e nessuna pagina passa `light`). I loghi bianchi su trasparente
      sono quelli giusti e non vanno ricolorati: una prima versione nera di Trivellato era
      invisibile. Dei file qui sotto si fa solo il ritaglio sull'alfa, mai un ritocco. */
-  { file: 'TRIVELLATO_NEW_PADOVA_STAR.png', nome: 'Trivellato New Padova Star', livello: 'stagione', evento: 'rally' },
-  { file: 'CONCA_DORO_SITO.png', nome: "Pizzeria Conca d'Oro", livello: 'stagione', evento: 'rally' },
+  /* Applicati il 20/10/2026: Trivellato New Padova Star e Pizzeria Conca d'Oro creati
+     come partner di stagione. Tolti da qui il 28/10 perche una riga con il campo `file`
+     ricarica il PNG a ogni esecuzione e lascia un doppione nel Media Manager. Le loro
+     posizioni restano in ORDINE_STAGIONE. */
+
+  /* Partner di stagione nuovi del 28/10/2026. Loghi bianchi su trasparente, forniti da
+     Fabio in LOGHI/ANNUALI/DA_AGG: dei file e stato fatto solo il ritaglio sull'alfa,
+     nessun ritocco ai colori. Autolavaggi Cattelan e il quinto partner principale: sta
+     in quinta posizione in ORDINE_STAGIONE e SponsorBlock e passato a `primi={5}`.
+     Attenzione: "Cattelan Auto", sponsor di evento del Polo, e un altro soggetto. */
+  { file: 'AUTOLAVAGGI_CATTELAN.png', nome: 'Autolavaggi Cattelan', livello: 'stagione', evento: 'rally' },
+  { file: 'ANTICO_TRAM.png', nome: 'Antico Tram', livello: 'stagione', evento: 'rally' },
 ];
 
-/** Ordine dei partner di stagione. I primi quattro sono i partner principali.
+/** Ordine dei partner di stagione. I primi CINQUE sono i partner principali
+ *  (quattro fino al 28/10/2026): devono coincidere con `primi` di SponsorBlock
+ *  in src/pages/index.astro e src/pages/sponsor/index.astro.
  *  Le righe sospese (attivo: falso) non entrano nella numerazione.
  *  Un nome senza riga di livello "stagione" attiva viene semplicemente saltato;
  *  una riga "stagione" non elencata qui finisce in coda. */
+/** Quanti partner principali: deve coincidere con `primi` di SponsorBlock nelle pagine. */
+const PRINCIPALI = 5;
+
 const ORDINE_STAGIONE = [
-  'Datex', 'Cesaro Group', 'Gemini Carrozzeria', 'Zanon',
+  'Datex', 'Cesaro Group', 'Gemini Carrozzeria', 'Zanon', 'Autolavaggi Cattelan',
   'BAAP Bergamaschi', 'Rally Team', 'Ctrl+G',
   'Sky Motors', 'Metal Nord Rottami', 'Ecosider', 'Siderurgica Veneta',
   'Labor F.lli Corazzari', 'Marchioro Scavi e Demolizioni', 'Dealernet',
@@ -69,6 +84,7 @@ const ORDINE_STAGIONE = [
   'Gruppo S2 Automobili',
   'Abano Ghiaccio', 'Locanda al Colle', 'Euganeus 2000',
   'Trivellato New Padova Star', "Pizzeria Conca d'Oro",
+  'Antico Tram',
 ];
 
 const CARTELLA_FILE = '/Users/fabio/Desktop/INVERSIONE_AU/NUOVO_SITO_INVERSIONE_AU/LOGHI/ANNUALI';
@@ -239,7 +255,7 @@ let n = 0, riordinate = 0;
 for (const riga of [...elencati, ...restanti]) {
   n++;
   const prima = Number(riga.data?.ordine);
-  const segno = n <= 4 ? '★' : ' ';
+  const segno = n <= PRINCIPALI ? '★' : ' ';
   const coda = restanti.includes(riga) ? '   [non in elenco: finisce in coda]' : '';
   if (prima === n) { log(`  ${segno} ${String(n).padStart(2)} · ${riga.data.nome}${coda}`); continue; }
   log(`  ${segno} ${String(n).padStart(2)} · ${riga.data.nome}   (era ${prima})${coda}`);
