@@ -3,9 +3,9 @@
  *  requisiti, scadenza, allegati, droni e ritiro del pass in Sala Stampa.
  *  Il modulo online è stato sostituito dal MOD. 10 il 28 ottobre 2026: la richiesta
  *  si invia per email all'ufficio stampa, che risponde a tutti.
- *  30 ottobre 2026: il PDF è stato ritirato in attesa della versione corretta. L'unico
- *  interruttore è `rally.moduloAccredito` in `src/data/rally.ts`: vuoto = blocco «in arrivo»,
- *  pieno = bottone di download. Nient'altro da toccare in questa pagina. */
+ *  30 ottobre 2026: la v1 è stata ritirata e sostituita nel pomeriggio dalla v3.1.
+ *  L'unico interruttore è `rally.moduloAccredito` in `src/data/rally.ts`: vuoto = blocco
+ *  «in arrivo», pieno = bottone di download. Nient'altro da toccare in questa pagina. */
 import '../../../styles/hub.css';
 import Base from '../../../layouts/Base.astro';
 import EventSubnav from '../../../components/EventSubnav.astro';
@@ -30,7 +30,7 @@ const modulo = rally.moduloAccredito;
         <Fragment>
           <p>Tre pagine: dati e qualifica, norme da accettare, dichiarazione della polizza assicurativa. Si compila al computer o in stampatello, poi si firma.</p>
           <a class="btn btn--ev dl__b" href={modulo} download>Scarica il modulo <span class="arrow-down" aria-hidden="true">↓</span></a>
-          <p class="hint">PDF compilabile · 3 pagine · 548 KB</p>
+          <p class="hint">PDF compilabile · 3 pagine · 542 KB</p>
         </Fragment>
       ) : (
         <Fragment>
