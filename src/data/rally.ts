@@ -45,6 +45,13 @@ export const rally = {
   },
   /** Canale WhatsApp per gli avvisi al pubblico (vuoto = non ancora attivo) */
   whatsapp: '',
+  /** Modulo MOD. 10 per l'accredito stampa (vuoto = in arrivo: la pagina accrediti mostra
+   *  il blocco «in arrivo» al posto del bottone di download).
+   *  Ritirato il 30 ottobre 2026 su richiesta di Fabio: la versione pubblicata il 28 non va bene.
+   *  Per rimetterlo online: riportare qui '/documenti/mod-10-richiesta-accredito-stampa.pdf',
+   *  rimettere il PDF in `public/documenti/`, poi build + release. */
+  moduloAccredito: '',
+
   /** Mappe: percorso e zone pubblico (vuote = in pubblicazione) */
   mappaPercorso: '',
   mappaZone: '',

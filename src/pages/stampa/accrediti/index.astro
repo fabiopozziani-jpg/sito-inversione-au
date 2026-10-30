@@ -2,32 +2,45 @@
 /** Accrediti stampa — sub-nav rally (la pagina è nell'hub): modulo PDF da scaricare,
  *  requisiti, scadenza, allegati, droni e ritiro del pass in Sala Stampa.
  *  Il modulo online è stato sostituito dal MOD. 10 il 28 ottobre 2026: la richiesta
- *  si invia per email all'ufficio stampa, che risponde a tutti. */
+ *  si invia per email all'ufficio stampa, che risponde a tutti.
+ *  30 ottobre 2026: il PDF è stato ritirato in attesa della versione corretta. L'unico
+ *  interruttore è `rally.moduloAccredito` in `src/data/rally.ts`: vuoto = blocco «in arrivo»,
+ *  pieno = bottone di download. Nient'altro da toccare in questa pagina. */
 import '../../../styles/hub.css';
 import Base from '../../../layouts/Base.astro';
 import EventSubnav from '../../../components/EventSubnav.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
-import { subnav } from '../../../data/rally';
+import { rally, subnav } from '../../../data/rally';
 const email = 'niccolo@nbudoia.com';
-const modulo = '/documenti/mod-10-richiesta-accredito-stampa.pdf';
+const modulo = rally.moduloAccredito;
 ---
-<Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description="Accredito stampa per il 1° Rally Colli Euganei: scarica il modulo MOD. 10, invialo entro il 18 novembre 2026. Requisiti, allegati e regole sui droni." active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="Accrediti stampa — 1° Rally Colli Euganei">
+<Base title="Accrediti stampa Rally Colli Euganei 2026 | Inversione A U" description={modulo ? 'Accredito stampa per il 1° Rally Colli Euganei: scarica il modulo MOD. 10, invialo entro il 18 novembre 2026. Requisiti, allegati e regole sui droni.' : 'Accredito stampa per il 1° Rally Colli Euganei: il modulo MOD. 10 è in arrivo. Requisiti, allegati, scadenza del 18 novembre 2026 e regole sui droni.'} active="rally" bodyClass="ctx-rally" image="/img/social/rally-colli-euganei.jpg" imageAlt="Accrediti stampa — 1° Rally Colli Euganei">
   <EventSubnav items={subnav()} current="/stampa/accrediti/" bg="#006C7C" accent="#00BA89" label="Sezioni del Rally Colli Euganei" />
   <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Stampa', href: '/stampa/' }, { label: 'Accrediti stampa' }]} />
   <header class="wrap pg-head">
     <h1 class="type-h1">Accrediti stampa per il Rally Colli Euganei</h1>
-    <p class="lead">Giornalisti, fotografi e videomaker: scarica il modulo, compilalo e invialo per email. L'esito arriva via email.</p>
+    <p class="lead">{modulo ? "Giornalisti, fotografi e videomaker: scarica il modulo, compilalo e invialo per email. L'esito arriva via email." : "Giornalisti, fotografi e videomaker: il modulo di richiesta è in arrivo. Qui sotto requisiti, allegati e scadenza, così si arriva pronti."}</p>
   </header>
 
   <section id="modulo" class="wrap section" aria-labelledby="mod-h">
     <div class="card card--top dl">
       <span class="pill pill--ev">MOD. 10</span>
       <h2 id="mod-h" class="type-h2">Modulo di richiesta accredito</h2>
-      <p>Tre pagine: dati e qualifica, norme da accettare, dichiarazione della polizza assicurativa. Si compila al computer o in stampatello, poi si firma.</p>
-      <a class="btn btn--ev dl__b" href={modulo} download>Scarica il modulo <span class="arrow-down" aria-hidden="true">↓</span></a>
-      <p class="hint">PDF compilabile · 3 pagine · 548 KB</p>
+      {modulo ? (
+        <Fragment>
+          <p>Tre pagine: dati e qualifica, norme da accettare, dichiarazione della polizza assicurativa. Si compila al computer o in stampatello, poi si firma.</p>
+          <a class="btn btn--ev dl__b" href={modulo} download>Scarica il modulo <span class="arrow-down" aria-hidden="true">↓</span></a>
+          <p class="hint">PDF compilabile · 3 pagine · 548 KB</p>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <p>Il modulo è in arrivo: lo pubblichiamo qui appena è pronto. La scadenza per l'invio resta mercoledì 18 novembre, e requisiti e allegati elencati sotto non cambiano.</p>
+          <span class="link-box link-box--off">Scarica il modulo · in arrivo</span>
+          <p class="hint">Chi vuole può già scrivere all'ufficio stampa: avvisiamo per email appena il modulo è disponibile.</p>
+        </Fragment>
+      )}
       <dl class="dl__d">
-        <div><dt class="type-mono">Invialo a</dt><dd><a class="link-line" href={`mailto:${email}?subject=Richiesta%20accredito%20stampa%20%C2%B7%201%C2%B0%20Rally%20Colli%20Euganei`}>{email}</a></dd></div>
+        <div><dt class="type-mono">{modulo ? 'Invialo a' : 'Da inviare a'}</dt><dd><a class="link-line" href={`mailto:${email}?subject=Richiesta%20accredito%20stampa%20%C2%B7%201%C2%B0%20Rally%20Colli%20Euganei`}>{email}</a></dd></div>
         <div><dt class="type-mono">Entro</dt><dd>Mercoledì 18 novembre 2026, ore 23:59</dd></div>
       </dl>
     </div>
@@ -36,7 +49,7 @@ const modulo = '/documenti/mod-10-richiesta-accredito-stampa.pdf';
   <section id="come" class="wrap section s" aria-labelledby="come-h">
     <h2 id="come-h" class="type-h2">Come si richiede</h2>
     <ol class="lista-ev passi">
-      <li>Scarica il modulo e compilalo in ogni campo.</li>
+      <li>{modulo ? 'Scarica il modulo e compilalo in ogni campo.' : 'Scarica il modulo da questa pagina appena è disponibile, poi compilalo in ogni campo.'}</li>
       <li>Firma la pagina 1, dopo aver letto le norme di pagina 2.</li>
       <li>Se sei fotografo o video-operatore, compila anche la pagina 3 e allega la copia della polizza.</li>
       <li>Invia tutto a <a class="link-line" href={`mailto:${email}`}>{email}</a> entro il 18 novembre.</li>
@@ -114,6 +127,7 @@ const modulo = '/documenti/mod-10-richiesta-accredito-stampa.pdf';
   .dl{gap:14px;align-items:flex-start}
   .dl p{max-width:62ch}
   .dl__b{align-self:flex-start;margin-top:4px}
+  .link-box--off{color:var(--grigio-450);border-style:dashed;pointer-events:none;margin-top:4px}
   .dl__d{display:flex;flex-wrap:wrap;gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark);width:100%;margin-top:4px}
   .dl__d>div{flex:1 1 220px;background:var(--nero);padding:16px 20px;display:flex;flex-direction:column-reverse;gap:6px}
   .dl__d dt{color:var(--grigio-450)}

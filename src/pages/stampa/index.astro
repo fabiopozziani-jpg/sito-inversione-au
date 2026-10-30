@@ -4,7 +4,10 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import { caricaPosts } from '../../lib/contenuti';
 import { mk } from '../../data/filesWix';
+import { rally } from '../../data/rally';
 const posts = await caricaPosts();
+/** Vuoto finché il MOD. 10 è in arrivo: la card cambia testo da sola (vedi `rally.moduloAccredito`). */
+const modulo = rally.moduloAccredito;
 const email = 'inversione.au3@gmail.com';
 const comunicati = posts.filter(p => p.tipo === 'comunicato stampa').sort((a, b) => (a.iso < b.iso ? 1 : -1));
 const loghi = [
@@ -30,7 +33,7 @@ const altri = [
   <section class="wrap section" aria-labelledby="due-h">
     <h2 id="due-h" class="type-h2 mb">Le due richieste più frequenti</h2>
     <div class="due stagger">
-      <a href="/stampa/accrediti/" class="card card--top reveal due__a"><h3 class="type-h3">Richiedi l'accredito stampa</h3><p>Requisiti, scadenze, regole sulle riprese con drone e modulo da scaricare.</p><span class="type-mono due__l">Scarica il modulo <span class="arrow-x" aria-hidden="true">→</span></span></a>
+      <a href="/stampa/accrediti/" class="card card--top reveal due__a"><h3 class="type-h3">Richiedi l'accredito stampa</h3><p>{modulo ? 'Requisiti, scadenze, regole sulle riprese con drone e modulo da scaricare.' : 'Requisiti, scadenze, allegati e regole sulle riprese con drone. Il modulo di richiesta è in arrivo.'}</p><span class="type-mono due__l">{modulo ? 'Scarica il modulo' : 'Come richiederlo'} <span class="arrow-x" aria-hidden="true">→</span></span></a>
       <a href="#materiali" class="card card--top reveal due__a"><h3 class="type-h3">Scarica i materiali per la stampa</h3><p>Loghi vettoriali, foto selezionate, testo di presentazione e numeri chiave.</p><span class="type-mono due__l">Vai al download <span class="arrow-down" aria-hidden="true">↓</span></span></a>
     </div>
   </section>
