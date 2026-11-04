@@ -34,6 +34,7 @@ export const annuali: Sponsor[] = [
   s('trivellato', 'Trivellato New Padova Star'),
   s('conca-d-oro', "Pizzeria Conca d'Oro"),
   s('antico-tram', 'Antico Tram'),
+  s('auto31', 'Auto 31 Service'),
 ];
 export const rally: Sponsor[] = [];
 export const polo: Sponsor[] = [
@@ -42,7 +43,7 @@ export const polo: Sponsor[] = [
   s('ecosider','Ecosider'), s('siderurgica-veneta','Siderurgica Veneta'), s('autoservizi-cavinato','Autoservizi Cavinato'),
   s('carrozzeria-angela','Autocarrozzeria Angela'),
   s('sky-motors','Sky Motors'), s('marchioro','Marchioro Scavi e Demolizioni'), s('cattelan','Cattelan Auto'), s('dealernet','Dealernet'),
-  s('labor','Labor F.lli Corazzari'), s('rally-bar','Rally Bar'), s('auto31','Auto 31 Service'),
+  s('labor','Labor F.lli Corazzari'), s('rally-bar','Rally Bar'),
   s('centro-del-piede','Centrodelpiede.it'), s('lovato','Costruzioni Lovato'),
 ];
 /** Riserva statica: i loghi veri stanno nel CMS (Media Manager). Senza logo SponsorBlock scrive il nome. */

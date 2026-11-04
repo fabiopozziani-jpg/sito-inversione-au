@@ -110,6 +110,14 @@ export const domandeOnline = [
   { nome: 'Iscrizione ricognitori', url: 'https://forms.gle/WWKdyoGv4pntgwde9', nota: 'Equipaggio ricognitore e vettura di ricognizione' },
   { nome: 'Dati per la fattura', url: 'https://forms.gle/1jdeQxLNBSwDYuxS6', nota: 'Pagamento e dati di fatturazione elettronica' },
 ];
+/** Repliche PDF compilabili dei tre moduli Google (MOD. 10, 11, 12): canale di riserva
+ *  per chi non riesce a inviare il modulo online. Servite da `public/documenti/`, non
+ *  dall'albo di gara: restano fuori dalla collection `Documenti` per scelta. */
+export const moduliPdfRiserva = [
+  { nome: 'Domanda di iscrizione', codice: 'MOD. 10', nota: 'Concorrente, conduttori, vettura, assistenza', href: '/documenti/mod-10-scheda-iscrizione.pdf' },
+  { nome: 'Iscrizione ricognitori', codice: 'MOD. 12', nota: 'Equipaggio ricognitore e vettura di ricognizione', href: '/documenti/mod-12-scheda-dati-ricognitore.pdf' },
+  { nome: 'Dati per la fattura', codice: 'MOD. 11', nota: 'Pagamento e dati di fatturazione elettronica', href: '/documenti/mod-11-dati-fatturazione.pdf' },
+];
 /** Numeri d'albo dei due moduli in PDF da mostrare accanto alle domande online. */
 export const moduliIscrizionePdf = ['3.8', '3.9'];
 /** Numero d'albo del foglio delle tasse di iscrizione: compare nel riquadro iscrizioni
@@ -123,13 +131,12 @@ export const cartinaPercorsoAlbo = '1.3';
 export const programmaAlbo = '1.2';
 export const tabellaTempiAlbo = '1.4';
 /** Numero d'albo del regolamento particolare di gara.
- *  L'RPG del 28 ottobre 2026 e firmato dall'Organizzatore, dal Direttore di Gara e visto
- *  dalla Delegazione Regionale, ma il riquadro ACI Sport e ancora in bianco: nessuna data
- *  di approvazione e nessun numero RM/__/2026. Finche il numero resta in
- *  `documentiInApprovazione` l'albo gli mette accanto la pillola «In approvazione»:
- *  quando arriva il visto basta svuotare l'elenco. */
+ *  Dal 4 novembre 2026 la riga 1.1 porta l'RPG approvato da ACI Sport (visto del
+ *  Direttore Centrale, 27/10/2026): l'elenco `documentiInApprovazione` e vuoto e la
+ *  pillola «In approvazione» non compare piu. Il meccanismo resta: se in futuro un
+ *  documento esce prima del visto, basta rimetterne il numero qui dentro. */
 export const rpgAlbo = '1.1';
-export const documentiInApprovazione: string[] = ['1.1'];
+export const documentiInApprovazione: string[] = [];
 
 export type StatoIscrizioni = 'non-aperte' | 'aperte' | 'chiuse';
 /** Stato delle iscrizioni ricavato dalle date: apertura 22 ottobre ore 23:59,
@@ -288,7 +295,7 @@ export const schedaGara: VoceScheda[] = [
  */
 export type LinkDoc = { nome: string; nota?: string; href: string; albo?: string };
 export const documentiRapidi: LinkDoc[] = [
-  { nome: 'Regolamento particolare di gara', nota: 'RPG · in fase di approvazione', href: '', albo: rpgAlbo },
+  { nome: 'Regolamento particolare di gara', nota: 'RPG', href: '', albo: rpgAlbo },
   { nome: 'Programma', href: '', albo: programmaAlbo },
   { nome: 'Cartina generale', href: '', albo: cartinaPercorsoAlbo },
   { nome: 'Tabella distanze e tempi', nota: 'TDT', href: '', albo: tabellaTempiAlbo },

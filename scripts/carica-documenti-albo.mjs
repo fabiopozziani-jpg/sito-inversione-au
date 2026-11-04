@@ -18,6 +18,11 @@
  * riga nuova e sulla vecchia si mette `superato` = Sì + `superatoDa`. Questo script
  * crea righe nuove e si ferma se un `numero` esiste già.
  *
+ * Seconda eccezione, `sostituisciPubblico: true`: sostituisce il file anche su una riga
+ * gia pubblica. Si usa solo quando il documento e lo stesso e cambia unicamente il visto
+ * (RPG approvato da ACI Sport, 4 novembre 2026, decisione di Fabio). Va messo a mano,
+ * riga per riga, e tolto subito dopo: non e la regola, e la deroga.
+ *
  * Unica eccezione, `sostituisci: true`: una riga **non ancora pubblicata** (pubblicatoIl
  * nel futuro, quindi invisibile sul sito) può ricevere un file nuovo al posto del
  * precedente. Nessun link è ancora in giro, quindi non c'è niente da proteggere e
@@ -53,7 +58,7 @@ const LAVORI = [
   // dall'Organizzatore e visto dalla Delegazione Regionale, ancora senza numero di
   // approvazione ACI Sport. La pillola «In approvazione» in pagina arriva da
   // `documentiInApprovazione` in src/data/rally.ts, non da qui.
-  { numero: '1.1', file: 'RPG_1_RALLY_COLLI_EUGANEI.pdf', titolo: 'Regolamento particolare di gara', gruppo: 'Regolamento e programma', scarica: 'regolamento-particolare-di-gara.pdf', quando: '2026-10-28', sostituisci: true },
+  { numero: '1.1', file: 'RPG_1_RALLY_COLLI_EUGANEI_APPROVATO.pdf', titolo: 'Regolamento particolare di gara', gruppo: 'Regolamento e programma', scarica: 'regolamento-particolare-di-gara.pdf', quando: '2026-11-04', versione: '2', sostituisci: true, sostituisciPubblico: true },
   { numero: '1.2', file: 'PROGRAMMA_A.pdf', titolo: 'Programma', gruppo: 'Regolamento e programma', scarica: 'programma.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.4', file: 'TABELLA_DISTANZE_E_TEMPI_V3.pdf', titolo: 'Tabella distanze e tempi', gruppo: 'Regolamento e programma', scarica: 'tabella-distanze-e-tempi.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.3', file: 'CARTINA_PERCORSO_PS_E_SHAKEDOWN_V2.pdf', titolo: 'Cartina percorso PS 1-2-3-4-5-6 e shakedown', gruppo: 'Regolamento e programma', scarica: 'cartina-percorso-ps-1-2-3-4-5-6-e-shakedown.pdf', quando: '2026-10-22', sostituisci: true },
@@ -200,12 +205,13 @@ for (const L of LAVORI) {
   const quando = L.quando ?? OGGI;
   const uscita = doppio ? String(doppio.data?.pubblicatoIl ?? '').slice(0, 10) : '';
   const giaPubblico = !!doppio && uscita <= OGGI;
-  if (doppio && (!L.sostituisci || giaPubblico)) {
+  if (doppio && (!L.sostituisci || (giaPubblico && !L.sostituisciPubblico))) {
     log(`  ! esiste già una riga con numero ${L.numero} ("${doppio.data?.titolo}"): la salto, non sovrascrivo l'albo`);
     if (L.sostituisci && giaPubblico) log(`    (è già pubblica dal ${uscita}: una modifica va pubblicata come versione nuova, riga nuova + "superato" sulla vecchia)`);
     continue;
   }
-  if (doppio) log(`  riga già in albo ma non ancora pubblicata (esce il ${uscita}): sostituisco il file, nessun link è ancora in giro`);
+  if (doppio && giaPubblico) log(`  riga già pubblica dal ${uscita}: sostituzione forzata del file (sostituisciPubblico)`);
+  else if (doppio) log(`  riga già in albo ma non ancora pubblicata (esce il ${uscita}): sostituisco il file, nessun link è ancora in giro`);
   if (quando > OGGI) log(`  pubblicazione datata ${quando}: resta nascosto sul sito fino a quel giorno`);
   if (!RUN) { log(`  → in esecuzione caricherebbe il PDF e ${doppio ? 'sostituirebbe il file nella riga' : 'creerebbe la riga'} (gruppo "${L.gruppo}", ${quando})`); continue; }
 
@@ -247,6 +253,7 @@ for (const L of LAVORI) {
   if (doppio) {
     const id = doppio.id ?? doppio.data._id;
     const data = { ...doppio.data, titolo: L.titolo, gruppo: L.gruppo, pubblicatoIl: quando, file: href, nomeFile: `PDF · ${peso}` };
+    if (L.versione) data.versione = L.versione;
     esito = await api(`/wix-data/v2/items/${id}`, { dataCollectionId: 'Documenti', dataItem: { id, data } }, 'PUT');
   } else {
     const data = {

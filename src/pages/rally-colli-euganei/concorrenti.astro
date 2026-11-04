@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, classi, schedaGara, schedaGaraPrima, documentiRapidi, liveTimingAttivo, unMesePrima, domandeOnline, moduliIscrizionePdf, tasseIscrizioneAlbo } from '../../data/rally';
+import { subnav, classi, schedaGara, schedaGaraPrima, documentiRapidi, liveTimingAttivo, unMesePrima, domandeOnline, moduliIscrizionePdf, moduliPdfRiserva, tasseIscrizioneAlbo } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
@@ -57,7 +57,7 @@ const aciAreaRiservataAttiva = unMesePrima();
     <div class="wrap">
       <div class="card card--rosso avviso" role="note">
         <span class="type-mono avviso__k">Elenco provvisorio</span>
-        <p class="avviso__p">Le informazioni di questa pagina non sono ancora definitive. Fanno fede il Regolamento Particolare di Gara, in fase di approvazione, e le disposizioni ACI Sport, che pubblichiamo nell'albo di gara. Verifica l'ultima versione prima di iscriverti.</p>
+        <p class="avviso__p">Le informazioni di questa pagina non sono ancora definitive. Fanno fede il Regolamento Particolare di Gara e le disposizioni ACI Sport, che pubblichiamo nell'albo di gara. Verifica l'ultima versione prima di iscriverti.</p>
         <span class="hint">Ultima revisione · 28 AGO 2026</span>
       </div>
     </div>
@@ -121,6 +121,25 @@ const aciAreaRiservataAttiva = unMesePrima();
           )}
           {stato === 'chiuse' && <a href="#elenco-iscritti" class="btn btn--secondary">Vai all'elenco iscritti</a>}
         </div>
+        {stato === 'aperte' && (
+          <div class="pdfbk">
+            <span class="type-mono pdfbk__k">Se il modulo online non funziona</span>
+            <p class="pdfbk__p">Se hai problemi con la compilazione di uno dei tre moduli Google (domanda di iscrizione, iscrizione ricognitori o dati per la fattura), compila i moduli PDF qui sotto e mandali via mail a <a href={`mailto:${rally.emailInfo}`}>{rally.emailInfo}</a>.</p>
+            <ul class="pdfbk__l">
+              {moduliPdfRiserva.map(m => (
+                <li>
+                  <a class="pdfbk__c" href={m.href} target="_blank" rel="noopener">
+                    <span class="type-mono pdfbk__cod">{m.codice}</span>
+                    <span class="pdfbk__n">{m.nome}</span>
+                    <span class="pdfbk__nota">{m.nota}</span>
+                    <span class="type-mono pdfbk__a">Scarica PDF <span aria-hidden="true">↓</span><span class="sr-only"> Si apre in una nuova pagina</span></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <span class="hint">PDF da compilare al computer, stampare o salvare e firmare. Se il modulo online funziona, usa quello: arriva già in segreteria.</span>
+          </div>
+        )}
         <div class="req">
           <div class="req__head"><h3 class="type-h3">Licenza</h3></div>
           <p class="type-body-dark">{unMesePrima() ? 'Controlla sul sito ACI Sport che la tua licenza sia valida per questo evento.' : 'Verifica la validità della propria licenza per questo evento sul sito ACI Sport.'}</p>
@@ -132,7 +151,7 @@ const aciAreaRiservataAttiva = unMesePrima();
               <span class="link-box link-box--off">Area riservata ACI Sport <span class="type-mono lb__q">dal 23 ottobre</span></span>
             )}
           </div>
-          <span class="hint">{unMesePrima() ? 'Le licenze ammesse sono indicate nel Regolamento Particolare di Gara, in fase di approvazione' : 'Si apre in una nuova pagina · le licenze ammesse sono indicate nel Regolamento Particolare di Gara, in fase di approvazione'}</span>
+          <span class="hint">{unMesePrima() ? 'Le licenze ammesse sono indicate nel Regolamento Particolare di Gara' : 'Si apre in una nuova pagina · le licenze ammesse sono indicate nel Regolamento Particolare di Gara'}</span>
           <p class="hint">{unMesePrima() ? "Prima gara con licenza ACI Sport? Registrati nell'area riservata ACI: la domanda si compila da lì." : "Chi non ha mai gareggiato con licenza ACI Sport deve prima registrarsi nell'area riservata del sito ACI: la domanda di iscrizione si compila da lì."}</p>
           <p class="hint">{unMesePrima() ? 'Dubbi? Scrivi a ' : 'In caso di dubbio scrivi a '}<a href={`mailto:${rally.email}`}>{rally.email}</a></p>
         </div>
@@ -157,7 +176,7 @@ const aciAreaRiservataAttiva = unMesePrima();
     <div class="sec-head">
       <h2 id="sg-h" class="type-h2">Tutto quello che serve, in una schermata</h2>
       {unMesePrima() && <p class="hint sg__tag">Gli orari del programma potrebbero subire variazioni.</p>}
-      {!unMesePrima() && <p class="type-body-dark">Le voci ci sono già tutte: si riempiono con la pubblicazione del regolamento particolare, oggi in fase di approvazione, e dell'albo di gara. Quello che vedi «da definire» non è dimenticato, è in lavorazione.</p>}
+      {!unMesePrima() && <p class="type-body-dark">Le voci ci sono già tutte: si riempiono con la pubblicazione del regolamento particolare e dell'albo di gara. Quello che vedi «da definire» non è dimenticato, è in lavorazione.</p>}
     </div>
     <div class="sg__grid">
       <div class="sg__tab">
@@ -336,6 +355,20 @@ const aciAreaRiservataAttiva = unMesePrima();
   .cls h2{color:#fff;margin-bottom:8px}
   .cls__intro{max-width:60ch}
   .cls__box{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+  /* Riserva PDF dei tre moduli Google: striscia di tre schede fra il blocco iscrizioni
+     e il riquadro Licenza. Su telefono le schede si impilano. */
+  .pdfbk{display:flex;flex-direction:column;gap:10px;padding:var(--sp-4);border:1px solid var(--border-on-dark)}
+  .pdfbk__k{color:var(--ev)}
+  .pdfbk__p{color:#DDD;max-width:72ch}
+  .pdfbk__p a{color:#fff}
+  .pdfbk__l{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;list-style:none;margin:4px 0 0;padding:0}
+  @media(min-width:760px){.pdfbk__l{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .pdfbk__c{display:flex;flex-direction:column;gap:4px;height:100%;padding:16px;border:1px solid var(--border-on-dark);background:var(--carbone);text-decoration:none;transition:border-color var(--dur-fast) var(--ease-out)}
+  .pdfbk__c:hover,.pdfbk__c:focus-visible{border-color:var(--ev)}
+  .pdfbk__cod{color:var(--grigio-450);font-size:11px}
+  .pdfbk__n{color:#fff;font-size:16px;line-height:1.25}
+  .pdfbk__nota{color:var(--grigio-450);font-size:13px;line-height:1.35}
+  .pdfbk__a{margin-top:auto;padding-top:12px;color:var(--ev);font-size:11px}
   .req{display:flex;flex-direction:column;gap:12px}
   .req__head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .req .hint a{color:#fff}

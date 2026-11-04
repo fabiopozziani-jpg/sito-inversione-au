@@ -63,6 +63,10 @@ const LAVORI = [
      Attenzione: "Cattelan Auto", sponsor di evento del Polo, e un altro soggetto. */
   { file: 'AUTOLAVAGGI_CATTELAN.png', nome: 'Autolavaggi Cattelan', livello: 'stagione', evento: 'rally' },
   { file: 'ANTICO_TRAM.png', nome: 'Antico Tram', livello: 'stagione', evento: 'rally' },
+
+  /* 3/11/2026: Auto 31 Service passa da sponsor del solo Polo a partner di stagione.
+     Nessun campo `file`: il logo gia nel Media Manager resta quello che e. */
+  { nome: 'Auto 31 Service', livello: 'stagione' },
 ];
 
 /** Ordine dei partner di stagione. I primi CINQUE sono i partner principali
@@ -84,7 +88,7 @@ const ORDINE_STAGIONE = [
   'Gruppo S2 Automobili',
   'Abano Ghiaccio', 'Locanda al Colle', 'Euganeus 2000',
   'Trivellato New Padova Star', "Pizzeria Conca d'Oro",
-  'Antico Tram',
+  'Antico Tram', 'Auto 31 Service',
 ];
 
 const CARTELLA_FILE = '/Users/fabio/Desktop/INVERSIONE_AU/NUOVO_SITO_INVERSIONE_AU/LOGHI/ANNUALI';
