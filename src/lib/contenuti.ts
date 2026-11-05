@@ -218,7 +218,18 @@ export async function caricaHub(key: 'polo' | 'legnaro'): Promise<Hub> {
 
 /* ---------- Rally Colli Euganei ---------- */
 
-type ProvaCms = { evento: string; sigla: string; nome: string; km?: string; chiusura?: string; primaVettura?: string; zonaPubblico?: string; mapsUrl?: string; mappa?: string; ordine?: number };
+/** Identificativo di un video YouTube, da qualsiasi forma di indirizzo (watch?v=, youtu.be,
+ *  /embed/, /shorts/) o dall'identificativo già pulito. Stringa vuota se non lo riconosce:
+ *  così un campo compilato male nel pannello non manda in pagina un riquadro rotto. */
+export const idYouTube = (v: unknown): string => {
+  const t = typeof v === 'string' ? v.trim() : '';
+  if (!t) return '';
+  if (/^[\w-]{11}$/.test(t)) return t;
+  const m = t.match(/(?:v=|youtu\.be\/|\/embed\/|\/shorts\/)([\w-]{11})/);
+  return m ? m[1] : '';
+};
+
+type ProvaCms = { evento: string; sigla: string; nome: string; km?: string; chiusura?: string; primaVettura?: string; zonaPubblico?: string; mapsUrl?: string; mappa?: string; video?: string; ordine?: number };
 type ScadenzaCms = { evento: string; fase: string; data?: string; ora?: string; ordine?: number };
 type IscrittoCms = { evento: string; numero?: string; equipaggio: string; vettura?: string; classe?: string; ordine?: number };
 type DocumentoCms = { evento: string; numero?: string; titolo: string; gruppo?: string; versione?: string; pubblicatoIl?: string; file?: string; nomeFile?: string; versionePrecedente?: string; dataVersionePrecedente?: string; superato?: boolean; superatoDa?: string };
@@ -256,7 +267,10 @@ export async function caricaRally() {
     const st = R.prove[i];
     return { sigla: s(p.sigla, st?.sigla), nome: s(p.nome, st?.nome), km: s(p.km, st?.km),
       chiusura: s(p.chiusura, st?.chiusura ?? '— · da definire'), prima: s(p.primaVettura, st?.prima ?? '— · da definire'),
-      pubblico: s(p.zonaPubblico, st?.pubblico), maps: s(p.mapsUrl, st?.maps), mappa: imgFit(p.mappa, 1600) || st?.mappa || '' };
+      pubblico: s(p.zonaPubblico, st?.pubblico), maps: s(p.mapsUrl, st?.maps), mappa: imgFit(p.mappa, 1600) || st?.mappa || '',
+      // `video` accetta sia l'identificativo sia un indirizzo YouTube intero incollato
+      // dal pannello: qui si riduce sempre all'identificativo.
+      video: idYouTube(s(p.video, st?.video ?? '')) };
   }) : R.prove;
   const proveOut = dopo ? proveDopo : R.provePrima;
   const scadenzeDopo = scadenze && scadenze.length ? scadenze.map(z => ({ fase: z.fase, data: s(z.data, 'Da definire'), ora: s(z.ora, '—') })) : R.scadenze;

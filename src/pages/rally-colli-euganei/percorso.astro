@@ -131,6 +131,20 @@ const dopo = unMesePrima();
               ? <button type="button" class="ps__mappa img-zoom" data-lb data-src={p.mappa} data-alt={`Tracciato ${p.nome}`}><img src={p.mappa} alt={`Tracciato ${p.nome}`} loading="lazy" decoding="async" /></button>
               : <div class="ps__mappa-attesa"><span class="type-mono">Tracciato in pubblicazione</span></div>}
           </div>
+          {p.video && (
+            <div class="psv">
+              <span class="type-mono k-ev psv__k">Video della PS</span>
+              <div class="psv__box" data-yt-box data-yt={p.video} data-titolo={`Video della prova speciale ${p.nome}`}>
+                <button type="button" class="psv__ph" data-yt-load aria-label={`Guarda il video della prova speciale ${p.nome}`}>
+                  <span class="psv__play" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 3 21 12 6 21 6 3"/></svg>
+                  </span>
+                  <span class="type-mono psv__t">Guarda il video</span>
+                </button>
+              </div>
+              <span class="hint psv__hint">Il video è ospitato da YouTube e si collega solo quando tocchi il pulsante.</span>
+            </div>
+          )}
           <div class="ps__body">
             <span class="type-mono k-ev">{p.sigla}</span>
             <h3 class="type-h3">{p.nome}</h3>
@@ -273,6 +287,14 @@ const dopo = unMesePrima();
   .ps__mappa{display:block;width:100%;height:100%;overflow:hidden}
   .ps__mappa img{width:100%;height:100%;object-fit:cover}
   .ps__mappa-attesa{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--grigio-450);border-bottom:1px solid var(--border-on-dark)}
+  /* video della prova: segnaposto nero, l'iframe entra solo al clic (script in fondo) */
+  .psv{display:flex;flex-direction:column;gap:8px;padding:var(--sp-4) var(--sp-4) 0}
+  .psv__box{background:#0A0A0A;border:1px solid var(--border-on-dark);aspect-ratio:16/9}
+  .psv__box :global(iframe){display:block;width:100%;height:100%;border:0}
+  .psv__ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:none;border:0;color:#fff;cursor:pointer}
+  .psv__play{width:52px;height:52px;display:flex;align-items:center;justify-content:center;border:1px solid var(--ev);color:var(--ev)}
+  .psv__ph:hover .psv__play,.psv__ph:focus-visible .psv__play{background:var(--ev);color:#000}
+  .psv__t{letter-spacing:.06em}
   .ps__body{padding:var(--sp-4);display:flex;flex-direction:column;gap:12px}
   .ps__body h3{color:#fff;margin-top:-4px}
   .ps__dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 16px;font-size:15px}
@@ -307,6 +329,25 @@ const dopo = unMesePrima();
       f.loading = 'lazy';
       f.allow = 'fullscreen';
       f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.style.cssText = 'display:block;width:100%;height:100%;border:0';
+      box.replaceChildren(f);
+    });
+  });
+
+  /** Video delle prove speciali: stessa regola della mappa. Nessuna richiesta parte verso
+   *  YouTube al caricamento della pagina; al clic entra l'iframe in modalità senza cookie
+   *  (youtube-nocookie.com) e il filmato parte subito. */
+  document.querySelectorAll('[data-yt-load]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const box = b.closest('[data-yt-box]') as HTMLElement | null;
+      const id = box?.dataset.yt;
+      if (!box || !id) return;
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      f.title = box.dataset.titolo || 'Video della prova speciale';
+      f.loading = 'lazy';
+      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
       f.style.cssText = 'display:block;width:100%;height:100%;border:0';
       box.replaceChildren(f);
     });

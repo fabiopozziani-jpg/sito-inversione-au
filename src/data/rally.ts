@@ -196,16 +196,22 @@ const CHIUSURA = 'Un\u2019ora prima del passaggio della prima vettura';
 /** Prove speciali come si vedono PRIMA del 23 ottobre: nessun dato di percorso.
  *  Il passaggio fra questa e `prove` lo decide `unMesePrima()`, in contenuti.ts. */
 export const provePrima = [
-  { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: '— · in arrivo', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
-  { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: '— · in arrivo', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '' },
+  { sigla: 'Passaggi 1 · 3 · 5', nome: 'Prova speciale 1', km: '— · in arrivo', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '', video: '' },
+  { sigla: 'Passaggi 2 · 4 · 6', nome: 'Prova speciale 2', km: '— · in arrivo', chiusura: TBD, prima: TBD, pubblico: TBD, maps: '', mappa: '', video: '' },
 ];
 /** Prove speciali. Dati dalla tabella distanze e tempi V3 (definitiva, 22/10/2026) e dalla
  *  cartina del 15/10/2026.
  *  `prima` = orari teorici della prima vettura sui tre passaggi.
- *  Le zone pubblico restano aperte: dipendono dall'ordinanza comunale. */
+ *  Le zone pubblico restano aperte: dipendono dall'ordinanza comunale.
+ *  `video` = identificativo del video YouTube della prova (il pezzo dopo `watch?v=`),
+ *  non l'indirizzo intero. Vuoto = la card non mostra nessun video. I filmati sono
+ *  caricati «non in elenco» sul canale Inversione A U: restano raggiungibili solo da
+ *  qui e dal collegamento diretto. Il filmato non parte da solo e nessuna richiesta
+ *  arriva a YouTube finché non si tocca il pulsante (stessa regola della mappa
+ *  navigabile), così non serve nessun banner cookie. */
 export const prove = [
-  { sigla: 'PS 1 · 3 · 5', nome: 'Teolo', km: '3,00 km', chiusura: CHIUSURA, prima: '07:48 · 11:36 · 15:14', pubblico: TBD, maps: '', mappa: '/img/rally/ps-1-teolo.png' },
-  { sigla: 'PS 2 · 4 · 6', nome: 'Roccolo – Cingolina', km: '4,12 km', chiusura: CHIUSURA, prima: '08:11 · 11:59 · 15:37', pubblico: TBD, maps: '', mappa: '/img/rally/ps-2-roccolo-cingolina.png' },
+  { sigla: 'PS 1 · 3 · 5', nome: 'Teolo', km: '3,00 km', chiusura: CHIUSURA, prima: '07:48 · 11:36 · 15:14', pubblico: TBD, maps: '', mappa: '/img/rally/ps-1-teolo.png', video: 'L85AOA-efMU' },
+  { sigla: 'PS 2 · 4 · 6', nome: 'Roccolo – Cingolina', km: '4,12 km', chiusura: CHIUSURA, prima: '08:11 · 11:59 · 15:37', pubblico: TBD, maps: '', mappa: '/img/rally/ps-2-roccolo-cingolina.png', video: 'ojwfPJZfkbY' },
 ];
 
 /**
