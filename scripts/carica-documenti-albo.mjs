@@ -38,7 +38,10 @@ const PESI = process.argv.includes('--pesi');
 const DATE = process.argv.includes('--date');
 const API = 'https://www.wixapis.com';
 const SITE_ID = '0fa841cd-37c1-4afa-98a8-07cd3feb9f54';
-const CARTELLA_FILE = '/Users/fabio/Desktop/INVERSIONE_AU/EVENTI/2026/21-22_NOVEMBRE_1_RALLY_COLLI_EUGANEI/MODULI/CARICATI_ONLINE';
+const CARTELLA_MAC = '/Users/fabio/Desktop/INVERSIONE_AU/EVENTI/2026/21-22_NOVEMBRE_1_RALLY_COLLI_EUGANEI/MODULI/CARICATI_ONLINE';
+/** Dalla sessione Cowork la cartella e montata altrove: stesso fallback dello script dei loghi. */
+const CARTELLA_FILE = existsSync(CARTELLA_MAC) ? CARTELLA_MAC
+  : `${process.env.HOME}/mnt/INVERSIONE_AU/EVENTI/2026/21-22_NOVEMBRE_1_RALLY_COLLI_EUGANEI/MODULI/CARICATI_ONLINE`;
 /** Un PDF già nella cartella `sito-documenti`: serve solo a ricavare la cartella di destinazione. */
 const RIFERIMENTO = '2be2d6_c5f6450bccd149b59725d618cf7bc712.pdf';
 /** Data di pubblicazione in albo (campo `pubblicatoIl`, formato AAAA-MM-GG). */
@@ -60,7 +63,7 @@ const LAVORI = [
   // (stesso testo, cambia solo il visto): deroga segnata con `sostituisciPubblico`.
   // La pillola «In approvazione» arriva da `documentiInApprovazione` in
   // src/data/rally.ts, oggi svuotato.
-  { numero: '1.1', file: 'RPG_1_RALLY_COLLI_EUGANEI_APPROVATO.pdf', titolo: 'Regolamento particolare di gara', gruppo: 'Regolamento e programma', scarica: 'regolamento-particolare-di-gara.pdf', quando: '2026-11-04', versione: '2', sostituisci: true, sostituisciPubblico: true },
+  { numero: '1.1', file: 'RPG_1_RALLY_COLLI_EUGANEI_APPROVATO.pdf', titolo: 'Regolamento particolare di gara', gruppo: 'Regolamento e programma', scarica: 'regolamento-particolare-di-gara.pdf', quando: '2026-11-04', versione: '2', sostituisci: true }, // deroga gia applicata il 4/11: tolta il 18/11 come da regola
   { numero: '1.2', file: 'PROGRAMMA_A.pdf', titolo: 'Programma', gruppo: 'Regolamento e programma', scarica: 'programma.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.4', file: 'TABELLA_DISTANZE_E_TEMPI_V3.pdf', titolo: 'Tabella distanze e tempi', gruppo: 'Regolamento e programma', scarica: 'tabella-distanze-e-tempi.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '1.3', file: 'CARTINA_PERCORSO_PS_E_SHAKEDOWN_V2.pdf', titolo: 'Cartina percorso PS 1-2-3-4-5-6 e shakedown', gruppo: 'Regolamento e programma', scarica: 'cartina-percorso-ps-1-2-3-4-5-6-e-shakedown.pdf', quando: '2026-10-22', sostituisci: true },
@@ -74,8 +77,14 @@ const LAVORI = [
   { numero: '3.7', file: 'MOD_06_RICHIESTA_SPAZIO_PARCO_ASSISTENZA_V5.pdf', titolo: 'Richiesta spazio parco assistenza (MOD. 06)', gruppo: 'Modulistica', scarica: 'mod-06-richiesta-spazio-parco-assistenza.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '3.8', file: 'MOD_07_DOMANDA_ISCRIZIONE_EQUIPAGGI_ESTERI_V7.pdf', titolo: 'Domanda di iscrizione equipaggi esteri (MOD. 07)', gruppo: 'Modulistica', scarica: 'mod-07-domanda-iscrizione-equipaggi-esteri.pdf', quando: '2026-10-22', sostituisci: true },
   { numero: '3.9', file: 'MOD_08_SCHEDA_ISCRIZIONE_RICOGNITORI_V4.pdf', titolo: 'Scheda iscrizione ricognitori (MOD. 08)', gruppo: 'Modulistica', scarica: 'mod-08-scheda-iscrizione-ricognitori.pdf', quando: '2026-10-22', sostituisci: true },
-  { numero: '4.1', file: 'GUIDA_TRACKING_EQUIPAGGI.pdf', titolo: 'Guida al sistema di tracking — equipaggi', gruppo: 'Allegati tecnici', scarica: 'guida-tracking-equipaggi.pdf' },
-  { numero: '4.2', file: 'GUIDA_TRACKING_MECCANICI_MONTAGGIO.pdf', titolo: 'Guida al sistema di tracking — meccanici, istruzioni di montaggio', gruppo: 'Allegati tecnici', scarica: 'guida-tracking-meccanici-montaggio.pdf' },
+  // 4.1 e 4.2: il 18 novembre 2026 Be Traced ha aggiornato le guide (v1.5 del 2024 → v1.9 del
+  // 07/01/2026). Su richiesta di Fabio il file nuovo SOSTITUISCE il vecchio nella stessa riga
+  // (deroga `sostituisciPubblico`, versione 2): sono documenti del fornitore, non atti di gara.
+  // PDF caricati esattamente come forniti, senza la copertina Inversione delle versioni 1.
+  { numero: '4.1', file: 'GUIDA_TRACKING_EQUIPAGGI_V1_9.pdf', titolo: 'Guida al sistema di tracking — equipaggi', gruppo: 'Allegati tecnici', scarica: 'guida-tracking-equipaggi.pdf', quando: '2026-11-18', versione: '2' }, // deroga applicata il 18/11 e tolta
+  { numero: '4.2', file: 'GUIDA_TRACKING_MECCANICI_MONTAGGIO_V1_9.pdf', titolo: 'Guida al sistema di tracking — meccanici, istruzioni di montaggio', gruppo: 'Allegati tecnici', scarica: 'guida-tracking-meccanici-montaggio.pdf', quando: '2026-11-18', versione: '2' }, // deroga applicata il 18/11 e tolta
+  // 4.3 nuovo del 18/11/2026: guida all'app Be Traced per le ricognizioni, v2.0 settembre 2026.
+  { numero: '4.3', file: 'GUIDA_APP_RICOGNIZIONI_V2_0.pdf', titolo: "Guida all'app Be Traced per le ricognizioni", gruppo: 'Allegati tecnici', scarica: 'guida-app-ricognizioni-be-traced.pdf', quando: '2026-11-18' },
 ];
 
 /* ---------- credenziali ---------- */

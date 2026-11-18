@@ -56,6 +56,8 @@ const riempitivi = Math.max(vuoteDesktop, vuoteTablet, vuoteTelefono);
   .spb__h{color:var(--grigio-450);letter-spacing:.08em;margin-bottom:24px}
   .spb__grid{display:grid;grid-template-columns:repeat(var(--c),minmax(0,1fr));gap:1px;background:var(--border-on-dark);border:1px solid var(--border-on-dark)}
   .spb__cell{background:var(--nero);aspect-ratio:2/1;display:flex;align-items:center;justify-content:center;padding:16px}
+  /* il link occupa tutta la cella: senza, il logo si allinea a sinistra dentro l'<a> (18/11/2026, Be Traced e Ctrl+G) */
+  .spb__cell>a{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
   .spb__cell img{max-width:76%;max-height:var(--logo-h,46px);width:auto;height:auto;opacity:.8;transition:opacity var(--dur-base) var(--ease-out)}
   @media(min-width:1180px){.spb__cell img{max-height:calc(var(--logo-h,46px) + 8px)}}
   /* partner principali: cella doppia, marchio di mezzo passo più grande */

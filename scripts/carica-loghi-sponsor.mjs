@@ -10,7 +10,7 @@
  *      senza `file` il logo già caricato resta quello che è;
  *   3. rinumera il campo `ordine` di TUTTI i partner di stagione seguendo
  *      ORDINE_STAGIONE: è l'ordine con cui compaiono in home, su /sponsor e
- *      negli hub evento. I primi quattro sono i partner principali, che nelle
+ *      negli hub evento. I primi sei sono i partner principali, che nelle
  *      griglie di home e /sponsor occupano una cella doppia.
  *
  * Uso, dalla cartella SITO_WIX, in un Terminale (NON dal watcher):
@@ -61,25 +61,42 @@ const LAVORI = [
      nessun ritocco ai colori. Autolavaggi Cattelan e il quinto partner principale: sta
      in quinta posizione in ORDINE_STAGIONE e SponsorBlock e passato a `primi={5}`.
      Attenzione: "Cattelan Auto", sponsor di evento del Polo, e un altro soggetto. */
-  { file: 'AUTOLAVAGGI_CATTELAN.png', nome: 'Autolavaggi Cattelan', livello: 'stagione', evento: 'rally' },
-  { file: 'ANTICO_TRAM.png', nome: 'Antico Tram', livello: 'stagione', evento: 'rally' },
+  /* Applicati il 28/10/2026: tolti da qui il 7/11 perche una riga con il campo `file`
+     ricarica il PNG a ogni esecuzione e lascia un doppione nel Media Manager.
+     Le loro posizioni restano in ORDINE_STAGIONE. */
 
   /* 3/11/2026: Auto 31 Service passa da sponsor del solo Polo a partner di stagione.
      Nessun campo `file`: il logo gia nel Media Manager resta quello che e. */
   { nome: 'Auto 31 Service', livello: 'stagione' },
+
+  /* 7/11/2026: Furlan Servizi, partner di stagione nuovo e sesto partner principale.
+     Logo bianco su trasparente fornito da Fabio (LOGHI/ANNUALI/furlan.png): del file e
+     stato fatto solo il ritaglio sull'alfa in FURLAN_SERVIZI_2026.png, 3343x293,
+     nessun ritocco ai colori. Sta in sesta posizione in ORDINE_STAGIONE e SponsorBlock
+     e passato a `primi={6}` in home e su /sponsor. */
+  /* Applicato il 7/11/2026 (logo caricato, riga creata): tolto da qui il 18/11 perche una riga
+     con il campo `file` ricarica il PNG a ogni esecuzione. La posizione resta in ORDINE_STAGIONE. */
+
+  /* 18/11/2026: Be Traced (fornitore del tracking del rally), partner di stagione nuovo.
+     Logo fornito da Fabio (logo-nero-400x83.png): scritta bianca e «C» rossa su trasparente,
+     gia rifilato sul marchio. Caricato esattamente com'e, nessun ritaglio ne ritocco.
+     Non e partner principale: va in coda a ORDINE_STAGIONE. */
+  /* Applicato il 18/11/2026 (2be2d6_d0404d2fa53340aca5e542d9f8713d83~mv2.png, url betraced.com):
+     { file: 'BE_TRACED_2026.png', nome: 'Be Traced', livello: 'stagione', evento: 'rally', url: 'https://www.betraced.com/' } */
 ];
 
-/** Ordine dei partner di stagione. I primi CINQUE sono i partner principali
- *  (quattro fino al 28/10/2026): devono coincidere con `primi` di SponsorBlock
+/** Ordine dei partner di stagione. I primi SEI sono i partner principali
+ *  (cinque fino al 7/11/2026): devono coincidere con `primi` di SponsorBlock
  *  in src/pages/index.astro e src/pages/sponsor/index.astro.
  *  Le righe sospese (attivo: falso) non entrano nella numerazione.
  *  Un nome senza riga di livello "stagione" attiva viene semplicemente saltato;
  *  una riga "stagione" non elencata qui finisce in coda. */
 /** Quanti partner principali: deve coincidere con `primi` di SponsorBlock nelle pagine. */
-const PRINCIPALI = 5;
+const PRINCIPALI = 6;
 
 const ORDINE_STAGIONE = [
   'Datex', 'Cesaro Group', 'Gemini Carrozzeria', 'Zanon', 'Autolavaggi Cattelan',
+  'Furlan Servizi',
   'BAAP Bergamaschi', 'Rally Team', 'Ctrl+G',
   'Sky Motors', 'Metal Nord Rottami', 'Ecosider', 'Siderurgica Veneta',
   'Labor F.lli Corazzari', 'Marchioro Scavi e Demolizioni', 'Dealernet',
@@ -88,10 +105,14 @@ const ORDINE_STAGIONE = [
   'Gruppo S2 Automobili',
   'Abano Ghiaccio', 'Locanda al Colle', 'Euganeus 2000',
   'Trivellato New Padova Star', "Pizzeria Conca d'Oro",
-  'Antico Tram', 'Auto 31 Service',
+  'Antico Tram', 'Auto 31 Service', 'Be Traced',
 ];
 
-const CARTELLA_FILE = '/Users/fabio/Desktop/INVERSIONE_AU/NUOVO_SITO_INVERSIONE_AU/LOGHI/ANNUALI';
+const CARTELLA_MAC = '/Users/fabio/Desktop/INVERSIONE_AU/NUOVO_SITO_INVERSIONE_AU/LOGHI/ANNUALI';
+/** Dal Terminale del Mac vale il percorso qui sopra. Se non esiste (sessione Cowork, dove la
+ *  cartella è montata altrove) si usa il mount, così lo script gira identico da entrambe le parti. */
+const CARTELLA_FILE = existsSync(CARTELLA_MAC) ? CARTELLA_MAC
+  : [`${process.env.HOME}/mnt/INVERSIONE_AU/NUOVO_SITO_INVERSIONE_AU/LOGHI/ANNUALI`, `${process.env.HOME}/mnt/ANNUALI`].find(existsSync) ?? CARTELLA_MAC;
 /** Un logo già nel Media Manager: serve solo a ricavare la cartella di destinazione. */
 const RIFERIMENTO = '2be2d6_1ebd26445925405e84ac71f6cc564375~mv2.png';
 

@@ -3,11 +3,11 @@
  *  SponsorBlock è sempre usato con mono={false}, quindi il file si vede come è. */
 export type Sponsor = { name: string; logo: string; url?: string; w?: number; h?: number };
 /** Dimensioni dei PNG in public/img/sponsor (per width/height sugli <img>, niente CLS). */
-const DIM: Record<string, [number, number]> = { 'abano-ghiaccio': [383,180], 'auto-landi': [303,180], 'auto31': [440,90], 'autoservizi-cavinato': [440,79], 'baap-bergamaschi': [440,173], 'bellavista': [259,180], 'bull-barber': [331,180], 'caneva-car': [440,62], 'carrozzeria-angela': [440,110], 'caffe-noir': [440,152], 'cattelan': [184,180], 'centro-del-piede': [388,180], 'cesaro-group': [440,89], 'datex': [440,174], 'dealernet': [215,180], 'ecosider': [402,180], 'gemini': [440,73], 'zanon': [440,119], 'euganeus': [440,154], 'gruppo-s2': [440,59], 'labor': [321,180], 'locanda-al-colle': [440,101], 'lovato': [440,168], 'marchioro': [440,155], 'metal-nord': [440,98], 'polo-cucine': [440,114], 'race-shop': [440,69], 'rally-bar': [440,147], 'rally-team': [440,179], 'ricambi-americani': [440,132], 'siderurgica-veneta': [327,180], 'sky-motors': [440,94], 'donolauto': [600,219], 'ctrlg': [600,422], 'trivellato': [440,63], 'conca-d-oro': [288,180], 'antico-tram': [218,180], 'autolavaggi-cattelan': [440,74] };
+const DIM: Record<string, [number, number]> = { 'abano-ghiaccio': [383,180], 'auto-landi': [303,180], 'auto31': [440,90], 'autoservizi-cavinato': [440,79], 'baap-bergamaschi': [440,173], 'bellavista': [259,180], 'bull-barber': [331,180], 'caneva-car': [440,62], 'carrozzeria-angela': [440,110], 'caffe-noir': [440,152], 'cattelan': [184,180], 'centro-del-piede': [388,180], 'cesaro-group': [440,89], 'datex': [440,174], 'dealernet': [215,180], 'ecosider': [402,180], 'gemini': [440,73], 'zanon': [440,119], 'euganeus': [440,154], 'gruppo-s2': [440,59], 'labor': [321,180], 'locanda-al-colle': [440,101], 'lovato': [440,168], 'marchioro': [440,155], 'metal-nord': [440,98], 'polo-cucine': [440,114], 'race-shop': [440,69], 'rally-bar': [440,147], 'rally-team': [440,179], 'ricambi-americani': [440,132], 'siderurgica-veneta': [327,180], 'sky-motors': [440,94], 'donolauto': [600,219], 'ctrlg': [600,422], 'trivellato': [440,63], 'conca-d-oro': [288,180], 'antico-tram': [218,180], 'autolavaggi-cattelan': [440,74], 'furlan-servizi': [440,39], 'be-traced': [400,83] };
 const s = (slug: string, name: string): Sponsor => ({ name, logo: `/img/sponsor/${slug}.png`, w: DIM[slug]?.[0], h: DIM[slug]?.[1] });
 
 export const annuali: Sponsor[] = [
-  /* I primi CINQUE sono i partner principali: aprono la sequenza e nelle griglie
+  /* I primi SEI sono i partner principali: aprono la sequenza e nelle griglie
      di home e /sponsor occupano una cella doppia (SponsorBlock, prop `primi`).
      L'ordine vero arriva dal CMS (campo `ordine`): qui si tiene allineato a mano. */
   s('datex', 'Datex'),
@@ -15,6 +15,7 @@ export const annuali: Sponsor[] = [
   s('gemini', 'Gemini Carrozzeria'),
   s('zanon', 'Zanon'),
   s('autolavaggi-cattelan', 'Autolavaggi Cattelan'),
+  s('furlan-servizi', 'Furlan Servizi'),
   s('baap-bergamaschi', 'BAAP Bergamaschi'),
   s('rally-team', 'Rally Team'),
   { ...s('ctrlg', 'Ctrl+G'), url: 'https://www.ctrlg.it/' },
@@ -35,6 +36,7 @@ export const annuali: Sponsor[] = [
   s('conca-d-oro', "Pizzeria Conca d'Oro"),
   s('antico-tram', 'Antico Tram'),
   s('auto31', 'Auto 31 Service'),
+  { ...s('be-traced', 'Be Traced'), url: 'https://www.betraced.com/' },
 ];
 export const rally: Sponsor[] = [];
 export const polo: Sponsor[] = [

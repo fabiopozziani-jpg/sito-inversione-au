@@ -37,7 +37,8 @@ const cur = norm(current);
   .ev-subnav::before{left:0;background:linear-gradient(-90deg,transparent,var(--sub-bg))}
   .ev-subnav.has-more::after,.ev-subnav.has-less::before{opacity:1}
   @media(max-width:1179px){.ev-subnav__in{height:48px;gap:22px}}
-  .ev-subnav__in{display:flex;gap:28px;align-items:center;height:var(--subnav-h);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  /* position:relative: la barra che scorre fa da riferimento ai testi .sr-only («Si apre in una nuova pagina») delle voci esterne. Senza, restavano agganciati al <nav> fuori dal ritaglio e allargavano la pagina su telefono (18/11/2026) */
+  .ev-subnav__in{position:relative;display:flex;gap:28px;align-items:center;height:var(--subnav-h);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .ev-subnav__in::-webkit-scrollbar{display:none}
   .ev-subnav__a{font-family:var(--font-body);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:2px solid transparent;padding:12px 0;white-space:nowrap;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out)}
   .ev-subnav__a:hover,.ev-subnav__a:focus-visible{color:#fff;border-bottom-color:#fff}

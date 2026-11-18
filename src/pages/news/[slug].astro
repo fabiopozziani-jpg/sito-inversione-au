@@ -53,6 +53,8 @@ const dataEstesa = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'lo
   .art{padding-top:var(--sp-4);padding-bottom:var(--sp-10);display:flex;flex-direction:column;gap:var(--sp-5)}
   .art__head{display:flex;flex-direction:column;gap:14px;max-width:820px}
   .art__meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  /* etichette lunghe («Rally Colli Euganei · per il pubblico e per i concorrenti»): vanno a capo invece di allargare la pagina su telefono (18/11/2026) */
+  .art__meta .pill{white-space:normal;max-width:100%;text-align:left}
   .art h1{color:#fff;text-wrap:balance}
   .art__lead{color:#DDD;font-size:19px;line-height:1.55;max-width:60ch}
   .art__fig{display:flex;flex-direction:column;gap:8px}

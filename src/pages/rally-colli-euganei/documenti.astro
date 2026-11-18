@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, gruppiAlbo, fmtData, unMesePrima, domandeOnline, moduliIscrizionePdf, documentiInApprovazione } from '../../data/rally';
+import { subnav, gruppiAlbo, fmtData, unMesePrima, domandeOnline, moduliIscrizionePdf, documentiInApprovazione, statoIscrizioniOra } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/documenti/';
@@ -29,6 +29,9 @@ const perNumero = (a: { num: string }, b: { num: string }) => {
   return 0;
 };
 const dopo = unMesePrima();
+/** Dopo la chiusura (16 novembre, 23:59) i moduli del gruppo «Iscrizioni» restano consultabili
+ *  ma portano l'etichetta rossa «Iscrizioni chiuse». Si accende da sola, dalla data. */
+const iscrizioniChiuse = statoIscrizioniOra() === 'chiuse';
 /** Dal 23 ottobre l'albo apre con un gruppo «Iscrizioni»: i tre moduli online, le due
  *  domande in PDF (3.8 e 3.9) e l'area riservata ACI. Le due righe PDF si SPOSTANO lì,
  *  quindi vanno tolte dal gruppo Modulistica per non comparire due volte. */
@@ -135,7 +138,7 @@ const hasDocs = docs.length > 0;
                   <tr class="gruppo"><th colspan="4" scope="colgroup">Iscrizioni</th></tr>
                   {domandeOnline.map(m => (
                     <tr>
-                      <td><div class="albo__doc"><span class="doc-title">{m.nome}</span></div><div class="hint">{m.nota}</div></td>
+                      <td><div class="albo__doc"><span class="doc-title">{m.nome}</span>{iscrizioniChiuse && <span class="pill pill--rosso">Iscrizioni chiuse</span>}</div><div class="hint">{m.nota}</div></td>
                       <td class="type-mono" data-label="Versione">—</td>
                       <td class="type-mono" data-label="Pubblicato il">—</td>
                       <td data-label="File"><div class="albo__file"><div class="albo__links"><a class="type-mono" href={m.url} target="_blank" rel="noopener">Apri ↗</a></div><span class="hint">Modulo online</span></div></td>
@@ -143,7 +146,7 @@ const hasDocs = docs.length > 0;
                   ))}
                   {docsIscrizione.map(d => (
                     <tr class:list={{ superato: d.superato }}>
-                      <td><div class="albo__doc"><span class="type-mono k-ev">{d.num}</span><span class="doc-title">{d.title}</span>{d.nuovo && <span class="pill pill--pieno">Nuovo</span>}</div></td>
+                      <td><div class="albo__doc"><span class="type-mono k-ev">{d.num}</span><span class="doc-title">{d.title}</span>{d.nuovo && <span class="pill pill--pieno">Nuovo</span>}{iscrizioniChiuse && <span class="pill pill--rosso">Iscrizioni chiuse</span>}</div></td>
                       <td class="type-mono" data-label="Versione">{d.rev ?? '—'}</td>
                       <td class="type-mono" data-label="Pubblicato il"><time datetime={d.iso}>{fmtData(d.iso)}</time></td>
                       <td data-label="File"><div class="albo__file"><div class="albo__links"><a class="type-mono" href={d.href} target="_blank" rel="noopener">Apri ↗</a><a class="type-mono" href={d.href} download>Scarica ↓</a></div><span class="hint">{d.file}</span></div></td>
