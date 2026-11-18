@@ -442,3 +442,7 @@ export function fmtData(iso: string, withTime = false): string {
   const base = `${g('day')} ${MESI[Number(g('month')) - 1]} ${g('year')}`;
   return withTime ? `${base}, ${g('hour')}:${g('minute')}` : base;
 }
+
+/** Rinvio della gara (comunicato del 18/11/2026). Con `attivo: true` la home mostra «Rinviato» in rosso,
+ *  toglie il conto alla rovescia e porta a hub e comunicato. Per tornare alla home normale: `attivo: false`. */
+export const rinvio = { attivo: true, comunicato: '/news/rally-colli-euganei-rinviato/' };

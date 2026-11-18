@@ -11,7 +11,7 @@ import StatBlock from '../components/StatBlock.astro';
 import NewsCard from '../components/NewsCard.astro';
 import PhotoStrip from '../components/PhotoStrip.astro';
 import SponsorBlock from '../components/SponsorBlock.astro';
-import { unMesePrima, indirizzoOscurato } from '../data/rally';
+import { unMesePrima, indirizzoOscurato, rinvio } from '../data/rally';
 import PartnerMarquee from '../components/PartnerMarquee.astro';
 import SocialStrip from '../components/SocialStrip.astro';
 import CTABlock from '../components/CTABlock.astro';
@@ -40,7 +40,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
 ---
 <Base
   title="Eventi motorsport in Veneto | Inversione A U"
-  description="Rally, drift e raduni sui Colli Euganei: il 1° Rally Colli Euganei ACI Sport è il 21 e 22 novembre 2026. Calendario, percorso e informazioni per il pubblico."
+  description={rinvio.attivo ? 'Rally, drift e raduni sui Colli Euganei: il 1° Rally Colli Euganei ACI Sport è rinviato, la nuova data è in definizione. Calendario, eventi e comunicati.' : 'Rally, drift e raduni sui Colli Euganei: il 1° Rally Colli Euganei ACI Sport è il 21 e 22 novembre 2026. Calendario, percorso e informazioni per il pubblico.'}
   active=""
 >
   <!-- HERO -->
@@ -49,18 +49,25 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="wrap hero__in">
       <img class="hero__targa" src={imgFit(IMMAGINI.targaRally, 1400)} alt="" width="1400" height="643" fetchpriority="high" decoding="async" />
-      <p class="type-mono hero__kicker">Prossimo evento · 21–22 novembre 2026 · Colli Euganei</p>
+      <p class="type-mono hero__kicker">{rinvio.attivo ? '1° Rally Colli Euganei · nuova data in definizione' : 'Prossimo evento · 21–22 novembre 2026 · Colli Euganei'}</p>
       <h1 id="hero-h1" class="hero__h1">
         <span class="type-mono hero__name">Inversione A U</span>
-        <span class="hero__sub">{unMesePrima() ? 'Iscrizioni aperte al Rally Colli Euganei' : 'Torna il rally sui Colli Euganei'}</span>
+        <span class="hero__sub">{rinvio.attivo ? <><span class="hero__rinvio">Rinviato</span> il Rally Colli Euganei</> : unMesePrima() ? 'Iscrizioni aperte al Rally Colli Euganei' : 'Torna il rally sui Colli Euganei'}</span>
       </h1>
-      <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span><span class="hero__tag">Rally Sprint</span></p>
+      {!rinvio.attivo && <p class="type-mono tabellone hero__count"><span class="cifra">{countdown}</span><span class="hero__tag">Rally Sprint</span></p>}
+      {rinvio.attivo ? (
+      <div class="hero__cta">
+        <a href="/rally-colli-euganei/" class="btn btn--primary">Sezione del rally</a>
+        <a href={rinvio.comunicato} class="btn btn--secondary">Comunicato stampa <span class="arrow-x" aria-hidden="true">→</span></a>
+      </div>
+      ) : (
       <div class="hero__cta">
         <a href="/rally-colli-euganei/percorso/" class="btn btn--primary">Guarda il percorso</a>
         {unMesePrima()
           ? <a href="/rally-colli-euganei/concorrenti/" class="btn btn--secondary">Iscriviti come pilota <span class="arrow-x" aria-hidden="true">→</span></a>
           : <a href="/rally-colli-euganei/" class="btn btn--secondary">Leggi le informazioni del rally <span class="arrow-x" aria-hidden="true">→</span></a>}
       </div>
+      )}
     </div>
   </section>
 
@@ -76,6 +83,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
         ['Spettatori', 'Programma, dove vedere le prove, come arrivare', '/rally-colli-euganei/spettatori/'],
         ['Documenti di gara', 'Regolamento, ordini di partenza, comunicati', '/rally-colli-euganei/documenti/'],
         ['Giornalisti e fotografi', 'Come richiedere l\'accredito', '/stampa/accrediti/'],
+        ['Percorso', 'Prove speciali, mappe e video', '/rally-colli-euganei/percorso/'],
       /* la numerazione nasce qui: togliendo una voce oscurata le altre si rinumerano da sole */
       ].filter(([, , h]) => !indirizzoOscurato(h))
        .map(([t, d, h], i) => [String(i + 1).padStart(2, '0'), t, d, h])
@@ -138,7 +146,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   <section class="hair" aria-labelledby="partner">
     <div class="wrap section partner">
       <SectionHead id="partner" title="I nostri partner" intro="Le aziende che sostengono i nostri eventi 2026" />
-      <SponsorBlock sponsors={annuali} columns={4} logoH={74} mono={false} primi={5} />
+      <SponsorBlock sponsors={annuali} columns={4} logoH={74} mono={false} primi={6} />
       <a href="/sponsor/diventa-sponsor/" class="partner__cta">
         <span class="partner__cta-t">
           <span class="type-mono text-meta">Stagione 2027</span>
@@ -170,6 +178,7 @@ const news = ordinaPerData(tuttiIPost).slice(0, 3).map(p => ({ image: p.image, c
   .hero__h1{display:flex;flex-direction:column;gap:8px;text-wrap:balance}
   .hero__name{font-size:14px;letter-spacing:.16em;color:var(--grigio-200);text-transform:uppercase}
   .hero__sub{font-family:var(--font-display);font-stretch:125%;font-weight:900;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(34px,7.6vw,84px);line-height:1.03}
+  .hero__rinvio{color:var(--alert-rosso-chiaro)} /* rinvio 18/11/2026: rosso AA su fondo scuro */
   .hero__count{color:var(--grigio-200);font-size:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   .hero__tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rally-verde);color:var(--rally-verde);padding:3px 8px;white-space:nowrap}
   .hero__intro{max-width:52ch}

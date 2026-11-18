@@ -4,7 +4,7 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, cartinaPercorsoAlbo, tabellaTempiAlbo, unMesePrima } from '../../data/rally';
+import { subnav, cartinaPercorsoAlbo, tabellaTempiAlbo, unMesePrima, rinvio } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, prove, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/percorso/';
@@ -151,7 +151,7 @@ const dopo = unMesePrima();
             <dl class="ps__dl">
               <div><dt>Lunghezza</dt><dd class="tabular">{p.km}</dd></div>
               <div><dt>Chiusura della strada</dt><dd>{p.chiusura}</dd></div>
-              <div><dt>Prima vettura</dt><dd>{p.prima}</dd></div>
+              <div><dt>Prima vettura</dt><dd>{rinvio.attivo ? <span class="rinvio-data"><s>{p.prima}</s></span> : p.prima}</dd></div>
               {!dopo && <div><dt>Zona pubblico</dt><dd>{p.pubblico}</dd></div>}
             </dl>
             {p.maps && <a class="link-box" href={p.maps} target="_blank" rel="noopener">Apri il parcheggio su Google Maps ↗</a>}
@@ -170,7 +170,9 @@ const dopo = unMesePrima();
         <Fragment>
           <h2 id="tt-h" class="type-h2">La giornata di gara</h2>
           <p class="hint ps__tag">Gli orari del programma potrebbero subire variazioni.</p>
-          <p class="type-body-dark tt__intro">Domenica 22 novembre, dalla partenza delle 07:30 all'arrivo della prima vettura alle 16:15.</p>
+          {rinvio.attivo
+            ? <p class="type-body-dark tt__intro"><span class="rinvio-data"><s>Domenica 22 novembre</s></span>, dalla partenza delle <span class="rinvio-data"><s>07:30</s></span> all'arrivo della prima vettura alle <span class="rinvio-data"><s>16:15</s></span>.</p>
+            : <p class="type-body-dark tt__intro">Domenica 22 novembre, dalla partenza delle 07:30 all'arrivo della prima vettura alle 16:15.</p>}
           <dl class="dati tt__dati reveal">
             <div><dt class="type-mono">Sezioni</dt><dd class="type-mono">3</dd></div>
             <div><dt class="type-mono">Settori</dt><dd class="type-mono">15</dd></div>
@@ -179,7 +181,7 @@ const dopo = unMesePrima();
             <div><dt class="type-mono">Zone rifornimento</dt><dd class="type-mono">3 · Selve di Teolo</dd></div>
             <div><dt class="type-mono">Controlli a timbro</dt><dd class="type-mono">3 · Galzignano</dd></div>
           </dl>
-          <table class="tt__tab">
+          <table class:list={['tt__tab', { 'tab-rinviata': rinvio.attivo }]}>
             <caption class="type-mono">Orari teorici della prima vettura — domenica 22 novembre</caption>
             <thead><tr><th scope="col">Ora</th><th scope="col">Tappa</th><th scope="col">Dove</th></tr></thead>
             <tbody>

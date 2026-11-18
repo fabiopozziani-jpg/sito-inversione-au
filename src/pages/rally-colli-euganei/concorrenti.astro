@@ -4,17 +4,17 @@ import '../../styles/hub.css';
 import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { subnav, classi, schedaGara, schedaGaraPrima, documentiRapidi, liveTimingAttivo, unMesePrima, domandeOnline, moduliIscrizionePdf, moduliPdfRiserva, tasseIscrizioneAlbo } from '../../data/rally';
+import { subnav, classi, schedaGara, schedaGaraPrima, documentiRapidi, liveTimingAttivo, unMesePrima, domandeOnline, moduliIscrizionePdf, moduliPdfRiserva, tasseIscrizioneAlbo, rinvio } from '../../data/rally';
 import { caricaRally } from '../../lib/contenuti';
 const { rally, scadenze, iscritti, iscrittiAggiornatoAl, iscrittiPdf, documenti } = await caricaRally();
 const url = '/rally-colli-euganei/concorrenti/';
 const stato = rally.statoIscrizioni;
+const haIscritti = iscritti.length > 0;
 const isc = {
   'non-aperte': { kicker: 'Iscrizioni dal 22 ottobre', titolo: 'Iscrizioni in area riservata ACI', testo: `La domanda di iscrizione si compila nell'area riservata ACI Sport e con i moduli qui sotto. Si accendono ${rally.aperturaPrevista}.` },
   'aperte': { kicker: 'Iscrizioni aperte', titolo: `Iscrizioni aperte fino al ${rally.chiusuraIscrizioni}, ore ${rally.chiusuraIscrizioniOra}`, testo: 'Compila la domanda online: servono licenza, dati della vettura e del navigatore. Equipaggi esteri e ricognitori usano invece il modulo PDF, da inviare per email con la copia del bonifico.' },
-  'chiuse': { kicker: 'Iscrizioni chiuse', titolo: 'Iscrizioni chiuse', testo: `Le iscrizioni si sono chiuse il ${rally.chiusuraIscrizioni} alle ${rally.chiusuraIscrizioniOra}. Gli equipaggi ammessi sono nell'elenco iscritti qui sotto.` },
+  'chiuse': { kicker: 'Iscrizioni chiuse', titolo: 'Iscrizioni chiuse', testo: `Le iscrizioni si sono chiuse il ${rally.chiusuraIscrizioni} alle ${rally.chiusuraIscrizioniOra}. ${haIscritti ? "Gli equipaggi iscritti sono nell'elenco qui sotto." : "L'elenco iscritti sarà pubblicato appena revisionato e controllato dalla Direzione Gara."}` },
 }[stato];
-const haIscritti = iscritti.length > 0;
 /** La scheda gara compilata esce con i documenti, a mezzanotte fra il 22 e il 23 ottobre.
  *  Prima di allora restano le voci senza valori. */
 const scheda = unMesePrima() ? schedaGara : schedaGaraPrima;
@@ -160,7 +160,7 @@ const aciAreaRiservataAttiva = unMesePrima();
       <div class="isc__col">
         <h3 class="type-h3">Date da segnare</h3>
         <div class="tbl-wrap">
-          <table class="tbl tbl--scad tbl--cards">
+          <table class:list={['tbl tbl--scad tbl--cards', { 'tab-rinviata-ora': rinvio.attivo }]}>
             <thead><tr><th scope="col">Fase</th><th scope="col">Data</th><th scope="col">Ora</th></tr></thead>
             <tbody>{scadenze.map(s => <tr><th scope="row">{s.fase}</th><td data-label="Data">{s.data}</td><td class:list={['tabular', { 'is-vuota': !s.ora || s.ora === '—' }]} data-label="Ora">{s.ora}</td></tr>)}</tbody>
           </table>
@@ -186,7 +186,7 @@ const aciAreaRiservataAttiva = unMesePrima();
             <div class:list={['sg__r', { 'sg__r--vuota': !v.valore }]}>
               <dt>{v.voce}</dt>
               <dd>
-                {v.valore ? <span class="sg__val">{v.valore}</span> : <span class="type-mono sg__soon">Da definire</span>}
+                {v.valore ? <span class="sg__val">{rinvio.attivo && /\b(20|21|22) novembre|domenica 22|sabato 21/i.test(v.valore) ? <span class="rinvio-data"><s>{v.valore}</s></span> : v.valore}</span> : <span class="type-mono sg__soon">Da definire</span>}
                 {v.nota && <span class="hint sg__nota">{v.nota}</span>}
               </dd>
             </div>
@@ -253,7 +253,7 @@ const aciAreaRiservataAttiva = unMesePrima();
     <div class="el__head">
       <div>
         <h2 id="el-h" class="type-h2">Elenco iscritti</h2>
-        <p class="type-body-dark">Tutti gli equipaggi ammessi. Cerca il tuo nome o filtra per classe.</p>
+        <p class="type-body-dark">{haIscritti ? 'Tutti gli equipaggi iscritti. Cerca il tuo nome o filtra per classe.' : stato === 'chiuse' ? 'Le iscrizioni sono ufficialmente chiuse.' : 'Tutti gli equipaggi iscritti, con ricerca per nome e filtro per classe.'}</p>
       </div>
       {iscrittiPdf && <span class="el__pdf"><a class="link-box" href={iscrittiPdf} target="_blank" rel="noopener">Scarica l'elenco iscritti in PDF ↓</a><span class="hint">Il PDF è il documento ufficiale · si apre in una nuova pagina</span></span>}
     </div>
@@ -282,7 +282,7 @@ const aciAreaRiservataAttiva = unMesePrima();
       </div>
     ) : (
       <div class="card card--left reveal">
-        <p role="status" class="el__attesa">{unMesePrima() ? "L'elenco esce nella settimana di gara: qui, leggibile dal telefono, e in PDF." : "L'elenco degli equipaggi ammessi viene pubblicato nella settimana di gara. Lo trovi qui, leggibile dal telefono e scaricabile in PDF."}</p>
+        <p role="status" class="el__attesa">{stato === 'chiuse' ? "L'elenco iscritti sarà pubblicato appena revisionato e controllato dalla Direzione Gara. Lo trovi qui, leggibile dal telefono e scaricabile in PDF." : unMesePrima() ? "L'elenco esce nella settimana di gara: qui, leggibile dal telefono, e in PDF." : "L'elenco degli equipaggi ammessi viene pubblicato nella settimana di gara. Lo trovi qui, leggibile dal telefono e scaricabile in PDF."}</p>
       </div>
     )}
   </section>

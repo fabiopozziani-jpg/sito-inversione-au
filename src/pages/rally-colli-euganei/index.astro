@@ -8,7 +8,7 @@ import Base from '../../layouts/Base.astro';
 import EventSubnav from '../../components/EventSubnav.astro';
 import NewsCard from '../../components/NewsCard.astro';
 import SponsorBlock from '../../components/SponsorBlock.astro';
-import { subnav, statoRally, unMesePrima, cartinaPercorsoAlbo, indirizzoOscurato } from '../../data/rally';
+import { subnav, statoRally, unMesePrima, cartinaPercorsoAlbo, indirizzoOscurato, rinvio } from '../../data/rally';
 import { caricaRally, caricaSponsor, senzaAnnuali, caricaPosts, ordinaPerData } from '../../lib/contenuti';
 import { IMMAGINI, imgFill } from '../../data/rallyImmagini';
 import { srcsetFill } from '../../data/media';
@@ -22,7 +22,7 @@ const sponsorEvento = (k: string) => senzaAnnuali(sponsor.perEvento(k), annuali)
 const { stato, giorni } = statoRally();
 const eventLd = {
   '@context': 'https://schema.org', '@type': 'SportsEvent', name: rally.nome, sport: 'Rally',
-  startDate: '2026-11-21', endDate: '2026-11-22', eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  startDate: '2026-11-21', endDate: '2026-11-22', eventStatus: rinvio.attivo ? 'https://schema.org/EventPostponed' : 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: { '@type': 'Place', name: 'Colli Euganei', address: { '@type': 'PostalAddress', addressLocality: 'Teolo', addressRegion: 'PD', addressCountry: 'IT' } },
   organizer: { '@id': 'https://www.inversioneau.com/#org' }, image: 'https://www.inversioneau.com/img/social/rally-colli-euganei.jpg',
   description: 'Prima edizione del rally sui Colli Euganei con titolazione ACI Sport. Due giorni di gara, ingresso libero per il pubblico.',
@@ -36,8 +36,8 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .map(p => ({ image: p.image, category: p.chi.includes('pubblico') ? (p.chi.includes('concorrenti') ? 'Spettatori e concorrenti' : 'Spettatori') : 'Concorrenti', date: p.date, title: p.title, excerpt: p.excerpt, href: `/news/${p.slug}/` }));
 ---
 <Base
-  title="Rally Colli Euganei 2026 · 21–22 novembre | Inversione A U"
-  description="Il 1° Rally Colli Euganei ACI Sport si corre il 21 e 22 novembre 2026. Percorso, iscrizioni, informazioni per il pubblico e documenti di gara."
+  title={rinvio.attivo ? 'Rally Colli Euganei 2026 · rinviato | Inversione A U' : 'Rally Colli Euganei 2026 · 21–22 novembre | Inversione A U'}
+  description={rinvio.attivo ? 'Il 1° Rally Colli Euganei ACI Sport è rinviato: la nuova data è in definizione. Comunicato, percorso e documenti di gara.' : 'Il 1° Rally Colli Euganei ACI Sport si corre il 21 e 22 novembre 2026. Percorso, iscrizioni, informazioni per il pubblico e documenti di gara.'}
   active="rally" bodyClass="ctx-rally"
   image="/img/social/rally-colli-euganei.jpg" imageAlt="1° Rally Colli Euganei ACI Sport, 21–22 novembre 2026"
   jsonld={[eventLd, { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.inversioneau.com/' }, { '@type': 'ListItem', position: 2, name: 'Rally Colli Euganei', item: 'https://www.inversioneau.com/rally-colli-euganei/' }] }]}
@@ -51,22 +51,29 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
     <div class="wrap hero__in">
       <img class="hero__targa" src={rally.targa} alt="" width="1400" height="643" fetchpriority="high" decoding="async" />
       <div class="hero__meta">
-        <p class="type-mono hero__kicker">{rally.dataLabel} · {rally.luogo} · titolazione ACI Sport</p>
+        <p class="type-mono hero__kicker">{!rinvio.attivo && `${rally.dataLabel} · `}{rally.luogo} · titolazione ACI Sport</p>
         <img class="hero__aci" src="/img/logo_aci_sport.png" alt="ACI Sport" width="44" height="44" decoding="async" />
       </div>
-      <h1 id="hero-h1" class="type-display hero__h1">{rally.titoloHero}</h1>
+      <h1 id="hero-h1" class="type-display hero__h1">{rally.titoloHero}{rinvio.attivo && <>{' '}<span class="hero__rinvio">(rinviato)</span></>}</h1>
       <div class="hero__count-row">
-        {stato === 'pre' && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
+        {stato === 'pre' && !rinvio.attivo && <p class="type-mono tabellone hero__count">Mancano <time datetime={rally.dataIso}><span class="cifra">{giorni}</span></time> {giorni === 1 ? 'giorno' : 'giorni'} al 21 novembre</p>}
         {stato === 'in' && <p class="type-mono hero__count hero__count--live">Il rally è in corso</p>}
         {stato === 'post' && <a class="type-mono link-line hero__count" href="/foto-e-video/rally-colli-euganei-2026/">Rally concluso · classifiche e foto <span class="arrow-x" aria-hidden="true">→</span></a>}
         <span class="pill pill--ev">Rally Sprint</span>
       </div>
+      {rinvio.attivo ? (
+      <div class="hero__cta">
+        <a href={rinvio.comunicato} class="btn btn--primary">Comunicato stampa</a>
+        <a href="/rally-colli-euganei/percorso/" class="btn btn--secondary">Guarda il percorso</a>
+      </div>
+      ) : (
       <div class="hero__cta">
         {unMesePrima()
           ? <a href="/rally-colli-euganei/concorrenti/" class="btn btn--primary">Iscriviti come pilota</a>
           : <a href="/rally-colli-euganei/documenti/" class="btn btn--primary">Apri i documenti di gara</a>}
         <a href="/rally-colli-euganei/percorso/" class="btn btn--secondary">Guarda il percorso</a>
       </div>
+      )}
     </div>
   </section>
 
@@ -79,6 +86,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
         ['Spettatori', '/rally-colli-euganei/spettatori/', ''],
         ['Documenti di gara', '/rally-colli-euganei/documenti/', ''],
         ['Accrediti stampa', '/stampa/accrediti/', ''],
+        ['Percorso', '/rally-colli-euganei/percorso/', ''],
       /* la numerazione nasce qui: togliendo una voce oscurata le altre si rinumerano da sole */
       ].filter(([, h]) => !indirizzoOscurato(h as string))
        .map(([t, h, b], i) => [String(i + 1).padStart(2, '0'), t, h, b])
@@ -235,6 +243,7 @@ const news = ordinaPerData(tuttiIPost).filter(p => p.event === 'Rally Colli Euga
   .hero__aci{height:44px;width:auto}
   .hero__h1{color:#fff;font-size:clamp(34px,6vw,84px);text-wrap:balance;max-width:16ch}
   .hero__intro{max-width:52ch;color:#EEE}
+  .hero__rinvio{color:var(--alert-rosso-chiaro)} /* rinvio 18/11/2026 */
   .hero__count-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   .hero__count{color:var(--rally-verde);font-size:14px}
   .hero__count .cifra{color:#fff;font-size:1.3em}

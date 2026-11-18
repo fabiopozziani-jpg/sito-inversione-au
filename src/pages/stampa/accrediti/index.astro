@@ -10,7 +10,7 @@ import '../../../styles/hub.css';
 import Base from '../../../layouts/Base.astro';
 import EventSubnav from '../../../components/EventSubnav.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
-import { rally, subnav } from '../../../data/rally';
+import { rally, subnav, rinvio } from '../../../data/rally';
 const email = 'niccolo@nbudoia.com';
 const modulo = rally.moduloAccredito;
 ---
@@ -93,7 +93,7 @@ const modulo = rally.moduloAccredito;
     <h2 id="pass-h" class="type-h2">Dove si ritira il pass</h2>
     <dl class="dati sc">
       <div><dt class="type-mono">Sala Stampa</dt><dd>Rally Village — Piazza Mercato, Treponti (PD)<span class="hint">Consegna del modulo in originale</span></dd></div>
-      <div><dt class="type-mono">Aperture</dt><dd>Sabato 21 novembre, 09:00 – 21:00<span class="hint">Domenica 22 novembre, 07:00 – 19:00</span></dd></div>
+      <div><dt class="type-mono">Aperture</dt><dd>{rinvio.attivo ? <span class="rinvio-data"><s>Sabato 21 novembre, 09:00 – 21:00</s></span> : 'Sabato 21 novembre, 09:00 – 21:00'}<span class="hint">{rinvio.attivo ? <span class="rinvio-data"><s>Domenica 22 novembre, 07:00 – 19:00</s></span> : 'Domenica 22 novembre, 07:00 – 19:00'}</span></dd></div>
     </dl>
     <p class="type-body-dark p">Il pass è personale e viene consegnato solo a chi ha fatto la richiesta.</p>
   </section>
